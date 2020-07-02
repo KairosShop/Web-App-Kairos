@@ -25,7 +25,7 @@ $desactive: #B3BFC1;
 
 @each $color, $value in (
   primary: $primary,
-  primary-dark :$primary-dark
+  primary-dark :$primary-dark,
   contrast: $contrast,
   contrast-dark: $contrast-dark,
   accept:$accept,
@@ -37,14 +37,8 @@ $desactive: #B3BFC1;
   .#{$color} {
     color: $value !important
   }
-  @mixin #{$color} {
-    color: $value
-  }
   .bg-#{$color} {
     background: $value !important
-  }
-  @mixin #{$color}-bg {
-    background: $value
   }
 };
 

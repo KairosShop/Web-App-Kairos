@@ -1,0 +1,17 @@
+@import './token/_color';
+@import './token/_type';
+@import './token/_spacing';
+@import'./mixins.scss';
+html,
+body {
+  min-height: 100vh;
+  margin: 0;
+  font-size: 17px;
+  color: $primary-dark;
+  @include styleScrollY;
+}
+:focus {
+  outline: none;
+}
+
+
