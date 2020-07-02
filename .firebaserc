@@ -1,5 +1,17 @@
 {
   "projects": {
     "default": "kairos-282000"
+  },
+  "targets": {
+    "kairos-282000": {
+      "hosting": {
+        "production": [
+          "kairos-282000"
+        ],
+        "staging": [
+          "kairos-staging"
+        ]
+      }
+    }
   }
 }

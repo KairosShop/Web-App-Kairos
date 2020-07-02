@@ -17,7 +17,7 @@ deploy-prod:
     - yarn
     - yarn run build
     - firebase use kairos-282000 --token $FIREBASE_TOKEN
-    - firebase deploy --only hosting:kairos-282000 -m "Pipe $CI_PIPELINE_ID Build $CI_BUILD_ID" --token $FIREBASE_TOKEN
+    - firebase deploy --only hosting:production -m "Pipe $CI_PIPELINE_ID Build $CI_BUILD_ID" --token $FIREBASE_TOKEN
 
 deploy-staging:
     stage: deploy
@@ -29,4 +29,4 @@ deploy-staging:
       - yarn
       - yarn run build
       - firebase use kairos-282000 --token $FIREBASE_TOKEN
-      - firebase deploy --only hosting:kairos-staging -m "Pipe $CI_PIPELINE_ID Build $CI_BUILD_ID" --token $FIREBASE_TOKEN
+      - firebase deploy --only hosting:staging -m "Pipe $CI_PIPELINE_ID Build $CI_BUILD_ID" --token $FIREBASE_TOKEN
