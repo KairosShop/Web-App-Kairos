@@ -20,19 +20,19 @@ $space:10px;
     }
   }
   &_bottom{
-    padding-top: $num !important;
+    padding-bottom: $num !important;
     &_mg{
       margin-bottom: $num !important;
     }
   }
   &_left{
-    padding-top: $num !important;
+    padding-left: $num !important;
     &_mg{
       margin-left: $num !important;
     }
   }
   &_right{
-    padding-top: $num !important;
+    padding-right: $num !important;
     &_mg{
       margin-right: $num !important;
     }
