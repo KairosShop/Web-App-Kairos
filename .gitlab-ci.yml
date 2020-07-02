@@ -24,7 +24,6 @@ deploy-staging:
     environment: Staging
     only:
       - staging
-      - merge_requests
     script:
       - yarn
       - yarn run build
