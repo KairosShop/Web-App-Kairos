@@ -1,0 +1,71 @@
+//  ████████╗██╗···██╗██████╗··██████╗·
+//  ╚══██╔══╝╚██╗·██╔╝██╔══██╗██╔═══██╗
+//  ···██║····╚████╔╝·██████╔╝██║···██║
+//  ···██║·····╚██╔╝··██╔═══╝·██║···██║
+//  ···██║······██║···██║·····╚██████╔╝
+//  ···╚═╝······╚═╝···╚═╝······╚═════╝·
+
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,700;1,100;1,700&display=swap');
+
+$font: 'Lato', sans-serif;
+
+// Typos
+$h1:40px;
+$h2:33px;
+$h3:28px;
+$h4:22px;
+$h5:20px;
+$h6:18px;
+$p:14px;
+$small:12px;
+
+// Typo Bolds
+
+$font-low:100;
+$font-normal:300;
+$font-title:700;
+
+@font-face {
+  font-family: title;
+  src: local($font);
+  font-weight: $font-title;
+}
+@font-face {
+  font-family: regular;
+  src: local($font);
+  font-weight: $font-normal;
+}
+@font-face {
+  font-family: low;
+  src: local($font);
+  font-weight: $font-low;
+}
+
+
+@each $header,
+$size in (h1: $h1, h2: $h2, h3:$h3, h4:$h4, h5:$h5, h6:$h6) {
+  #{$header} {
+    font-family: title;
+    font-size: $size !important;
+  }
+};
+
+
+
+@each $header,
+$size in (p:$p, li: $p, ul:$p, small:$small) {
+  #{$header} {
+    font-family: regular;
+    font-size: $size;
+  }
+};
+
+
+a {
+  text-decoration: none;
+}
+
+input::placeholder{
+  font-family: regular;
+  font-size: $p;
+}
