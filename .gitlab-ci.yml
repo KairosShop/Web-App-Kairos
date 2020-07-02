@@ -13,10 +13,20 @@ deploy-prod:
   environment: Production
   only:
     - master
-    - staging
-    - merge_requests
   script:
     - yarn
     - yarn run build
     - firebase use kairos-282000 --token $FIREBASE_TOKEN
-    - firebase deploy --only hosting -m "Pipe $CI_PIPELINE_ID Build $CI_BUILD_ID" --token $FIREBASE_TOKEN
+    - firebase deploy --only hosting -m "Pipe $CI_PIPELINE_ID Build $CI_BUILD_ID" --token $FIREBASE_TOKEN hosting:kairos-282000
+
+deploy-staging:
+    stage: deploy
+    environment: Staging
+    only:
+      - staging
+      - merge_requests
+    script:
+      - yarn
+      - yarn run build
+      - firebase use kairos-282000 --token $FIREBASE_TOKEN
+      - firebase deploy --only hosting -m "Pipe $CI_PIPELINE_ID Build $CI_BUILD_ID" --token $FIREBASE_TOKEN hosting:kairos-staging
