@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-side-bottom-menu',
@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SideBottomMenuComponent implements OnInit {
 
+  @Input() toggle;
 	/* This array will be replace for an arry who contains
 		real data taken from a service
 	 */
