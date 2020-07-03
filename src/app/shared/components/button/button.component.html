@@ -7,6 +7,14 @@
       {{name}}
     </span>
   </button>
+  <button *ngSwitchCase='"left"' class='btn btn__{{color}} btn__left'>
+    <span *ngIf='icon' class="material-icons">
+      {{icon}}
+    </span>
+    <span *ngIf='name'>
+      {{name}}
+    </span>
+  </button>
 
   <button *ngSwitchDefault class='space_mg btn btn__{{color}} btn__{{size}}'>
     <span *ngIf='icon' class="material-icons">
