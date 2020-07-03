@@ -1,0 +1,65 @@
+@import '../../../../styles/token/_color.scss';
+
+.topNavbar {
+	display: flex;
+	&__hamburguer {
+		display: none;
+	}
+	&__logo {
+		width: 30%;
+		justify-content: center;
+		display: flex;
+		& img {
+			max-height: 80%;
+			cursor: pointer;	
+		}
+	}
+	&__search {
+		width: 40%;
+		cursor: pointer;
+	}
+	&__menu {
+		width: 30%;
+		display: flex;	
+		justify-content: space-around;
+	}
+}
+
+
+@media screen and (max-width: 760px){
+	.topNavbar {
+		&__logo {
+			width: 20%;
+		}
+
+		&__search {
+			width: 50%;
+		}
+	}
+}
+
+@media screen and (max-width: 580px){
+	.topNavbar {
+		&__hamburguer {
+			display: block;
+			color: white;
+			width: 20%;
+			& i {
+				display: flex;
+				justify-content: center;
+				cursor: pointer;	
+				font-size: 300%;
+			}
+		}
+		&__search {
+			display: none;
+		}
+		&__menu {
+			display: none;
+		}
+		&__logo {
+			width: 70%;
+			max-height: 70%;
+		}
+	}
+}
