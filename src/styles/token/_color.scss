@@ -29,12 +29,7 @@
 .primary-bg-gradiente{
   background: $primary-gradiente;
 }
-@mixin primary-bg-gradiente{
-  background: $primary-gradiente;
-}
+
 .contrast-bg-gradiente{
-  background: $contrast-gradiente;
-}
-@mixin contrast-bg-gradiente{
   background: $contrast-gradiente;
 }

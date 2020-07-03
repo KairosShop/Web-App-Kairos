@@ -48,8 +48,10 @@ $size in (p:$p, li: $p, ul:$p, small:$small) {
 };
 
 
-a {
+a, button {
+  font-family: $font;
   text-decoration: none;
+  font-size: $p;
 }
 
 input::placeholder{

@@ -35,3 +35,11 @@
     background: $primary-dark;
   }
 }
+
+@mixin contrast-bg-gradiente{
+  background: $contrast-gradiente;
+}
+
+@mixin primary-bg-gradiente{
+  background: $primary-gradiente;
+}
