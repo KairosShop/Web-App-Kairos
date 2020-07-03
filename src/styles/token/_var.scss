@@ -5,36 +5,18 @@
 //  ╚██████╗╚██████╔╝███████╗╚██████╔╝██║··██║
 //  ·╚═════╝·╚═════╝·╚══════╝·╚═════╝·╚═╝··╚═╝
 
-@import 'var';
 
-@each $color, $value in (
-  primary: $primary,
-  primary-dark :$primary-dark,
-  contrast: $contrast,
-  contrast-dark: $contrast-dark,
-  accept:$accept,
-  warning: $warning,
-  light: $light,
-  "white": $white,
-  desactive: $desactive,
-  dark: $primary-dark) {
-  .#{$color} {
-    color: $value !important
-  }
-  .bg-#{$color} {
-    background: $value !important
-  }
-};
+$primary: #0058AD;
+$primary-dark: #01132D;
+$primary-gradiente: linear-gradient(to bottom, $primary 0%, $primary-dark 100%);
 
-.primary-bg-gradiente{
-  background: $primary-gradiente;
-}
-@mixin primary-bg-gradiente{
-  background: $primary-gradiente;
-}
-.contrast-bg-gradiente{
-  background: $contrast-gradiente;
-}
-@mixin contrast-bg-gradiente{
-  background: $contrast-gradiente;
-}
+$contrast: #FAA519;
+$contrast-dark: #AE7311;
+$contrast-gradiente: linear-gradient(to bottom, $contrast 0%, $contrast-dark 100%);
+
+$accept: #04BF30;
+$warning: #BF046B;
+
+$light: #e6e8eb;
+$white: #FFFFFF;
+$desactive: #B3BFC1;
