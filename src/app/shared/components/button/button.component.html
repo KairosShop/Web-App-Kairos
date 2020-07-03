@@ -1,12 +1,27 @@
-<ng-container [ngSwitch]="type">
-  <button *ngSwitchCase="'Login'" class='space_mg btn btn__{{color}} btn__{{size}}'>
-    <svg id="person" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 38 38">
-      <path id="Trazado_340" data-name="Trazado 340" d="M19,7.563A3.938,3.938,0,1,1,15.062,11.5,3.937,3.937,0,0,1,19,7.563m0,16.875c5.569,0,11.438,2.738,11.438,3.938v2.063H7.563V28.375c0-1.2,5.869-3.937,11.437-3.937M19,4a7.5,7.5,0,1,0,7.5,7.5A7.5,7.5,0,0,0,19,4Zm0,16.875c-5.006,0-15,2.512-15,7.5V34H34V28.375C34,23.387,24.006,20.875,19,20.875Z" transform="translate(0 0)" fill="#e6e8eb"/>
-    </svg>
-    Login
+<ng-container [ngSwitch] ='type'>
+  <button *ngSwitchCase='"right"' class='btn btn__{{color}} btn__right'>
+    <span *ngIf='icon' class="material-icons">
+      {{icon}}
+    </span>
+    <span *ngIf='name'>
+      {{name}}
+    </span>
   </button>
+  <button *ngSwitchCase='"left"' class='btn btn__{{color}} btn__left'>
+    <span *ngIf='icon' class="material-icons">
+      {{icon}}
+    </span>
+    <span *ngIf='name'>
+      {{name}}
+    </span>
+  </button>
+
   <button *ngSwitchDefault class='space_mg btn btn__{{color}} btn__{{size}}'>
-    <img *ngIf='icon' src="{{icon}}" alt="icon" />
-   <span *ngIf='name'>{{name}}</span>
+    <span *ngIf='icon' class="material-icons">
+      {{icon}}
+    </span>
+    <span *ngIf='name'>
+      {{name}}
+    </span>
   </button>
 </ng-container>
