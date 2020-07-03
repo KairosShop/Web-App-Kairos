@@ -1,7 +1,7 @@
 @import './token/_color';
 @import './token/_type';
 @import './token/_spacing';
-@import'./mixins.scss';
+@import'./token/_mixins.scss';
 html,
 body {
   min-height: 100vh;

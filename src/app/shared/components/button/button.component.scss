@@ -1,0 +1,68 @@
+@import "_var";
+@import "_mixins";
+
+
+.btn{
+  border-radius: 30px;
+  font-weight: bolder;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid $primary-dark;
+  &__primary{
+    & > svg{
+      & > path{
+        fill:$light;
+      }
+    }
+    color: $light;
+    @include primary-bg-gradiente;
+  }
+  &__contrast{
+    & > svg{
+      & > path{
+        fill:$primary-dark;
+      }
+    }
+    color: $primary-dark;
+    @include contrast-bg-gradiente;
+  }
+  &__light{
+    & > svg{
+      & > path{
+        fill:$primary-dark;
+      }
+    }
+    color: $primary-dark;
+    background-color: $light;
+  }
+  &__lightContrast{
+    & > svg{
+      & > path{
+        fill:$contrast-dark;
+      }
+    }
+    border: 1px solid $contrast-dark;
+    color: $contrast-dark;
+    background-color: $light;
+  }
+  &__lg{
+    width: 230;
+    height: 60px;
+  }
+  &__md{
+    width: 150px;
+    height: 40px;
+  }
+  &__sm{
+    width: 10px;
+    height: 40px;
+  }
+  & > svg, img{
+    height: 70%;
+    margin-right: 5%;
+  }
+  &:hover{
+    box-shadow: 3px 2px 11px 0 $desactive;
+  }
+}
