@@ -1,0 +1,31 @@
+@import '../../../../styles/token/_spacing.scss';
+@import '../../../../styles/token/_type.scss';
+.search {
+	display: flex;
+}
+
+.search__input {
+	box-shadow: 1px 2px 3px black;
+	border-right: 0px;
+	width: 80%;
+	height: 2*$space;
+	border-radius: 5*$space;
+	text-align: center;
+	border-top-right-radius: 0px;
+	border-bottom-right-radius: 0px;
+}
+
+.search__button {
+	box-shadow: 1px 2px 3px black;
+	border-top-right-radius: 50px;
+	border-bottom-right-radius: 50px;
+	width: 5*$space;
+	height: 23px;
+}
+
+.search__button i {
+	display: flex;
+	justify-content: center;
+	color: white;
+	font-size: 20px;
+}

@@ -1,0 +1,13 @@
+<div class="topNavbar space_top primary-bg-gradiente">
+	<div class="topNavbar__logo">
+		<img *ngIf="homepage" src="assets/images/brand/LogoBlue.png" alt="Logo">
+		<img *ngIf="!homepage" src="assets/images/brand/LogoWhite.png" alt="Logo">
+	</div>
+	<div class="topNavbar__search">
+		<app-search></app-search>
+	</div>
+	<div class="topNavbar__menu">
+		<app-cart [homepage]="homepage"></app-cart>
+		<app-button></app-button>
+	</div>
+</div>

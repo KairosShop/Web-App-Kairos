@@ -1,0 +1,21 @@
+@import '../../../../styles/token/_color.scss';
+
+.topNavbar {
+	display: flex;
+}
+
+.topNavbar__logo {
+	width: 30%;
+	justify-content: center;
+	display: flex;
+}
+
+.topNavbar__search {
+	width: 40%;
+}
+
+.topNavbar__menu {
+	width: 30%;
+	display: flex;	
+	justify-content: space-around;
+}
