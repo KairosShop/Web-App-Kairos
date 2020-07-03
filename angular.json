@@ -30,6 +30,9 @@
             "styles": [
               "src/styles/index.scss"
             ],
+            "stylePreprocessorOptions": {
+              "includePaths": ["src/styles/token"]
+            },
             "scripts": []
           },
           "configurations": {
