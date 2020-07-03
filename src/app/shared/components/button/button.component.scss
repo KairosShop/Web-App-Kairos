@@ -95,3 +95,14 @@
     transform: scale(.9);
   }
 }
+
+@media screen and (max-width: 760px){
+  .btn__md {
+    width: 110px;
+    height: 45px;
+  }
+
+  .space_mg {
+    margin: 0px !important;
+  }
+}
