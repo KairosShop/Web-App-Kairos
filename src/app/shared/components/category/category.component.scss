@@ -1,0 +1,14 @@
+.category {
+	display: flex;
+	& img {
+		width: 60px;
+	}
+	& h3 {
+		color: white;
+	}
+	&__icons {
+		color: white;
+		align-self: center;
+		cursor: pointer;
+	}
+}

@@ -8,10 +8,10 @@ import { Component, OnInit } from '@angular/core';
 export class TopNavbarComponent implements OnInit {
 
 	public homepage: boolean = false;
+	public burguerToggle: boolean = false;
 
   constructor() { }
 
   ngOnInit(): void {
   }
-
 }

@@ -7,6 +7,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SideBottomMenuComponent implements OnInit {
 
+	/* This array will be replace for an arry who contains
+		real data taken from a service
+	 */
+	public categories = [1, 2, 3, 4];
+
   constructor() { }
 
   ngOnInit(): void {
