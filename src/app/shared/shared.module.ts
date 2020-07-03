@@ -4,11 +4,12 @@ import { ButtonComponent } from './components/button/button.component';
 import { SearchComponent } from './components/search/search.component';
 import { CartComponent } from './components/cart/cart.component';
 import { TopNavbarComponent } from './components/top-navbar/top-navbar.component';
+import { SideBottomMenuComponent } from './components/side-bottom-menu/side-bottom-menu.component';
 
 
 
 @NgModule({
-  declarations: [ButtonComponent, SearchComponent, CartComponent, TopNavbarComponent],
+  declarations: [ButtonComponent, SearchComponent, CartComponent, TopNavbarComponent, SideBottomMenuComponent],
   imports: [
     CommonModule
   ],
@@ -16,7 +17,8 @@ import { TopNavbarComponent } from './components/top-navbar/top-navbar.component
     ButtonComponent,
     SearchComponent,
     CartComponent,
-    TopNavbarComponent
+    TopNavbarComponent,
+    SideBottomMenuComponent
   ]
 })
 export class SharedModule { }

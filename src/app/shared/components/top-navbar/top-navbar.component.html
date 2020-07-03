@@ -1,4 +1,7 @@
 <div class="topNavbar space_top primary-bg-gradiente">
+	<div class="topNavbar__hamburguer">
+		<i class="material-icons">menu</i>
+	</div>
 	<div class="topNavbar__logo">
 		<img *ngIf="homepage" src="assets/images/brand/LogoBlue.png" alt="Logo">
 		<img *ngIf="!homepage" src="assets/images/brand/LogoWhite.png" alt="Logo">
@@ -8,6 +11,11 @@
 	</div>
 	<div class="topNavbar__menu">
 		<app-cart [homepage]="homepage"></app-cart>
-		<app-button></app-button>
+		<app-button *ngIf="homepage" color='primary' type='Login'></app-button>
+		<app-button *ngIf="!homepage" color='light' type='Login'></app-button>
 	</div>
+</div>
+
+<div class="sideBottom">
+	<app-side-bottom-menu></app-side-bottom-menu>
 </div>
