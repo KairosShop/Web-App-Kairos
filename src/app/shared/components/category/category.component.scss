@@ -1,0 +1,50 @@
+.category {
+	display: flex;
+	cursor: pointer;
+	& img {
+		width: 60px;
+	}
+	& h3 {
+		color: white;
+	}
+	&__icons {
+		color: white;
+		align-self: center;
+		cursor: pointer;
+		&-menu {
+			background-color: #535f71;
+			width: 70%;
+			position: absolute;
+			bottom: 70px;
+			border-radius: 20px;
+			margin-left: 20%;
+			& ul {
+				margin-top: 0px;
+				& li {
+					list-style: none;
+					& a {
+						color: white;
+					}
+				}
+			}
+		}
+	}
+}
+
+@media screen and (max-width: 760px){
+	.category__icons {
+		display: none;
+	}
+	.category__icons-menu {
+		width: 80%;
+	}
+}
+
+@media screen and (max-width: 580px){
+	.category__icons {
+		display: flex;
+	}
+	.category__icons-menu {
+		position: static;
+	}
+}

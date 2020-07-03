@@ -1,7 +1,7 @@
 <div class="topNavbar space_top primary-bg-gradiente">
-	<div class="topNavbar__hamburguer">
+	<button class="topNavbar__hamburguer" (click)="burguerToggle = !burguerToggle">
 		<i class="material-icons">menu</i>
-	</div>
+	</button>
 	<div class="topNavbar__logo">
 		<img *ngIf="homepage" src="assets/images/brand/LogoBlue.png" alt="Logo">
 		<img *ngIf="!homepage" src="assets/images/brand/LogoWhite.png" alt="Logo">
@@ -11,11 +11,9 @@
 	</div>
 	<div class="topNavbar__menu">
 		<app-cart [homepage]="homepage"></app-cart>
-		<app-button *ngIf="homepage" color='primary' type='Login'></app-button>
-		<app-button *ngIf="!homepage" color='light' type='Login'></app-button>
+		<app-button *ngIf="homepage" name="login" color='primary' type='Login' icon="person"></app-button>
+		<app-button *ngIf="!homepage" name="login" color='light' type='Login' icon="person"></app-button>
 	</div>
 </div>
 
-<div class="sideBottom">
-	<app-side-bottom-menu></app-side-bottom-menu>
-</div>
+<app-side-bottom-menu [toggle]="burguerToggle"></app-side-bottom-menu>

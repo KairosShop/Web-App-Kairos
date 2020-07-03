@@ -5,11 +5,12 @@ import { SearchComponent } from './components/search/search.component';
 import { CartComponent } from './components/cart/cart.component';
 import { TopNavbarComponent } from './components/top-navbar/top-navbar.component';
 import { SideBottomMenuComponent } from './components/side-bottom-menu/side-bottom-menu.component';
+import { CategoryComponent } from './components/category/category.component';
 
 
 
 @NgModule({
-  declarations: [ButtonComponent, SearchComponent, CartComponent, TopNavbarComponent, SideBottomMenuComponent],
+  declarations: [ButtonComponent, SearchComponent, CartComponent, TopNavbarComponent, SideBottomMenuComponent, CategoryComponent],
   imports: [
     CommonModule
   ],
