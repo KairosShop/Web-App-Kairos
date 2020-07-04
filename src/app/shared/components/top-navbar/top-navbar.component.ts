@@ -8,7 +8,7 @@ import { Component, OnInit } from '@angular/core';
 export class TopNavbarComponent implements OnInit {
 
 	public homepage: boolean = true;
-	public burguerToggle: boolean = false;
+	public burguerToggle: boolean = true;
 	public screen: number;
 
   constructor() {

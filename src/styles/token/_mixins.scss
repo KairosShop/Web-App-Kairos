@@ -1,3 +1,6 @@
+
+@import 'var';
+
 @mixin styleScrollY {
   overflow-y: scroll;
   &::-webkit-scrollbar {
