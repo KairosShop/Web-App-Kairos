@@ -39,6 +39,21 @@ $space:10px;
   }
 }
 
+@mixin input($width) {
+    width: $width;
+    border-radius: 50px;
+    border: 0px;
+    padding: 10px;
+    box-shadow: 0px 0 5px;
+}
+
+.form__input {
+  @include input(100%); 
+}
+
+.form__input_50 {
+  @include input(45%); 
+}
 
 .spaced{
   padding: $space;

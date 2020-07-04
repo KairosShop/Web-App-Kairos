@@ -1,11 +1,18 @@
-<section class="login">
+<section class="login space_3">
 	<div class="login__image">
 		<img src="assets/images/login.png" alt="">
 	</div>
 	<form class="login__form" (ngSubmit)='send()'>
 		<h2>Login</h2>
-		<app-search [placeholder]="'example@domain.com'"></app-search>
-		<app-search [placeholder]="'password'"></app-search>
+		<input class="space_2_bottom_mg form__input" 
+	           type="email"
+	           placeholder="example@domain.com"
+	           formControlName="email">
+		<input class="space_2_bottom_mg form__input" 
+	           type="pasword"
+	           placeholder="Password"
+	           formControlName="password">
+
 		<app-button name="login" color='primary' type='Login' icon="person"></app-button>
 		<p>You are not registered? Click <span class="contrast">here</span></p>
 	</form>

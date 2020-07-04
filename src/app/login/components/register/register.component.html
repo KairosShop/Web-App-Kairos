@@ -1,17 +1,35 @@
-<section class="register">
+<section class="register space_3">
 	<div class="register__image">
 		<img src="assets/images/login.png" alt="">
 	</div>
 	<form class="register__form" (ngSubmit)='send()'>
 		<h2>Register</h2>
-		<div class="register__name">
-			<app-search [placeholder]="'Name'"></app-search>
-			<app-search [placeholder]="'Lastname'"></app-search>
+		<div class="register__name space_2_bottom_mg">
+			 <input class="form__input_50"
+               type="text"
+               placeholder="Name"
+               formControlName="nombre">
+			 <input class="form__input_50"
+               type="text"
+               placeholder="Lasname"
+               formControlName="lastname">
 		</div>
 		
-		<app-search [placeholder]="'example@domain.com'"></app-search>
-		<app-search [placeholder]="'Password'"></app-search>
-		<app-search [placeholder]="'Confirm password'"></app-search>
+		<div class="register__information">
+			<input class="space_2_bottom_mg form__input" 
+	           type="email"
+	           placeholder="example@domain.com"
+	           formControlName="email">
+
+			<input class="space_2_bottom_mg form__input" 
+	           type="pasword"
+	           placeholder="Password"
+	           formControlName="password1">
+	       <input class="space_2_bottom_mg form__input" 
+		       type="password"
+		       placeholder="Confirm password"
+		       formControlName="password2">
+		</div>
 		
 		<div class="register__button">
 			<app-button name="register" color='primary' type='Login' icon="person"></app-button>
