@@ -1,5 +1,8 @@
 .register {
 	display: flex;
+	height: 100vh;
+	justify-content: center;
+	align-items: center;
 	&__image {
 		width: 50%;
 	}
@@ -19,7 +22,8 @@
 		justify-items: center;
 		align-items: center;
 		column-gap: 6%;
-		row-gap: 3%;
+		row-gap: 20%;
+		grid-auto-rows: 1.7rem;
 
 		& > input {
 			margin: 1%;
@@ -48,18 +52,9 @@
 
 		& p span {
 			cursor: pointer;
+			font-weight: 800 !important;
 		}
 	}
-	/* 	&__name {
-		display: flex;
-		justify-content: space-between;
-	}
-	&__button {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		align-items: center;
-	} */
 }
 
 @media screen and (max-width: 768px) {
@@ -69,7 +64,7 @@
 		flex-direction: column;
 		align-items: center;
 		&__image {
-			width: 30%;
+			width: 50%;
 		}
 		&__form {
 			width: 100%;
@@ -95,7 +90,7 @@
 				"password2"
 				"button";
 			column-gap: 10%;
-			row-gap: 6%;
+			row-gap: 10%;
 		}
 	}
 }
