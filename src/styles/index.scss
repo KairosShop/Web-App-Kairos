@@ -6,10 +6,10 @@ html,
 body {
   font-family: $font;
   min-height: 100vh;
+  max-height: 100vh;
   margin: 0;
   font-size: $font-size;
   color: $primary-dark;
-  @include styleScrollY;
 }
 :focus {
   outline: none;

@@ -1,17 +1,25 @@
-@import '../../../../styles/token/_color.scss';
+@import "../../../../styles/token/_color.scss";
 
 .topNavbar {
 	display: flex;
+	width: 100%;
+	height: 100%;
+	justify-content: center;
+	align-content: center;
 	&__hamburguer {
 		display: none;
 	}
 	&__logo {
 		width: 30%;
-		justify-content: center;
 		display: flex;
+		justify-content: center;
+		align-items: center;
 		& img {
 			max-height: 80%;
-			cursor: pointer;	
+			cursor: pointer;
+		}
+		&-brand {
+			display: none;
 		}
 	}
 	&__search {
@@ -25,8 +33,7 @@
 	}
 }
 
-
-@media screen and (max-width: 760px){
+@media screen and (max-width: 760px) {
 	.topNavbar {
 		&__logo {
 			width: 20%;
@@ -38,7 +45,7 @@
 	}
 }
 
-@media screen and (max-width: 580px){
+@media screen and (max-width: 580px) {
 	.topNavbar {
 		&__hamburguer {
 			display: block;
@@ -50,7 +57,7 @@
 			& i {
 				display: flex;
 				justify-content: center;
-				cursor: pointer;	
+				cursor: pointer;
 				font-size: 300%;
 			}
 		}
