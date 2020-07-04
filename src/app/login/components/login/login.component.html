@@ -1,19 +1,19 @@
 <section class="login space_3_left space_3_right">
 	<div class="login__image">
-		<img src="assets/images/login.png" alt="">
+		<img src="assets/images/login.png" alt="imagen Login">
 	</div>
 	<form class="login__form" (ngSubmit)='send()'>
 		<h2>Login</h2>
-		<input class="space_2_bottom_mg" 
+		<input class="space_2_bottom_mg"
 	           type="email"
 	           placeholder="example@domain.com"
 	           formControlName="email">
-		<input class="space_2_bottom_mg" 
+		<input class="space_2_bottom_mg"
 	           type="pasword"
 	           placeholder="Password"
 	           formControlName="password">
 
-		<app-button name="login" color='primary' type='Login' icon="person"></app-button>
+		<app-button class="login__form-btn" name="login" color='primary' type='Login' icon="person"></app-button>
 		<p>You are not registered? <span class="contrast">Register here</span></p>
 	</form>
 </section>
