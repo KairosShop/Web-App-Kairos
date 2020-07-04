@@ -1,0 +1,96 @@
+.register {
+	display: flex;
+	height: 100vh;
+	justify-content: center;
+	align-items: center;
+	&__image {
+		width: 50%;
+	}
+	& img {
+		width: 100%;
+	}
+	&__form {
+		display: grid;
+		grid-template-areas:
+			"title title"
+			"name lastName"
+			"email email"
+			"password password"
+			"password2 password2"
+			"button button";
+		justify-content: center;
+		justify-items: center;
+		align-items: center;
+		column-gap: 6%;
+		row-gap: 20%;
+		grid-auto-rows: 1.7rem;
+
+		& > input {
+			margin: 1%;
+		}
+		&-title {
+			grid-area: title;
+		}
+		&-name {
+			grid-area: name;
+		}
+		&-lastName {
+			grid-area: lastName;
+		}
+		&-email {
+			grid-area: email;
+		}
+		&-password {
+			grid-area: password;
+		}
+		&-password2 {
+			grid-area: password2;
+		}
+		&-button {
+			grid-area: button;
+		}
+
+		& p span {
+			cursor: pointer;
+			font-weight: 800 !important;
+		}
+	}
+}
+
+@media screen and (max-width: 768px) {
+	.register {
+		display: flex;
+		justify-content: center;
+		flex-direction: column;
+		align-items: center;
+		&__image {
+			width: 50%;
+		}
+		&__form {
+			width: 100%;
+		}
+	}
+}
+
+@media screen and (max-width: 490px) {
+	.register {
+		&__name input {
+			width: 40%;
+		}
+		&__image {
+			width: 100%;
+		}
+		&__form {
+			grid-template-areas:
+				"title"
+				"name"
+				"lastName"
+				"email"
+				"password"
+				"password2"
+				"button";
+			column-gap: 10%;
+			row-gap: 10%;
+		}
+	}
+}

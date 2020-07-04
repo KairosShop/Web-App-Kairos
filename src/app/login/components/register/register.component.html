@@ -1,0 +1,17 @@
+<section class="register space_3_left space_3_right">
+	<div class="register__image">
+		<img src="assets/images/login.png" alt="">
+	</div>
+	<form class="register__form" (ngSubmit)='send()'>
+		<h2 class="register__form-title">Register</h2>
+		<input class="register__form-name" type="text" placeholder="Name" formControlName="nombre">
+		<input class="register__form-lastname" type="text" placeholder="Lasname" formControlName="lastname">
+		<input class="register__form-email" type="email" placeholder="example@domain.com" formControlName="email">
+		<input class="register__form-password" type="pasword" placeholder="Password" formControlName="password1">
+		<input class="register__form-password2" type="password" placeholder="Confirm password" formControlName="password2">
+		<div class="register__form-button">
+			<app-button name="register" color='primary' type='Login' icon="person"></app-button>
+			<p>You are not registered? Click <span class="contrast">here</span></p>
+		</div>
+	</form>
+</section>
