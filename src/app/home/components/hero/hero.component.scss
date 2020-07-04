@@ -1,0 +1,29 @@
+.hero {
+	display: flex;
+	width: 100%;
+	position: relative;
+	&__banner {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		width: 40%;
+		height: 440px;
+		& h4 {
+			display: flex;
+			justify-content: center;
+		}
+		&__image {
+			width: 50%;
+		}
+	}
+}
+
+#map {
+	width: 60%;
+	height: 500px;
+}
+
+#mapa {
+	width: 60%;
+	height: 500px;
+}
