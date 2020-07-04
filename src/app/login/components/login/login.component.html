@@ -1,0 +1,11 @@
+<section class="login">
+	<div class="login__image">
+		<img src="assets/images/login.png" alt="">
+	</div>
+	<form (ngSubmit)='send()'>
+		<h3>Login</h3>
+		<app-search [placeholder]="'example@domain.com'"></app-search>
+		<app-search [placeholder]="'password'"></app-search>
+		<app-button name="login" color='primary' type='Login' icon="person"></app-button>
+	</form>
+</section>
