@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-search',
@@ -7,9 +7,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SearchComponent implements OnInit {
 
+	@Input() placeholder;
+
   constructor() { }
 
   ngOnInit(): void {
+  	if (!this.placeholder) {
+  		this.placeholder = 'search Products';
+  	}
   }
 
 }
