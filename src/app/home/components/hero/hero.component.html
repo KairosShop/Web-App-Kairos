@@ -1,13 +1,15 @@
 <div class="hero">
 	<div id="map"></div>
-<!-- 	<div id="mapa" class="bg-primary"></div> -->
-	<div class="hero__banner bg-primary-dark white space_3">
-		<h4>Where do we take your order</h4>
-		<app-search></app-search>
-		<img class="hero__banner__image" src="assets/images/locationImage.png" alt="Logo">
-		<br>
-		<app-button name="Inser Location" color='contrast' icon="location_on" size="lg"></app-button>
-		<br>
-		<img class="hero__banner__brand" src="assets/images/brand/LogoWhite.png" alt="Logo">
+	<!-- 	<div id="mapa" class="bg-primary"></div> -->
+	<div class="hero__banner">
+		<div class="hero__banner-back bg-contrast"></div>
+		<div class="hero__banner-front bg-primary-dark"></div>
+		<div class="hero__banner-content white">
+			<h2 class="hero__banner-title">Where do we take your order?</h2>
+			<app-search class="hero__banner-input"></app-search>
+			<img class="hero__banner-img" src="assets/images/locationImage.png" alt="Logo">
+			<app-button class="hero__banner-btn" name="Insert Location" color='contrast' icon="location_on" size="lg">
+			</app-button>
+		</div>
 	</div>
 </div>
