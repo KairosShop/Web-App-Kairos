@@ -3,35 +3,13 @@
 		<img src="assets/images/login.png" alt="">
 	</div>
 	<form class="register__form" (ngSubmit)='send()'>
-		<h2>Register</h2>
-		<div class="register__name space_2_bottom_mg">
-			 <input class="form__input_50"
-               type="text"
-               placeholder="Name"
-               formControlName="nombre">
-			 <input class="form__input_50"
-               type="text"
-               placeholder="Lasname"
-               formControlName="lastname">
-		</div>
-		
-		<div class="register__information">
-			<input class="space_2_bottom_mg form__input" 
-	           type="email"
-	           placeholder="example@domain.com"
-	           formControlName="email">
-
-			<input class="space_2_bottom_mg form__input" 
-	           type="pasword"
-	           placeholder="Password"
-	           formControlName="password1">
-	       <input class="space_2_bottom_mg form__input" 
-		       type="password"
-		       placeholder="Confirm password"
-		       formControlName="password2">
-		</div>
-		
-		<div class="register__button">
+		<h2 class="register__form-title">Register</h2>
+		<input class="register__form-name" type="text" placeholder="Name" formControlName="nombre">
+		<input class="register__form-lastname" type="text" placeholder="Lasname" formControlName="lastname">
+		<input class="register__form-email" type="email" placeholder="example@domain.com" formControlName="email">
+		<input class="register__form-password" type="pasword" placeholder="Password" formControlName="password1">
+		<input class="register__form-password2" type="password" placeholder="Confirm password" formControlName="password2">
+		<div class="register__form-button">
 			<app-button name="register" color='primary' type='Login' icon="person"></app-button>
 			<p>You are not registered? Click <span class="contrast">here</span></p>
 		</div>
