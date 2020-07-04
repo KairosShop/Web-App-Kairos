@@ -9,7 +9,7 @@ export class ButtonComponent implements OnInit {
 
   @Input() name: string;
   @Input() color: string = 'primary';
-  @Input() size: string = 'md';
+  @Input() size: string = '';
   @Input() icon: string;
   @Input() type: string;
   @Input() onClick: string;

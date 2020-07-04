@@ -12,8 +12,8 @@
 	</div>
 	<div class="topNavbar__menu">
 		<app-cart [homepage]="homepage"></app-cart>
-		<app-button *ngIf="homepage" name="login" color='primary' type='Login' icon="person"></app-button>
-		<app-button *ngIf="!homepage" name="login" color='light' type='Login' icon="person"></app-button>
+		<app-button class="topNavbar__menu-btn" *ngIf="homepage" name="login" color='primary' type='Login' icon="person"></app-button>
+		<app-button class="topNavbar__menu-btn" *ngIf="!homepage" name="login" color='light' type='Login' icon="person"></app-button>
 	</div>
 </nav>
 
