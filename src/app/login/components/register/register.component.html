@@ -1,0 +1,21 @@
+<section class="register">
+	<div class="register__image">
+		<img src="assets/images/login.png" alt="">
+	</div>
+	<form class="register__form" (ngSubmit)='send()'>
+		<h2>Register</h2>
+		<div class="register__name">
+			<app-search [placeholder]="'Name'"></app-search>
+			<app-search [placeholder]="'Lastname'"></app-search>
+		</div>
+		
+		<app-search [placeholder]="'example@domain.com'"></app-search>
+		<app-search [placeholder]="'Password'"></app-search>
+		<app-search [placeholder]="'Confirm password'"></app-search>
+		
+		<div class="register__button">
+			<app-button name="register" color='primary' type='Login' icon="person"></app-button>
+			<p>You are not registered? Click <span class="contrast">here</span></p>
+		</div>
+	</form>
+</section>
