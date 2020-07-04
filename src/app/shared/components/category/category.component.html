@@ -1,6 +1,8 @@
 <div class="category" (click)="iconArrow = !iconArrow">
-	<img src="https://image.flaticon.com/icons/svg/3081/3081943.svg" alt="" class="category__icon">
-	<h3 class="space_2_left_mg">Baby</h3>
+	<div class="category__image">
+		<img src="https://image.flaticon.com/icons/svg/3081/3081943.svg" alt="" class="category__icon">
+		<h3>Baby</h3>
+	</div>
 	<div class="category__icons">
 		<i *ngIf="iconArrow" class="material-icons space_2_left_mg">keyboard_arrow_up</i>
 		<i *ngIf="!iconArrow" class="material-icons space_2_left_mg">keyboard_arrow_down</i>
