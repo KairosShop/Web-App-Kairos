@@ -1,0 +1,10 @@
+.cart img {
+	width: 60px;
+	cursor: pointer;
+}
+
+@media screen and (max-width: 760px){
+	.cart img {
+		width: 50px;
+	}	
+}

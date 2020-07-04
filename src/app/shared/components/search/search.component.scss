@@ -1,0 +1,21 @@
+@import '../../../../styles/token/_spacing.scss';
+
+.search {
+	display: grid;
+	grid-template-columns: 80% 20%;
+	&__input {
+		box-shadow: 1px 2px 3px black;
+		border-right: 0px;
+		height: $space;
+		border-radius: 5*$space;
+		text-align: center;
+		border-top-right-radius: 0px;
+		border-bottom-right-radius: 0px;
+	}
+}
+
+@media screen and (max-width: 760px){
+	.space_top_mg {
+		margin-top: 0px !important;
+	}
+}
