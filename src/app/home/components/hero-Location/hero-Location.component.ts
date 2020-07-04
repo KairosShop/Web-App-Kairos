@@ -4,11 +4,11 @@ import { environment } from '../../../../environments/environment.prod';
 import * as Mapboxgl from 'mapbox-gl';
 
 @Component({
-  selector: 'app-hero',
-  templateUrl: './hero.component.html',
-  styleUrls: ['./hero.component.scss']
+  selector: 'app-hero-Location',
+  templateUrl: './hero-Location.component.html',
+  styleUrls: ['./hero-Location.component.scss']
 })
-export class HeroComponent implements OnInit {
+export class HeroLocationComponent implements OnInit {
 
 	public map: Mapboxgl.Map;
 

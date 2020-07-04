@@ -4,12 +4,15 @@
 	justify-content: center;
 	align-items: center;
 	&__image {
-		width: 50%;
+		width: 40%;
+		margin-right: 5%;
 	}
 	& img {
 		width: 100%;
 	}
 	&__form {
+		height: 100%;
+		width: 40%;
 		display: grid;
 		grid-template-areas:
 			"title title"
@@ -18,12 +21,13 @@
 			"password password"
 			"password2 password2"
 			"button button";
-		justify-content: center;
-		justify-items: center;
-		align-items: center;
-		column-gap: 6%;
-		row-gap: 20%;
 		grid-auto-rows: 1.7rem;
+		column-gap: 6%;
+		row-gap: 5%;
+    justify-content: center;
+    align-items: center;
+		align-content: center;
+		text-align: center;
 
 		& > input {
 			margin: 1%;
@@ -48,6 +52,7 @@
 		}
 		&-button {
 			grid-area: button;
+			align-self: flex-start;
 		}
 
 		& p span {
