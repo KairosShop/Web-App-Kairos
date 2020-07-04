@@ -2,10 +2,11 @@
 	<div class="login__image">
 		<img src="assets/images/login.png" alt="">
 	</div>
-	<form (ngSubmit)='send()'>
-		<h3>Login</h3>
+	<form class="login__form" (ngSubmit)='send()'>
+		<h2>Login</h2>
 		<app-search [placeholder]="'example@domain.com'"></app-search>
 		<app-search [placeholder]="'password'"></app-search>
 		<app-button name="login" color='primary' type='Login' icon="person"></app-button>
+		<p>You are not registered? Click <span class="contrast">here</span></p>
 	</form>
 </section>
