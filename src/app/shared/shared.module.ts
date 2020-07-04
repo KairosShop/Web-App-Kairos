@@ -6,6 +6,7 @@ import { CartComponent } from './components/cart/cart.component';
 import { TopNavbarComponent } from './components/top-navbar/top-navbar.component';
 import { SideBottomMenuComponent } from './components/side-bottom-menu/side-bottom-menu.component';
 import { ProductsCardComponent } from './components/products-card/productsCard.component';
+import { CategoryComponent } from './components/category/category.component';
 
 
 
@@ -16,7 +17,8 @@ import { ProductsCardComponent } from './components/products-card/productsCard.c
     CartComponent,
     TopNavbarComponent,
     SideBottomMenuComponent,
-    ProductsCardComponent
+    ProductsCardComponent,
+    CategoryComponent
   ],
   imports: [
     CommonModule

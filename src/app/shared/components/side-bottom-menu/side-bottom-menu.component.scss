@@ -1,5 +1,29 @@
-@import '../../../../styles/token/_color.scss';
-
 .sideBottom {
+	display: flex;
+	width: 100%;
+	height: 10vh;
+	justify-content: space-around;
+	padding-top: 0px !important;
+}
+
+.categories {
+	display: flex;
+	position: relative;
+	align-items: flex-end;
+}
+
+
+@media screen and (max-width: 580px){
+	.sideBottom {
+		display: none;
+		width: 60%;
+		height: 100vh;
+		max-width: 300px;
+		min-width: 220px;
+		box-shadow: 1px 1px 3px black;
+	}
 	
+	.show {
+		display: block;
+	}
 }

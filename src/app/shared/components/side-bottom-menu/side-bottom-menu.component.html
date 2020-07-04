@@ -1,3 +1,5 @@
-<div class="sideBottom bg-primary">
-	
+<div class="sideBottom bg-primary-dark space_3_top" [ngClass]="{'show': toggle}">
+	<div *ngFor="let category of categories" class="categories">
+		<app-category></app-category>
+	</div>
 </div>
