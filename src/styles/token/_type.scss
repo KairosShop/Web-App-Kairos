@@ -6,26 +6,7 @@
 //  ···╚═╝······╚═╝···╚═╝······╚═════╝·
 
 @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,700;1,100;1,700&display=swap');
-
-$font: 'Lato', sans-serif;
-
-// Typos
-$h1:30px;
-$h2:1.7rem;
-$h3:1.5rem;
-$h4:1.5rem;
-$h5:1.2rem;
-$h6:1.1rem;
-$p:1rem;
-$small:0.8rem;
-
-// Typo Bolds
-
-$font-low:100;
-$font-normal:300;
-$font-title:700;
-
-
+@import 'var';
 
 @each $header,
 $size in (h1: $h1, h2: $h2, h3:$h3, h4:$h4, h5:$h5, h6:$h6) {

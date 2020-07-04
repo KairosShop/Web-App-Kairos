@@ -1,17 +1,16 @@
-@import './token/_color';
-@import './token/_type';
-@import './token/_spacing';
-@import'./token/_mixins.scss';
+@import "./token/_color";
+@import "./token/_type";
+@import "./token/_spacing";
+@import "./token/_mixins.scss";
 html,
 body {
+  font-family: $font;
   min-height: 100vh;
   margin: 0;
-  font-size: 17px;
+  font-size: $font-size;
   color: $primary-dark;
   @include styleScrollY;
 }
 :focus {
   outline: none;
 }
-
-

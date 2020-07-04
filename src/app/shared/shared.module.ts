@@ -5,12 +5,21 @@ import { SearchComponent } from './components/search/search.component';
 import { CartComponent } from './components/cart/cart.component';
 import { TopNavbarComponent } from './components/top-navbar/top-navbar.component';
 import { SideBottomMenuComponent } from './components/side-bottom-menu/side-bottom-menu.component';
+import { ProductsCardComponent } from './components/products-card/productsCard.component';
 import { CategoryComponent } from './components/category/category.component';
 
 
 
 @NgModule({
-  declarations: [ButtonComponent, SearchComponent, CartComponent, TopNavbarComponent, SideBottomMenuComponent, CategoryComponent],
+  declarations: [
+    ButtonComponent,
+    SearchComponent,
+    CartComponent,
+    TopNavbarComponent,
+    SideBottomMenuComponent,
+    ProductsCardComponent,
+    CategoryComponent
+  ],
   imports: [
     CommonModule
   ],
@@ -19,7 +28,8 @@ import { CategoryComponent } from './components/category/category.component';
     SearchComponent,
     CartComponent,
     TopNavbarComponent,
-    SideBottomMenuComponent
+    SideBottomMenuComponent,
+    ProductsCardComponent,
   ]
 })
 export class SharedModule { }

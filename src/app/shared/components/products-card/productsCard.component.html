@@ -1,0 +1,37 @@
+<section class='card card__{{direction}}'>
+  <img src="assets/card-head.png" alt="backgound card">
+  <div class='content content__{{type}} content__{{direction}}'>
+    <h3 class='content__title'> {{product.name}}</h3>
+    <img class='content__img' src="{{product.img}}" />
+    <app-button *ngIf="product.cound === 0 && !product.price" class="content__action content__action-add" name='Add'
+      icon='add'>
+    </app-button>
+    <div *ngIf="product.cound !== 0 && !product.price" class="content__action content__action-count">
+      <app-button type='icon' color='accept' icon='add'></app-button>
+      <input class="content__action-count-number" value="{{product.cound}}" />
+      <app-button type='icon' color='cancel' icon='remove'></app-button>
+    </div>
+    <p class="content__action content__action-price" *ngIf="product.price">
+      {{product.price | currency :'USD':'$':'2.2'}}
+    </p>
+    <div class="content__super1">
+      <img src="{{product.super1.logo}}" alt="{{product.super2.name}}" />
+      <p>{{product.super1.price | currency :'USD':'$':'1.2'}}</p>
+    </div>
+    <div class="content__super2">
+      <img src="{{product.super2.logo}}" alt="{{product.super2.name}}" />
+      <p>{{product.super2.price | currency :'USD':'$':'1.2'}}</p>
+    </div>
+    <div class="content__super3">
+      <img src="{{product.super3.logo}}" alt="{{product.super3.name}}" />
+      <p>{{product.super3.price | currency :'USD':'$':'1.2'}}</p>
+    </div>
+    <p class='content__weight'>{{product.weight}}</p>
+    <p class='content__description'>{{product.description}}</p>
+  </div>
+  <div class="foo">
+    <div class="foo__circle foo__circle-lg foo__circle-contrast"></div>
+    <div class="foo__circle foo__circle-md foo__circle-primary"></div>
+    <div class="foo__circle foo__circle-sm foo__circle-primaryGradiente"></div>
+  </div>
+</section>
