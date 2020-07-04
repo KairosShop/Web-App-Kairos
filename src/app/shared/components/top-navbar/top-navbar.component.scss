@@ -20,10 +20,11 @@
 	}
 	&__menu {
 		width: 30%;
-		display: flex;	
+		display: flex;
 		justify-content: space-around;
 	}
 }
+
 
 @media screen and (max-width: 760px){
 	.topNavbar {

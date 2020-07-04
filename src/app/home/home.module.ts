@@ -5,9 +5,13 @@ import { HomeRoutingModule } from './home-routing.module';
 import { HeroComponent } from './components/hero/hero.component';
 
 import { SharedModule } from '../shared/shared.module';
+import { HomeComponent } from './components/home/home.component';
 
 @NgModule({
-  declarations: [HeroComponent],
+  declarations: [
+    HeroComponent,
+    HomeComponent
+  ],
   imports: [
     CommonModule,
     HomeRoutingModule,
