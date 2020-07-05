@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { environment } from '../../../../environments/environment.prod';
 
 import * as Mapboxgl from 'mapbox-gl';
-// import { MapboxGeocoder } from 'mapbox-gl';
+import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
 
 @Component({
   selector: 'app-hero-Location',
@@ -186,7 +186,7 @@ export class HeroLocationComponent implements OnInit {
 	}
 
 	createForwardGeocoder() {
-		//let MapboxGeocoder: any;
+		// var MapboxGeocoder: any;
 		const geocoder = new MapboxGeocoder({
 			accessToken: Mapboxgl.accessToken,
 			localGeocoder: this.forwardGeocoder,

@@ -35,7 +35,7 @@
 			position: relative;
 			grid-area: content;
 			display: grid;
-			grid-template-areas: "title" "input" "img" "button";
+			grid-template-areas: "title" "title" "img" "img";
 			grid-template-rows: 10% 20% 40% 20%;
 			grid-template-columns: 100%;
 			justify-content: center;
