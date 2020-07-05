@@ -20,7 +20,7 @@ export class CategoriesService {
     return this.http.get<Category>(`${this.url}/${id}`);
   }
 
-  createCategory(object: Category) {
+/*   createCategory(object: Category) {
     return this.http.post(`${this.url}`, object);
   }
 
@@ -30,6 +30,6 @@ export class CategoriesService {
 
   deleteCategory(id: string) {
     return this.http.delete(`${this.url}/${id}`);
-  }
+  } */
 
 }

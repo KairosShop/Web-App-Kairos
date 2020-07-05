@@ -1,4 +1,4 @@
-<div class="category" (click)="iconArrow = !iconArrow">
+<div (window:resize)="onResize($event)" class="category" (click)="iconArrow = !iconArrow">
 	<div class="category__image">
 		<img src="{{category.url_image}}" alt="{{category.category}}" class="category__icon">
 	</div>
@@ -12,9 +12,8 @@
 </div>
 <div *ngIf="iconArrow" class="subcategory">
 	<ul class="subcategory-items">
-		<li><a href="#">Accesories</a></li>
-		<li><a href="#">Bothing</a></li>
-		<li><a href="#">Clothing</a></li>
-		<li><a href="#">Toys</a></li>
+		<ng-container *ngFor="let subCategories of category.subCategories">
+			<li><a href="#">{{subCategories.subcategory}}</a></li>
+		</ng-container>
 	</ul>
 </div>

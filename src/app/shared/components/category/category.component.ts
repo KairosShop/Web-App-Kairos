@@ -8,11 +8,22 @@ import { Category } from '@core/categories/categories.model';
 })
 export class CategoryComponent implements OnInit {
   @Input() category: Category;
-  public iconArrow: boolean = false;
+  public iconArrow: boolean = true;
 
-  constructor() { }
+  constructor() {
+    console.log()
+    if (screen.width < 600) {
+      this.iconArrow = false
+    }
+  }
 
   ngOnInit(): void {
+
+  }
+  onResize(event) {
+    if (event.target.innerWidth < 600) {
+      this.iconArrow = false
+    }
   }
 
 }
