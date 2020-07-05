@@ -8,7 +8,7 @@ import { Category } from '@core/categories/categories.model';
 })
 export class CategoryComponent implements OnInit {
   @Input() category: Category;
-	public iconArrow: boolean = true;
+  public iconArrow: boolean = false;
 
   constructor() { }
 

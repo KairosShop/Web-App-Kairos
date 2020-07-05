@@ -1,4 +1,4 @@
-@import '_mixins';
+@import "_mixins";
 
 .sideBottom {
 	width: 100%;
@@ -10,7 +10,7 @@
 	grid-template-areas: "content";
 	grid-template-rows: 100%;
 	grid-template-columns: 100%;
-	&__bg{
+	&__bg {
 		grid-area: content;
 		background-size: cover;
 		-webkit-clip-path: url(#shape);
@@ -18,25 +18,21 @@
 		width: 100%;
 		height: 100%;
 	}
-	&__content{
+	&__content {
 		grid-area: content;
 		display: flex;
 		width: 100%;
 		z-index: 1;
 		&-categories {
 			position: relative;
-			&:hover ~ .sideBottom__content-categories{
-			/* 	background: red; */
+			&:hover ~ .sideBottom__content-categories {
+				/* 	background: red; */
 			}
 		}
 	}
-
 }
 
-
-
-
-@media screen and (max-width: 580px){
+@media screen and (max-width: 580px) {
 	.sideBottom {
 		display: none;
 		position: absolute;
@@ -44,23 +40,27 @@
 		top: auto;
 		bottom: auto;
 		width: 60%;
-		height: 100vh;
+		height: 90vh;
 		max-width: 300px;
 		min-width: 220px;
 		box-shadow: 1px 1px 3px black;
 		@include primary-bg-gradiente;
-		&__bg{
+		&__bg {
 			display: none;
 		}
-		&__content{
+		&__content {
 			flex-direction: column;
-			width: 100%;
+			width: 98%;
+			height: 100%;
+			@include styleScrollY;
+			&-categories {
+				margin: 5% 0% 0% 0%;
+			}
 		}
 		& > svg {
 			display: none;
 		}
 	}
-
 	.show {
 		display: block;
 	}
