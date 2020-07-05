@@ -7,6 +7,9 @@ const routes: Routes = [
   {
     path: '',
     component: LayoutComponent,
+    data: {
+      footer: false,
+    },
     children: [
       {
         path: '',
@@ -21,8 +24,22 @@ const routes: Routes = [
   },
   {
     path: 'login',
-    loadChildren: () => import('./login/login.module').then(m => m.LoginModule),
-  }
+    component: LayoutComponent,
+    data: {
+      footer: true,
+    },
+    children: [
+      {
+        path: '',
+        loadChildren: () => import('./login/login.module').then(m => m.LoginModule),
+      },
+    ]
+  },
+  {
+    path: 'register',
+    redirectTo: '/login/register',
+    pathMatch: 'full',
+  },
 ];
 
 @NgModule({

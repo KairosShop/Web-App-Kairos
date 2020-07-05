@@ -1,5 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
+
+
 import { ButtonComponent } from './components/button/button.component';
 import { SearchComponent } from './components/search/search.component';
 import { CartComponent } from './components/cart/cart.component';
@@ -21,9 +24,11 @@ import { CategoryComponent } from './components/category/category.component';
     CategoryComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    RouterModule
   ],
   exports: [
+    RouterModule,
     ButtonComponent,
     SearchComponent,
     CartComponent,

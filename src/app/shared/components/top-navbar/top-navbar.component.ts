@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-top-navbar',
@@ -11,9 +11,10 @@ export class TopNavbarComponent implements OnInit {
 	public burguerToggle: boolean = false;
 	public screen: number;
 
+  @Input() footer: boolean;
+
   constructor() {
   	this.screen = window.screen.width;
-  	console.log(window.screen.width);
   }
 
   ngOnInit(): void {
