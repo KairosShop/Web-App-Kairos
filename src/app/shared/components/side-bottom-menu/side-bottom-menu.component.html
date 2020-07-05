@@ -1,5 +1,5 @@
-<section class="sideBottom"  [ngClass]="{'show': toggle}">
-	<svg class="svg">
+<section class="sideBottom" [ngClass]="{'show': toggle}">
+	<svg class="sideBottom__bg">
 		<clipPath id="shape" clipPathUnits="objectBoundingBox">
 			<path
 				d="M0,0.445 s0.08,0.056,0.184,0 c0.076,-0.041,0.16,-0.197,0.265,-0.207 c0.124,-0.011,0.252,0.175,0.358,0.207 C0.914,0.477,1,0.353,1,0.353 V1 H0 V0.445,NaN t0 r, a0 n, s0 f, o, r, mNaN t0 r, a0 n, s0 l0 a0 t0">
@@ -8,9 +8,9 @@
 	</svg>
 	<div class="sideBottom__bg primary-bg-gradiente">
 	</div>
-	<div  class="sideBottom__content">
-		<div *ngFor="let category of categories" class="categories">
-			<app-category></app-category>
-		</div>
+	<div class="sideBottom__content">
+		<ng-container *ngFor="let category of categories">
+			<app-category class="sideBottom__content-categories" [category]="category"></app-category>
+		</ng-container>
 	</div>
 </section>
