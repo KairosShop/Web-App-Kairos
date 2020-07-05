@@ -1,4 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { CategoriesService } from '@core/categories/categories.service'
+import { Category } from '@core/categories/categories.model'
+import { SubCategory } from '@core/subCategories/subCategories.model'
+import { SubCategoriesService } from '@core/subCategories/subCategories.service';
 
 @Component({
   selector: 'app-side-bottom-menu',
@@ -8,14 +12,37 @@ import { Component, OnInit, Input } from '@angular/core';
 export class SideBottomMenuComponent implements OnInit {
 
   @Input() toggle;
-	/* This array will be replace for an arry who contains
-		real data taken from a service
-	 */
-	public categories = [1, 2, 3, 4];
+  public categories: Category[] = [];
+  public subCategories: SubCategory[] = [];
 
-  constructor() { }
+  constructor(
+    private categoriesService: CategoriesService,
+    private subCategoriesService: SubCategoriesService
+  ) { }
 
   ngOnInit(): void {
+    this.fetchCategories();
+  }
+
+  fetchCategories() {
+    this.categoriesService.getAllCategories().subscribe((categories: any) => {
+      const { error, body, status } = categories
+      if (error) {
+        return console.error(`Error: status ${status} - request not made`)
+      }
+      this.categories = body;
+      this.categories.map((item) => {
+        this.subCategoriesService.getAllSubCategoriesToCategory(item.id)
+          .subscribe((subcategoies: any) => {
+            const { error, body, status } = subcategoies
+            if (error) {
+              return console.error(`Error: status ${status} - request not made`)
+            }
+            item.subCategories = body;
+          })
+      })
+    })
+
   }
 
 }

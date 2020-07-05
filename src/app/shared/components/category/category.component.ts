@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Category } from '@core/categories/categories.model';
 
 @Component({
   selector: 'app-category',
@@ -6,12 +7,23 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./category.component.scss']
 })
 export class CategoryComponent implements OnInit {
+  @Input() category: Category;
+  public iconArrow: boolean = true;
 
-	public iconArrow: boolean = true;
-
-  constructor() { }
+  constructor() {
+    console.log()
+    if (screen.width < 600) {
+      this.iconArrow = false
+    }
+  }
 
   ngOnInit(): void {
+
+  }
+  onResize(event) {
+    if (event.target.innerWidth < 600) {
+      this.iconArrow = false
+    }
   }
 
 }

@@ -1,18 +1,19 @@
-<div class="category" (click)="iconArrow = !iconArrow">
+<div (window:resize)="onResize($event)" class="category" (click)="iconArrow = !iconArrow">
 	<div class="category__image">
-		<img src="https://image.flaticon.com/icons/svg/3081/3081943.svg" alt="" class="category__icon">
-		<h3>Baby</h3>
+		<img src="{{category.url_image}}" alt="{{category.category}}" class="category__icon">
 	</div>
-	<div class="category__icons">
+	<div class="category__title">
+		<h3 class="category__title-item">{{category.category}}</h3>
+	</div>
+	<div class="category__direction">
 		<i *ngIf="iconArrow" class="material-icons space_2_left_mg">keyboard_arrow_up</i>
 		<i *ngIf="!iconArrow" class="material-icons space_2_left_mg">keyboard_arrow_down</i>
 	</div>
 </div>
-<div *ngIf="!iconArrow" class="category__icons-menu space_2_left space_top">
-	<ul class="space_left">
-		<li><a href="#">Accesories</a></li>
-		<li><a href="#">Bothing</a></li>
-		<li><a href="#">Clothing</a></li>
-		<li><a href="#">Toys</a></li>
+<div *ngIf="iconArrow" class="subcategory">
+	<ul class="subcategory-items">
+		<ng-container *ngFor="let subCategories of category.subCategories">
+			<li><a href="#">{{subCategories.subcategory}}</a></li>
+		</ng-container>
 	</ul>
 </div>
