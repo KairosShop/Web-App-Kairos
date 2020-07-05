@@ -1,3 +1,5 @@
+@import 'var';
+
 .HeroLocation {
 	width: 100%;
 	height: 100%;
@@ -35,7 +37,7 @@
 			position: relative;
 			grid-area: content;
 			display: grid;
-			grid-template-areas: "title" "title" "img" "img";
+			grid-template-areas: "title" "img" "img" "button";
 			grid-template-rows: 10% 20% 40% 20%;
 			grid-template-columns: 100%;
 			justify-content: center;
@@ -59,8 +61,8 @@
 		}
 		&-img {
 			grid-area: img;
-			width: 100%;
-			height: 100%;
+			width: 60%;
+			height: 80%;
 			text-align: center;
 			&> img{
 				height: 100%;
@@ -75,13 +77,23 @@
 	height: 100%;
 }
 
-@media screen and (max-width: 760px) {
-	.hero__banner__image {
-		width: 65%;
+@media screen and (max-width: 880px) {
+	.HeroLocation {
+		grid-template-areas: "map map" "banner banner";	
+		&__banner {
+			height: 10%;
+			position: relative;
+			left: 0px;
+			background-color: $primary-dark;
+			&-back {
+				display: none;
+			}
+		}
 	}
 }
 
 @media screen and (max-width: 580px) {
+
 	.hero {
 		flex-direction: column;
 		&__banner {
@@ -101,5 +113,17 @@
 	#map {
 		width: 100%;
 		height: 300px;
+	}
+}
+
+@media screen and (max-width: 460px) {
+	.HeroLocation__banner {
+		width: 80%;
+	}
+}
+
+@media screen and (max-width: 360px) {
+	.HeroLocation__banner {
+		width: 63%;
 	}
 }
