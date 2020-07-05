@@ -15,13 +15,38 @@ export class HeroLocationComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-	Mapboxgl.accessToken = environment.mapboxKey;
-	this.map = new Mapboxgl.Map({
-		container: 'map', // container id
-		style: 'mapbox://styles/mapbox/streets-v11',
-		center: [-99.4238064, 19.390519], // starting position // LNG, LAT
-		zoom: 6 // starting zoom
-	});
+  	navigator.geolocation.getCurrentPosition(
+  			this.localization.bind(this),
+  			()=>console.log('Whoops sometingh went wrong')
+  	);
   }
+
+  localization(position) {
+  	const lat = position.coords.latitude;
+		const lng = position.coords.longitude;
+
+		console.log('Latitude: ', lat, 'Longitud: ', lng);
+
+  	(Mapboxgl as any).accessToken = environment.mapboxKey;
+		this.map = new Mapboxgl.Map({
+			container: 'map', // container id
+			style: 'mapbox://styles/mapbox/streets-v11',
+			center: [lng, lat], // starting position // LNG, LAT
+			zoom: 10 // starting zoom
+		});
+		this.createMarker(lng, lat);
+	}
+
+  createMarker(lng: number, lat:number) {
+		const marker = new Mapboxgl.Marker({
+			draggable: true
+		})
+		.setLngLat([lng, lat])
+		.addTo(this.map);
+		
+		marker.on('drag', ()=> {
+			console.log(marker.getLngLat());
+		});
+	}
 
 }
