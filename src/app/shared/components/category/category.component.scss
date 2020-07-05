@@ -59,8 +59,8 @@
 }
 .subcategory {
 	position: absolute;
-	top: -60%;
-	background: $primary;
+	bottom: 100%;
+	background: $primary-dark;
 	border-radius: 8% 19% 42% 24%;
 	width: 15vw;
 	z-index: -1;
