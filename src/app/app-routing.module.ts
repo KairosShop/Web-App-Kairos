@@ -28,7 +28,17 @@ const routes: Routes = [
     data: {
       footer: true,
     },
-    loadChildren: () => import('./login/login.module').then(m => m.LoginModule),
+    children: [
+      {
+        path: '',
+        loadChildren: () => import('./login/login.module').then(m => m.LoginModule),
+      },
+    ]
+  },
+  {
+    path: 'register',
+    redirectTo: '/login/register',
+    pathMatch: 'full',
   },
 ];
 
