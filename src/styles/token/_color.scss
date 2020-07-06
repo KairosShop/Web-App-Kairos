@@ -33,3 +33,7 @@
 .contrast-bg-gradiente{
   background: $contrast-gradiente;
 }
+
+.is-invalid {
+  border: 5px solid $warning;
+}
