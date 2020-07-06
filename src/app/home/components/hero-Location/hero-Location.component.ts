@@ -53,6 +53,7 @@ export class HeroLocationComponent implements OnInit {
 		});
 		this.createMarker(lng, lat);
 		this.createForwardGeocoder();
+		navigator.geolocation.clearWatch(this.watchId);
 	}
 
 	createMarker(lng: number, lat: number) {
@@ -99,10 +100,5 @@ export class HeroLocationComponent implements OnInit {
 			console.log(this.localtion.coords.latitude);
 			console.log(this.localtion.coords.longitude);
 		}
-
-		navigator.geolocation.clearWatch(this.watchId);
 	}
 }
-/*
-19.4488301
-93 -99.2777863*/
