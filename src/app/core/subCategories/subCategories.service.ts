@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { ApiRequestsService } from '../apiRequest/api-requests.service';
+import { ApiRequestsService } from '@core/apiRequest/api-requests.service';
 import { SubCategory } from './subCategories.model';
 
 @Injectable({

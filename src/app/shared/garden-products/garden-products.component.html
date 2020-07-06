@@ -1,0 +1,11 @@
+<section class="GardenProducts">
+  <h2 class="GardenProducts-title">
+    {{productsOfCategory.category}}
+  </h2>
+
+  <div class="GardenProducts-items">
+    <ng-container *ngFor="let product of productsOfCategory.products">
+      <app-products-card type='info' [product]="product"></app-products-card>
+    </ng-container>
+  </div>
+</section>

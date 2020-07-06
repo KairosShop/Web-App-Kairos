@@ -4,7 +4,6 @@ import { Router } from '@angular/router';
 import { ValidationsService } from '../../../core/authentication/validations.service';
 import { AuthService } from '../../../core/authentication/auth.service';
 
-
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',

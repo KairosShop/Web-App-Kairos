@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Product } from '@core/products/products.model';
 
 @Component({
   selector: 'app-products-card',
@@ -9,33 +10,8 @@ import { Component, OnInit, Input } from '@angular/core';
 export class ProductsCardComponent implements OnInit  {
   @Input() type: string;
   @Input() direction: string;
-  @Input() product: {
-    id: any,
-    img: any,
-    name: any,
-    weight: any,
-    description: any,
-    cound: any,
-    price: number,
-    super1: {
-      id: any,
-      name: any,
-      logo: any,
-      price: any
-    },
-    super2: {
-      id: any,
-      name: any,
-      logo: any,
-      price: any
-    },
-    super3: {
-      id: any,
-      name: any,
-      logo: any,
-      price: any
-    },
-  };
+  @Input() product: Product;
+  @Input() superMarkerts: [];
 
   constructor() {
 

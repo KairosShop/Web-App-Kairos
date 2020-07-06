@@ -75,7 +75,12 @@
   }
   &__img {
     grid-area: img;
-    max-height: 90%;
+    width: 50%;
+    justify-self: center;
+    align-self: flex-end;
+    & >img{
+      width: 100%;
+    }
   }
   &__action {
     grid-area: action;
