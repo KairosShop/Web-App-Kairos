@@ -10,9 +10,9 @@
 	<div class="topNavbar__search">
 		<app-search></app-search>
 	</div>
-	<div class="topNavbar__menu">
+	<div class="topNavbar__options">
 		<app-cart [homepage]="homepage"></app-cart>
-		<a routerLink='/login' class="topNavbar__menu-btn">
+		<a routerLink='/login' class="topNavbar__options-btn">
 			<app-button class="topNavbar__menu-btn" *ngIf="!homepage" name="login" color='light' type='Login' icon="person"></app-button>
 			<app-button  class="topNavbar__menu-btn" *ngIf="homepage" name="login" color='primary' type='Login' icon="person"></app-button>	
 		</a>

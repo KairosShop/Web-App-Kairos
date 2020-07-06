@@ -1,15 +1,16 @@
 @import "_var";
 
 .category {
-	width: 10vw;
-	height: 10vw;
+	margin: 2% 0 0 1%;
+	width: 100%;
 	position: relative;
 	display: grid;
-	grid-template-areas: "direction" "name" "icon";
-	grid-template-rows: 5% auto auto;
+	grid-template-areas: "icon name direction";
+	grid-template-columns: 30% 50% 20%;
 	justify-content: center;
 	justify-items: center;
 	text-align: center;
+	align-items: center;
 	cursor: pointer;
 	&__image {
 		grid-area: icon;
@@ -40,33 +41,56 @@
 	&__icon {
 		border-radius: 50%;
 		border: 3px solid $contrast;
-		width: 6vw;
-		height: 6vw;
+		display: flex;
+		margin: 0 !important;
+		height: 40px;
+		width: 40px;
 		& > img {
 			width: 100%;
 		}
 	}
+	&__icons-menu {
+		position: static;
+		margin-left: 10%;
+		width: 70%;
+	}
+	&__title {
+		width: 100%;
+		text-align: center;
+		grid-area: name;
+		color: $light;
+		background: transparent;
+		border-radius: initial;
+		font-size: 1rem;
+		display: block;
+	}
+	&__image {
+		margin:0;
+		width: 100%;
+		height: 100%;
+		align-items: center;
+		justify-content: center;
+	}
+	&__direction{
+		color: $light;
+	}
 	&:hover {
-		transform: scale(1.1);
+		& .category__title{
+			transform: scale(1.1);
+		}
 		& + .subcategory{
 			transform: scale(1.1);
-			display: block;
-		}
-		.category__title {
-			display: block;
 		}
 	}
 }
 .subcategory {
-	position: absolute;
-	bottom: 100%;
 	background: $primary-dark;
-	border-radius: 8% 19% 42% 24%;
-	width: 15vw;
-	z-index: -1;
 	display: none;
+	position: initial;
+	display: block;
 	& ul {
 		margin-top: 0px;
+		text-align: center;
 		& li {
 			list-style: none;
 			& a {
@@ -74,70 +98,12 @@
 			}
 		}
 	}
-	&:hover{
-		display: block;
-		transform: scale(1.1);
-		& .category {
-			background: red;
-		}
-	}
 }
 
 @media screen and (max-width: 760px) {
-	.category__icons-menu {
-		width: 80%;
-	}
+
 }
 
 @media screen and (max-width: 580px) {
-	.category {
-		height: 7vh;
-		width: 100%;
-		display: grid;
-		grid-template-areas: "icon name direction";
-		grid-template-columns: 30% 50% 20%;
-		grid-template-rows: 100%;
-		justify-content: center;
-		align-items: center;
-		cursor: pointer;
-		&__icon {
-			display: flex;
-			margin: 0 !important;
-			height: 40px;
-			width: 40px;
-		}
-		&__icons-menu {
-			position: static;
-			margin-left: 10%;
-			width: 70%;
-		}
-		&__title {
-			width: 100%;
-			text-align: center;
-			grid-area: name;
-			color: $light;
-			background: transparent;
-			border-radius: initial;
-			font-size: 1rem;
-			display: block;
 
-		}
-		&__image {
-			margin:0;
-			width: 100%;
-			height: 100%;
-			align-items: center;
-			justify-content: center;
-		}
-		&__direction{
-			color: $light;
-		}
-	}
-	.subcategory {
-		position: initial;
-		display: block;
-		width: 100%;
-		border-radius: 0%;
-		margin-top: 5%;
-	}
 }

@@ -1,4 +1,4 @@
-<div (window:resize)="onResize($event)" class="category" (click)="iconArrow = !iconArrow">
+<div class="category" (click)="showSubCategories()">
 	<div class="category__image">
 		<img src="{{category.url_image}}" alt="{{category.category}}" class="category__icon">
 	</div>
