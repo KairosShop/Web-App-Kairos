@@ -2,15 +2,40 @@
 	<div class="register__image">
 		<img src="assets/images/register.png" alt="Imagen register">
 	</div>
-	<form class="register__form" (ngSubmit)='send()'>
+	<form [formGroup]="registerForm" class="register__form" (ngSubmit)='send()'>
 		<h2 class="register__form-title">Register</h2>
-		<input class="register__form-name" type="text" placeholder="Name" formControlName="nombre">
-		<input class="register__form-lastname" type="text" placeholder="Lasname" formControlName="lastname">
-		<input class="register__form-email" type="email" placeholder="example@domain.com" formControlName="email">
-		<input class="register__form-password" type="pasword" placeholder="Password" formControlName="password1">
-		<input class="register__form-password2" type="password" placeholder="Confirm password" formControlName="password2">
+		<input 
+			class="register__form-name"
+			type="text" placeholder="Name" 
+			formControlName="firstName"
+			[class.is-invalid]="_validationsService.invalidName(registerForm)"
+			>
+		<p *ngIf="_validationsService.invalidName(registerForm)" class="warning space_bottom_mg invalid">Invalid Name</p>
+		<input
+			class="register__form-lastname"
+			type="text" placeholder="Lastname"
+			formControlName="lastName">
+		
+		<input
+			class="register__form-email" type="email"
+			placeholder="example@domain.com"
+			formControlName="email"
+			[class.is-invalid]="_validationsService.invalidEmail(registerForm)">
+		<p *ngIf="_validationsService.invalidEmail(registerForm)" class="warning space_bottom_mg invalid">Invalid Email</p>
+		<input
+			class="register__form-password"
+			type="password" placeholder="Password"
+			formControlName="password"
+			[class.is-invalid]="_validationsService.invalidPassword(registerForm)">
+		<p *ngIf="_validationsService.invalidPassword(registerForm)" class="warning space_bottom_mg invalid">Invalid Password</p>
+		<input
+			class="register__form-password2"
+			type="password" placeholder="Confirm password"
+			formControlName="password2"
+			[class.is-invalid]="_validationsService.invalidPassword2(registerForm)">
+		<p *ngIf="_validationsService.invalidPassword2(registerForm)" class="warning space_bottom_mg invalid">Passwords don't match</p>
 		<div class="register__form-button">
-			<app-button name="register" color='primary' type='Login' icon="person"></app-button>
+			<app-button name="register" color='primary' type='submit' icon="person"></app-button>
 			<p>Already have an account? <a routerLink='/login' class="contrast">Sigup here</a></p>
 		</div>
 	</form>

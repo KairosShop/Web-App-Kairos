@@ -3,6 +3,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 import { AuthService } from '../../../core/authentication/auth.service';
+import { ValidationsService } from '../../../core/authentication/validations.service';
 
 @Component({
   selector: 'app-login',
@@ -16,25 +17,14 @@ export class LoginComponent implements OnInit {
   constructor(
   	private fb: FormBuilder,
   	private router: Router,
-  	private auth: AuthService
+  	private auth: AuthService,
+    public _validationsService:ValidationsService
   ) {
   	this.createForm();
   }
 
   ngOnInit(): void {
   }
-
-  invalidArguments(argument) {
-  	return this.loginForm.get(argument).invalid && this.loginForm.get(argument).touched
-  }
-
-  get invalidEmail() {
-  	return this.invalidArguments('email');
-  }
-	
-	get invalidPassord() {
-  	return this.invalidArguments('password'); 
-	}
 
   createForm() {
   	this.loginForm = this.fb.group({
@@ -45,19 +35,20 @@ export class LoginComponent implements OnInit {
   }
 
   send() {
-  	if (this.loginForm.invalid) {
-  		Object.values(this.loginForm.controls).map(control => {
-  			if (control.status === "INVALID") {
-	  			control.markAsTouched();
-  			}
-  			if (control instanceof FormGroup) {
-  				Object.values(control.controls).map( control => control.markAsTouched());
-  			}
-  		});
-  		return;
-  	}
 
- 		console.log(this.loginForm.value);
+ 		if (this.loginForm.invalid) {
+        Object.values(this.loginForm.controls).map(control => {
+          if (control.status === "INVALID") {
+            control.markAsTouched();
+          }
+          if (control instanceof FormGroup) {
+            Object.values(control.controls).map(control => control.markAsTouched());
+          }
+        });
+        return;
+      }
+
+     console.log(this.loginForm.value);
 
  		// Post information
  		this.auth.login(this.loginForm.value)
