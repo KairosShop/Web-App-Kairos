@@ -75,11 +75,11 @@
   }
   &__img {
     grid-area: img;
-    width: 50%;
+    height: 100%;
     justify-self: center;
     align-self: flex-end;
     & >img{
-      width: 100%;
+      height: 100%;
     }
   }
   &__action {
@@ -114,6 +114,7 @@
   }
   &__description {
     grid-area: description;
+    align-self: start;
   }
   &__super1 {
     grid-area: super1;
@@ -151,7 +152,7 @@
   }
   &__info {
     grid-template-areas: "title" "img" "action" "weight" "description";
-    grid-template-rows: 10% 35% 10% 10% 30%;
+    grid-template-rows: 15% 30% 5% 5% 30%;
     justify-items: center;
     align-items: center;
     align-content: flex-end;

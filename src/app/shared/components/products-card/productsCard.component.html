@@ -1,7 +1,10 @@
 <section class='card card__{{direction}}'>
   <img src="assets/card-head.png" alt="backgound card">
   <div class='content content__{{type}} content__{{direction}}'>
-    <h3 class='content__title'> {{product.title}}</h3>
+    <h3 class='content__title'>
+      {{product.title  |titlecase | slice:0:30}}
+      <span *ngIf="product.title.length > 30" >...</span>
+    </h3>
     <div class='content__img'>
       <img  src="{{product.url_image}}" />
     </div>
@@ -22,7 +25,7 @@
         <p>{{supermarker.price | currency :'USD':'$':'1.2'}}</p>
       </div>
     </ng-container>
-    <p class='content__weight'>{{product.quantity}}</p>
+    <p class='content__weight'><b>{{product.quantity}} Qty</b></p>
     <p class='content__description'>{{product.description}}</p>
   </div>
   <div class="foo">
