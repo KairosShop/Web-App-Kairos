@@ -26,19 +26,11 @@ export class SideBottomMenuComponent implements OnInit {
 
   fetchCategories() {
     this.categoriesService.getAllCategories().subscribe((categories: any) => {
-      const { error, body, status } = categories
-      if (error) {
-        return console.error(`Error: status ${status} - request not made`)
-      }
-      this.categories = body;
-      this.categories.map((item) => {
+      this.categories = categories;
+       this.categories.map((item) => {
         this.subCategoriesService.getAllSubCategoriesToCategory(item.id)
           .subscribe((subcategoies: any) => {
-            const { error, body, status } = subcategoies
-            if (error) {
-              return console.error(`Error: status ${status} - request not made`)
-            }
-            item.subCategories = body;
+            item.subCategories = subcategoies;
           })
       })
     })

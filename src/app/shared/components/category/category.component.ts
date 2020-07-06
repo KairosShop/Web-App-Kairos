@@ -11,7 +11,6 @@ export class CategoryComponent implements OnInit {
   public iconArrow: boolean = true;
 
   constructor() {
-    console.log()
     if (screen.width < 600) {
       this.iconArrow = false
     }

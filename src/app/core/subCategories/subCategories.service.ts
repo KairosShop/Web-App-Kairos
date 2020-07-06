@@ -1,7 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { environment } from '../../../environments/environment';
-
+import { ApiRequestsService } from '../apiRequest/api-requests.service';
 import { SubCategory } from './subCategories.model';
 
 @Injectable({
@@ -9,15 +7,15 @@ import { SubCategory } from './subCategories.model';
 })
 
 export class SubCategoriesService {
-  private url: string = `${environment.URL_API}/subcategories`
 
-  constructor(private http: HttpClient) { }
+  private url:string = 'subcategories';
+  constructor(private _apiRequests: ApiRequestsService) { }
 
   getAllSubCategoriesToCategory(id: number) {
-    return this.http.get<SubCategory[]>(`${this.url}/category/${id}`);
+    return this._apiRequests.getQuery(`${this.url}/category/${id}`);
   }
   getSubCategory(id: number) {
-    return this.http.get<SubCategory>(`${this.url}/${id}`);
+    return this._apiRequests.getQuery(`${this.url}/${id}`);
   }
 
 /*   createSubCategory(object: SubCategory) {

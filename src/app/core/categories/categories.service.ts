@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { environment } from './../../../environments/environment';
+import { ApiRequestsService } from '../apiRequest/api-requests.service';
 
 import { Category } from './categories.model';
 
@@ -9,15 +8,16 @@ import { Category } from './categories.model';
 })
 
 export class CategoriesService {
-  private url: string = `${environment.URL_API}/categories`
 
-  constructor(private http: HttpClient) { }
+  private url = 'categories';
+
+  constructor(private _apiRequests: ApiRequestsService) { }
 
   getAllCategories() {
-    return this.http.get<Category[]>(this.url);
+    return this._apiRequests.getQuery(`${this.url}`);
   }
   getCategory(id: string) {
-    return this.http.get<Category>(`${this.url}/${id}`);
+    return this._apiRequests.getQuery(`${id}`);
   }
 
 /*   createCategory(object: Category) {
