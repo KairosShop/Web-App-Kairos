@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+
+import { AuthService } from '../../../core/authentication/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -7,13 +11,66 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+	public loginForm: FormGroup;
+
+  constructor(
+  	private fb: FormBuilder,
+  	private router: Router,
+  	private auth: AuthService
+  ) {
+  	this.createForm();
+  }
 
   ngOnInit(): void {
   }
 
+  invalidArguments(argument) {
+  	return this.loginForm.get(argument).invalid && this.loginForm.get(argument).touched
+  }
+
+  get invalidEmail() {
+  	return this.invalidArguments('email');
+  }
+	
+	get invalidPassord() {
+  	return this.invalidArguments('password'); 
+	}
+
+  createForm() {
+  	this.loginForm = this.fb.group({
+  		// Define properties
+  		email: ['',[Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$'), Validators.required]],
+  		password: ['', Validators.required]
+  	});
+  }
+
   send() {
-  	console.log('Form send');
+  	if (this.loginForm.invalid) {
+  		Object.values(this.loginForm.controls).map(control => {
+  			if (control.status === "INVALID") {
+	  			control.markAsTouched();
+  			}
+  			if (control instanceof FormGroup) {
+  				Object.values(control.controls).map( control => control.markAsTouched());
+  			}
+  		});
+  		return;
+  	}
+
+ 		console.log(this.loginForm.value);
+
+ 		// Post information
+ 		this.auth.login(this.loginForm.value)
+ 		.subscribe(response => {
+	 		// Redirect to home
+	 		this.router.navigateByUrl('/home');
+ 		}, (err)=> {
+ 			console.log(err.message);
+ 		});
+
+ 		// Reset form
+ 		this.loginForm.reset();
+
   }
 
 }

@@ -18,8 +18,8 @@ export class ApiRequestsService {
       .pipe(map((categories:any) => {
         const { error, body, status } = categories;
         if (error) {
-          return console.error(`Error: status ${status} - request not made`)
-        } else {
+          new Error(`Error: status ${status} - request not made`);       
+         } else {
           return body;
         }
       }));
