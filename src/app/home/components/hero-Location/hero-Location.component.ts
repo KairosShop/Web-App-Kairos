@@ -13,7 +13,9 @@ export class HeroLocationComponent implements OnInit {
 
 	public map: Mapboxgl.Map;
 
-	constructor() { }
+	public localtion:any = {};
+
+  constructor() { }
 
 	ngOnInit(): void {
 		navigator.geolocation.watchPosition(
@@ -49,6 +51,7 @@ export class HeroLocationComponent implements OnInit {
 
 		marker.on('drag', () => {
 			console.log(marker.getLngLat());
+			console.log(marker);
 		});
 	}
 
@@ -195,11 +198,17 @@ export class HeroLocationComponent implements OnInit {
 			mapboxgl: Mapboxgl
 		})
 
-		this.map.addControl(geocoder);
+		function results({result}) {
+			// console.log(this);
+			this.localtion = result;
+		};
 
-		geocoder.on('result', function ({ result }) {
-			console.log(result.place_name);
-			console.log(result.geometry.coordinates);
-		});
+		this.map.addControl(geocoder);
+		geocoder.on('result', results.bind(this));
+	}
+
+	saveLocation() {
+		console.log(this.localtion.place_name);
+		console.log(this.localtion.geometry.coordinates);
 	}
 }

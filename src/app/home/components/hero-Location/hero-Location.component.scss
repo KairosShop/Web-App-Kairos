@@ -1,3 +1,5 @@
+@import 'var';
+
 .HeroLocation {
 	width: 100%;
 	height: 100%;
@@ -35,8 +37,8 @@
 			position: relative;
 			grid-area: content;
 			display: grid;
-			grid-template-areas: "title" "title" "img" "img";
-			grid-template-rows: 10% 20% 40% 20%;
+			grid-template-areas: "." "title" "img" "button";
+			grid-template-rows: 20% 10% 40% 20%;
 			grid-template-columns: 100%;
 			justify-content: center;
 			justify-items: center;
@@ -59,8 +61,8 @@
 		}
 		&-img {
 			grid-area: img;
-			width: 100%;
-			height: 100%;
+			width: 60%;
+			height: 80%;
 			text-align: center;
 			&> img{
 				height: 100%;
@@ -71,35 +73,32 @@
 
 #map {
 	grid-area: map;
-	width: 100%;
-	height: 100%;
+	width: 100% !important;
+	height: 100% !important;
 }
 
-@media screen and (max-width: 760px) {
-	.hero__banner__image {
-		width: 65%;
-	}
-}
-
-@media screen and (max-width: 580px) {
-	.hero {
-		flex-direction: column;
+@media screen and (max-width: 880px) {
+	.HeroLocation {
+		grid-template-areas: "banner" "map";
+		grid-template-columns: 100%;
+		grid-template-rows: 40% 60%;
 		&__banner {
-			width: 100%;
-			padding: 10px;
-			height: 200px;
-			&__image {
-				display: none;
+			left: 0%;
+			&-back {
+				clip-path: polygon(0 0, 99% 0, 100% 100%, 0 85%);
+			}
+			&-front {
+				clip-path: polygon(0 0, 99% 0, 99% 73%, 0 100%);
+			}
+			&-content{
+				grid-template-areas:
+        "title"
+        "imgd"
+        "img"
+        "button";
 			}
 		}
 	}
-
-	.hero__banner__brand {
-		display: none;
-	}
-
-	#map {
-		width: 100%;
-		height: 300px;
-	}
 }
+
+
