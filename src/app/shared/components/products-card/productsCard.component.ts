@@ -36,6 +36,7 @@ export class ProductsCardComponent implements OnInit  {
       price: any
     },
   };
+  @Input() superMarkerts: [];
 
   constructor() {
 

@@ -14,18 +14,12 @@
     <p class="content__action content__action-price" *ngIf="product.price">
       {{product.price | currency :'USD':'$':'2.2'}}
     </p>
-    <div class="content__super1">
-      <img src="{{product.super1.logo}}" alt="{{product.super2.name}}" />
-      <p>{{product.super1.price | currency :'USD':'$':'1.2'}}</p>
-    </div>
-    <div class="content__super2">
-      <img src="{{product.super2.logo}}" alt="{{product.super2.name}}" />
-      <p>{{product.super2.price | currency :'USD':'$':'1.2'}}</p>
-    </div>
-    <div class="content__super3">
-      <img src="{{product.super3.logo}}" alt="{{product.super3.name}}" />
-      <p>{{product.super3.price | currency :'USD':'$':'1.2'}}</p>
-    </div>
+    <ng-container *ngFor="let supermarker of superMarkerts">
+      <div class="content__super1">
+        <img src="{{supermarker.logo}}" alt="{{supermarker.name}}" />
+        <p>{{supermarker.price | currency :'USD':'$':'1.2'}}</p>
+      </div>
+    </ng-container>
     <p class='content__weight'>{{product.weight}}</p>
     <p class='content__description'>{{product.description}}</p>
   </div>

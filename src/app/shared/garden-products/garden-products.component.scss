@@ -2,6 +2,9 @@
   margin: 5%;
   grid-area: products;
   text-align: center;
+  &-title{
+    font-style: italic;
+  }
   &-items{
     margin-top: 3%;
     display: grid;
@@ -11,3 +14,30 @@
     row-gap: 2%;
   }
 }
+
+@media screen and (max-width: 769px){
+  .GardenProducts {
+    &-items{
+      grid-template-columns: repeat(3, 1fr);
+      grid-auto-rows: 350px;
+    }
+  }
+}
+
+@media screen and (max-width: 580px){
+  .GardenProducts {
+    &-items{
+      grid-template-columns: repeat(2, 1fr);
+      grid-auto-rows: 430px;
+    }
+  }
+}
+@media screen and (max-width: 426px){
+  .GardenProducts {
+    &-items{
+      grid-template-columns: 1fr;
+      grid-auto-rows: 530px;
+    }
+  }
+}
+
