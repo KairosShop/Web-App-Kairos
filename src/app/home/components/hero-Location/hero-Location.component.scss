@@ -1,4 +1,4 @@
-@import 'var';
+@import "var";
 
 .HeroLocation {
 	width: 100%;
@@ -14,7 +14,7 @@
 		width: 100%;
 		height: 100%;
 		position: absolute;
-    left: -16%;
+		left: -16%;
 		display: grid;
 		grid-template-areas: "content";
 		grid-template-columns: 100%;
@@ -31,7 +31,7 @@
 			height: 100%;
 			clip-path: polygon(0 0, 100% 0%, 100% 100%, 29% 100%);
 		}
-		&-content{
+		&-content {
 			width: 100%;
 			height: 100%;
 			position: relative;
@@ -64,7 +64,7 @@
 			width: 60%;
 			height: 80%;
 			text-align: center;
-			&> img{
+			& > img {
 				height: 100%;
 			}
 		}
@@ -77,28 +77,27 @@
 	height: 100% !important;
 }
 
-@media screen and (max-width: 880px) {
+@media screen and (max-width: 520px) {
 	.HeroLocation {
-		grid-template-areas: "banner" "map";
+		grid-template-areas: "map" "banner";
 		grid-template-columns: 100%;
-		grid-template-rows: 40% 60%;
+		grid-template-rows: 70% 30%;
 		&__banner {
 			left: 0%;
 			&-back {
-				clip-path: polygon(0 0, 99% 0, 100% 100%, 0 85%);
+				clip-path: polygon(0 0, 100% 18%, 100% 100%, 0% 100%);
 			}
 			&-front {
-				clip-path: polygon(0 0, 99% 0, 99% 73%, 0 100%);
+				clip-path: polygon(0 17%, 100% 0, 100% 100%, 0% 100%);
 			}
-			&-content{
-				grid-template-areas:
-        "title"
-        "imgd"
-        "img"
-        "button";
+			&-content {
+				grid-template-areas: "title" "button";
+				grid-template-rows: repeat(2, 1fr);
+				grid-template-columns: 100%;
+			}
+			&-img {
+				display: none;
 			}
 		}
 	}
 }
-
-

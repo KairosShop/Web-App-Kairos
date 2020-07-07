@@ -4,36 +4,42 @@
 	</div>
 	<form [formGroup]="registerForm" class="register__form" (ngSubmit)='send()'>
 		<h2 class="register__form-title">Register</h2>
-		<input 
-			class="register__form-name"
-			type="text" placeholder="Name" 
-			formControlName="firstName"
-			[class.is-invalid]="_validationsService.invalidName(registerForm)"
-			>
-		<p *ngIf="_validationsService.invalidName(registerForm)" class="warning space_bottom_mg invalid">Invalid Name</p>
+		<div class="register__form-name">
+			<input
+				type="text" placeholder="Name" 
+				formControlName="firstName"
+				[class.is-invalid]="_validationsService.invalidName(registerForm)"
+				>
+			<p *ngIf="_validationsService.invalidName(registerForm)" class="warning space_bottom_mg invalid">Invalid Name</p>
+		</div>
 		<input
-			class="register__form-lastname"
 			type="text" placeholder="Lastname"
 			formControlName="lastName">
 		
-		<input
-			class="register__form-email" type="email"
-			placeholder="example@domain.com"
-			formControlName="email"
-			[class.is-invalid]="_validationsService.invalidEmail(registerForm)">
-		<p *ngIf="_validationsService.invalidEmail(registerForm)" class="warning space_bottom_mg invalid">Invalid Email</p>
-		<input
-			class="register__form-password"
-			type="password" placeholder="Password"
-			formControlName="password"
-			[class.is-invalid]="_validationsService.invalidPassword(registerForm)">
-		<p *ngIf="_validationsService.invalidPassword(registerForm)" class="warning space_bottom_mg invalid">Invalid Password</p>
-		<input
-			class="register__form-password2"
-			type="password" placeholder="Confirm password"
-			formControlName="password2"
-			[class.is-invalid]="_validationsService.invalidPassword2(registerForm)">
-		<p *ngIf="_validationsService.invalidPassword2(registerForm)" class="warning space_bottom_mg invalid">Passwords don't match</p>
+		<div class="register__form-email">
+			<input
+				type="email"
+				placeholder="example@domain.com"
+				formControlName="email"
+				[class.is-invalid]="_validationsService.invalidEmail(registerForm)">
+			<p *ngIf="_validationsService.invalidEmail(registerForm)" class="warning space_bottom_mg invalid">Invalid Email</p>
+		</div>
+		<div class="register__form-password">
+			<input
+				class="register__form-password"
+				type="password" placeholder="Password"
+				formControlName="password"
+				[class.is-invalid]="_validationsService.invalidPassword(registerForm)">
+			<p *ngIf="_validationsService.invalidPassword(registerForm)" class="warning space_bottom_mg invalid">Invalid Password</p>
+		</div>
+
+		<div class="register__form-password2">
+			<input
+				type="password" placeholder="Confirm password"
+				formControlName="password2"
+				[class.is-invalid]="_validationsService.invalidPassword2(registerForm)">
+			<p *ngIf="_validationsService.invalidPassword2(registerForm)" class="warning space_bottom_mg invalid">Passwords don't match</p>
+		</div>
 		<div class="register__form-button">
 			<app-button name="register" color='primary' type='submit' icon="person"></app-button>
 			<p>Already have an account? <a routerLink='/login' class="contrast">Sigup here</a></p>
