@@ -24,6 +24,9 @@
       height: 40%;
     }
   }
+  &__vertical{
+    max-width: 30vw;
+  }
 }
 .foo {
   position: absolute;

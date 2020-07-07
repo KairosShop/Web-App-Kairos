@@ -5,6 +5,6 @@ export interface Category {
   id: number;
   title: string;
   urlImage?: string;
-  subCategories?: SubCategory[];
+  subcategories?: SubCategory[];
   products?: Product[];
 }

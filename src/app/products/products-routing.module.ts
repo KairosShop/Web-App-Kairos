@@ -11,11 +11,11 @@ const routes: Routes = [
     component: ProductDetailComponent ,
   },
   {
-    path:':idSubCategory',
+    path:'subcategory/:idSubCategory/:title',
     component: ProductsSubcategoryComponent ,
   },
   {
-    path:':idCategory',
+    path:'category/:idCategory/:title',
     component: ProductsCategoryComponent ,
   },
 ];
