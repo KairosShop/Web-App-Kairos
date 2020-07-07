@@ -39,4 +39,9 @@ export class ProductDetailComponent implements OnInit {
     })
   }
 
+  scrtollDisplace() {
+  
+  /*   window.scroll(options) */
+  }
+
 }

@@ -28,7 +28,7 @@
   }
   &__contrast{
     color: $primary-dark;
-    @include contrast-bg-gradiente;
+    background-color: $contrast;
     &:active{
       transition: background 0s;
       background: $contrast-dark;
@@ -105,6 +105,11 @@
     width: 2rem;
     height: 2rem;
     font-size: 2rem;
+    &, .btn__lg{
+      width: 3rem;
+      height: 3rem;
+      font-size: 3rem;
+    }
   }
   &:hover{
     box-shadow: 3px 2px 11px 0 $desactive;
