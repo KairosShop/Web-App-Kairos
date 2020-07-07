@@ -23,6 +23,10 @@ export class ValidationsService {
   invalidEmail(form) {
   	return this.invalidArguments('email', form);
   }
+
+  invalidAdress(form) {
+    return this.invalidArguments('adress', form);
+  }
 	
 	invalidPassword(form) {
 		return this.invalidArguments('password', form); 

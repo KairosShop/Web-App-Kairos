@@ -12,7 +12,7 @@ import { AuthService } from '../../../core/authentication/auth.service';
 export class RegisterComponent implements OnInit {
 
 	public registerForm: FormGroup;
-  public userType:string = 'user';
+  public supermarket:boolean = false;
 
   constructor(
   	private fb: FormBuilder,
@@ -29,9 +29,10 @@ export class RegisterComponent implements OnInit {
   createForm() {
   	this.registerForm = this.fb.group({
   		firstName: ['', [Validators.required, Validators.minLength(3)]],
-  		lastname: ['', [Validators.required, Validators.minLength(3)]],
+  		lastname: [''],
+      adress: [''],
   		email: ['', [Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$'), Validators.required]],
-  		password: ['', Validators.required],
+      password: ['', Validators.required],
   		password2: ['', Validators.required],
   	}, {
   		validators: this._validationsService.samePassword('password', 'password2')
@@ -48,11 +49,13 @@ export class RegisterComponent implements OnInit {
             Object.values(control.controls).map(control => control.markAsTouched());
           }
         });
+     console.log('hello')
         return;
       }
 
  		// Post information
- 		this.auth.register(this.registerForm.value)
+     console.log(this.registerForm.value)
+ 		this.auth.register(this.registerForm.value, this.supermarket)
  		.subscribe(response => {
 	 		// Redirect to home
 	 		console.log(response);
@@ -63,5 +66,9 @@ export class RegisterComponent implements OnInit {
 
  		// Reset form
  		this.registerForm.reset();
+  }
+
+  supermarketFunc() {
+    this.supermarket = !this.supermarket;
   }
 }

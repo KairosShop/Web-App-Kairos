@@ -15,15 +15,26 @@ export class AuthService {
   	return this.http.get('https://staging.kairosshop.xyz/api/users');
   }
 
-  register({firstName, lastName, email, password}) {
+  register({firstName, lastname, email, password, adress=''}, type) {
   	// This code will be repalce for method post to register user
-    //console.log(user);
-    const user = {
+    let user;
+    let rol = type ? 'super market' : 'customer';
+    let _user = {
       email,
       firstName,
-      lastName,
-      rol: 'customer',
+      rol: rol,
       password
+    }
+    if (type) {
+      user = {
+        ..._user,
+        adress: adress
+      }
+    } else {
+      user = {
+        ..._user,
+        lastName: lastname
+      }
     }
     console.log(user);
   	return this.http.post('https://staging.kairosshop.xyz/api/users', user);

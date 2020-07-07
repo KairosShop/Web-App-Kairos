@@ -16,6 +16,14 @@
 		flex-direction: column;
 		justify-content: center;
 		align-items: center;
+		&-forgot {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			& input {
+				width: 10%;
+			}
+		}
 		& p a {
 			cursor: pointer;
 			font-weight: 800 !important;

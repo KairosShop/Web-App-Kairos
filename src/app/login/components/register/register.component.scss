@@ -44,6 +44,9 @@
 		&-email {
 			grid-area: email;
 		}
+		&-adress {
+			grid-area: adress;
+		}
 		&-password {
 			grid-area: password;
 		}
@@ -53,6 +56,14 @@
 		&-button {
 			grid-area: button;
 			align-self: flex-start;
+		}
+		&-supermarket {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			& input {
+				width: 10%;
+			}
 		}
 
 		& p a {
