@@ -1,6 +1,7 @@
 <div class="category" (click)="showSubCategories()">
 	<div class="category__image">
-		<img src="{{category.urlImage}}" alt="{{category.title}}" class="category__icon">
+		<img *ngIf="category.urlImage" src="{{category.urlImage}}" alt="{{category.title}}" class="category__icon">
+		<img *ngIf="!category.urlImage" src="assets/images/brand/iconDefauld.png" alt="{{category.title}}" class="category__icon">
 	</div>
 	<div class="category__title">
 		<h3 class="category__title-item">{{category.title}}</h3>

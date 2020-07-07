@@ -10,7 +10,7 @@ import { TopNavbarComponent } from './components/top-navbar/top-navbar.component
 import { SideBottomMenuComponent } from './components/side-bottom-menu/side-bottom-menu.component';
 import { ProductsCardComponent } from './components/products-card/productsCard.component';
 import { CategoryComponent } from './components/category/category.component';
-import { GardenProductsComponent } from './garden-products/garden-products.component';
+import { GardenProductsComponent } from './components/garden-products/garden-products.component';
 
 
 
