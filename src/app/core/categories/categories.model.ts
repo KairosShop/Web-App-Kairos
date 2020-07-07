@@ -3,8 +3,8 @@ import { Product } from '@core/products/products.model';
 
 export interface Category {
   id: number;
-  category: string;
-  url_image?: string;
+  title: string;
+  urlImage?: string;
   subCategories?: SubCategory[];
   products?: Product[];
 }
