@@ -1,6 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Product } from '@core/products/products.model';
 
+import { AddCartService } from '@core/addCart/add-cart.service';
+
 @Component({
   selector: 'app-products-card',
   templateUrl: './productsCard.component.html',
@@ -14,11 +16,21 @@ export class ProductsCardComponent implements OnInit  {
   @Input() product: Product;
   @Input() superMarkerts: [];
 
-  constructor() {
+  constructor(
+    private _addCartService:AddCartService
+  ) {
 
   }
 
   ngOnInit(): void {
+  }
+
+  addCart() {
+    this._addCartService.addProduct(this.product);
+  }
+
+  removeCart() {
+    this._addCartService.removeProduct(this.product);
   }
 
 }

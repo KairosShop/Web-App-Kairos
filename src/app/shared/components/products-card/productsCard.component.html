@@ -23,18 +23,11 @@
     <div *ngIf='!isLink' class='content__img'>
       <img src="{{product.url_image}}" />
     </div>
-    <a *ngIf='isLink' class="content__img" [routerLink]="['/products', product.id]">
-      <div class='content__img'>
-        <img src="{{product.url_image}}" />
-      </div>
-    </a>
-    <!-- end imgen product -->
-
-    <!-- start action product -->
-    <app-button *ngIf="product.cound === 0 || !product.price || !product.cound"
-      class="content__action content__action-add" name='Add' icon='add'>
+    <app-button *ngIf="product.cound === 0 || !product.price || !product.cound" class="content__action content__action-add" name='Add'
+      icon='add' (click)="addCart()">
     </app-button>
-    <div *ngIf="product.cound > 0 || product.cound" class="content__action content__action-count">
+
+    <div *ngIf="product.cound > 0" class="content__action content__action-count">
       <app-button type='icon' color='cancel' icon='remove'></app-button>
       <input class="content__action-count-number" value="{{product.cound}}" />
       <app-button type='icon' color='accept' icon='add'></app-button>

@@ -1,8 +1,14 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { ComparationComponent } from './components/comparation/comparation.component';
 
 
-const routes: Routes = [];
+const routes: Routes = [
+	{
+		path: '',
+		component: ComparationComponent
+	}
+];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
