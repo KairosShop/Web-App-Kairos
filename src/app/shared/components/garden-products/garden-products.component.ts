@@ -14,6 +14,7 @@ export class GardenProductsComponent implements OnInit {
   @Input() type: string = 'category';
   @Input() products: Product;
   @Input() more = false;
+  @Input() isLink = true;
 
   constructor() { }
 

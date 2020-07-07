@@ -7,7 +7,7 @@
 
   <div class="GardenProducts-items">
     <ng-container *ngFor="let product of products">
-      <app-products-card type='info' [product]="product" [direction]="'vertical'"></app-products-card>
+        <app-products-card [isLink]='isLink' type='info' [product]="product" [direction]="'vertical'"></app-products-card>
     </ng-container>
     <a *ngIf="more" class="GardenProducts-more primary-dark"
     [routerLink]="['/products/',type,id, title]">
