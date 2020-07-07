@@ -1,6 +1,8 @@
 <section class='Home'>
     <app-hero-Location class='Home__location'></app-hero-Location>
     <ng-container *ngFor="let productOfCategory of productsOfCategory">
-        <app-garden-products [productsOfCategory]="productOfCategory"></app-garden-products>
+        <app-garden-products [id]="productOfCategory.id" [title]="productOfCategory.title" [type]='"category"'
+            [products]="productOfCategory.products" [more]="true">
+        </app-garden-products>
     </ng-container>
 </section>

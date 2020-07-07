@@ -1,4 +1,4 @@
-@import "../../../../styles/token/_color.scss";
+@import 'var';
 
 .topNavbar {
 	display: grid;
@@ -84,7 +84,16 @@
 			display: none;
 		}
 		&__options {
-			display: none;
+			// display: none;
+			& app-cart {
+				position: absolute;
+				top: 80vh;
+				right: 5vw;
+				background: $primary-gradiente;
+				box-shadow: 1px 1px 10px;
+				border-radius: 100%;
+				padding: 5px;
+			}
 		}
 		&__logo {
 			grid-area: brand;

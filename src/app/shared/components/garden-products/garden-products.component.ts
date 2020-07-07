@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Category } from '@core/categories/categories.model';
+import { Product } from '@core/products/products.model';
 
 @Component({
   selector: 'app-garden-products',
@@ -8,12 +9,17 @@ import { Category } from '@core/categories/categories.model';
 })
 export class GardenProductsComponent implements OnInit {
 
-  @Input() title = 'Title';
-  @Input() productsOfCategory: Category;
+  @Input() title:string = 'Title';
+  @Input() id: number = 1;
+  @Input() type: string = 'category';
+  @Input() products: Product;
+  @Input() more = false;
+  @Input() isLink = true;
 
   constructor() { }
 
   ngOnInit(): void {
+    console.log(this.products)
   }
 
 }

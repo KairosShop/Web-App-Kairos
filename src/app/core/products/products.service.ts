@@ -18,8 +18,14 @@ export class ProductsService {
   getProduct(id: number) {
     return this.apiResquests.getQuery(`${this.url}/${id}`)
   }
+  getProductsToCategories(idCategory: number) {
+    return this.apiResquests.getQuery(`${this.url}/?id_category${idCategory}`)
+  }
   getProductsOfCategories(idCategory: number) {
     return this.apiResquests.getQuery(`${this.url}/?id_category=${idCategory}`)
+  }
+  getProductsOfSubcategories(idsubcategory: number) {
+    return this.apiResquests.getQuery(`${this.url}/?id_subcategory=${idsubcategory}`)
   }
 
 }
