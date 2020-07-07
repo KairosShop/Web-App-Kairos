@@ -1,4 +1,4 @@
-# ![Logo](./src/assets/images/brand/LogoBlue.png)
+# [![Logo](./src/assets/images/brand/LogoBlue.png)](https://kairosshop.xyz/)
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.6 and is part of the final proyect of the master students of platzi from Cohort 2.
 
 In this project is the Kairos frontend. A web app that allows you to offer products and compare prices of products from different supermarkets
@@ -57,16 +57,16 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 [additional team information](https://www.notion.so/alejozepol/58ab874c496d4491ab96c4fb6fde2acb?v=aa0c9f4dfed2457680a9bd6cbec57b7f)
 
-* **Armando Rivera** - *Frontend Developer* - [Armando101](https://github.com/Armando101) - [twitter](https://twitter.com/ArmandoRN5)
+* **Armando Rivera** - *Frontend Development* - [Armando101](https://github.com/Armando101) - [twitter](https://twitter.com/ArmandoRN5)
 
-* **Alejandro López Ramírez** - *Design Ux and FrontEnd Developer* - [alejozepol](https://github.com/alejozepol),  http://alejozepol.com, [twitter](https://twitter.com/alejozepol)
+* **Alejandro López Ramírez** - *Design Ux and FrontEnd Development* - [alejozepol](https://github.com/alejozepol),  http://alejozepol.com, [twitter](https://twitter.com/alejozepol)
 
 * **Néstor Arellano** - *Data Science* - [Asoretzu](https://github.com/Asoretzu)
 https://twitter.com/asoretzu
 
-* **Carlos Enrique Ramírez Flores** - *Backend Developer* - [linuxcarl](https://github.com/linuxcarl),  https://www.carlosramirezflores.com/, [Linkedin](https://www.linkedin.com/in/carlos-enrique-ram%C3%ADrez-flores-5a26475a/)
+* **Carlos Enrique Ramírez Flores** - *Backend Development* - [linuxcarl](https://github.com/linuxcarl),  https://www.carlosramirezflores.com/, [Linkedin](https://www.linkedin.com/in/carlos-enrique-ram%C3%ADrez-flores-5a26475a/)
 
-* **Marco Elizalde** - *Devlop CI CD Backend Developer* - [marcoETmx](https://github.com/marcoETmx),  http://marcoelizalde.com
+* **Marco Elizalde** - *Devlop CI CD Backend Development* - [marcoETmx](https://github.com/marcoETmx),  http://marcoelizalde.com
 
 ## Expressions of gratitude 🎁
 
