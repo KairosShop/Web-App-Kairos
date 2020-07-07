@@ -2,10 +2,11 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { ComparationRoutingModule } from './comparation-routing.module';
+import { ComparationComponent } from './components/comparation/comparation.component';
 
 
 @NgModule({
-  declarations: [],
+  declarations: [ComparationComponent],
   imports: [
     CommonModule,
     ComparationRoutingModule
