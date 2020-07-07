@@ -12,6 +12,7 @@ export class CartComponent implements OnInit {
 	@Input() homepage;
 
 	public cart:Product[]=[];
+  public animation:boolean = false;
 
   constructor(
   	private _addCartService:AddCartService
@@ -23,6 +24,8 @@ export class CartComponent implements OnInit {
 		.subscribe((response:Product[]) => {
   		// console.log(response);
   		this.cart = response;
+      this.animation = true;
+      setTimeout(()=> this.animation=false, 800);
   	});
   }
 
