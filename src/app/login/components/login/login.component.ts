@@ -13,6 +13,8 @@ import { ValidationsService } from '../../../core/authentication/validations.ser
 export class LoginComponent implements OnInit {
 
 	public loginForm: FormGroup;
+  public forgotPass: boolean = false;
+  public email: string;
 
   constructor(
   	private fb: FormBuilder,
@@ -62,6 +64,17 @@ export class LoginComponent implements OnInit {
  		// Reset form
  		this.loginForm.reset();
 
+  }
+
+  forgotPassword() {
+    this.forgotPass = !this.forgotPass; 
+  }
+
+  recoverPassword() {
+    // Send information to backend to validate your password
+    this.forgotPass = !this.forgotPass; 
+    console.log(this.email);
+    this.router.navigateByUrl('/home');
   }
 
 }

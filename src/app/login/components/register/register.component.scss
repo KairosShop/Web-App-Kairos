@@ -24,8 +24,8 @@
 		grid-auto-rows: 1.7rem;
 		column-gap: 6%;
 		row-gap: 5%;
-    justify-content: center;
-    align-items: center;
+	    justify-content: center;
+	    align-items: center;
 		align-content: center;
 		text-align: center;
 
@@ -44,6 +44,9 @@
 		&-email {
 			grid-area: email;
 		}
+		&-adress {
+			grid-area: adress;
+		}
 		&-password {
 			grid-area: password;
 		}
@@ -53,6 +56,15 @@
 		&-button {
 			grid-area: button;
 			align-self: flex-start;
+		}
+		&-supermarket {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			& input {
+				width: 10%;
+				height: 0.5rem;
+			}
 		}
 
 		& p a {

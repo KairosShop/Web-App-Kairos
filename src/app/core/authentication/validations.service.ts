@@ -16,8 +16,16 @@ export class ValidationsService {
   	return this.invalidArguments('firstName', form);
   }
 
+  invalidLastname(form) {
+    return this.invalidArguments('lastname', form);
+  }
+
   invalidEmail(form) {
   	return this.invalidArguments('email', form);
+  }
+
+  invalidAdress(form) {
+    return this.invalidArguments('adress', form);
   }
 	
 	invalidPassword(form) {

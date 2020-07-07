@@ -12,10 +12,14 @@
 				>
 			<p *ngIf="_validationsService.invalidName(registerForm)" class="warning space_bottom_mg invalid">Invalid Name</p>
 		</div>
-		<input
-			type="text" placeholder="Lastname"
-			formControlName="lastName">
-		
+		<div *ngIf="!supermarket" class="register__form-lastName">
+			<input
+				type="text" placeholder="Lastname"
+				formControlName="lastname"
+				[class.is-invalid]="_validationsService.invalidLastname(registerForm)">
+			<p *ngIf="_validationsService.invalidLastname(registerForm)" class="warning space_bottom_mg invalid">Invalid Lastname</p>
+		</div>
+
 		<div class="register__form-email">
 			<input
 				type="email"
@@ -24,6 +28,15 @@
 				[class.is-invalid]="_validationsService.invalidEmail(registerForm)">
 			<p *ngIf="_validationsService.invalidEmail(registerForm)" class="warning space_bottom_mg invalid">Invalid Email</p>
 		</div>
+		
+		<div *ngIf="supermarket">
+			<input
+				type="text"
+				placeholder="Adress"
+				formControlName="adress"
+				>
+		</div>
+
 		<div class="register__form-password">
 			<input
 				class="register__form-password"
@@ -43,6 +56,10 @@
 		<div class="register__form-button">
 			<app-button name="register" color='primary' type='submit' icon="person"></app-button>
 			<p>Already have an account? <a routerLink='/login' class="contrast">Sigup here</a></p>
+			<div class="register__form-supermarket">
+				<input (click)="supermarketFunc()" type="checkbox">
+				<label for="">I'm supermarket</label>
+			</div>
 		</div>
 	</form>
 </section>
