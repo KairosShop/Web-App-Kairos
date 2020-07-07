@@ -9,8 +9,9 @@
       <img  src="{{product.url_image}}" />
     </div>
     <app-button *ngIf="product.cound === 0 || !product.price || !product.cound" class="content__action content__action-add" name='Add'
-      icon='add'>
+      icon='add' (click)="addCart()">
     </app-button>
+
     <div *ngIf="product.cound > 0" class="content__action content__action-count">
       <app-button type='icon' color='cancel' icon='remove'></app-button>
       <input class="content__action-count-number" value="{{product.cound}}" />
