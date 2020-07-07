@@ -1,5 +1,4 @@
-# Kairos 
-
+# ![Logo](./src/assets/images/brand/LogoBlue.png)
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.6 and is part of the final proyect of the master students of platzi from Cohort 2.
 
 In this project is the Kairos frontend. A web app that allows you to offer products and compare prices of products from different supermarkets
@@ -10,22 +9,22 @@ more info https://www.notion.so/alejozepol/Kairos-d91d3954a8b44d64bd1e70797c9a58
 
 Develop a views where:
 
-### the client user can:
- [*] See the offered products
- [] View to compare
- []  According to the result of the comparison, choose where it is convenient to buy your products, whether in the most economical place or all in the same place
+### 🛒 the client user can :
+- [*] See the offered products
+- [ ] View to compare
+- [ ] According to the result of the comparison, choose where it is convenient to buy your products, whether in the most economical place or all in the same place
 
-### the supermarkerts user can:
+### 🏪 the supermarkerts user can:
 
- []  see the existing products on the platform
- []  modify the price at which the product is sold
- []  see the purchase orders
+- [ ]  see the existing products on the platform
+- [ ]  modify the price at which the product is sold
+- [ ] see the purchase orders
 
-### the admin user:
+### 🔑 the admin user:
 
- []  manage user.
- []  add new products.
- []  see application orders.
+- [ ]  manage user.
+- [ ] add new products.
+- [ ]  see application orders.
 
 ## Code 🔧
 
