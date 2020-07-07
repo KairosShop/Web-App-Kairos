@@ -12,6 +12,7 @@ import { AuthService } from '../../../core/authentication/auth.service';
 export class RegisterComponent implements OnInit {
 
 	public registerForm: FormGroup;
+  public userType:string = 'user';
 
   constructor(
   	private fb: FormBuilder,
@@ -28,7 +29,7 @@ export class RegisterComponent implements OnInit {
   createForm() {
   	this.registerForm = this.fb.group({
   		firstName: ['', [Validators.required, Validators.minLength(3)]],
-  		lastName: [''],
+  		lastname: ['', [Validators.required, Validators.minLength(3)]],
   		email: ['', [Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$'), Validators.required]],
   		password: ['', Validators.required],
   		password2: ['', Validators.required],

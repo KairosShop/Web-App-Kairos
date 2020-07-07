@@ -12,10 +12,14 @@
 				>
 			<p *ngIf="_validationsService.invalidName(registerForm)" class="warning space_bottom_mg invalid">Invalid Name</p>
 		</div>
-		<input
-			type="text" placeholder="Lastname"
-			formControlName="lastName">
-		
+		<div class="register__form-lastName">
+			<input
+				type="text" placeholder="Lastname"
+				formControlName="lastname"
+				[class.is-invalid]="_validationsService.invalidLastname(registerForm)">
+			<p *ngIf="_validationsService.invalidLastname(registerForm)" class="warning space_bottom_mg invalid">Invalid Lastname</p>
+		</div>
+
 		<div class="register__form-email">
 			<input
 				type="email"
@@ -43,6 +47,7 @@
 		<div class="register__form-button">
 			<app-button name="register" color='primary' type='submit' icon="person"></app-button>
 			<p>Already have an account? <a routerLink='/login' class="contrast">Sigup here</a></p>
+			<label for="">I'm supermarket</label><input type="checkbox">
 		</div>
 	</form>
 </section>
