@@ -1,1 +1,37 @@
-<p>product-detail works!</p>
+<section class='ProductDetail'>
+  <app-products-card class='ProductDetail__product' [isLink]="false" type='info' [product]="product"
+    [direction]="'horizontal'"></app-products-card>
+  <section class="Relations">
+    <h2>Relation's Products</h2>
+    <app-button type="icon" icon="keyboard_arrow_left" size='lg'  color='contrast' class="Direction Direction-left"></app-button>
+    <app-button type="icon" icon="keyboard_arrow_right" size='lg'  color='contrast' class="Direction Direction-right"></app-button>
+    <div class="Relations__items">
+      <app-products-card class="Relations__items-item" [isLink]="true" type='info' [product]="product"
+        [direction]="'vertical'"></app-products-card>
+      <app-products-card class="Relations__items-item" [isLink]="true" type='info' [product]="product"
+        [direction]="'vertical'"></app-products-card>
+      <app-products-card class="Relations__items-item" [isLink]="true" type='info' [product]="product"
+        [direction]="'vertical'"></app-products-card>
+      <app-products-card class="Relations__items-item" [isLink]="true" type='info' [product]="product"
+        [direction]="'vertical'"></app-products-card>
+      <app-products-card class="Relations__items-item" [isLink]="true" type='info' [product]="product"
+        [direction]="'vertical'"></app-products-card>
+      <app-products-card class="Relations__items-item" [isLink]="true" type='info' [product]="product"
+        [direction]="'vertical'"></app-products-card>
+    </div>
+  </section>
+<!--   <section class="Categories">
+    <h2>Relation's Products</h2>
+    <div class="Categories__items">
+      <div>1</div>
+      <div>1</div>
+      <div>1</div>
+      <div>1</div>
+      <div>1</div>
+      <div>1</div>
+      <div>1</div>
+      <div>1</div>
+      <div>1</div>
+    </div>
+  </section> -->
+</section>
