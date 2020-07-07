@@ -9,12 +9,10 @@ export class TopNavbarComponent implements OnInit {
 
 	public homepage: boolean = true;
 	public burguerToggle: boolean = true;
-	public screen: number;
 
   @Input() footer: boolean;
 
   constructor() {
-  	this.screen = window.screen.width;
   }
 
   ngOnInit(): void {

@@ -1,33 +1,32 @@
 @import "_mixins";
 
 .sideBottom {
-	height: 20vh;
-	position: fixed;
-	bottom: 0%;
-	z-index: 1;
-	display: grid;
-	grid-template-areas: "content";
-	grid-template-rows: 100%;
-	grid-template-columns: 100%;
-	&__bg {
-		grid-area: content;
-		background-size: cover;
-		-webkit-clip-path: url(#shape);
-		clip-path: url(#shape);
-		width: 100%;
-		height: 100%;
-	}
+	padding: 2% 0 0 0;
+	display: none;
+	position: absolute;
+	z-index: 10;
+	width: 60%;
+	height: 90vh;
+	max-width: 300px;
+	min-width: 220px;
+	box-shadow: 1px 1px 3px black;
+	@include primary-bg-gradiente;
 	&__content {
-		grid-area: content;
-		display: flex;
-		z-index: 1;
-		width: 100vw;
+		flex-direction: column;
+		width: 98%;
+		height: 100%;
+		@include styleScrollY;
+		&-categories {
+			margin: 5% 0% 0% 0%;
+		}
 		&-categories {
 			position: relative;
 		}
 	}
 }
-
+.show {
+	display: block;
+}
 @media screen and (max-width: 580px) {
 	.sideBottom {
 		display: none;
@@ -35,7 +34,7 @@
 		z-index: 10;
 		top: auto;
 		bottom: auto;
-		width: 60%;
+		width: 90vw;
 		height: 90vh;
 		max-width: 300px;
 		min-width: 220px;
@@ -53,9 +52,7 @@
 				margin: 5% 0% 0% 0%;
 			}
 		}
-		& > svg {
-			display: none;
-		}
+
 	}
 	.show {
 		display: block;
