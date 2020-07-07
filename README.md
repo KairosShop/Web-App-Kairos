@@ -1,30 +1,30 @@
 # [![Logo](./src/assets/images/brand/LogoBlue.png)](https://kairosshop.xyz/)
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.6 and is part of the final proyect of the master students of platzi from Cohort 2.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.6 and is part of the final proyect of the Master students of Platzi, from Cohort 2.
 
-In this project is the Kairos frontend. A web app that allows you to offer products and compare prices of products from different supermarkets
+This project is the Kairos frontend, a web app that allows you to offer products and compare prices from different supermarkets.
 
-more info https://www.notion.so/alejozepol/Kairos-d91d3954a8b44d64bd1e70797c9a58b5
+More info: https://www.notion.so/alejozepol/Kairos-d91d3954a8b44d64bd1e70797c9a58b5
 
 ## Frontend Scope 🚀
 
 Develop a views where:
 
-### 🛒 the client user can :
-- [*] See the offered products
-- [ ] View to compare
-- [ ] According to the result of the comparison, choose where it is convenient to buy your products, whether in the most economical place or all in the same place
+### 🛒 the client user can:
+- [*] See the offered products.
+- [ ] View the products comparison.
+- [ ] According to the result of the comparison, choose where it is convenient to buy the products, whether in the most economical place or all in the same place.
 
 ### 🏪 the supermarkerts user can:
 
-- [ ]  see the existing products on the platform
-- [ ]  modify the price at which the product is sold
-- [ ] see the purchase orders
+- [ ] See the existing products on the platform.
+- [ ] Modify the price at which the product is sold.
+- [ ] See the purchase orders.
 
 ### 🔑 the admin user:
 
-- [ ]  manage user.
-- [ ] add new products.
-- [ ]  see application orders.
+- [ ] Manage the users.
+- [ ] Add new products.
+- [ ] See the application orders.
 
 ## Code 🔧
 
@@ -61,8 +61,7 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 * **Alejandro López Ramírez** - *Design Ux and FrontEnd Development* - [alejozepol](https://github.com/alejozepol),  http://alejozepol.com, [twitter](https://twitter.com/alejozepol)
 
-* **Néstor Arellano** - *Data Science* - [Asoretzu](https://github.com/Asoretzu)
-https://twitter.com/asoretzu
+* **Néstor Arellano** - *Data Science* - [Asoretzu](https://github.com/Asoretzu), [twitter](https://twitter.com/asoretzu)
 
 * **Carlos Enrique Ramírez Flores** - *Backend Development* - [linuxcarl](https://github.com/linuxcarl),  https://www.carlosramirezflores.com/, [Linkedin](https://www.linkedin.com/in/carlos-enrique-ram%C3%ADrez-flores-5a26475a/)
 
@@ -73,5 +72,5 @@ https://twitter.com/asoretzu
 * Tell others about this project 📢
 * Invite a beer to one of the team 🍺.
 * Give public thanks 🤓.
-* follow us on social networks and github. 📌
-* etc.
+* Follow us on social networks and github. 📌
+* Etc.
