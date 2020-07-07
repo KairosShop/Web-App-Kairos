@@ -9,6 +9,7 @@ import { Product } from '@core/products/products.model';
 
 export class ProductsCardComponent implements OnInit  {
   @Input() type: string;
+  @Input() link: boolean = false;
   @Input() direction: string;
   @Input() product: Product;
   @Input() superMarkerts: [];

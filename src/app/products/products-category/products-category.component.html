@@ -1,7 +1,7 @@
 <section class="ProductsCategories">
   <h2>{{title}}</h2>
   <ng-container *ngFor="let subcategory of subcategories">
-    <app-garden-products [id]='subcategory.id' [title]='subcategory.title' [type]='"subcategory"' [products]="subcategory.products">
+    <app-garden-products [id]='subcategory.id' [title]='subcategory.title' [type]='"category"' [products]="subcategory.products">
     </app-garden-products>
   </ng-container><!--  -->
 </section>
