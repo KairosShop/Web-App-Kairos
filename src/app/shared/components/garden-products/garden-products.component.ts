@@ -19,6 +19,7 @@ export class GardenProductsComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    console.log(this.products)
   }
 
 }

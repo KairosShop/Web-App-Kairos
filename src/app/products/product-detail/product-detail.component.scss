@@ -1,0 +1,6 @@
+.ProductDetail{
+  margin: 5%;
+  display: grid;
+  grid-template-areas: "product" "relations" "category";
+  grid-template-rows: 70vh 20vh 20vh;
+}
