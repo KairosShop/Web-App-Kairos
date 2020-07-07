@@ -7,7 +7,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class TopNavbarComponent implements OnInit {
 
-	public homepage: boolean = true;
+	public homepage: boolean = false;
 	public burguerToggle: boolean = true;
 
   @Input() footer: boolean;
