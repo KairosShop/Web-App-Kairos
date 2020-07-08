@@ -50,15 +50,21 @@ export class LoginComponent implements OnInit {
         return;
       }
 
-     console.log(this.loginForm.value);
-
+    
  		// Post information
  		this.auth.login(this.loginForm.value)
  		.subscribe(response => {
 	 		// Redirect to home
-	 		this.router.navigateByUrl('/home');
+       if (response) {
+        this.auth.setCookie('user', response, 0);
+        console.log('Login Success!!!');
+        console.log(this.auth.getCookie('user'));
+	      this.router.navigateByUrl('/home');
+        return;
+       }
+       console.log('Login Failed!!!');
  		}, (err)=> {
- 			console.log(err.message);
+ 			console.error(err.message);
  		});
 
  		// Reset form
