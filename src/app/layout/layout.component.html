@@ -3,8 +3,8 @@
   </app-top-navbar>
   <app-side-bottom-menu class="Layout__sideBottom" [toggle]="burguerToggle">
   </app-side-bottom-menu>
-  <div class="Layout__content">
+  <main class="Layout__content" [ngClass]="{'main': !burguerToggle}">
     <router-outlet></router-outlet>
     <div (click)="viewCategories()" [ngClass]="{'opacity': burguerToggle}"></div>
-  </div>
+  </main>
 </section>

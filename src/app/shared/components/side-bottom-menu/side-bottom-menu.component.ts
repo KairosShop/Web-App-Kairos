@@ -11,6 +11,7 @@ export class SideBottomMenuComponent implements OnInit {
 
   @Input() toggle;
   public categories: Category[] = [];
+  public viewCategory: boolean = false;
 
   constructor(
     private categoriesService: CategoriesService,
@@ -27,4 +28,7 @@ export class SideBottomMenuComponent implements OnInit {
 
   }
 
+  expandCategory(){
+    this.viewCategory = !this.viewCategory;
+  }
 }

@@ -14,7 +14,7 @@
 <div *ngIf="iconArrow" class="subcategory">
 	<ul class="subcategory-items">
 		<ng-container *ngFor="let subCategories of category.subcategories">
-			<li><a [routerLink]="['/products/subcategory',subCategories.id, subCategories.title]">{{subCategories.title}}</a></li>
+			<li><a (click)="showMenu()" [routerLink]="['/products/subcategory',subCategories.id, subCategories.title]">{{subCategories.title}}</a></li>
 		</ng-container>
 	</ul>
 </div>

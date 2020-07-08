@@ -27,6 +27,7 @@
   }
   &__sideBottom{
     height: 90vh;
+    width: max-content;
     grid-area: sideBottom;
     transition: 1s;
   }
@@ -39,6 +40,9 @@
   width: 100%;
   height: 100vh;
   transition: 1s;
+}
+.main{
+  width: 100vw  ;
 }
 
 @media (max-width: 768px) {
