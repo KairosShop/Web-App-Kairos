@@ -2,21 +2,47 @@
 
 }
 
+.back {
+	height: 100vh;
+	width: 30%;
+	position: absolute;
+	top: 0;
+}
+
 .sidebar {
 	display: grid;
 	grid-template-rows: 40% 40% 20%;
 	width: 30%;
 	height: 100vh;
+	clip-path: polygon(0 0, 100% 0, 79% 100%, 0 100%);
+	position: relative;
 	&__hero {
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
 		align-items: center;
-		& img {
-			width: 40%;
-			height: 50%;
-			border-radius: 100%;
-			object-fit: cover;
+		&--supermarket {
+			width: 100%;
+			height: 100%;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			position: relative;
+			& img {
+				width: 50%;
+				height: 80%;
+				border-radius: 100%;
+				object-fit: cover;
+			}
+			& i {
+				background-color: #CCD7E2;
+				border-radius: 100%;
+				padding: 1%;
+				position: absolute;
+				right: 30%;
+				bottom: 15%;
+				cursor: pointer;
+			}
 		}
 		& h3 {
 			color: white;
@@ -25,11 +51,30 @@
 	&__nav {
 		display: flex;
 		justify-content: center;
+		align-items: center;
 		& ul {
 			display: grid;
-			height: 100%;
-			& li a {
-				color: white;
+			grid-template-rows: repeat(3, 1fr);
+			height: 85%;
+			width: 90%;
+			padding: 0px;
+			margin: 0px;
+			& li:hover {
+				background: white;
+				& a {
+					color: black;
+				}
+			}
+			& li { 
+				border-bottom-left-radius: 60px;
+				border-top-left-radius: 60px;
+				& a {
+					display: flex;
+					justify-content: center;
+					align-items: center;
+					color: white;
+					font-weight: bold;
+				}
 			}
 		}
 	}
@@ -37,5 +82,8 @@
 		display: flex;
 		justify-content: center;
 		align-items: center;
+		& img {
+			width: 30%;
+		}
 	}
 }
