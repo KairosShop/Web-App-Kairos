@@ -15,6 +15,7 @@ export class LayoutComponent implements OnInit {
     route.data.subscribe(({ footer }) => {
       if (footer) {
         this.footer = footer;
+        
       }
     })
   }

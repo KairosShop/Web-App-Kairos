@@ -8,10 +8,10 @@ import { LayoutComponent } from '../../../layout/layout.component';
 })
 export class TopNavbarComponent implements OnInit {
 
-	public homepage: boolean = true;
 	public burguerToggle: boolean = true;
 
   @Input() footer: boolean;
+  @Input() homepage: boolean = true;
 
   constructor(private layoutComponent: LayoutComponent  ) {
   }

@@ -35,6 +35,7 @@ const routes: Routes = [
     component: LayoutComponent,
     data: {
       footer: true,
+      homepage: true,
     },
     children: [
       {
