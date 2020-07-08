@@ -13,14 +13,15 @@ export class ProductDetailComponent implements OnInit {
     id: 0,
     title: 'Cargando',
     quantity: 0,
-    id_measure: 0,
+    measureId: 0,
     description: 'Cargando',
-    id_category: 0,
-    id_subcategory: 0,
-    url_image: null,
-    active: 0,
+    categoryId: 0,
+    subcategoryId: 0,
+    urlImage: null,
+    active: true,
     cound: 0
   };
+  productsRetations: Product[];
 
   constructor(
     private productsSercice: ProductsService,
@@ -36,6 +37,12 @@ export class ProductDetailComponent implements OnInit {
   fetchProduct(id: number) {
     this.productsSercice.getProduct(id).subscribe((product: Product) => {
       this.product = product;
+      this.fetchRelactionProducts(product.categoryId)
+    })
+  }
+  fetchRelactionProducts(categoryId: number) {
+    this.productsSercice.getProductsOfCategories(categoryId).subscribe((products: Product[]) => {
+      this.productsRetations = products;
     })
   }
 

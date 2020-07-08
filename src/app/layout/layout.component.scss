@@ -10,6 +10,7 @@
   "sideBottom main";
   grid-template-rows: 10vh auto;
   grid-template-columns: auto auto;
+  transition: $transition-nav;
   &__header{
     grid-area: header;
     width: 100%;
@@ -23,13 +24,14 @@
     height: 90vh;
     width: 100%;
     justify-self: center;
+    transition: $transition-nav;
     @include styleScrollY;
   }
   &__sideBottom{
     height: 90vh;
     width: max-content;
     grid-area: sideBottom;
-    transition: 1s;
+    transition: $transition-nav;
   }
 }
 .opacity{
@@ -39,10 +41,10 @@
   background-color: fade-out($primary-dark, $amount: 0.2);
   width: 100%;
   height: 100vh;
-  transition: 1s;
+  transition: $transition-nav;
 }
 .main{
-  width: 100vw  ;
+  width: 100vw;
 }
 
 @media (max-width: 768px) {
