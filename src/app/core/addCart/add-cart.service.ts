@@ -23,7 +23,9 @@ export class AddCartService {
 
 	public add_cart = new Subject<Product[]>();
   
-  constructor() { }
+  constructor() {
+    this.loadCart();
+  }
 
   getObservable() {
   	return this.add_cart.asObservable();
@@ -31,6 +33,7 @@ export class AddCartService {
 
   addProduct(product: Product) {
   	this.cart.push(product);
+    this.saveCart()
   	return this.add_cart.next(this.cart);
   }
 
@@ -38,7 +41,25 @@ export class AddCartService {
   	this.cart = this.cart.filter(({id})=> {
   		return product.id !== id;
   	});
+    this.saveCart()
   	return this.add_cart.next(this.cart);
+  }
+
+  saveCart() {
+    localStorage.setItem('cart', JSON.stringify(this.cart));
+  }
+
+  loadCart() {
+    const getCart = JSON.parse(localStorage.getItem('cart'));
+    if (getCart) {
+      this.cart = getCart;
+      setTimeout(()=> this.add_cart.next(this.cart), 0);
+    }
+  }
+
+  clearCart() {
+    localStorage.clear();
+    return this.add_cart.next(this.cart);
   }
 
 }
