@@ -9,10 +9,13 @@
   border-radius: 30px;
   box-shadow: 3px 2px 11px 0 $desactive;
   background-color: $white;
-  display: flex;
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: 100%;
   justify-content: center;
+  justify-items: center;
   align-items: center;
-  overflow: auto;
+  overflow: hidden;
   &__head {
     position: absolute;
     top: -1%;
@@ -74,14 +77,21 @@
   }
   &__title {
     grid-area: title;
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    & > h3{
+      padding: 0;
+    }
   }
   &__img {
     grid-area: img;
     height: 100%;
+    width: 100%;
     justify-self: center;
     align-self: flex-end;
     & > img {
-      height: 100%;
+      width: 50%;
     }
   }
   &__action {
@@ -156,6 +166,7 @@
   &__info {
     grid-template-areas: "title" "img" "action" "weight" "description";
     grid-template-rows: 15% 30% 5% 5% 30%;
+    grid-template-columns: 100%;
     justify-items: center;
     align-items: center;
     align-content: flex-end;
@@ -184,6 +195,12 @@
         z-index: 1024;
         grid-area: action;
         align-self: flex-start;
+      }
+      & .content__img{
+        & > img{
+          height: 90%;
+          width: initial;
+        }
       }
     }
   }
