@@ -1,0 +1,61 @@
+@import 'var';
+
+.comparation {
+	padding: 5%;
+	display: grid;
+	& h2 {
+		text-align: center;
+	}
+	&__table {
+		border-collapse: collapse;
+		& td {
+			padding: .2em .8em;
+			text-align: center;
+			font-weight: 800;
+			font-style: italic;
+			font-size: 125%;
+		}
+		&--space {
+			& td {
+				background: transparent;
+				& hr {
+					background: $contrast;
+					border: none;
+					height: 2px;
+				}			
+			}
+		}
+
+		&--allCheaper {
+			grid-area: allCheaper;
+		}
+		&--countValue {
+			grid-area: countValue;
+		}
+		&--supermarket {
+			& td {
+				border-bottom: 2px solid $contrast;
+			}
+			& img {
+				border-radius: 30px;
+			}
+		}
+		&--total {
+			grid-area: total;
+		}
+	}
+}
+
+.moda__buttons {
+	display: flex;
+	justify-content: space-around;
+	& app-button {
+		width: 20%;
+		margin-bottom: 10px;
+		height: 150%;
+		& button {
+			border: none;
+			box-shadow: 1px 1px 5px;
+		}
+	}
+}
