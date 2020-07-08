@@ -9,6 +9,7 @@ import { ActivatedRoute } from '@angular/router';
 
 export class LayoutComponent implements OnInit {
   public footer: boolean = false;
+  public burguerToggle: boolean = false;
 
   constructor(private route: ActivatedRoute,) {
     route.data.subscribe(({ footer }) => {
@@ -21,5 +22,7 @@ export class LayoutComponent implements OnInit {
   ngOnInit(): void {
 
   }
-
+  viewCategories() {
+    this.burguerToggle = !this.burguerToggle
+  }
 }

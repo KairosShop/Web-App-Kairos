@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { LayoutComponent } from '../../../layout/layout.component';
 
 @Component({
   selector: 'app-top-navbar',
@@ -7,14 +8,17 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class TopNavbarComponent implements OnInit {
 
-	public homepage: boolean = false;
+	public homepage: boolean = true;
 	public burguerToggle: boolean = true;
 
   @Input() footer: boolean;
 
-  constructor() {
+  constructor(private layoutComponent: LayoutComponent  ) {
   }
 
   ngOnInit(): void {
+  }
+  vierMenu() {
+    this.layoutComponent.viewCategories();
   }
 }

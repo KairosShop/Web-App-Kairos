@@ -1,4 +1,4 @@
-@import 'var';
+@import "var";
 
 .topNavbar {
 	display: grid;
@@ -46,7 +46,7 @@
 		justify-content: space-evenly;
 		justify-items: center;
 		align-items: center;
-		&-btn{
+		&-btn {
 			justify-self: flex-start;
 			height: 50%;
 			width: 90%;
@@ -54,10 +54,9 @@
 	}
 }
 
-.footer{
+.footer {
 	display: none;
 }
-
 
 @media screen and (max-width: 580px) {
 	.topNavbar {
@@ -67,7 +66,7 @@
 		grid-template-columns: 20% 80%;
 		grid-template-rows: 100%;
 		&__hamburguer {
-			grid-area: hamburguer;
+			grid-area: hamburger;
 			display: block;
 			color: white;
 			background: transparent;
@@ -77,14 +76,13 @@
 				justify-content: center;
 				cursor: pointer;
 				font-size: 300%;
-				color: $primary
+				color: $primary;
 			}
 		}
 		&__search {
 			display: none;
 		}
 		&__options {
-			// display: none;
 			& app-cart {
 				position: absolute;
 				top: 80vh;
@@ -93,6 +91,9 @@
 				box-shadow: 1px 1px 10px;
 				border-radius: 100%;
 				padding: 5px;
+			}
+			&-btn {
+				display: none;
 			}
 		}
 		&__logo {
