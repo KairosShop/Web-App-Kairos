@@ -21,6 +21,9 @@ export class ProductsService {
   getProductsOfCategories(idCategory: number) {
     return this.apiResquests.getQuery(`${this.url}/?categoryId=${idCategory}`)
   }
+  getProductsActiveOfCategories(idCategory: number) {
+    return this.apiResquests.getQuery(`${this.url}/?categoryId=${idCategory}?active='true'`)
+  }
   getProductsOfSubcategories(idsubcategory: number) {
     return this.apiResquests.getQuery(`${this.url}/?subcategoryId=${idsubcategory}`)
   }
