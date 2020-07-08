@@ -1,4 +1,4 @@
-export interface measure {
+export interface Measure {
   "id": number,
   "active": boolean;
   "measure": string;
@@ -15,6 +15,7 @@ export interface Product {
   "description": string;
   "urlImage": string;
   "measureId": number,
+  "measure"?: Measure;
   "categoryId": number;
   "subcategoryId": number;
   "quantity": number;
