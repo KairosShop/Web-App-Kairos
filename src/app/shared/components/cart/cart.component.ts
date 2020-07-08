@@ -22,7 +22,6 @@ export class CartComponent implements OnInit {
   	this._addCartService
 		.getObservable()
 		.subscribe((response:Product[]) => {
-  		// console.log(response);
   		this.cart = response;
       this.animation = true;
       setTimeout(()=> this.animation=false, 800);
