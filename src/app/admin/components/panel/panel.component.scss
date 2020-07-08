@@ -1,0 +1,41 @@
+.panel {
+
+}
+
+.sidebar {
+	display: grid;
+	grid-template-rows: 40% 40% 20%;
+	width: 30%;
+	height: 100vh;
+	&__hero {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		& img {
+			width: 40%;
+			height: 50%;
+			border-radius: 100%;
+			object-fit: cover;
+		}
+		& h3 {
+			color: white;
+		}
+	}
+	&__nav {
+		display: flex;
+		justify-content: center;
+		& ul {
+			display: grid;
+			height: 100%;
+			& li a {
+				color: white;
+			}
+		}
+	}
+	&__brand {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+}

@@ -48,6 +48,10 @@ const routes: Routes = [
     redirectTo: '/login/register',
     pathMatch: 'full',
   },
+  {
+    path: 'admin',
+    loadChildren: () => import('./admin/admin.module').then(a => a.AdminModule),
+  },
 ];
 
 @NgModule({
