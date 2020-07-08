@@ -12,7 +12,7 @@ export class TopNavbarComponent implements OnInit {
   public nameBtn: string = 'Login';
   public movile: boolean = false;
 
-  @Input() footer: boolean;
+  @Input() login: boolean;
   @Input() homepage: boolean = true;
 
   constructor(private layoutComponent: LayoutComponent) {

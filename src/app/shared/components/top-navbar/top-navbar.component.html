@@ -7,11 +7,11 @@
 		<img *ngIf="!homepage" src="assets/images/brand/LogoLight.svg" alt="Logo">
 		<h1 class="topNavbar__brand-name">Kairos</h1>
 	</a>
-	<div class="topNavbar__search">
+	<div *ngIf='!login' class="topNavbar__search">
 		<app-search></app-search>
 	</div>
-	<app-cart class="topNavbar__car" routerLink='/cart' [homepage]="!movile"></app-cart>
-	<a class="topNavbar__login" routerLink='/login'>
+	<app-cart *ngIf='!login' class="topNavbar__car" routerLink='/cart' [homepage]="!movile"></app-cart>
+	<a *ngIf='!login' class="topNavbar__login" routerLink='/login'>
 		<app-button class="topNavbar__menu-btn" *ngIf="!homepage" [name]="nameBtn" color='light' type='Login' icon="person">
 		</app-button>
 		<app-button class="topNavbar__menu-btn" *ngIf="homepage" [name]="nameBtn" color='primary' type='Login' icon="person">

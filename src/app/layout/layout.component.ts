@@ -8,14 +8,13 @@ import { ActivatedRoute } from '@angular/router';
 })
 
 export class LayoutComponent implements OnInit {
-  public footer: boolean = false;
+  public login: boolean = false;
   public burguerToggle: boolean = false;
 
   constructor(private route: ActivatedRoute,) {
-    route.data.subscribe(({ footer }) => {
-      if (footer) {
-        this.footer = footer;
-        
+    route.data.subscribe(({ login }) => {
+      if (login) {
+        this.login = login;
       }
     })
   }
