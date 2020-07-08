@@ -1,0 +1,10 @@
+<section class="Layout">
+  <app-top-navbar [footer]="footer" [homepage]="!footer" class="Layout__header">
+  </app-top-navbar>
+  <app-side-bottom-menu class="Layout__sideBottom" [toggle]="burguerToggle">
+  </app-side-bottom-menu>
+  <main class="Layout__content" [ngClass]="{'main': !burguerToggle}">
+    <router-outlet></router-outlet>
+    <div (click)="viewCategories()" [ngClass]="{'opacity': burguerToggle}"></div>
+  </main>
+</section>

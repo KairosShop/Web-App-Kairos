@@ -5,23 +5,7 @@
 //  ╚██████╗╚██████╔╝███████╗╚██████╔╝██║··██║
 //  ·╚═════╝·╚═════╝·╚══════╝·╚═════╝·╚═╝··╚═╝
 
-
-$primary: #0058AD;
-$primary-dark: #01132D;
-$primary-gradiente: linear-gradient(to bottom, $primary 0%, $primary-dark 100%);
-
-$contrast: #FAA519;
-$contrast-dark: #AE7311;
-$contrast-gradiente: linear-gradient(to bottom, $contrast 0%, $contrast-dark 100%);
-
-$accept: #04BF30;
-$warning: #BF046B;
-
-$light: #e6e8eb;
-$white: #FFFFFF;
-$desactive: #B3BFC1;
-
-
+@import 'var';
 
 @each $color, $value in (
   primary: $primary,
@@ -45,12 +29,11 @@ $desactive: #B3BFC1;
 .primary-bg-gradiente{
   background: $primary-gradiente;
 }
-@mixin primary-bg-gradiente{
-  background: $primary-gradiente;
-}
+
 .contrast-bg-gradiente{
   background: $contrast-gradiente;
 }
-@mixin contrast-bg-gradiente{
-  background: $contrast-gradiente;
+
+.is-invalid {
+  border: 5px solid $warning;
 }

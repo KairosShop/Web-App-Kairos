@@ -1,0 +1,46 @@
+@import "_mixins";
+
+.sideBottom {
+	display: none;
+	box-shadow: 1px 1px 3px black;
+	width: 100%;
+	height: 100%;
+	@include primary-bg-gradiente;
+	&__content {
+		flex-direction: column;
+		width: 98%;
+		height: 90vh;
+		@include styleScrollY;
+		&-categories {
+			margin: 5% 0% 0% 0%;
+		}
+		&-categories {
+			position: relative;
+		}
+	}
+}
+.show {
+	display: block;
+	transition: 5s;
+}
+@media screen and (max-width: 580px) {
+	.sideBottom {
+		@include primary-bg-gradiente;
+		&__bg {
+			display: none;
+		}
+		&__content {
+			flex-direction: column;
+			width: 98%;
+			height: 100%;
+			@include styleScrollY;
+			&-categories {
+				margin: 5% 0% 0% 0%;
+			}
+		}
+
+	}
+	.show {
+		display: block;
+	}
+}

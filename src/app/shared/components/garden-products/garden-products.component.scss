@@ -1,0 +1,71 @@
+@import '_var';
+
+.GardenProducts {
+  margin: 5%;
+  text-align: center;
+  &-title{
+    font-style: italic;
+  }
+  &-items{
+    max-width: 100vw;
+    width: 100%;
+    margin-top: 3%;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-columns: minmax(20vw, 300px);
+    grid-auto-rows: 400px;
+    column-gap: 2%;
+    row-gap: 2%;
+  }
+  &-more{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    width: 100%;
+    border: 1px solid $primary-dark;
+    border-radius: 30px;
+    box-shadow: 3px 2px 11px 0 $desactive;
+    background-color: fade-out($desactive, 0.5);
+    & h3{
+      font-size: 3rem !important;
+    }
+    & span{
+      margin-top: 5%;
+      font-size: 3rem !important;
+    }
+    &:hover{
+      background-color: $contrast;
+      transition: 1s;
+    }
+  }
+}
+
+@media screen and (max-width: 769px){
+  .GardenProducts {
+    &-items{
+      grid-template-columns: repeat(3, 1fr);
+      grid-auto-columns: minmax(30vw, 200px);
+      grid-auto-rows: 350px;
+    }
+  }
+}
+
+@media screen and (max-width: 580px){
+  .GardenProducts {
+    &-items{
+      grid-template-columns: repeat(2, 1fr);
+      grid-auto-columns: minmax(40vw, 300px);
+      grid-auto-rows: 430px;
+    }
+  }
+}
+@media screen and (max-width: 426px){
+  .GardenProducts {
+    &-items{
+      grid-template-columns: 1fr;
+      grid-auto-columns: minmax(90vw, 300px);
+    }
+  }
+}
+

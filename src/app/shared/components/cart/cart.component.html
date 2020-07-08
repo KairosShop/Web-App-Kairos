@@ -1,0 +1,5 @@
+<div class="cart">
+	<img *ngIf="homepage" class="cart__logo" src="assets/images/brand/cartBlue.svg" alt="">
+	<img  *ngIf="!homepage" class="cart__logo" src="assets/images/brand/cartWhite.svg" alt="">
+	<i *ngIf="cart.length>0" class="bg-contrast" [ngClass]="{'animationCart': animation}">{{cart.length}}</i>
+</div>

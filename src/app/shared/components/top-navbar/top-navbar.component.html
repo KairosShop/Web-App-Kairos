@@ -1,0 +1,20 @@
+<nav class="topNavbar primary-bg-gradiente" [ngClass]="{'bg-white dark': homepage}">
+	<button class="topNavbar__hamburguer" (click)="vierMenu()" [ngClass]="{'dark': homepage}">
+		<i class="material-icons">menu</i>
+	</button>
+	<a routerLink='/' class="topNavbar__logo">
+		<img *ngIf="homepage" src="assets/images/brand/LogoBlue.svg" alt="Logo">
+		<img *ngIf="!homepage" src="assets/images/brand/LogoLight.svg" alt="Logo">
+		<h1 class="topNavbar__logo-brand">Kairos</h1>
+	</a>
+	<div class="topNavbar__search">
+		<app-search></app-search>
+	</div>
+	<div class="topNavbar__options">
+		<app-cart routerLink='/cart' [homepage]="homepage"></app-cart>
+		<a routerLink='/login' class="topNavbar__options-btn">
+			<app-button class="topNavbar__menu-btn" *ngIf="!homepage" name="login" color='light' type='Login' icon="person"></app-button>
+			<app-button  class="topNavbar__menu-btn" *ngIf="homepage" name="login" color='primary' type='Login' icon="person"></app-button>	
+		</a>
+		</div>
+</nav>

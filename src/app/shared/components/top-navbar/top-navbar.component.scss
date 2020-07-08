@@ -1,0 +1,104 @@
+@import "var";
+
+.topNavbar {
+	display: grid;
+	grid-template-areas: "hamburger brand search options";
+	grid-template-columns: 10% 20% 40% 30%;
+	width: 100%;
+	height: 100%;
+	justify-items: center;
+	align-content: center;
+	&__hamburguer {
+		grid-area: hamburger;
+		display: block;
+		color: white;
+		background: transparent;
+		border: none;
+		& i {
+			display: flex;
+			justify-content: center;
+			cursor: pointer;
+			font-size: 300%;
+		}
+	}
+	&__logo {
+		grid-area: brand;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		& img {
+			max-height: 80%;
+			cursor: pointer;
+		}
+		&-brand {
+			display: none;
+		}
+	}
+	&__search {
+		grid-area: search;
+		width: 100%;
+		cursor: pointer;
+	}
+	&__options {
+		width: 100%;
+		display: grid;
+		grid-template-columns: 50% 50%;
+		justify-content: space-evenly;
+		justify-items: center;
+		align-items: center;
+		&-btn {
+			justify-self: flex-start;
+			height: 50%;
+			width: 90%;
+		}
+	}
+}
+
+.footer {
+	display: none;
+}
+
+@media screen and (max-width: 580px) {
+	.topNavbar {
+		display: grid;
+		height: 100%;
+		grid-template-areas: "hamburger brand";
+		grid-template-columns: 20% 80%;
+		grid-template-rows: 100%;
+		&__hamburguer {
+			grid-area: hamburger;
+			display: block;
+			color: white;
+			background: transparent;
+			border: none;
+			& i {
+				display: flex;
+				justify-content: center;
+				cursor: pointer;
+				font-size: 300%;
+				color: $primary;
+			}
+		}
+		&__search {
+			display: none;
+		}
+		&__options {
+			& app-cart {
+				position: absolute;
+				top: 80vh;
+				right: 5vw;
+				background: $primary-gradiente;
+				box-shadow: 1px 1px 10px;
+				border-radius: 100%;
+				padding: 5px;
+			}
+			&-btn {
+				display: none;
+			}
+		}
+		&__logo {
+			grid-area: brand;
+			width: 80%;
+		}
+	}
+}

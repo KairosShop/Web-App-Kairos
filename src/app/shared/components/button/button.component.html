@@ -1,0 +1,34 @@
+<ng-container [ngSwitch] ='type'>
+  <button *ngSwitchCase='"right"' class='btn btn__{{color}} btn__right'>
+    <span *ngIf='icon' class="material-icons">
+      {{icon}}
+    </span>
+    <span *ngIf='name'>
+      {{name}}
+    </span>
+  </button>
+
+  <button *ngSwitchCase='"left"' class='btn btn__{{color}} btn__left'>
+    <span *ngIf='icon' class="material-icons">
+      {{icon}}
+    </span>
+    <span *ngIf='name'>
+      {{name}}
+    </span>
+  </button>
+
+  <button *ngSwitchCase='"icon"' class='btn btn__{{color}} btn__icon btn__{{size}}'>
+    <span *ngIf='icon' class="material-icons">
+      {{icon}}
+    </span>
+  </button>
+
+  <button *ngSwitchDefault class='btn btn__{{color}} btn__{{size}}'>
+    <span *ngIf='icon' class="material-icons">
+      {{icon}}
+    </span>
+    <span *ngIf='name'>
+      {{name}}
+    </span>
+  </button>
+</ng-container>

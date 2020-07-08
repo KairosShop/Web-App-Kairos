@@ -1,0 +1,78 @@
+<section class='card card__{{direction}}'>
+
+  <!-- star head card -->
+  <img class="card__head" src="assets/card-head.png" alt="backgound card">
+  <!-- end head card -->
+
+  <!-- star content card -->
+  <div class='content content__{{type}} content__{{direction}}'>
+    <!-- star title -->
+    <h3 *ngIf='!isLink' class='content__title'>
+      {{product.title  |titlecase | slice:0:30}}
+      <span *ngIf="product.title.length > 30">...</span>
+    </h3>
+    <a *ngIf='isLink' class="content__title" [routerLink]="['/products', product.id]">
+      <h3>
+        {{product.title  |titlecase | slice:0:30}}
+        <span *ngIf="product.title.length > 30">...</span>
+      </h3>
+    </a>
+    <!-- end title -->
+
+    <!-- start imgen product -->
+    <div *ngIf='!isLink' class='content__img'>
+      <img src="{{product.url_image}}" />
+    </div>
+    <a *ngIf='isLink' class="content__img" [routerLink]="['/products', product.id]">
+      <div class='content__img'>
+        <img src="{{product.url_image}}" />
+      </div>
+    </a>
+    <!-- end imgen product -->
+
+    <!-- start action product -->
+    <app-button (click)="addCart()" *ngIf="product.cound === 0 || !product.price || !product.cound"
+      class="content__action content__action-add" name='Add' icon='add'>
+    </app-button>
+    <div *ngIf="product.cound > 0 || product.cound" class="content__action content__action-count">
+      <app-button type='icon' color='cancel' icon='remove'></app-button>
+      <input class="content__action-count-number" value="{{product.cound}}" />
+      <app-button type='icon' color='accept' icon='add'></app-button>
+    </div>
+    <p class="content__action content__action-price" *ngIf="product.price">
+      {{product.price | currency :'USD':'$':'2.2'}}
+    </p>
+    <!-- end action product -->
+
+    <!--star info supermarkerts -->
+    <ng-container *ngFor="let supermarker of superMarkerts">
+      <div class="content__super1">
+        <img src="{{supermarker.logo}}" alt="{{supermarker.name}}" />
+        <p>{{supermarker.price | currency :'USD':'$':'1.2'}}</p>
+      </div>
+    </ng-container>
+    <!--star info supermarkerts -->
+
+    <!-- start quantity product -->
+    <a *ngIf='isLink' class="content__weight" [routerLink]="['/products', product.id]">
+      <p class='content__weight'><b>{{product.quantity}} Qty</b></p>
+    </a>
+    <p *ngIf='!isLink' class='content__weight'><b>{{product.quantity}} Qty</b></p>
+    <!-- end quantity product -->
+    <!-- star description products -->
+    <a *ngIf='isLink' class="content__description" [routerLink]="['/products', product.id]">
+      <p class='content__description'>{{product.description}}</p>
+    </a>
+    <p *ngIf='!isLink' class='content__description'>{{product.description}}</p>
+    <!-- end description products -->
+  </div>
+  <!-- end content card -->
+
+  <!--   star footer decoration -->
+  <div class="foo">
+    <div class="foo__circle foo__circle-lg foo__circle-contrast"></div>
+    <div class="foo__circle foo__circle-md foo__circle-primary"></div>
+    <div class="foo__circle foo__circle-sm foo__circle-primaryGradiente"></div>
+  </div>
+  <!--   end footer decoration -->
+</section>

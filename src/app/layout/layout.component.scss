@@ -1,0 +1,56 @@
+@import '_var';
+@import '_mixins';
+
+.Layout {
+  min-height: 100vh;
+  max-height: 100vh;
+  display: grid;
+  grid-template-areas:
+  "header header"
+  "sideBottom main";
+  grid-template-rows: 10vh auto;
+  grid-template-columns: auto auto;
+  &__header{
+    grid-area: header;
+    width: 100%;
+    height: 10vh;
+    position: fixed;
+    z-index: 1024;
+  }
+  &__content{
+    position: relative;
+    grid-area: main;
+    height: 90vh;
+    width: 100%;
+    justify-self: center;
+    @include styleScrollY;
+  }
+  &__sideBottom{
+    height: 90vh;
+    width: max-content;
+    grid-area: sideBottom;
+    transition: 1s;
+  }
+}
+.opacity{
+  position: fixed;
+  top:0;
+  z-index: 5;
+  background-color: fade-out($primary-dark, $amount: 0.2);
+  width: 100%;
+  height: 100vh;
+  transition: 1s;
+}
+.main{
+  width: 100vw  ;
+}
+
+@media (max-width: 768px) {
+  .Layout {
+    grid-template-rows: 70px auto;
+    &__header{
+      position: fixed;
+      z-index: 5;
+    }
+  }
+}

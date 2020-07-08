@@ -1,0 +1,68 @@
+@import "_mixins";
+@import "_var";
+
+.ProductDetail {
+  width: 97vw;
+  margin: 5% 0;
+  display: grid;
+  grid-template-areas: "product" "relations" "categories";
+  grid-template-rows: 70vh 60vh 20vh;
+  grid-template-columns: 90%;
+  justify-items: center;
+  justify-content: center;
+  row-gap: 2%;
+  &__product {
+    grid-area: product;
+    width: 100%;
+  }
+}
+.Relations {
+  position: relative;
+  height: 60vh;
+  grid-area: relations;
+  display: grid;
+  grid-template-areas: "title" "items";
+  grid-template-rows: 20% 80%;
+  text-align: center;
+  &__items {
+    width: 100%;
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns:40vh;
+    grid-template-rows: 100%;
+    column-gap: 2%;
+    @include styleScrollX;
+    &-item {
+      height: 95%;
+    }
+  }
+}
+.Categories {
+  height: 20vh;
+  grid-area: categories;
+  display: grid;
+  grid-template-areas: "title" "items";
+  grid-template-rows: 20% 80%;
+  text-align: center;
+  &__items {
+    width: 100%;
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: 300px;
+    grid-template-rows: 100%;
+    column-gap: 2%;
+    @include styleScrollX;
+  }
+}
+
+.Direction {
+  position: absolute;
+  top: 55%;
+  z-index: 5;
+  &-left {
+    left: -2%;
+  }
+  &-right {
+    right: -2%;
+  }
+}

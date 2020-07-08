@@ -1,0 +1,20 @@
+<div class="category" (click)="showSubCategories()">
+	<div class="category__image">
+		<img *ngIf="category.urlImage" src="{{category.urlImage}}" alt="{{category.title}}" class="category__icon">
+		<img *ngIf="!category.urlImage" src="assets/images/brand/iconDefauld.png" alt="{{category.title}}" class="category__icon">
+	</div>
+	<div class="category__title">
+		<h3 class="category__title-item">{{category.title}}</h3>
+	</div>
+	<div class="category__direction">
+		<i *ngIf="iconArrow" class="material-icons space_2_left_mg">keyboard_arrow_up</i>
+		<i *ngIf="!iconArrow" class="material-icons space_2_left_mg">keyboard_arrow_down</i>
+	</div>
+</div>
+<div *ngIf="iconArrow" class="subcategory">
+	<ul class="subcategory-items">
+		<ng-container *ngFor="let subCategories of category.subcategories">
+			<li><a (click)="showMenu()" [routerLink]="['/products/subcategory',subCategories.id, subCategories.title]">{{subCategories.title}}</a></li>
+		</ng-container>
+	</ul>
+</div>

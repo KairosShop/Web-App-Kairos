@@ -1,0 +1,37 @@
+<section class="comparation">
+	<h2>Comparation</h2>
+	<table class="comparation__table">
+		<tbody>
+			<tr class="comparation__table--allCheaper">
+				<td colspan="2"></td>
+				<td colspan="2">All</td>
+				<td colspan="2">Cheaper</td>
+			</tr>
+			<tr class="comparation__table--countValue">
+				<td colspan="2"></td>
+				<td>Count</td>
+				<td>Value</td>
+				<td>Count</td>
+				<td>Value</td>
+			</tr>	
+			<tr *ngFor="let i of [1, 2, 3]" class="comparation__table--supermarket">
+				<td colspan="2"><img src="assets/super1.png" alt="supermarket"></td>
+				<td><p>3</p></td>
+				<td><p>$32</p></td>
+				<td><p>1</p></td>
+				<td><p>.5</p></td>
+			</tr>
+			<tr class="comparation__table--total">
+				<td colspan="4">Total</td>
+				<td>3</td>
+				<td>$27.8</td>
+			</tr>
+		</tbody>
+	</table>
+	<div class="moda__buttons space_2_top_mg">
+		<app-button name="All" color='contrast' icon="">
+		</app-button>
+		<app-button name="Cheaper" color='contrast' icon="">
+		</app-button>
+	</div>
+</section>
