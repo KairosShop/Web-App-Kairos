@@ -29,7 +29,7 @@
   }
   &__sideBottom{
     height: 90vh;
-    width: max-content;
+    width: 100%;
     grid-area: sideBottom;
     transition: $transition-nav;
   }
