@@ -12,12 +12,15 @@
 	</div>
 	<app-cart *ngIf='!login' class="topNavbar__car" routerLink='/cart' [homepage]="!movile"></app-cart>
 	<a *ngIf='!user && !login' class="topNavbar__login" routerLink='/login'>
-		<app-button class="topNavbar__menu-btn" *ngIf="!homepage && !user" [name]="nameBtn" color='light' type='Login' icon="person">
+		<app-button class="topNavbar__menu-btn" *ngIf="!homepage && !user" [name]="nameBtn" color='light' type='Login'
+			icon="person">
 		</app-button>
-		<app-button class="topNavbar__menu-btn" *ngIf="homepage && !user" [name]="nameBtn" color='primary' type='Login' icon="person">
+		<app-button class="topNavbar__menu-btn" *ngIf="homepage && !user" [name]="nameBtn" color='primary' type='Login'
+			icon="person">
 		</app-button>
 	</a>
 	<a *ngIf="user && !login" class="topNavbar__login topNavbar__menu-btn avatar bg-light" routerLink='/profile'>
-		<img src="{{user.urlImage}}" alt="{{user.firstName}}">
+		<img *ngIf="user.urlImage" src="{{user.urlImage}}" alt="{{user.firstName}}">
+		<img *ngIf="!user.urlImage" src="assets/images/avatar.png" alt="{{user.firstName}}">
 	</a>
 </nav>
