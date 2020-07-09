@@ -2,6 +2,7 @@
 
 .profile {
 	&__allInfo {
+		max-width: 100vw;
 		padding: 0% 0% 0% 5%;
 		min-height: 100vh;
 		display: grid;
@@ -65,7 +66,7 @@
 			background-color: $primary;
 			border-radius: 30px;
 			border: 1px solid $desactive;
-			padding: 0 2% ;
+			padding: 0 2%;
 		}
 		& input:focus ~ .profile__floating--label {
 			top: 5px;
@@ -143,6 +144,64 @@
 				color: $contrast;
 				margin-right: 1%;
 			}
+		}
+	}
+}
+
+@media screen and (max-width: 768px) {
+	.profile {
+		&__allInfo {
+			grid-template-areas:
+				"banner"
+				"img"
+				"info";
+			grid-template-rows: 20vh 15vh auto;
+			grid-template-columns: auto;
+			padding: 0%;
+		}
+		&__image {
+			grid-area: img;
+			display: flex;
+			flex-direction: column;
+			justify-content: space-around;
+			align-items: center;
+			margin-top: 0%;
+			& input {
+				width: 80%;
+				margin-top: 0%;
+			}
+		}
+	}
+}
+
+@media screen and (max-width: 610px) {
+	.profile {
+		&__info {
+			grid-template-areas:
+				"title"
+				"name"
+				"lastname"
+				"phone"
+				"location"
+				"email";
+			grid-auto-rows: 5rem;
+			column-gap: 2%;
+		}
+	}
+	#name {
+		grid-area: name;
+		justify-self: initial;
+	}
+
+	#lastname {
+		grid-area: lastname;
+		justify-self: initial;
+	}
+}
+@media screen and (max-width: 420px) {
+	.profile {
+		&__allInfo {
+			grid-template-rows: 40vh 35vh auto;
 		}
 	}
 }
