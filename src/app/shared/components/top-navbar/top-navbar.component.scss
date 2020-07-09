@@ -12,10 +12,10 @@
 	&__hamburguer {
 		grid-area: hamburger;
 		display: block;
-		color: white;
 		background: transparent;
 		border: none;
 		& i {
+			color: $primary;
 			display: flex;
 			justify-content: center;
 			cursor: pointer;
@@ -82,7 +82,7 @@
 		&__hamburguer {
 			grid-area: hamburger;
 			display: block;
-			color: white;
+			color: $primary;
 			background: transparent;
 			border: none;
 			& i {

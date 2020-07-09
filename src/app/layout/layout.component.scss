@@ -11,6 +11,7 @@
   grid-template-rows: 10vh auto;
   grid-template-columns: auto auto;
   transition: $transition-nav;
+  overflow: hidden;
   &__header{
     grid-area: header;
     width: 100%;
@@ -33,6 +34,12 @@
     grid-area: sideBottom;
     transition: $transition-nav;
   }
+  &__panel{
+    height: 90vh;
+    width: 100%;
+    grid-area: sideBottom;
+    transition: $transition-nav;
+  }
 }
 .opacity{
   position: fixed;
@@ -45,6 +52,7 @@
 }
 .main{
   width: 100vw;
+  min-width: 70%;
 }
 
 @media (max-width: 768px) {
@@ -55,4 +63,11 @@
       z-index: 5;
     }
   }
+}
+
+.panel.Layout{
+  grid-template-columns: 10% auto;
+}
+.panel.Layout.active{
+  grid-template-columns: 30vw auto;
 }
