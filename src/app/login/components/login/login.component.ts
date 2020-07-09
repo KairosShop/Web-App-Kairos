@@ -15,6 +15,7 @@ export class LoginComponent implements OnInit {
 	public loginForm: FormGroup;
   public forgotPass: boolean = false;
   public email: string;
+  public loginFailed:boolean;
 
   constructor(
   	private fb: FormBuilder,
@@ -63,8 +64,10 @@ export class LoginComponent implements OnInit {
         return;
        }
        console.log('Login Failed!!!');
+       this.loginFailed = true;
  		}, (err)=> {
  			console.error(err.message);
+       this.loginFailed = true;
  		});
 
  		// Reset form

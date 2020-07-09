@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { LayoutComponent } from '../../../layout/layout.component';
+import { AuthService } from '../../../core/authentication/auth.service';
 
 @Component({
   selector: 'app-top-navbar',
@@ -11,11 +12,15 @@ export class TopNavbarComponent implements OnInit {
   public burguerToggle: boolean = true;
   public nameBtn: string = 'Login';
   public movile: boolean = false;
+  public user;
 
   @Input() login: boolean;
   @Input() homepage: boolean = true;
 
-  constructor(private layoutComponent: LayoutComponent) {
+  constructor(
+    private layoutComponent: LayoutComponent,
+    private auth: AuthService
+    ) {
     if (window.innerWidth < 580) {
       this.nameBtn = null;
     } else {
@@ -29,6 +34,7 @@ export class TopNavbarComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.loginUser();
   }
 
   vierMenu() {
@@ -44,6 +50,10 @@ export class TopNavbarComponent implements OnInit {
       this.movile = false
     }
     console.log(this.movile)
+  }
+  
+  loginUser() {
+    this.user = this.auth.getCookie('user');
   }
 }
 

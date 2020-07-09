@@ -14,11 +14,9 @@ export class AuthService {
   login(user) {
   	// This code will be repalce for method post to login user
   	return this.http.get('https://staging.kairosshop.xyz/api/users')
-        .pipe(
-          map(({body}:any)=> {
-            return body.filter((index:any) => index.email == user.email)[0];
-          })
-        );
+    .pipe(map(({body}:any)=> {
+        return body.filter((index:any) => index.email == user.email)[0];
+      }));
   }
 
   register({firstName, lastname, email, password, adress=''}, type) {
@@ -67,4 +65,8 @@ export class AuthService {
     }
     return null;
   };
+
+  delteCokie(name) {
+    this.setCookie(name, '', -1);
+  }
 }

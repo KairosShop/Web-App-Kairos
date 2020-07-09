@@ -11,10 +11,13 @@
 		<app-search></app-search>
 	</div>
 	<app-cart *ngIf='!login' class="topNavbar__car" routerLink='/cart' [homepage]="!movile"></app-cart>
-	<a *ngIf='!login' class="topNavbar__login" routerLink='/login'>
-		<app-button class="topNavbar__menu-btn" *ngIf="!homepage" [name]="nameBtn" color='light' type='Login' icon="person">
+	<a *ngIf='!user && !login' class="topNavbar__login" routerLink='/login'>
+		<app-button class="topNavbar__menu-btn" *ngIf="!homepage && !user" [name]="nameBtn" color='light' type='Login' icon="person">
 		</app-button>
-		<app-button class="topNavbar__menu-btn" *ngIf="homepage" [name]="nameBtn" color='primary' type='Login' icon="person">
+		<app-button class="topNavbar__menu-btn" *ngIf="homepage && !user" [name]="nameBtn" color='primary' type='Login' icon="person">
 		</app-button>
+	</a>
+	<a *ngIf="user && !login" class="topNavbar__login topNavbar__menu-btn avatar bg-light" routerLink='/register'>
+		<img src="{{user.urlImage}}" alt="{{user.firstName}}">
 	</a>
 </nav>
