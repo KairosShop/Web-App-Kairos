@@ -13,6 +13,7 @@ export class CartComponent implements OnInit {
 
   public cart: Product[] = [];
   public animation: boolean = false;
+  public count:number=0;
 
   constructor(
     private _addCartService: AddCartService
@@ -22,9 +23,19 @@ export class CartComponent implements OnInit {
     this._addCartService
       .getObservable()
       .subscribe((response: Product[]) => {
+         
+         this.count = response
+                      .map((product:Product) => {
+                         return product.count;
+                       })
+                      .reduce((count, value)=> {
+                          return count + value;
+                      }, 0);
+
         this.cart = response;
         this.animation = true;
-        setTimeout(() => this.animation = false, 800);
+        console.log(response);
+        setTimeout(() => this.animation=false, 800);
       });
   }
 
