@@ -18,14 +18,17 @@ export class ProductsService {
   getProduct(id: number) {
     return this.apiResquests.getQuery(`${this.url}/${id}`)
   }
-  getProductsToCategories(idCategory: number) {
-    return this.apiResquests.getQuery(`${this.url}/?id_category${idCategory}`)
-  }
   getProductsOfCategories(idCategory: number) {
-    return this.apiResquests.getQuery(`${this.url}/?id_category=${idCategory}`)
+    return this.apiResquests.getQuery(`${this.url}/?categoryId=${idCategory}`)
+  }
+  getProductsOfCategoriesLimit(idCategory: number, limit:number) {
+    return this.apiResquests.getQuery(`${this.url}/?categoryId=${idCategory}/?limit=${limit}`)
+  }
+  getProductsActiveOfCategories(idCategory: number) {
+    return this.apiResquests.getQuery(`${this.url}/?categoryId=${idCategory}?active='true'`)
   }
   getProductsOfSubcategories(idsubcategory: number) {
-    return this.apiResquests.getQuery(`${this.url}/?id_subcategory=${idsubcategory}`)
+    return this.apiResquests.getQuery(`${this.url}/?subcategoryId=${idsubcategory}`)
   }
 
 }

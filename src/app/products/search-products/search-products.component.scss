@@ -1,0 +1,10 @@
+.search {
+	& h2 {
+		display: flex;
+		justify-content: center;
+	}
+	&__search {
+		display: grid;
+		grid-auto-columns: repeat(3, 1fr);
+	}
+}

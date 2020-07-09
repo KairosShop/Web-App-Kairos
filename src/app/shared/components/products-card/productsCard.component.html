@@ -21,11 +21,11 @@
 
     <!-- start imgen product -->
     <div *ngIf='!isLink' class='content__img'>
-      <img src="{{product.url_image}}" />
+      <img src="{{product.urlImage}}" />
     </div>
     <a *ngIf='isLink' class="content__img" [routerLink]="['/products', product.id]">
       <div class='content__img'>
-        <img src="{{product.url_image}}" />
+        <img src="{{product.urlImage}}" />
       </div>
     </a>
     <!-- end imgen product -->
@@ -55,15 +55,21 @@
 
     <!-- start quantity product -->
     <a *ngIf='isLink' class="content__weight" [routerLink]="['/products', product.id]">
-      <p class='content__weight'><b>{{product.quantity}} Qty</b></p>
+      <p class='content__weight'><b>{{product.quantity}}  {{product.measure.measure}}</b></p>
     </a>
-    <p *ngIf='!isLink' class='content__weight'><b>{{product.quantity}} Qty</b></p>
+    <p *ngIf='!isLink' class='content__weight'><b>{{product.quantity}} {{product.measure.measure}}</b></p>
     <!-- end quantity product -->
     <!-- star description products -->
     <a *ngIf='isLink' class="content__description" [routerLink]="['/products', product.id]">
-      <p class='content__description'>{{product.description}}</p>
+      <p class='content__description'>
+        {{product.description |titlecase | slice:0:40}}
+        <span *ngIf="product.title.length > 40">...</span>
+      </p>
     </a>
-    <p *ngIf='!isLink' class='content__description'>{{product.description}}</p>
+    <p *ngIf='!isLink' class='content__description'>
+      {{product.description |titlecase | slice:0:40}}
+      <span *ngIf="product.title.length > 40">...</span>
+    </p>
     <!-- end description products -->
   </div>
   <!-- end content card -->

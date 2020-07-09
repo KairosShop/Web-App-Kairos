@@ -15,6 +15,7 @@ export class LoginComponent implements OnInit {
 	public loginForm: FormGroup;
   public forgotPass: boolean = false;
   public email: string;
+  public loginFailed:boolean;
 
   constructor(
   	private fb: FormBuilder,
@@ -50,15 +51,23 @@ export class LoginComponent implements OnInit {
         return;
       }
 
-     console.log(this.loginForm.value);
-
+    
  		// Post information
  		this.auth.login(this.loginForm.value)
  		.subscribe(response => {
 	 		// Redirect to home
-	 		this.router.navigateByUrl('/home');
+       if (response) {
+        this.auth.setCookie('user', response, 0);
+        console.log('Login Success!!!');
+        console.log(this.auth.getCookie('user'));
+	      this.router.navigateByUrl('/home');
+        return;
+       }
+       console.log('Login Failed!!!');
+       this.loginFailed = true;
  		}, (err)=> {
- 			console.log(err.message);
+ 			console.error(err.message);
+       this.loginFailed = true;
  		});
 
  		// Reset form

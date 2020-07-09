@@ -1,7 +1,7 @@
 <section class="sideBottom" [ngClass]="{'show': toggle}">
 	<div class="sideBottom__content">
 		<ng-container *ngFor="let category of categories">
-			<app-category class="sideBottom__content-categories" [category]="category"></app-category>
+			<app-category [iconArrow]='viewCategory' class="sideBottom__content-categories" [category]="category"></app-category>
 		</ng-container>
 	</div>
 </section>

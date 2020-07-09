@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { LayoutComponent } from './layout/layout.component'
-
+import { AuthGuard } from './core/guards/auth.guard';
 
 const routes: Routes = [
   {
@@ -25,7 +25,7 @@ const routes: Routes = [
         loadChildren: () => import('./products/products.module').then(p => p.ProductsModule),
       },
       {
-        path: 'cart',
+        path: 'cart', canActivate: [ AuthGuard ],
         loadChildren: () => import('./comparation/comparation.module').then(c => c.ComparationModule),
       },
     ]
@@ -34,7 +34,8 @@ const routes: Routes = [
     path: 'login',
     component: LayoutComponent,
     data: {
-      footer: true,
+      login: true,
+      homepage: true,
     },
     children: [
       {
@@ -52,6 +53,15 @@ const routes: Routes = [
     path: 'admin',
     loadChildren: () => import('./admin/admin.module').then(a => a.AdminModule),
   },
+  {
+    path: 'profile',
+    component: LayoutComponent,
+    data: {
+      login: true,
+      homepage: true,
+    },
+    loadChildren: () => import('./user/user.module').then(u => u.UserModule),
+  }
 ];
 
 @NgModule({

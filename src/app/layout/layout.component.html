@@ -1,6 +1,10 @@
 <section class="Layout">
-    <app-top-navbar [footer]="footer" class="Layout__header"></app-top-navbar>
-  <div class="Layout__content">
+  <app-top-navbar [login]="login" [homepage]="!login" class="Layout__header">
+  </app-top-navbar>
+  <app-side-bottom-menu class="Layout__sideBottom" [toggle]="burguerToggle">
+  </app-side-bottom-menu>
+  <main class="Layout__content" [ngClass]="{'main': !burguerToggle}">
     <router-outlet></router-outlet>
-  </div>
+    <div (click)="viewCategories()" [ngClass]="{'opacity': burguerToggle}"></div>
+  </main>
 </section>

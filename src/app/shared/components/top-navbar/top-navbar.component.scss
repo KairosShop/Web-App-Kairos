@@ -1,13 +1,14 @@
-@import 'var';
+@import "var";
 
 .topNavbar {
 	display: grid;
-	grid-template-areas: "hamburger brand search options";
-	grid-template-columns: 10% 20% 40% 30%;
+	grid-template-areas: "hamburger brand search car login";
+	grid-template-columns: 10% 20% 40% 15% 15%;
 	width: 100%;
 	height: 100%;
 	justify-items: center;
 	align-content: center;
+	align-items: center;
 	&__hamburguer {
 		grid-area: hamburger;
 		display: block;
@@ -21,7 +22,7 @@
 			font-size: 300%;
 		}
 	}
-	&__logo {
+	&__brand {
 		grid-area: brand;
 		display: flex;
 		justify-content: center;
@@ -30,7 +31,7 @@
 			max-height: 80%;
 			cursor: pointer;
 		}
-		&-brand {
+		&-name {
 			display: none;
 		}
 	}
@@ -39,35 +40,47 @@
 		width: 100%;
 		cursor: pointer;
 	}
-	&__options {
-		width: 100%;
-		display: grid;
-		grid-template-columns: 50% 50%;
-		justify-content: space-evenly;
-		justify-items: center;
-		align-items: center;
-		&-btn{
-			justify-self: flex-start;
-			height: 50%;
-			width: 90%;
-		}
+	&__car {
+		grid-area: car;
+	}
+	&__login {
+		grid-area: login;
+		justify-self: flex-start;
+		height: 50%;
+		width: 90%;
 	}
 }
 
-.footer{
-	display: none;
+.avatar {
+	width: 50px;
+	height: 50px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border:1px solid $contrast;
+	border-radius: 100%;
+	& img {
+		width: 100%;
+		height: 100%;
+		border-radius: 100%;
+	}
 }
 
+.footer {
+	display: none;
+}
 
 @media screen and (max-width: 580px) {
 	.topNavbar {
 		display: grid;
 		height: 100%;
-		grid-template-areas: "hamburger brand";
-		grid-template-columns: 20% 80%;
+		width: 100vw;
+		grid-template-areas: "hamburger brand login";
+		grid-template-columns: 20% 60% 20%;
 		grid-template-rows: 100%;
+		align-content: initial;
 		&__hamburguer {
-			grid-area: hamburguer;
+			grid-area: hamburger;
 			display: block;
 			color: white;
 			background: transparent;
@@ -77,27 +90,28 @@
 				justify-content: center;
 				cursor: pointer;
 				font-size: 300%;
-				color: $primary
+				color: $primary;
 			}
 		}
 		&__search {
 			display: none;
 		}
-		&__options {
-			// display: none;
-			& app-cart {
-				position: absolute;
-				top: 80vh;
-				right: 5vw;
-				background: $primary-gradiente;
-				box-shadow: 1px 1px 10px;
-				border-radius: 100%;
-				padding: 5px;
-			}
+		&__car {
+			position: fixed;
+			top: 80vh;
+			left: 80vw;
+			background: $primary-gradiente;
+			box-shadow: 1px 1px 10px;
+			border-radius: 100%;
+			padding: 5px;
 		}
-		&__logo {
+		&__brand {
 			grid-area: brand;
 			width: 80%;
 		}
+	}
+	.avatar {
+		width: 30px;
+		height: 30px;
 	}
 }

@@ -1,4 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { LayoutComponent } from '../../../layout/layout.component';
+import { AuthService } from '../../../core/authentication/auth.service';
 
 @Component({
   selector: 'app-top-navbar',
@@ -7,14 +9,51 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class TopNavbarComponent implements OnInit {
 
-	public homepage: boolean = false;
-	public burguerToggle: boolean = true;
+  public burguerToggle: boolean = true;
+  public nameBtn: string = 'Login';
+  public movile: boolean = false;
+  public user;
 
-  @Input() footer: boolean;
+  @Input() login: boolean;
+  @Input() homepage: boolean = true;
 
-  constructor() {
+  constructor(
+    private layoutComponent: LayoutComponent,
+    private auth: AuthService
+    ) {
+    if (window.innerWidth < 580) {
+      this.nameBtn = null;
+    } else {
+      this.nameBtn = 'Login';
+    }
+    if (window.innerWidth < 580 && this.homepage) {
+      this.movile = true
+    } else {
+      this.movile = false
+    }
   }
 
   ngOnInit(): void {
+    this.loginUser();
+  }
+
+  vierMenu() {
+    this.layoutComponent.viewCategories();
+  }
+
+  onResize(event) {
+    if (event.target.innerWidth < 580) {
+      this.nameBtn = null;
+      this.movile = true
+    } else {
+      this.nameBtn = 'Login';
+      this.movile = false
+    }
+    console.log(this.movile)
+  }
+  
+  loginUser() {
+    this.user = this.auth.getCookie('user');
   }
 }
+

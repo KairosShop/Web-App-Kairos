@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-search',
@@ -8,13 +9,21 @@ import { Component, OnInit, Input } from '@angular/core';
 export class SearchComponent implements OnInit {
 
 	@Input() placeholder;
+  public searchString: string;
 
-  constructor() { }
+  constructor(
+    private _router: Router
+  ) { }
 
   ngOnInit(): void {
   	if (!this.placeholder) {
   		this.placeholder = 'search Products';
   	}
+  }
+
+  searchProducts() {
+    this._router.navigate(['/products/search', this.searchString]);
+    this.searchString='';
   }
 
 }
