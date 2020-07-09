@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { LayoutComponent } from './layout/layout.component'
-
+import { AuthGuard } from './core/guards/auth.guard';
 
 const routes: Routes = [
   {
@@ -25,7 +25,7 @@ const routes: Routes = [
         loadChildren: () => import('./products/products.module').then(p => p.ProductsModule),
       },
       {
-        path: 'cart',
+        path: 'cart', canActivate: [ AuthGuard ],
         loadChildren: () => import('./comparation/comparation.module').then(c => c.ComparationModule),
       },
     ]
