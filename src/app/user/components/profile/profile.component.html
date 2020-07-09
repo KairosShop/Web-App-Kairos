@@ -1,6 +1,7 @@
 <section class="profile__allInfo">
 	<div class="profile__image">
 		<img src="{{user.urlImage}}" alt="{{user.firstName}}">
+		<input type="file">
 	</div>
 	<form #profileForm="ngForm" class="profile__info">
 		<h2 id="title">Profile User</h2>
@@ -25,6 +26,7 @@
 			<label class="profile__floating--label">Email</label>
 		</div>
 		<p class="contrast saveChanges" (click)="saveChanges()">Save changes</p>
+		<p class="contrast saveChanges" (click)="logout()" routerLink="/home">Logout</p>
 	</form>
 	<div class="bg-contrast back">
 		<div class="bg-primary-dark back__front">

@@ -14,7 +14,7 @@ export class ProfileComponent implements OnInit {
 		phone: 5555555555,
 		location: 'Calle derecha esquina con izquierda',
 		email: 'armando@rivera.com',
-		urlImage: ''
+		urlImage: 'https://www.shareicon.net/data/2015/10/09/653498_users_512x512.png'
 	}
 
   constructor(
@@ -27,6 +27,8 @@ export class ProfileComponent implements OnInit {
 
   saveChanges() {
   	console.log(this.user);
+  	this.auth.setCookie('user', this.user, 1);
+  	window.location.reload();
   }
 
   getUser() {
@@ -42,5 +44,9 @@ export class ProfileComponent implements OnInit {
   	this.user.urlImage = userCookie.urlImage;
   	this.user.email = userCookie.email;
 
+  }
+
+  logout() {
+  	this.auth.delteCokie('user');
   }
 }
