@@ -1,8 +1,8 @@
-export interface measure {
-  "id": number,
-  "active": boolean;
-  "measure": string;
-  "deleted": boolean;
+export interface Measure {
+  "id"?: number,
+  "active"?: boolean;
+  "measure"?: string;
+  "deleted"?: boolean;
   "createdAt"?: Date;
   "updatedAt"?: Date;
 };
@@ -15,6 +15,7 @@ export interface Product {
   "description": string;
   "urlImage": string;
   "measureId": number,
+  "measure"?: Measure;
   "categoryId": number;
   "subcategoryId": number;
   "quantity": number;

@@ -7,17 +7,13 @@
 
   <div class="GardenProducts-items">
     <ng-container *ngFor="let product of products">
-        <app-products-card [isLink]="true" type='info' [product]="product" [direction]="'vertical'"></app-products-card>
+      <app-products-card [isLink]="true" type='info' [product]="product" [direction]="'vertical'"></app-products-card>
     </ng-container>
-    <a *ngIf="more" class="GardenProducts-more primary-dark"
-    [routerLink]="['/products/',type,id, title]">
-        <h3>
-          <span class="material-icons">
-            library_add
-          </span>
-          <br>
-          show more {{title}}'s products
-        </h3>
+    <a *ngIf="more" class="GardenProducts-more primary-dark" [routerLink]="['/products/',type,id, title]">
+      <span>SHOW</span>
+      <span class="GardenProducts-more-text">M<span class="material-icons">
+          add_circle
+        </span>RE</span>
     </a>
   </div>
 </section>

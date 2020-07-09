@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { ProductsService } from '@core/products/products.service';
 import { Product } from '@core/products/products.model';
 import { ActivatedRoute, Params } from '@angular/router';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-product-detail',
@@ -14,6 +15,9 @@ export class ProductDetailComponent implements OnInit {
     title: 'Cargando',
     quantity: 0,
     measureId: 0,
+    measure: {
+      measure: 'name'
+    },
     description: 'Cargando',
     categoryId: 0,
     subcategoryId: 0,
@@ -21,17 +25,18 @@ export class ProductDetailComponent implements OnInit {
     active: true,
     cound: 0
   };
-  productsRetations: Product[];
-
+  public productsRetations: Product[];
+  id: number;
   constructor(
     private productsSercice: ProductsService,
     private route: ActivatedRoute
-  ) { }
+  ) {
+  }
 
   ngOnInit(): void {
     this.route.params.subscribe((params: Params) => {
-      const id = params.id;
-      this.fetchProduct(id);
+      this.id = params.id;
+      this.fetchProduct(this.id);
     })
   }
   fetchProduct(id: number) {
@@ -41,14 +46,12 @@ export class ProductDetailComponent implements OnInit {
     })
   }
   fetchRelactionProducts(categoryId: number) {
-    this.productsSercice.getProductsOfCategories(categoryId).subscribe((products: Product[]) => {
-      this.productsRetations = products;
-    })
-  }
+     this.productsSercice
+      .getProductsOfCategories(categoryId)
+          .subscribe((products: Product[]) => {
+            this.productsRetations = products.filter(item => item.id != this.id)
+            console.log(this.productsRetations)
+          })
 
-  scrtollDisplace() {
-  
-  /*   window.scroll(options) */
   }
-
 }

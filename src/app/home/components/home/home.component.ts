@@ -12,7 +12,6 @@ import { ProductsService } from '@core/products/products.service';
 export class HomeComponent implements OnInit {
 
   public productsOfCategory: Category[] = [];
-  public products: Product[] = [];
 
   constructor(
     private categoriesService: CategoriesService,
@@ -26,13 +25,12 @@ export class HomeComponent implements OnInit {
   fetchProductsofCategoria() {
     this.categoriesService.getAllCategories().subscribe((categories: Category[]) => {
       this.productsOfCategory = categories;
-      this.productsOfCategory.map((item) => {
-        this.productsService.getProductsOfCategories(item.id)
+      this.productsOfCategory.map(async (item) => {
+        (await this.productsService.getProductsOfCategories(item.id))
           .subscribe((products: Product[]) => {
             item.products = products;
           })
       })
     })
-
   }
 }
