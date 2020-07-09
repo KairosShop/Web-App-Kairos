@@ -19,6 +19,7 @@ export class LayoutComponent implements OnInit {
       }
       if (admin) {
         this.admin = admin;
+        this.login = true;
       }
     })
   }

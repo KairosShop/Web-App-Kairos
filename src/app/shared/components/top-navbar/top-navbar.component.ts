@@ -20,7 +20,7 @@ export class TopNavbarComponent implements OnInit {
   constructor(
     private layoutComponent: LayoutComponent,
     private auth: AuthService
-    ) {
+  ) {
     if (window.innerWidth < 580) {
       this.nameBtn = null;
     } else {
@@ -51,7 +51,7 @@ export class TopNavbarComponent implements OnInit {
     }
     console.log(this.movile)
   }
-  
+
   loginUser() {
     this.user = this.auth.getCookie('user');
   }

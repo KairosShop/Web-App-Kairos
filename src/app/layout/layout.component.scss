@@ -55,19 +55,26 @@
   min-width: 70%;
 }
 
-@media (max-width: 768px) {
-  .Layout {
-    grid-template-rows: auto auto;
-    &__header{
-      position: fixed;
-      z-index: 5;
-    }
-  }
-}
-
 .panel.Layout{
   grid-template-columns: 10% auto;
 }
 .panel.Layout.active{
   grid-template-columns: 30vw auto;
 }
+
+@media (max-width: 768px) {
+  .Layout {
+    grid-template-rows: 10vh auto;
+    &__header{
+      position: fixed;
+      z-index: 5;
+    }
+  }
+  .panel.Layout{
+    grid-template-columns: 20% auto;
+  }
+  .panel.Layout.active{
+    grid-template-columns: 90vw auto;
+  }
+}
+
