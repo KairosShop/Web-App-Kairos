@@ -1,0 +1,119 @@
+@import 'var';
+
+.profile {
+	&__allInfo {
+		height: 83vh;
+		display: grid;
+		grid-template-columns: 20% auto 30%;
+	}
+	&__image {
+		display: flex;
+		justify-content: center;
+		align-items: flex-start;
+		margin-top: 25%;
+	}
+	&__info {
+		display: grid;
+		grid-template-areas: "title title" 
+							"name lastname"
+							"phone phone"
+							"location location"
+							"email email";
+		justify-content: center;
+		grid-template-rows: repeat(6, 1fr);
+		& h2 {
+			margin: 0px;
+		}
+	}
+	&__floating {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		position: relative;
+		width: 80%;
+		margin-left: 10%;
+		&--label {
+			position: absolute;
+			left: 5px;
+			top: 10px;
+			color: $primary;
+			font-weight: 800;
+			pointer-events: none;
+			transition: all 0.1s ease;
+		}
+		& input:focus ~ .profile__floating--label {
+			top: 5px;
+			left: 10px;
+		}
+	}
+}
+
+.saveChanges {
+	cursor: pointer;
+	font-weight: 800;
+	display: flex;
+	width: 50%;
+	height: 50%;
+	justify-content: center;
+	align-items: center;
+	border-radius: 30px;
+	margin: 0px;
+	transition: all 300ms linear;
+}
+
+.saveChanges:hover {
+	background: $accept;
+	color: black !important;
+}
+
+#title {
+	grid-area: title;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-style: italic;
+}
+
+#name {
+	grid-area: name;
+}
+
+#lastname {
+	grid-area: lastname;
+}
+
+#phone {
+	grid-area: phone;
+}
+
+#location {
+	grid-area: location;
+}
+
+#email {
+	grid-area: email;
+}
+
+.back {
+	position: relative;
+	&__front {
+		position: absolute;
+		height: 100%;
+		width: 100%;
+		clip-path: polygon(7% 0, 100% 0, 100% 100%, 31% 100%);
+		display: flex;
+		justify-content: center;
+		&--message {
+			color: white;
+			display: flex;
+			align-items: flex-start;
+			width: 50%;
+			height: 100%;
+			text-align: center;
+			& span {
+				color: $contrast;
+				margin-right: 1%;
+			}
+		}
+	}
+}

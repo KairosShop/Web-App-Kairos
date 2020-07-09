@@ -17,7 +17,7 @@
 		<app-button class="topNavbar__menu-btn" *ngIf="homepage && !user" [name]="nameBtn" color='primary' type='Login' icon="person">
 		</app-button>
 	</a>
-	<a *ngIf="user && !login" class="topNavbar__login topNavbar__menu-btn avatar bg-light" routerLink='/register'>
+	<a *ngIf="user && !login" class="topNavbar__login topNavbar__menu-btn avatar bg-light" routerLink='/profile'>
 		<img src="{{user.urlImage}}" alt="{{user.firstName}}">
 	</a>
 </nav>
