@@ -1,6 +1,7 @@
 <section class="profile__allInfo">
 	<div class="profile__image">
-		<img src="{{user.urlImage}}" alt="{{user.firstName}}">
+		<img *ngIf="user.urlImage" src="{{user.urlImage}}" alt="{{user.firstName}}">
+		<img *ngIf="!user.urlImage" src="assets/images/avatar.png" alt="{{user.firstName}}">
 		<input type="file">
 	</div>
 	<form #profileForm="ngForm" class="profile__info">
@@ -28,7 +29,7 @@
 		<p class="contrast saveChanges" (click)="saveChanges()">Save changes</p>
 		<p class="contrast saveChanges" (click)="logout()" routerLink="/home">Logout</p>
 	</form>
-	<div class="bg-contrast back">
+	<div class="bg-contrast back profile__banner">
 		<div class="bg-primary-dark back__front">
 			<div class="back__front--message space_4_top_mg">
 				<h3>We <span>promise</span> that your data is <span>always</span>safe and <span>secure</span></h3>
