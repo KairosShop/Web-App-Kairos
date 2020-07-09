@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
-
+import { FormsModule } from '@angular/forms';
 
 import { ButtonComponent } from './components/button/button.component';
 import { SearchComponent } from './components/search/search.component';
@@ -27,7 +27,8 @@ import { GardenProductsComponent } from './components/garden-products/garden-pro
   ],
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
+    FormsModule
   ],
   exports: [
     RouterModule,
