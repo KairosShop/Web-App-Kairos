@@ -1,6 +1,6 @@
 <nav class="topNavbar primary-bg-gradiente" [ngClass]="{'bg-white dark': homepage}" (window:resize)="onResize($event)">
-	<button class="topNavbar__hamburguer" (click)="vierMenu()" [ngClass]="{'dark': homepage}">
-		<i class="material-icons">menu</i>
+	<button class="topNavbar__hamburguer" (click)="vierMenu()">
+		<i class="material-icons" [ngClass]="{'light': !homepage}">menu</i>
 	</button>
 	<a routerLink='/' class="topNavbar__brand">
 		<img *ngIf="homepage" src="assets/images/brand/LogoBlue.svg" alt="Logo">
