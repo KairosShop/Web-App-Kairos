@@ -23,7 +23,7 @@ export class ProductDetailComponent implements OnInit {
     subcategoryId: 0,
     urlImage: null,
     active: true,
-    cound: 0
+    count: 0
   };
   public productsRetations: Product[];
   id: number;

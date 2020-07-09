@@ -8,3 +8,21 @@
 		grid-template-columns: repeat(3, 1fr);
 	}
 }
+
+@media screen and (max-width: 680px) {
+	.search {
+		& h2 {
+			margin-top: 50px;
+		    text-align: center;
+		}
+		&__products {
+			grid-template-columns: repeat(2, 1fr);
+		}
+	}
+}
+
+@media screen and (max-width: 450px) {
+	.search__products {
+		grid-template-columns: repeat(1, 1fr);
+	}
+}
