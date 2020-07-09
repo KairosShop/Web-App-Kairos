@@ -49,6 +49,15 @@ const routes: Routes = [
     redirectTo: '/login/register',
     pathMatch: 'full',
   },
+  {
+    path: 'profile',
+    component: LayoutComponent,
+    data: {
+      login: true,
+      homepage: true,
+    },
+    loadChildren: () => import('./user/user.module').then(u => u.UserModule),
+  }
 ];
 
 @NgModule({
