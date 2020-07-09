@@ -11,6 +11,7 @@ import { SideBottomMenuComponent } from './components/side-bottom-menu/side-bott
 import { ProductsCardComponent } from './components/products-card/productsCard.component';
 import { CategoryComponent } from './components/category/category.component';
 import { GardenProductsComponent } from './components/garden-products/garden-products.component';
+import { PanelComponent } from './components/panel/panel.component';
 
 
 
@@ -23,7 +24,8 @@ import { GardenProductsComponent } from './components/garden-products/garden-pro
     SideBottomMenuComponent,
     ProductsCardComponent,
     CategoryComponent,
-    GardenProductsComponent
+    GardenProductsComponent,
+    PanelComponent,
   ],
   imports: [
     CommonModule,
@@ -38,7 +40,8 @@ import { GardenProductsComponent } from './components/garden-products/garden-pro
     TopNavbarComponent,
     SideBottomMenuComponent,
     ProductsCardComponent,
-    GardenProductsComponent
+    GardenProductsComponent,
+    PanelComponent
   ]
 })
 export class SharedModule { }

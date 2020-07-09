@@ -25,7 +25,7 @@ const routes: Routes = [
         loadChildren: () => import('./products/products.module').then(p => p.ProductsModule),
       },
       {
-        path: 'cart', canActivate: [ AuthGuard ],
+        path: 'cart', canActivate: [AuthGuard],
         loadChildren: () => import('./comparation/comparation.module').then(c => c.ComparationModule),
       },
     ]
@@ -48,6 +48,14 @@ const routes: Routes = [
     path: 'register',
     redirectTo: '/login/register',
     pathMatch: 'full',
+  },
+  {
+    path: 'admin',
+    component: LayoutComponent,
+    loadChildren: () => import('./admin/admin.module').then(a => a.AdminModule),
+    data: {
+      admin: true,
+    }
   },
   {
     path: 'profile',

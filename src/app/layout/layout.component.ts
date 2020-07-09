@@ -9,12 +9,16 @@ import { ActivatedRoute } from '@angular/router';
 
 export class LayoutComponent implements OnInit {
   public login: boolean = false;
+  public admin: boolean = false;
   public burguerToggle: boolean = false;
 
   constructor(private route: ActivatedRoute,) {
-    route.data.subscribe(({ login }) => {
+    route.data.subscribe(({ login, admin }) => {
       if (login) {
         this.login = login;
+      }
+      if (admin) {
+        this.admin = admin;
       }
     })
   }
