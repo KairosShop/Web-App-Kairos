@@ -13,11 +13,13 @@ import { HomeModule } from './home/home.module';
 
 /* component */
 import { LayoutComponent } from './layout/layout.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LayoutComponent,
+    NotFoundComponent,
   ],
   imports: [
     BrowserModule,
