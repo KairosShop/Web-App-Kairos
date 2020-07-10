@@ -12,6 +12,7 @@ import { ProductsCardComponent } from './components/products-card/productsCard.c
 import { CategoryComponent } from './components/category/category.component';
 import { GardenProductsComponent } from './components/garden-products/garden-products.component';
 import { PanelComponent } from './components/panel/panel.component';
+import { TableComponent } from './components/table/table.component';
 
 
 
@@ -26,6 +27,7 @@ import { PanelComponent } from './components/panel/panel.component';
     CategoryComponent,
     GardenProductsComponent,
     PanelComponent,
+    TableComponent,
   ],
   imports: [
     CommonModule,
@@ -41,7 +43,8 @@ import { PanelComponent } from './components/panel/panel.component';
     SideBottomMenuComponent,
     ProductsCardComponent,
     GardenProductsComponent,
-    PanelComponent
+    PanelComponent,
+    TableComponent
   ]
 })
 export class SharedModule { }
