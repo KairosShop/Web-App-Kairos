@@ -3,13 +3,21 @@ import { CommonModule } from '@angular/common';
 
 import { AdminRoutingModule } from './admin-routing.module';
 import { SharedModule } from '../shared/shared.module';
-import { ProductsComponent } from './components/products/products.component';
-import { ProductsDetailComponent } from './components/products-detail/products-detail.component';
+import { ProductsComponent } from './components/products/table/products.component';
+import { ProductsDetailComponent } from './components/products/products-detail/products-detail.component';
+import { DetailUserComponent } from './components/users/detail-user/detail-user.component';
+import { TableUserComponent } from './components/users/table-user/table-user.component';
+import { DetailOrderComponent } from './components/orders/detail-order/detail-order.component';
+import { TableOrderComponent } from './components/orders/table-order/table-order.component';
 
 @NgModule({
   declarations: [
     ProductsComponent,
-    ProductsDetailComponent
+    ProductsDetailComponent,
+    DetailUserComponent,
+    TableUserComponent,
+    DetailOrderComponent,
+    TableOrderComponent
   ],
   imports: [
     CommonModule,
