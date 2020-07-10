@@ -17,6 +17,18 @@ export class AuthService {
     .pipe(map(({body}:any)=> {
         return body.filter((index:any) => index.email == user.email)[0];
       }));
+    /*
+
+    const headers = new HttpHeaders();
+    const userCredentials = user.username + ':' + user.password;
+
+    headers.append('Authorization', 'Basic ' + btoa(userCredentials));
+
+    // This code will be repalce for method post to login user
+    console.log(user);
+    return this.http.post('https://staging.kairosshop.xyz/api/auth/sign-in', user, {headers});
+
+    */
   }
 
   register({firstName, lastname, email, password, adress=''}, type) {
