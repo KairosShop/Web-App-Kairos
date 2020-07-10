@@ -22,7 +22,6 @@ export class TableComponent implements OnInit, OnChanges {
   }
   ngOnChanges(changes) {
     if (changes.Data) {
-      console.log(this.Data)
       this.info = changes.Data.currentValue;
       if (this.info) {
         this.titles = Object.keys(this.info[0])

@@ -14,13 +14,13 @@
 		</div>
 		<nav class="panel__sidebar__nav">
 			<ul>
-				<li><a class="panel__sidebar__nav-item" routerLink="/admin" routerLinkActive="active">
+				<li><a class="panel__sidebar__nav-item" routerLink="/admin/home" routerLinkActive="active">
 						<span class="material-icons">
 							home
 						</span>
 						<h3 *ngIf="toggle">Dashboard</h3>
 					</a></li>
-				<li><a class="panel__sidebar__nav-item" routerLink="/admin/orders" routerLinkActive="active">
+				<li><a class="panel__sidebar__nav-item" routerLink="/admin/orderns" routerLinkActive="active">
 						<span class="material-icons">
 							reorder
 						</span>
@@ -31,7 +31,15 @@
 							mediation
 						</span>
 						<h3 *ngIf="toggle">Products</h3>
-					</a></li>
+					</a>
+				</li>
+				<li><a class="panel__sidebar__nav-item" routerLink="/admin/users" routerLinkActive="active">
+						<span class="material-icons">
+							supervisor_account
+						</span>
+						<h3 *ngIf="toggle">Users</h3>
+					</a>
+				</li>
 			</ul>
 		</nav>
 	</aside>
