@@ -25,8 +25,8 @@ export class HomeComponent implements OnInit {
   fetchProductsofCategoria() {
     this.categoriesService.getAllCategories().subscribe((categories: Category[]) => {
       this.productsOfCategory = categories;
-      this.productsOfCategory.map(async (item) => {
-        (await this.productsService.getProductsOfCategories(item.id))
+      this.productsOfCategory.map((item) => {
+        this.productsService.getProductsOfCategories(item.id)
           .subscribe((products: Product[]) => {
             item.products = products;
           })
