@@ -31,13 +31,13 @@
     <!-- end imgen product -->
 
     <!-- start action product -->
-    <app-button (click)="addCart()" *ngIf="product.cound === 0 || !product.price || !product.cound"
+    <app-button (click)="addCart()" *ngIf="product.count === 0 || !product.price || !product.count"
       class="content__action content__action-add" name='Add' icon='add'>
     </app-button>
-    <div *ngIf="product.cound > 0 || product.cound" class="content__action content__action-count">
-      <app-button type='icon' color='cancel' icon='remove'></app-button>
-      <input class="content__action-count-number" value="{{product.cound}}" />
-      <app-button type='icon' color='accept' icon='add'></app-button>
+    <div *ngIf="product.count > 0 || product.count" class="content__action content__action-count">
+      <app-button (click)="removeCart()" type='icon' color='cancel' icon='remove'></app-button>
+      <input class="content__action-count-number" value="{{product.count}}" />
+      <app-button (click)="addCart()" type='icon' color='accept' icon='add'></app-button>
     </div>
     <p class="content__action content__action-price" *ngIf="product.price">
       {{product.price | currency :'USD':'$':'2.2'}}

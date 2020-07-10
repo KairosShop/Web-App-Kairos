@@ -23,14 +23,25 @@ export class ProductsCardComponent implements OnInit  {
   }
 
   ngOnInit(): void {
+    this._addCartService
+      .getObservable()
+      .subscribe((response: Product[]) => {
+        response.map((product:Product) => {
+          if (this.product.id === product.id) {
+            this.product.count=product.count;
+          }
+        });
+      });
+   
+   // console.log(this.product);
   }
 
   addCart() {
-    this._addCartService.addProduct(this.product);
+    this._addCartService.addCount(this.product);
   }
 
   removeCart() {
-    this._addCartService.removeProduct(this.product);
+    this._addCartService.minusCount(this.product);
   }
 
 }

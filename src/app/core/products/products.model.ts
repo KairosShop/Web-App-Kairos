@@ -19,7 +19,7 @@ export interface Product {
   "categoryId": number;
   "subcategoryId": number;
   "quantity": number;
-  "cound"?: number;
+  "count"?: number;
   "price"?: number;
   "createdAt"?: Date;
   "updatedAt"?: Date;
