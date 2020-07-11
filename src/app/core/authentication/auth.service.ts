@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { map, filter } from 'rxjs/operators';
 import { Router } from '@angular/router';
 
 @Injectable({
