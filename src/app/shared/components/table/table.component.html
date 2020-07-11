@@ -1,7 +1,7 @@
 <section class="table">
   <h2 class="table__title">{{title}}</h2>
-  <a *ngIf='btnNew' [routerLink]="'new'" class="table__add"  [queryParams]="{'action': 'edit'}">
-    <app-button icon="add" name="New"></app-button>
+  <a *ngIf='btnNew' class="table__add">
+    <app-button (click)="redirectProduct()" icon="add" name="New"></app-button>
   </a>
   <table class="table__content">
     <thead class="table__content-head">

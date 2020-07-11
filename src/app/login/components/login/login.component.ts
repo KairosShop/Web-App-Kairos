@@ -56,14 +56,6 @@ export class LoginComponent implements OnInit {
  		this.auth.login({'username': user.email, 'password':user.password})
  		  .subscribe(({body}:any) => {   
          
-         // Start temporal code
-          body.user = {
-            email: 'customer1@kairosshop.xyz',
-            firstName: 'Nicolas',
-            lastName: 'Molina',
-            rol:'ADMIN'
-          }
-         // End temporal code
          this.auth.setCookie('user', body, 1);
          console.log('Login Success!!!');
 

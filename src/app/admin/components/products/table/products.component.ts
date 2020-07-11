@@ -3,6 +3,7 @@ import { ProductsService } from '@core/products/products.service';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { ProductsTable } from '@core/products/products.model'
+import { AuthService } from '@core/authentication/auth.service';
 
 @Component({
   selector: 'app-products',
@@ -11,12 +12,21 @@ import { ProductsTable } from '@core/products/products.model'
 })
 export class ProductsComponent implements OnInit {
 
+  public btnNew:boolean = false;
+
   products: Observable<ProductsTable[]>;
 
-  constructor(private productsService: ProductsService) { }
+  constructor(
+    private productsService: ProductsService,
+    private auth:AuthService
+  ) {}
 
   ngOnInit(): void {
-    this.fetchProducts()
+    this.fetchProducts();
+    const { user } = this.auth.getCookie('user');
+    if(user.rol === 'ADMIN') {
+      this.btnNew = true;
+    }
   }
 
   fetchProducts() {

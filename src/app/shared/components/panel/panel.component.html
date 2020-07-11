@@ -40,6 +40,13 @@
 						<h3 *ngIf="toggle">Users</h3>
 					</a>
 				</li>
+				<li><a class="panel__sidebar__nav-item" (click)="logout()" routerLinkActive="active">
+						<span class="material-icons">
+							connect_without_contact
+						</span>
+						<h3 *ngIf="toggle">Logout</h3>
+					</a>
+				</li>
 			</ul>
 		</nav>
 	</aside>
