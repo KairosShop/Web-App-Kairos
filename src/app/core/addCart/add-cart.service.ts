@@ -43,17 +43,22 @@ export class AddCartService {
   	});
   }
 
-  iterator(product: Product) {
+  iterator(product: Product, plus:boolean) {
     for (let productCart of this.cart) {
       if (product.id == productCart.id) {
-        productCart.count++
-        return true;
+
+        if (plus) {
+          productCart.count++;
+          return true;
+        }
+        return productCart.count > 1 ? productCart.count-- : false;
       }
     }
+    return false;
   }
 
   addCount(product: Product) {
-    if (this.iterator(product)) {
+    if (this.iterator(product, true)) {
     } else {
       this.addProduct(product);
     }
@@ -62,8 +67,7 @@ export class AddCartService {
   }
 
   minusCount(product:Product) {
-    if(this.iterator(product) && product.count > 1) {
-      product.count--;
+    if(this.iterator(product, false)) {
     } else {
       this.removeProduct(product);
     }
@@ -82,7 +86,7 @@ export class AddCartService {
       setTimeout(() => {
         console.log('hello');
         this.add_cart.next(this.cart)
-      }, 2000);
+      }, 1500);
     }
   }
 
@@ -91,4 +95,7 @@ export class AddCartService {
     return this.add_cart.next(this.cart);
   }
 
+  getCart():Product[] {
+    return this.cart;
+  }
 }
