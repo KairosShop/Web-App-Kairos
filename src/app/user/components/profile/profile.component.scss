@@ -16,9 +16,10 @@
 		grid-area: img;
 		display: flex;
 		flex-direction: column;
-		justify-content: center;
+		justify-content: space-between;
 		align-items: center;
 		margin-top: 25%;
+		height: 100%;
 		& img {
 			width: 100px;
 			height: 100px;
