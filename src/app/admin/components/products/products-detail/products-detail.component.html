@@ -80,6 +80,6 @@
     <image-cropper [imageChangedEvent]="imageChangedEvent" [maintainAspectRatio]="true" [aspectRatio]="4 / 3"
       format="png" (imageCropped)="imageCropped($event)" (imageLoaded)="imageLoaded()" (cropperReady)="cropperReady()"
       (loadImageFailed)="loadImageFailed()"></image-cropper>
-    <app-button *ngIf='!desactive' icon='send' class="ProductDetail__form-btn" name='send' color='primary'></app-button>
+    <app-button  (click)="saveSettings()" *ngIf='!desactive' icon='send' class="ProductDetail__form-btn" name='send' color='primary'></app-button>
   </form>
 </section>

@@ -9,6 +9,7 @@ import { SubCategory } from '@core/subCategories/subCategories.model';
 import { Measure } from '@core/measure/measure.model';
 import { MeasureService } from '@core/measure/measure.service';
 import { ImageCroppedEvent } from 'ngx-image-cropper';
+import { AngularFireStorage } from 'angularfire2/storage';
 
 @Component({
   selector: 'app-products-detail',
@@ -20,6 +21,7 @@ export class ProductsDetailComponent implements OnInit {
   id: any;
   imageChangedEvent: any = '';
   croppedImage: any = '';
+  picture: any;
   public categories: Category[];
   public subcategories: SubCategory[];
   public mesuares: Measure[];
@@ -32,7 +34,8 @@ export class ProductsDetailComponent implements OnInit {
     private productsService: ProductsService,
     private categoriesService: CategoriesService,
     private formBuilder: FormBuilder,
-    private measureService: MeasureService
+    private measureService: MeasureService,
+    private firebaseStorage: AngularFireStorage
   ) {
     this.activatedRoute.queryParams.subscribe((query) => {
       if (query.action == 'edit') {
@@ -73,6 +76,7 @@ export class ProductsDetailComponent implements OnInit {
       this.mesuares = measures
     })
   }
+
   fetchCategories() {
     this.categoriesService.getAllCategories().subscribe((categories: Category[]) => {
       this.categories = categories;
@@ -151,17 +155,36 @@ export class ProductsDetailComponent implements OnInit {
   fileChangeEvent(event: any): void {
     this.imageChangedEvent = event;
   }
+
   imageCropped(event: ImageCroppedEvent) {
     this.croppedImage = event.base64;
   }
+
   imageLoaded() {
     // show cropper
   }
+
   cropperReady() {
     // cropper ready
   }
+
   loadImageFailed() {
     // show message
   }
 
+
+  saveSettings() {
+    if (this.croppedImage) {
+      const currentproductsId = Date.now();
+      const products = this.firebaseStorage.ref('products/' + currentproductsId + '.jpg').putString(this.croppedImage, 'data_url');
+      products.then((result) => {
+        this.picture = this.firebaseStorage.ref('products/' + currentproductsId + '.jpg').getDownloadURL();
+        console.log(result)
+        console.log(this.picture)
+      }).catch((error) => {
+        alert('Hubo un error');
+        console.log(error);
+      });
+    }
+  }
 }

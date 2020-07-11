@@ -2,6 +2,10 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 
+import { AngularFireModule } from 'angularfire2'
+import { AngularFireStorageModule } from 'angularfire2/storage';
+import { environment } from '../environments/environment'
+
 /* index */
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -14,6 +18,7 @@ import { HomeModule } from './home/home.module';
 /* component */
 import { LayoutComponent } from './layout/layout.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -25,7 +30,9 @@ import { LayoutComponent } from './layout/layout.component';
     SharedModule,
     CoreModule,
     HomeModule,
-    HttpClientModule
+    HttpClientModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireStorageModule
   ],
   providers: [],
   bootstrap: [AppComponent]
