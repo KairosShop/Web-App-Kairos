@@ -74,6 +74,6 @@
       <img src="{{productsForm.controls.urlImage.value}}" alt="{{productsForm.controls.title.value}}">
       <input id="urlImage" formControlName="url" type="file" placeholder="Image" accept="image/*">
     </label>
-    <app-button icon='send' class="ProductDetail__form-btn"  name='send' color='primary'></app-button>
+    <app-button *ngIf='!desactive' icon='send' class="ProductDetail__form-btn"  name='send' color='primary'></app-button>
   </form>
 </section>
