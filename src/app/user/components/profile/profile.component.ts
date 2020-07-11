@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../../core/authentication/auth.service';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { ValidationsService } from '../../../core/authentication/validations.service';
 
 @Component({
   selector: 'app-profile',
@@ -7,6 +9,9 @@ import { AuthService } from '../../../core/authentication/auth.service';
   styleUrls: ['./profile.component.scss']
 })
 export class ProfileComponent implements OnInit {
+
+    public passwordForm: FormGroup;
+    public password:boolean=false;
 
 	public user = {
 		firstName: 'Armando',
@@ -18,8 +23,12 @@ export class ProfileComponent implements OnInit {
 	}
 
   constructor(
-  	private auth: AuthService
-  ) { }
+  	private fb: FormBuilder,
+    private auth:AuthService,
+    public _validationsService:ValidationsService
+  ) { 
+    this.createForm();
+  }
 
   ngOnInit(): void {
   	this.getUser();
@@ -38,15 +47,28 @@ export class ProfileComponent implements OnInit {
 		Next code will be replace by
 		this.user = user;
   	*/
-  	
+  	/*
   	this.user.firstName = user.firstName;
   	this.user.lastName = user.lastName;
   	this.user.urlImage = user.urlImage;
-  	this.user.email = user.email;
+  	this.user.email = user.email;*/
 
   }
 
   logout() {
   	this.auth.delteCokie('user');
+  }
+
+  createForm() {
+    this.passwordForm = this.fb.group({
+      password: ['', Validators.required],
+      password2: ['', Validators.required],
+    }, {
+      validators: this._validationsService.samePassword('password', 'password2')
+    });
+  }
+
+  changePassword() {
+    this.password = !this.password
   }
 }
