@@ -1,1 +1,3 @@
-<app-table *ngIf="products|async" [Data]="products |async"></app-table>
+<section class="Products" >
+  <app-table class="Products__table" *ngIf="products|async" [Data]="products |async" title="Products" ></app-table>
+</section>

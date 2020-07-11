@@ -1,14 +1,7 @@
-export interface Measure {
-  "id"?: number,
-  "active"?: boolean;
-  "measure"?: string;
-  "deleted"?: boolean;
-  "createdAt"?: Date;
-  "updatedAt"?: Date;
-};
+import { Measure } from '../measure/measure.model'
 
 export interface Product {
-  "id": number;
+  "id"?: number;
   "active": boolean;
   "delete"?: boolean;
   "title": string;

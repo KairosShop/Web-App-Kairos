@@ -1,8 +1,7 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ProductsService } from '@core/products/products.service';
 import { Product } from '@core/products/products.model';
 import { ActivatedRoute, Params } from '@angular/router';
-import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-product-detail',
@@ -28,7 +27,7 @@ export class ProductDetailComponent implements OnInit {
   public productsRetations: Product[];
   id: number;
   constructor(
-    private productsSercice: ProductsService,
+    private productsService: ProductsService,
     private route: ActivatedRoute
   ) {
   }
@@ -40,13 +39,13 @@ export class ProductDetailComponent implements OnInit {
     })
   }
   fetchProduct(id: number) {
-    this.productsSercice.getProduct(id).subscribe((product: Product) => {
+    this.productsService.getProduct(id).subscribe((product: Product) => {
       this.product = product;
       this.fetchRelactionProducts(product.categoryId)
     })
   }
   fetchRelactionProducts(categoryId: number) {
-     this.productsSercice
+     this.productsService
       .getProductsOfCategories(categoryId)
           .subscribe((products: Product[]) => {
             this.productsRetations = products.filter(item => item.id != this.id)

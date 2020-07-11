@@ -1,6 +1,5 @@
 import { Component, OnInit, Input, OnChanges } from '@angular/core';
-import { Observable } from 'rxjs';
-import { Product } from '@core/products/products.model';
+
 
 
 @Component({
@@ -12,6 +11,7 @@ import { Product } from '@core/products/products.model';
 export class TableComponent implements OnInit, OnChanges {
   @Input() Data;
   @Input() title: string = 'Title';
+  @Input() btnNew: boolean = true;
   info = [];
   titles = [];
   constructor() {

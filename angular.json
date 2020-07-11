@@ -31,7 +31,9 @@
               "src/styles/index.scss"
             ],
             "stylePreprocessorOptions": {
-              "includePaths": ["src/styles/token"]
+              "includePaths": [
+                "src/styles/token"
+              ]
             },
             "scripts": []
           },
@@ -124,6 +126,10 @@
               "devServerTarget": "Kairos:serve:production"
             }
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {}
         }
       }
     }

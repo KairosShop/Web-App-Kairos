@@ -1,0 +1,10 @@
+.Products {
+  height: 90%;
+  width: 100%;
+  display: grid;
+  grid-template-areas: ". . btn ." ". table table .";
+
+  &__table {
+    grid-area: table;
+  }
+}
