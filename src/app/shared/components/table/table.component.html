@@ -1,5 +1,8 @@
 <section class="table">
   <h2 class="table__title">{{title}}</h2>
+  <a [routerLink]="'new'" class="table__add">
+    <app-button icon="add" name="New"></app-button>
+  </a>
   <table class="table__content">
     <thead class="table__content-head">
       <tr>

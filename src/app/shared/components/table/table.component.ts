@@ -1,6 +1,5 @@
 import { Component, OnInit, Input, OnChanges } from '@angular/core';
-import { Observable } from 'rxjs';
-import { Product } from '@core/products/products.model';
+
 
 
 @Component({
