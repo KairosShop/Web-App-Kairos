@@ -17,3 +17,14 @@ export interface Product {
   "createdAt"?: Date;
   "updatedAt"?: Date;
 };
+
+export interface ProductsTable {
+  status: boolean;
+  id: number;
+  title: string;
+  quantity: string;
+  measure: string;
+  category?: string;
+  subcategory?: string;
+  deleted: boolean;
+}
