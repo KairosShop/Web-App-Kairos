@@ -11,6 +11,7 @@ import { Component, OnInit, Input, OnChanges } from '@angular/core';
 export class TableComponent implements OnInit, OnChanges {
   @Input() Data;
   @Input() title: string = 'Title';
+  @Input() btnNew: boolean = true;
   info = [];
   titles = [];
   constructor() {

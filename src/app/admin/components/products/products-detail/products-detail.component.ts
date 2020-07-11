@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params, QueryParamsHandling } from '@angular/router';
+import { ActivatedRoute, Params, Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ProductsService } from '@core/products/products.service';
 import { Product } from '@core/products/products.model';
@@ -17,19 +17,23 @@ import { MeasureService } from '@core/measure/measure.service';
 
 export class ProductsDetailComponent implements OnInit {
   id: any;
+  imageChangedEvent: any = '';
+  croppedImage: any = '';
   public categories: Category[];
   public subcategories: SubCategory[];
   public mesuares: Measure[];
   public productsForm: FormGroup;
   public desactive: boolean = true;
+  public rol: string = 'SUPER'
   constructor(
-    private route: ActivatedRoute,
+    private activatedRoute: ActivatedRoute,
+    private router: Router,
     private productsService: ProductsService,
     private categoriesService: CategoriesService,
     private formBuilder: FormBuilder,
     private measureService: MeasureService
   ) {
-    this.route.queryParams.subscribe((query) => {
+    this.activatedRoute.queryParams.subscribe((query) => {
       if (query.action == 'edit') {
         this.desactive = false;
       }
@@ -41,15 +45,17 @@ export class ProductsDetailComponent implements OnInit {
   ngOnInit(): void {
     this.fetchCategories()
     this.fetchMeasure()
-    this.route.params.subscribe((params: Params) => {
+    this.activatedRoute.params.subscribe((params: Params) => {
       this.id = params.id;
       this.getId(this.id)
     })
   }
 
   getId(id: any) {
-    if (id !== 'new' || id !== undefined) {
+    if (id !== 'new') {
       this.fetchProduct(this.id);
+    } else if (id == undefined) {
+      this.createForm();
     } else {
       this.createForm();
     }
@@ -94,43 +100,43 @@ export class ProductsDetailComponent implements OnInit {
 
     this.productsForm =
       this.formBuilder.group({
-      title: [{
-        value: product.title,
-        disabled: this.desactive,
-      }],
-      description: [{
-        value: product.description,
-        disabled: this.desactive,
-      }],
-      urlImage: [{
-        value: product.urlImage,
-        disabled: this.desactive,
-      }],
-      url: [{
-        value: null,
-        disabled: this.desactive,
-      }],
-      measureId: [{
-        value: product.measureId,
-        disabled: this.desactive,
-      }],
-      quantity: [{
-        value: product.quantity,
-        disabled: this.desactive,
-      }],
-      categoryId: [{
-        value: product.categoryId,
-        disabled: this.desactive,
-      }],
-      subcategoryId: [{
-        value: product.subcategoryId,
-        disabled: this.desactive,
-      }],
-      status: [{
-        value: product.active,
-        disabled: this.desactive,
-      }]
-    })
+        title: [{
+          value: product.title,
+          disabled: this.desactive,
+        }],
+        description: [{
+          value: product.description,
+          disabled: this.desactive,
+        }],
+        urlImage: [{
+          value: product.urlImage,
+          disabled: this.desactive,
+        }],
+        url: [{
+          value: null,
+          disabled: this.desactive,
+        }],
+        measureId: [{
+          value: product.measureId,
+          disabled: this.desactive,
+        }],
+        quantity: [{
+          value: product.quantity,
+          disabled: this.desactive,
+        }],
+        categoryId: [{
+          value: product.categoryId,
+          disabled: this.desactive,
+        }],
+        subcategoryId: [{
+          value: product.subcategoryId,
+          disabled: this.desactive,
+        }],
+        status: [{
+          value: product.active,
+          disabled: this.desactive,
+        }]
+      })
   }
 
   getSubcategories(idCategory: number) {
