@@ -47,11 +47,11 @@ export class ProfileComponent implements OnInit {
 		Next code will be replace by
 		this.user = user;
   	*/
-  	/*
+  	
   	this.user.firstName = user.firstName;
   	this.user.lastName = user.lastName;
   	this.user.urlImage = user.urlImage;
-  	this.user.email = user.email;*/
+  	this.user.email = user.email;
 
   }
 

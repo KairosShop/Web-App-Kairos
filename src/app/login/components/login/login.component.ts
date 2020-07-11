@@ -63,12 +63,13 @@ export class LoginComponent implements OnInit {
             email: 'customer1@kairosshop.xyz',
             firstName: 'Nicolas',
             lastName: 'Molina',
-            rol:'CUSTOMER'
+            rol:'ADMIN'
           }
          // End temporal code
          this.auth.setCookie('user', body, 1);
          console.log('Login Success!!!');
-         this.router.navigateByUrl('/home');
+
+         this.redirectUser(body.user.rol);
        }, (err) => {
          this.loginFailed = true;
        });
@@ -76,6 +77,26 @@ export class LoginComponent implements OnInit {
  		// Reset form
  		this.loginForm.reset();
 
+  }
+
+  private redirectUser(rol:string) {
+    let link;
+
+    switch (rol) {
+      case "CUSTOMER":
+        link = '/home';
+        break;
+
+      case "SUPER MARKET":
+        link = '/home';
+        break;
+      
+      case "ADMIN":
+        link = '/admin';
+        break;
+    }
+
+    this.router.navigateByUrl(link);   
   }
 
   forgotPassword() {
