@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { LayoutComponent } from './layout/layout.component'
 import { AuthGuard } from './core/guards/auth.guard';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 
 const routes: Routes = [
   {
@@ -65,6 +66,9 @@ const routes: Routes = [
       homepage: true,
     },
     loadChildren: () => import('./user/user.module').then(u => u.UserModule),
+  },{
+    path: '**',
+    component: NotFoundComponent
   }
 ];
 

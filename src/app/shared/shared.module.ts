@@ -13,6 +13,7 @@ import { CategoryComponent } from './components/category/category.component';
 import { GardenProductsComponent } from './components/garden-products/garden-products.component';
 import { PanelComponent } from './components/panel/panel.component';
 import { TableComponent } from './components/table/table.component';
+import { AdverstimentComponent } from './components/adverstiment/adverstiment.component';
 
 
 
@@ -28,6 +29,7 @@ import { TableComponent } from './components/table/table.component';
     GardenProductsComponent,
     PanelComponent,
     TableComponent,
+    AdverstimentComponent,
   ],
   imports: [
     CommonModule,

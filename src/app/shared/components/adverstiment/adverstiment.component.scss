@@ -1,0 +1,78 @@
+@import 'var';
+
+.addverstiment__supermarket {
+	display: grid;
+	grid-template-columns: 40% 60%;
+	height: 300px;
+	position: relative;
+	&--title {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		clip-path: polygon(0 0, 100% 0, 67% 100%, 0% 100%);
+		justify-content: center;
+		& img {
+			width: 50%;
+			height: 50%;
+		}
+	}
+	&--content {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		& h2 {
+			position: absolute;
+			left: 23%;
+			top: 0;
+		}
+		h3 {
+			margin: 0;
+			font-size: 200%;
+		}
+	}
+}
+
+app-button {
+	width: 25%;
+	height: 15%;
+}
+
+@media screen and (max-width: 770px) {
+	.addverstiment__supermarket {
+		grid-template-columns: 100%;
+		&--title {
+			clip-path: none;
+			& img {
+				display: none;
+			}
+		}
+		&--content {
+			& h2 .primary-dark {
+				color: white !important;
+				margin: 0px !important;
+			}
+		}
+	}
+	
+	app-button {
+		width: 25%;
+		height: 40%;
+	}
+}
+
+@media screen and (max-width: 500px) {
+	.addverstiment__supermarket {
+		&--title {
+			& img {
+				display: none;
+			}
+		}
+	}
+	
+	app-button {
+		width: 25%;
+		height: 20%;
+	}
+
+}
