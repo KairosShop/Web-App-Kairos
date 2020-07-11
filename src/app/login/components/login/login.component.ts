@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
 
 import { AuthService } from '../../../core/authentication/auth.service';
 import { ValidationsService } from '../../../core/authentication/validations.service';
@@ -19,7 +18,6 @@ export class LoginComponent implements OnInit {
 
   constructor(
   	private fb: FormBuilder,
-  	private router: Router,
   	private auth: AuthService,
     public _validationsService:ValidationsService
   ) {
@@ -39,6 +37,8 @@ export class LoginComponent implements OnInit {
 
   send() {
 
+    const user = this.loginForm.value;
+
  		if (this.loginForm.invalid) {
         Object.values(this.loginForm.controls).map(control => {
           if (control.status === "INVALID") {
@@ -53,22 +53,24 @@ export class LoginComponent implements OnInit {
 
     
  		// Post information
- 		this.auth.login(this.loginForm.value)
- 		.subscribe(response => {
-	 		// Redirect to home
-       if (response) {
-        this.auth.setCookie('user', response, 0);
-        console.log('Login Success!!!');
-        console.log(this.auth.getCookie('user'));
-	      this.router.navigateByUrl('/home');
-        return;
-       }
-       console.log('Login Failed!!!');
-       this.loginFailed = true;
- 		}, (err)=> {
- 			console.error(err.message);
-       this.loginFailed = true;
- 		});
+ 		this.auth.login({'username': user.email, 'password':user.password})
+ 		  .subscribe(({body}:any) => {   
+         
+         // Start temporal code
+          body.user = {
+            email: 'customer1@kairosshop.xyz',
+            firstName: 'Nicolas',
+            lastName: 'Molina',
+            rol:'ADMIN'
+          }
+         // End temporal code
+         this.auth.setCookie('user', body, 1);
+         console.log('Login Success!!!');
+
+         this.auth.redirectUser(body.user.rol);
+       }, (err) => {
+         this.loginFailed = true;
+       });
 
  		// Reset form
  		this.loginForm.reset();
@@ -83,7 +85,7 @@ export class LoginComponent implements OnInit {
     // Send information to backend to validate your password
     this.forgotPass = !this.forgotPass; 
     console.log(this.email);
-    this.router.navigateByUrl('/home');
+    this.auth.redirectUser('CUSTOMER');
   }
 
 }

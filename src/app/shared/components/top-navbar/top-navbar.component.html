@@ -19,7 +19,7 @@
 			icon="person">
 		</app-button>
 	</a>
-	<a *ngIf="user && !login" class="topNavbar__login topNavbar__menu-btn avatar bg-light" routerLink='/profile'>
+	<a *ngIf="user && !login" class="topNavbar__login topNavbar__menu-btn avatar bg-light" (click)="redirect()">
 		<img *ngIf="user.urlImage" src="{{user.urlImage}}" alt="{{user.firstName}}">
 		<img *ngIf="!user.urlImage" src="assets/images/avatar.png" alt="{{user.firstName}}">
 	</a>

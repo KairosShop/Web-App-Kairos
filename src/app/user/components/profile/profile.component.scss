@@ -1,6 +1,10 @@
 @import "var";
 
 .profile {
+	&__password {
+		display: flex;
+		flex-direction: column;
+	}
 	&__allInfo {
 		max-width: 100vw;
 		padding: 0% 0% 0% 5%;
@@ -10,15 +14,16 @@
 			"img info banner"
 			". info banner";
 		grid-template-rows: 25vh auto;
-		grid-template-columns: 20vh auto 20%;
+		grid-template-columns: 30vh auto 20%;
 	}
 	&__image {
 		grid-area: img;
 		display: flex;
 		flex-direction: column;
-		justify-content: center;
+		justify-content: space-between;
 		align-items: center;
 		margin-top: 25%;
+		height: 100%;
 		& img {
 			width: 100px;
 			height: 100px;
@@ -41,7 +46,6 @@
 		grid-auto-rows: 5rem;
 		column-gap: 2%;
 		align-content: center;
-		justify-items: center;
 		& h2 {
 			margin: 0px;
 		}
