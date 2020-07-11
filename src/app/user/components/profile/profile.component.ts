@@ -32,17 +32,17 @@ export class ProfileComponent implements OnInit {
   }
 
   getUser() {
-  	const userCookie = this.auth.getCookie('user');
-  	
+  	const {user} = this.auth.getCookie('user');
+  	console.log(user);
   	/*
 		Next code will be replace by
-		this.user = userCookie;
+		this.user = user;
   	*/
   	
-  	this.user.firstName = userCookie.firstName;
-  	this.user.lastName = userCookie.lastName;
-  	this.user.urlImage = userCookie.urlImage;
-  	this.user.email = userCookie.email;
+  	this.user.firstName = user.firstName;
+  	this.user.lastName = user.lastName;
+  	this.user.urlImage = user.urlImage;
+  	this.user.email = user.email;
 
   }
 
