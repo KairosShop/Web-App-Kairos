@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import { ActivatedRoute, Params, QueryParamsHandling } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ProductsService } from '@core/products/products.service';
 import { Product } from '@core/products/products.model';
@@ -21,6 +21,7 @@ export class ProductsDetailComponent implements OnInit {
   public subcategories: SubCategory[];
   public mesuares: Measure[];
   public productsForm: FormGroup;
+  public desactive: boolean = true;
   constructor(
     private route: ActivatedRoute,
     private productsService: ProductsService,
@@ -28,6 +29,12 @@ export class ProductsDetailComponent implements OnInit {
     private formBuilder: FormBuilder,
     private measureService: MeasureService
   ) {
+    this.route.queryParams.subscribe((query) => {
+      if (query.action == 'edit') {
+        this.desactive = false;
+      }
+    })
+
     this.createForm();
   }
 
@@ -76,6 +83,7 @@ export class ProductsDetailComponent implements OnInit {
         title: '',
         description: '',
         urlImage: '',
+        url: '',
         measureId: 0,
         quantity: 0,
         categoryId: 0,
@@ -83,16 +91,45 @@ export class ProductsDetailComponent implements OnInit {
         status: true
       };
     }
-    
-    this.productsForm = this.formBuilder.group({
-      title: [product.title],
-      description: [product.description],
-      urlImage: [product.urlImage],
-      measureId: [product.measureId],
-      quantity: [product.quantity],
-      categoryId: [product.categoryId],
-      subcategoryId: [product.subcategoryId],
-      status: [product.active]
+
+    this.productsForm =
+      this.formBuilder.group({
+      title: [{
+        value: product.title,
+        disabled: this.desactive,
+      }],
+      description: [{
+        value: product.description,
+        disabled: this.desactive,
+      }],
+      urlImage: [{
+        value: product.urlImage,
+        disabled: this.desactive,
+      }],
+      url: [{
+        value: null,
+        disabled: this.desactive,
+      }],
+      measureId: [{
+        value: product.measureId,
+        disabled: this.desactive,
+      }],
+      quantity: [{
+        value: product.quantity,
+        disabled: this.desactive,
+      }],
+      categoryId: [{
+        value: product.categoryId,
+        disabled: this.desactive,
+      }],
+      subcategoryId: [{
+        value: product.subcategoryId,
+        disabled: this.desactive,
+      }],
+      status: [{
+        value: product.active,
+        disabled: this.desactive,
+      }]
     })
   }
 

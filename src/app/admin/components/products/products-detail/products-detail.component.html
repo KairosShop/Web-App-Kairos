@@ -6,13 +6,13 @@
         <b>Status</b>
       </label>
       <div class="ProductDetail__form-status-a">
-        <input id="status-a" formControlName="status" type="radio" name="status" value="true">
+        <input id="status-a" formControlName="status" type="radio" name="status" [value]="true">
         <label for='status-a'>
           Active
         </label>
       </div>
       <div class="ProductDetail__form-status-i">
-        <input id="status-i" formControlName="status" type="radio" name="status" value="false">
+        <input id="status-i" formControlName="status" type="radio" name="status" [value]="false">
         <label for='status-i'>
           Inactive
         </label>
@@ -23,7 +23,7 @@
       <label for="title">
         <b>Title</b>
       </label>
-      <input id="title" formControlName="title" type="text" placeholder="title">
+      <input id="title" formControlName="title" type="text" placeholder="title" [disabled]='desactive'>
     </div>
 
     <div class="ProductDetail__form-description">
@@ -66,13 +66,13 @@
           Subcategory
         </b>
       </label>
-      <select name="subcategoryId">
+      <select  formControlName="subcategoryId" name="subcategoryId">
         <option *ngFor="let subcategory of subcategories" [ngValue]="subcategory.id">{{subcategory.title}}</option>
       </select>
     </div>
     <label for="urlImage" class="ProductDetail__form-img">
       <img src="{{productsForm.controls.urlImage.value}}" alt="{{productsForm.controls.title.value}}">
-      <input id="urlImage" formControlName="urlImage" type="file" placeholder="Image" accept="image/*">
+      <input id="urlImage" formControlName="url" type="file" placeholder="Image" accept="image/*">
     </label>
     <app-button icon='send' class="ProductDetail__form-btn"  name='send' color='primary'></app-button>
   </form>

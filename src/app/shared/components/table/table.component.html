@@ -55,17 +55,17 @@
             <td *ngIf="d[title] != true && d[title] != false">{{d[title]}}</td>
           </ng-container>
           <td>
-            <a [routerLink]=[d.id]>
+            <a [routerLink]=[d.id] [queryParams]="{'action': 'view'}">
               <span class="material-icons">
                 visibility
               </span>
             </a>
-            <a [routerLink]="[d.id, '/edit']">
+            <a [routerLink]="[d.id]" [queryParams]="{'action': 'edit'}">
               <span class="material-icons">
                 create
               </span>
             </a>
-            <a [routerLink]="[d.id,'/delete']">
+            <a [routerLink]="[d.id]"  [queryParams]="{'action': 'delete'}">
               <span class="material-icons">
                 delete
               </span>
