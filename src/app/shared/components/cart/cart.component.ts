@@ -34,7 +34,6 @@ export class CartComponent implements OnInit {
 
         this.cart = response;
         this.animation = true;
-        console.log(response);
         setTimeout(() => this.animation=false, 800);
       });
   }
