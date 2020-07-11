@@ -43,17 +43,22 @@ export class AddCartService {
   	});
   }
 
-  iterator(product:Product) {
+  iterator(product: Product, plus:boolean) {
     for (let productCart of this.cart) {
       if (product.id == productCart.id) {
-        return true;
+
+        if (plus) {
+          productCart.count++;
+          return true;
+        }
+        return productCart.count > 1 ? productCart.count-- : false;
       }
     }
+    return false;
   }
 
-  addCount(product:Product) {
-    if(this.iterator(product)) {
-      product.count++;
+  addCount(product: Product) {
+    if (this.iterator(product, true)) {
     } else {
       this.addProduct(product);
     }
@@ -62,8 +67,7 @@ export class AddCartService {
   }
 
   minusCount(product:Product) {
-    if(this.iterator(product) && product.count > 1) {
-      product.count--;
+    if(this.iterator(product, false)) {
     } else {
       this.removeProduct(product);
     }
@@ -72,16 +76,17 @@ export class AddCartService {
   }
 
   saveCart() {
-    localStorage.setItem('cart', JSON.stringify(this.cart));
+    sessionStorage.setItem('cart', JSON.stringify(this.cart));
   }
 
   loadCart() {
-    const getCart = JSON.parse(localStorage.getItem('cart'));
+    const getCart = JSON.parse(sessionStorage.getItem('cart'));
     if (getCart) {
       this.cart = getCart;
-      setTimeout(()=> {console.log('hello'); this.add_cart.next(this.cart)}, 2000);
-      /*console.log('hello'); 
-      this.add_cart.next(this.cart);*/
+      setTimeout(() => {
+        console.log('hello');
+        this.add_cart.next(this.cart)
+      }, 1500);
     }
   }
 
@@ -90,4 +95,7 @@ export class AddCartService {
     return this.add_cart.next(this.cart);
   }
 
+  getCart():Product[] {
+    return this.cart;
+  }
 }

@@ -9,23 +9,26 @@ import { Router } from '@angular/router';
 export class AuthService {
 
   constructor(
-  	private http: HttpClient,
+    private http: HttpClient,
     private router: Router
   ) { }
 
   login(user) {
     const userCredentials = user.username + ':' + user.password;
     const headers = new HttpHeaders({
-      'Authorization':'Basic ' + btoa(userCredentials)
+      'Authorization': 'Basic ' + btoa(userCredentials)
     });
 
-    return this.http.post('https://staging.kairosshop.xyz/api/auth/sign-in', {}, {headers});
+    return this.http.post('https://staging.kairosshop.xyz/api/auth/sign-in', {
+      "email": user.username,
+      "password": user.password
+    }, { headers });
 
-    
+
   }
 
-  register({firstName, lastname, email, password, adress=''}, type) {
-  	// This code will be repalce for method post to register user
+  register({ firstName, lastname, email, password, adress = '' }, type) {
+    // This code will be repalce for method post to register user
     let user;
     let rol = type ? 'super market' : 'customer';
     let _user = {
@@ -46,18 +49,18 @@ export class AuthService {
       }
     }
     console.log(user);
-  	return this.http.post('https://staging.kairosshop.xyz/api/users', user);
+    return this.http.post('https://staging.kairosshop.xyz/api/users', user);
   }
 
   setCookie(name, value, days) {
     value = JSON.stringify(value);
     let expires = "";
-      if (days) {
-        let date = new Date();
-        date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
-        expires = "; expires=" + date.toUTCString();
-      }
-      document.cookie = name + "=" + (value || "") + expires + "; path=/; SameSite=Lax;";
+    if (days) {
+      let date = new Date();
+      date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
+      expires = "; expires=" + date.toUTCString();
+    }
+    document.cookie = name + "=" + (value || "") + expires + "; path=/; SameSite=Lax;";
   };
 
   getCookie(name) {
@@ -75,7 +78,7 @@ export class AuthService {
     this.setCookie(name, '', -1);
   }
 
-  redirectUser(rol:string) {
+  redirectUser(rol: string) {
     let link;
 
     switch (rol) {
@@ -86,12 +89,12 @@ export class AuthService {
       case "SUPER MARKET":
         link = '/home';
         break;
-      
+
       case "ADMIN":
         link = '/admin';
         break;
     }
 
-    this.router.navigateByUrl(link);   
+    this.router.navigateByUrl(link);
   }
 }

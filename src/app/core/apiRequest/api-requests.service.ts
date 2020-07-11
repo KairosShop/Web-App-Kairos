@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from './../../../environments/environment';
+import { AuthService } from '@core/authentication/auth.service';
 
 import { map } from 'rxjs/operators';
 
@@ -8,13 +9,26 @@ import { map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class ApiRequestsService {
-  private url: string = `${environment.URL_API}`
+  private url: string = `${environment.URL_API}`;
+  headers: HttpHeaders;
 
+  constructor(private http: HttpClient, private auth: AuthService) {
 
-  constructor(private http: HttpClient) { }
+  }
+
+  getToken() {
+    const { token } = this.auth.getCookie('user') || false;
+    if (token) {
+      this.headers = new HttpHeaders({
+        'Authorization': `Bearer ${token}`
+      })
+    }
+  }
 
   getQuery(query: string) {
-    return this.http.get(`${this.url}/${query}`)
+    this.getToken()
+    const headers = this.headers;
+    return this.http.get(`${this.url}/${query}`, {headers})
       .pipe(map((categories: any) => {
         const { error, body, status } = categories;
         if (error) {

@@ -2,18 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ProductsService } from '@core/products/products.service';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-
-interface ProductsTable {
-  status: boolean;
-  id: number;
-  title: string;
-  quantity: string;
-  measure: string;
-  category?: string;
-  subcategory?: string;
-  deleted: boolean;
-}
-
+import { ProductsTable } from '@core/products/products.model'
 
 @Component({
   selector: 'app-products',
@@ -31,7 +20,7 @@ export class ProductsComponent implements OnInit {
   }
 
   fetchProducts() {
-   this.products = this.productsService.getAllProducts()
+    this.products = this.productsService.getAllProducts()
       .pipe(map((products) => {
         let tableProducts = [];
         products.map((product) => {

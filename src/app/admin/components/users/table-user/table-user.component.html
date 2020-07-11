@@ -1,1 +1,3 @@
-<p>table-user works!</p>
+<section class="Users" >
+  <app-table class="Products__table" *ngIf="users|async" [Data]="users |async" title="User" ></app-table>
+</section>
