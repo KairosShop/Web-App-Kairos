@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { map, filter } from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -8,7 +9,8 @@ import { map, filter } from 'rxjs/operators';
 export class AuthService {
 
   constructor(
-  	private http: HttpClient
+  	private http: HttpClient,
+    private router: Router
   ) { }
 
   login(user) {
@@ -71,5 +73,25 @@ export class AuthService {
 
   delteCokie(name) {
     this.setCookie(name, '', -1);
+  }
+
+  redirectUser(rol:string) {
+    let link;
+
+    switch (rol) {
+      case "CUSTOMER":
+        link = '/home';
+        break;
+
+      case "SUPER MARKET":
+        link = '/home';
+        break;
+      
+      case "ADMIN":
+        link = '/admin';
+        break;
+    }
+
+    this.router.navigateByUrl(link);   
   }
 }

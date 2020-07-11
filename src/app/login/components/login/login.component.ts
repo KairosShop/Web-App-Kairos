@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
 
 import { AuthService } from '../../../core/authentication/auth.service';
 import { ValidationsService } from '../../../core/authentication/validations.service';
@@ -19,7 +18,6 @@ export class LoginComponent implements OnInit {
 
   constructor(
   	private fb: FormBuilder,
-  	private router: Router,
   	private auth: AuthService,
     public _validationsService:ValidationsService
   ) {
@@ -69,7 +67,7 @@ export class LoginComponent implements OnInit {
          this.auth.setCookie('user', body, 1);
          console.log('Login Success!!!');
 
-         this.redirectUser(body.user.rol);
+         this.auth.redirectUser(body.user.rol);
        }, (err) => {
          this.loginFailed = true;
        });
@@ -77,26 +75,6 @@ export class LoginComponent implements OnInit {
  		// Reset form
  		this.loginForm.reset();
 
-  }
-
-  private redirectUser(rol:string) {
-    let link;
-
-    switch (rol) {
-      case "CUSTOMER":
-        link = '/home';
-        break;
-
-      case "SUPER MARKET":
-        link = '/home';
-        break;
-      
-      case "ADMIN":
-        link = '/admin';
-        break;
-    }
-
-    this.router.navigateByUrl(link);   
   }
 
   forgotPassword() {
@@ -107,7 +85,7 @@ export class LoginComponent implements OnInit {
     // Send information to backend to validate your password
     this.forgotPass = !this.forgotPass; 
     console.log(this.email);
-    this.router.navigateByUrl('/home');
+    this.auth.redirectUser('CUSTOMER');
   }
 
 }

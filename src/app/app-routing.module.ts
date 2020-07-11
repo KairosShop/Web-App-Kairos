@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { LayoutComponent } from './layout/layout.component'
 import { AuthGuard } from './core/guards/auth.guard';
+import { UserTypeGuard } from './core/guards/user-type.guard';
 
 const routes: Routes = [
   {
@@ -50,7 +51,7 @@ const routes: Routes = [
     pathMatch: 'full',
   },
   {
-    path: 'admin',
+    path: 'admin', canActivate: [UserTypeGuard],
     component: LayoutComponent,
     loadChildren: () => import('./admin/admin.module').then(a => a.AdminModule),
     data: {
@@ -58,7 +59,7 @@ const routes: Routes = [
     }
   },
   {
-    path: 'profile',
+    path: 'profile', canActivate: [UserTypeGuard],
     component: LayoutComponent,
     data: {
       login: true,

@@ -55,5 +55,10 @@ export class TopNavbarComponent implements OnInit {
   loginUser() {
     this.user = this.auth.getCookie('user');
   }
+
+  redirect() {
+    const {user} = this.auth.getCookie('user');
+    this.auth.redirectUser(user.rol);
+  }
 }
 
