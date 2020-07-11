@@ -39,6 +39,8 @@ export class LoginComponent implements OnInit {
 
   send() {
 
+    const user = this.loginForm.value;
+
  		if (this.loginForm.invalid) {
         Object.values(this.loginForm.controls).map(control => {
           if (control.status === "INVALID") {
@@ -53,22 +55,23 @@ export class LoginComponent implements OnInit {
 
     
  		// Post information
- 		this.auth.login(this.loginForm.value)
- 		.subscribe(response => {
-	 		// Redirect to home
-       if (response) {
-        this.auth.setCookie('user', response, 0);
-        console.log('Login Success!!!');
-        console.log(this.auth.getCookie('user'));
-	      this.router.navigateByUrl('/home');
-        return;
-       }
-       console.log('Login Failed!!!');
-       this.loginFailed = true;
- 		}, (err)=> {
- 			console.error(err.message);
-       this.loginFailed = true;
- 		});
+ 		this.auth.login({'username': user.email, 'password':user.password})
+ 		  .subscribe(({body}:any) => {   
+         
+         // Start temporal code
+          body.user = {
+            email: 'customer1@kairosshop.xyz',
+            firstName: 'Nicolas',
+            lastName: 'Molina',
+            rol:'CUSTOMER'
+          }
+         // End temporal code
+         this.auth.setCookie('user', body, 1);
+         console.log('Login Success!!!');
+         this.router.navigateByUrl('/home');
+       }, (err) => {
+         this.loginFailed = true;
+       });
 
  		// Reset form
  		this.loginForm.reset();

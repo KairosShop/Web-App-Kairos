@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { map, filter } from 'rxjs/operators';
 
 @Injectable({
@@ -12,23 +12,14 @@ export class AuthService {
   ) { }
 
   login(user) {
-  	// This code will be repalce for method post to login user
-  	return this.http.get('https://staging.kairosshop.xyz/api/users')
-    .pipe(map(({body}:any)=> {
-        return body.filter((index:any) => index.email == user.email)[0];
-      }));
-    /*
-
-    const headers = new HttpHeaders();
     const userCredentials = user.username + ':' + user.password;
+    const headers = new HttpHeaders({
+      'Authorization':'Basic ' + btoa(userCredentials)
+    });
 
-    headers.append('Authorization', 'Basic ' + btoa(userCredentials));
+    return this.http.post('https://staging.kairosshop.xyz/api/auth/sign-in', {}, {headers});
 
-    // This code will be repalce for method post to login user
-    console.log(user);
-    return this.http.post('https://staging.kairosshop.xyz/api/auth/sign-in', user, {headers});
-
-    */
+    
   }
 
   register({firstName, lastname, email, password, adress=''}, type) {
