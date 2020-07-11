@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 
+import { ImageCropperModule } from 'ngx-image-cropper';
+
 import { ButtonComponent } from './components/button/button.component';
 import { SearchComponent } from './components/search/search.component';
 import { CartComponent } from './components/cart/cart.component';
@@ -32,7 +34,8 @@ import { TableComponent } from './components/table/table.component';
   imports: [
     CommonModule,
     RouterModule,
-    FormsModule
+    FormsModule,
+    ImageCropperModule
   ],
   exports: [
     RouterModule,
@@ -44,7 +47,8 @@ import { TableComponent } from './components/table/table.component';
     ProductsCardComponent,
     GardenProductsComponent,
     PanelComponent,
-    TableComponent
+    TableComponent,
+    ImageCropperModule
   ]
 })
 export class SharedModule { }

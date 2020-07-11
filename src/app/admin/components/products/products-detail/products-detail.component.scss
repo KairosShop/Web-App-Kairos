@@ -17,8 +17,8 @@
       "img title title"
       "img quantity measure"
       "img category subcategory"
-      "img description description"
-      "img btn btn";
+      "upimg description description"
+      "upimg btn btn";
     grid-template-columns: 50% 25% 25%;
     grid-template-rows: 4rem 4rem 4rem 4rem auto 4rem;
     justify-items: center;
@@ -107,4 +107,9 @@
       width: 100%;
     }
   }
+}
+
+image-cropper {
+  grid-area: upimg;
+
 }

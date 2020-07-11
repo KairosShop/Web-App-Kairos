@@ -8,6 +8,7 @@ import { Category } from '@core/categories/categories.model';
 import { SubCategory } from '@core/subCategories/subCategories.model';
 import { Measure } from '@core/measure/measure.model';
 import { MeasureService } from '@core/measure/measure.service';
+import { ImageCroppedEvent } from 'ngx-image-cropper';
 
 @Component({
   selector: 'app-products-detail',
@@ -145,6 +146,22 @@ export class ProductsDetailComponent implements OnInit {
         this.subcategories = item.subcategories
       }
     })
+  }
+
+  fileChangeEvent(event: any): void {
+    this.imageChangedEvent = event;
+  }
+  imageCropped(event: ImageCroppedEvent) {
+    this.croppedImage = event.base64;
+  }
+  imageLoaded() {
+    // show cropper
+  }
+  cropperReady() {
+    // cropper ready
+  }
+  loadImageFailed() {
+    // show message
   }
 
 }
