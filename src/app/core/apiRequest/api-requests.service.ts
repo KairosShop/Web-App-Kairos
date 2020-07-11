@@ -13,6 +13,10 @@ export class ApiRequestsService {
   headers: HttpHeaders;
 
   constructor(private http: HttpClient, private auth: AuthService) {
+
+  }
+
+  getToken() {
     const { token } = this.auth.getCookie('user') || false;
     if (token) {
       this.headers = new HttpHeaders({
@@ -22,8 +26,9 @@ export class ApiRequestsService {
   }
 
   getQuery(query: string) {
+    this.getToken()
     const headers = this.headers;
-    return this.http.get(`${this.url}/${query}`, { headers })
+    return this.http.get(`${this.url}/${query}`, {headers})
       .pipe(map((categories: any) => {
         const { error, body, status } = categories;
         if (error) {
