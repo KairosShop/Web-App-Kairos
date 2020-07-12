@@ -9,7 +9,6 @@ import { SubCategory } from '@core/subCategories/subCategories.model';
 import { Measure } from '@core/measure/measure.model';
 import { MeasureService } from '@core/measure/measure.service';
 import { ImageCroppedEvent } from 'ngx-image-cropper';
-import { AngularFireStorage } from 'angularfire2/storage';
 import { ValidationsService } from '@core/authentication/validations.service';
 import { ApiRequestsService } from '@core/apiRequest/api-requests.service';
 
@@ -37,7 +36,6 @@ export class ProductsDetailComponent implements OnInit {
     private categoriesService: CategoriesService,
     private formBuilder: FormBuilder,
     private measureService: MeasureService,
-    private firebaseStorage: AngularFireStorage,
     public _validations:ValidationsService,
     public apiRequestsService: ApiRequestsService
   ) {

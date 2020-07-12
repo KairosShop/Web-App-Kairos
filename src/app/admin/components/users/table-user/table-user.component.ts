@@ -36,6 +36,7 @@ export class TableUserComponent implements OnInit {
             verified: user.verified
           })
         })
+        console.log(users)
         return tableUsers;
       }))
   }
