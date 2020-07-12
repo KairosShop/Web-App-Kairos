@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnChanges } from '@angular/core';
+import { Component, OnInit, Input, OnChanges, Output, EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '@core/authentication/auth.service';
 
@@ -12,11 +12,11 @@ export class TableComponent implements OnInit, OnChanges {
   @Input() Data;
   @Input() title: string = 'Title';
   @Input() btnNew: boolean;
+  @Output() btnNewAction = new EventEmitter();
   info = [];
   titles = [];
   constructor(
-    private router:Router,
-    private authService:AuthService
+
   ) {
 
   }
@@ -32,22 +32,8 @@ export class TableComponent implements OnInit, OnChanges {
     }
   }
 
-  redirectProduct() {
-    const cookie = this.authService.getCookie('user');
-    if (!cookie) {
-      console.log('Session close');
-      this.router.navigateByUrl('/home');
-    }
-
-    const { user } = cookie;
-    const { rol } = user;
-
-    if (rol === 'ADMIN') {
-      this.router.navigate(['admin/products/new'], {queryParams: {action:'edit'}});
-    } else {
-      this.router.navigate(['admin/products/new'], {queryParams: {action:'view'}});
-    }
-
+  send() {
+    this.btnNewAction.emit(true);
   }
 
 }

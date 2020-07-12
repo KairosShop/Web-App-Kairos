@@ -1,3 +1,4 @@
 <section class="Products" >
-  <app-table [btnNew]='btnNew' class="Products__table" *ngIf="products|async" [Data]="products |async" title="Products" ></app-table>
+  <app-table [btnNew]='btnNew' (btnNewAction)="redirectProduct()" class="Products__table" *ngIf="products|async" [Data]="products |async" title="Products" >
+  </app-table>
 </section>

@@ -73,6 +73,8 @@ export class TopNavbarComponent implements OnInit {
         break;
     }
 
+    console.log(user.rol)
+
   }
 }
 

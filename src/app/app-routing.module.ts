@@ -60,7 +60,8 @@ const routes: Routes = [
     }
   },
   {
-    path: 'profile', canActivate: [UserTypeGuard],
+    path: 'profile',
+/*     canActivate: [UserTypeGuard], */
     component: LayoutComponent,
     data: {
       login: true,

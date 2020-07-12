@@ -33,7 +33,7 @@
 						<h3 *ngIf="toggle">Products</h3>
 					</a>
 				</li>
-				<li><a class="panel__sidebar__nav-item" routerLink="/admin/users" routerLinkActive="active">
+				<li><a class="panel__sidebar__nav-item" (click)="redirectPerfile()" routerLinkActive="active">
 						<span class="material-icons">
 							supervisor_account
 						</span>

@@ -5,52 +5,52 @@ import { Router } from '@angular/router';
 import { AuthService } from '../authentication/auth.service';
 
 @Injectable({
-  providedIn: 'root'
+	providedIn: 'root'
 })
 export class UserTypeGuard implements CanActivate {
-  
-  constructor(
-  	private auth: AuthService,
-  	private router: Router
-  ) {}
 
-  canActivate({routeConfig}):boolean {
-  	const path = routeConfig.path;
-  	const cookie = this.auth.getCookie('user');
+	constructor(
+		private auth: AuthService,
+		private router: Router
+	) { }
 
-  	if (!cookie) {
-		this.router.navigateByUrl('/home');
-  		return false;
-  	}
+	canActivate({ routeConfig }): boolean {
+		const path = routeConfig.path;
+		const cookie = this.auth.getCookie('user');
 
-  	const { user } = cookie;
-  	const rol = user.rol;
-  	return this.redirect(rol, path);
-  }
+		if (!cookie) {
+			this.router.navigateByUrl('/home');
+			return false;
+		}
 
-  redirect(rol:string, path:string) {
-  	switch (rol) {
-  		case "CUSTOMER":
-  			if (path !== 'profile') {
-  				this.router.navigateByUrl('/profile');
-  				return false;
-  			}
-  			return true;
-  		case "ADMIN":
-  			if (path !== 'admin') {
-  				this.router.navigateByUrl('/admin');
-  				return false;
-  			}
-  			return true;
-  		case "SUPER MARKET":
-  			if (path !== 'admin') {
-  				this.router.navigateByUrl('/admin');
-  				return false;
-  			}
-  			return true  		
-  		default:
-  			this.router.navigateByUrl('/home');
-  			return false;
-  	}
-  }
+		const { user } = cookie;
+		const rol = user.rol;
+		return this.redirect(rol, path);
+	}
+
+	redirect(rol: string, path: string) {
+		switch (rol) {
+			case "CUSTOMER":
+				if (path !== 'profile') {
+					this.router.navigateByUrl('/profile');
+					return false;
+				}
+				return true;
+			case "ADMIN":
+				if (path !== 'admin') {
+					this.router.navigateByUrl('/admin');
+					return false;
+				}
+				return true;
+			case "SUPER MARKET":
+				if (path !== 'admin') {
+					this.router.navigateByUrl('/admin');
+					return false;
+				}
+				return true
+			default:
+				this.router.navigateByUrl('/home');
+				return false;
+		}
+	}
 }
