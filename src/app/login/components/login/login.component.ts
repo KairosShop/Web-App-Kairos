@@ -44,9 +44,6 @@ export class LoginComponent implements OnInit {
           if (control.status === "INVALID") {
             control.markAsTouched();
           }
-          if (control instanceof FormGroup) {
-            Object.values(control.controls).map(control => control.markAsTouched());
-          }
         });
         return;
       }

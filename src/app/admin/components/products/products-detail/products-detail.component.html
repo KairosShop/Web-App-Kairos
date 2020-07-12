@@ -1,7 +1,7 @@
 <section class="ProductDetail">
   <h2 class="ProductDetail__title">Detail Product</h2>
   <form class="ProductDetail__form" [formGroup]="productsForm">
-    <div class="ProductDetail__form-status">
+    <div class="ProductDetail__form-status" [class.is-invalid]="_validations.invalidStatus(productsForm)">
       <label class="ProductDetail__form-status-title">
         <b>Status</b>
       </label>
@@ -23,14 +23,16 @@
       <label for="title">
         <b>Title</b>
       </label>
-      <input id="title" formControlName="title" type="text" placeholder="title" [disabled]='desactive'>
+      <input id="title" formControlName="title" type="text" placeholder="title" [disabled]='desactive'
+      [class.is-invalid]="_validations.invalidTitle(productsForm)">
     </div>
 
     <div class="ProductDetail__form-description">
       <label><b>
           Description
         </b></label>
-      <textarea id="description" formControlName="description" type="text" placeholder="description"></textarea>
+      <textarea id="description" formControlName="description" type="text" placeholder="description"
+      [class.is-invalid]="_validations.invalidDescription(productsForm)"></textarea>
     </div>
 
     <div class="ProductDetail__form-quantity">
@@ -46,7 +48,8 @@
       <label>
         <b>Measure</b>
       </label>
-      <select name="measure" formControlName="measureId">
+      <select name="measure" formControlName="measureId"
+        [class.is-invalid]="_validations.invalidMeasure(productsForm)">
         <option *ngFor="let measure of mesuares" [ngValue]="measure.id">{{measure.measure}}</option>
       </select>
     </div>
@@ -55,7 +58,8 @@
         <b>Category</b>
       </label>
       <select formControlName="categoryId" name="category"
-        (ngModelChange)="getSubcategories(productsForm.controls.categoryId.value)">
+        (ngModelChange)="getSubcategories(productsForm.controls.categoryId.value)"
+        [class.is-invalid]="_validations.invalidCategory(productsForm)">
         <option *ngFor="let category of categories" [ngValue]="category.id">{{category.title}}</option>
       </select>
     </div>
@@ -75,7 +79,8 @@
         alt="{{productsForm.controls.title.value}}">
       <img [src]="croppedImage" />
       <input id="urlImage" (change)="fileChangeEvent($event)" formControlName="url" type="file" placeholder="Image"
-        accept="image/*">
+        accept="image/*"
+        [class.is-invalid]="_validations.invalidUrl(productsForm)">
     </label>
     <image-cropper [imageChangedEvent]="imageChangedEvent" [maintainAspectRatio]="true" [aspectRatio]="4 / 3"
       format="png" (imageCropped)="imageCropped($event)" (imageLoaded)="imageLoaded()" (cropperReady)="cropperReady()"

@@ -10,6 +10,7 @@ import { Measure } from '@core/measure/measure.model';
 import { MeasureService } from '@core/measure/measure.service';
 import { ImageCroppedEvent } from 'ngx-image-cropper';
 import { AngularFireStorage } from 'angularfire2/storage';
+import { ValidationsService } from '@core/authentication/validations.service';
 
 @Component({
   selector: 'app-products-detail',
@@ -35,7 +36,8 @@ export class ProductsDetailComponent implements OnInit {
     private categoriesService: CategoriesService,
     private formBuilder: FormBuilder,
     private measureService: MeasureService,
-    private firebaseStorage: AngularFireStorage
+    private firebaseStorage: AngularFireStorage,
+    public _validations:ValidationsService
   ) {
     this.activatedRoute.queryParams.subscribe((query) => {
       if (query.action == 'edit') {
@@ -108,11 +110,11 @@ export class ProductsDetailComponent implements OnInit {
         title: [{
           value: product.title,
           disabled: this.desactive,
-        }],
+        }, [Validators.required, Validators.minLength(3)]],
         description: [{
           value: product.description,
           disabled: this.desactive,
-        }],
+        }, [Validators.required, Validators.minLength(20)]],
         urlImage: [{
           value: product.urlImage,
           disabled: this.desactive,
@@ -120,19 +122,19 @@ export class ProductsDetailComponent implements OnInit {
         url: [{
           value: null,
           disabled: this.desactive,
-        }],
+        }, Validators.required],
         measureId: [{
           value: product.measureId,
           disabled: this.desactive,
-        }],
+        }, [Validators.required, Validators.minLength(1)]],
         quantity: [{
           value: product.quantity,
           disabled: this.desactive,
-        }],
+        }, Validators.required],
         categoryId: [{
           value: product.categoryId,
           disabled: this.desactive,
-        }],
+        }, [Validators.required, Validators.minLength(2)]],
         subcategoryId: [{
           value: product.subcategoryId,
           disabled: this.desactive,
@@ -140,7 +142,7 @@ export class ProductsDetailComponent implements OnInit {
         status: [{
           value: product.active,
           disabled: this.desactive,
-        }]
+        }, Validators.required]
       })
   }
 
@@ -174,6 +176,17 @@ export class ProductsDetailComponent implements OnInit {
 
 
   saveSettings() {
+
+    console.log(this.productsForm);
+    if (this.productsForm.invalid) {
+        Object.values(this.productsForm.controls).map(control => {
+          if (control.status === "INVALID") {
+            control.markAsTouched();
+          }
+        });
+        return;
+      }
+
     if (this.croppedImage) {
       const currentproductsId = Date.now();
       const products = this.firebaseStorage.ref('products/' + currentproductsId + '.jpg').putString(this.croppedImage, 'data_url');
@@ -186,5 +199,8 @@ export class ProductsDetailComponent implements OnInit {
         console.log(error);
       });
     }
+
+    console.log(this.productsForm.invalid);
+
   }
 }
