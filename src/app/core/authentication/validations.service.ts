@@ -54,27 +54,8 @@ export class ValidationsService {
     }
   }
 
-  invalidTitle(form) {
-    return this.invalidArguments('title', form); 
+  invalidForm(form, field:string) {
+    return this.invalidArguments(field, form);
   }
 
-  invalidDescription(form) {
-    return this.invalidArguments('description', form); 
-  }
-
-  invalidMeasure(form) {
-    return this.invalidArguments('measureId', form);
-  }
-
-  invalidCategory(form) {
-    return this.invalidArguments('categoryId', form);
-  }
-
-  invalidStatus(form) {
-    return this.invalidArguments('status', form);
-  }
-
-  invalidUrl(form) {
-    return this.invalidArguments('url', form);
-  }
 }

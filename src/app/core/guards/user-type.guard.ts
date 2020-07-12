@@ -43,8 +43,8 @@ export class UserTypeGuard implements CanActivate {
   			}
   			return true;
   		case "SUPER MARKET":
-  			if (path !== 'superMarket') {
-  				this.router.navigateByUrl('/home');
+  			if (path !== 'admin') {
+  				this.router.navigateByUrl('/admin');
   				return false;
   			}
   			return true  		

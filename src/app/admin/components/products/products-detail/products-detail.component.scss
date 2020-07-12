@@ -18,7 +18,8 @@
       "img quantity measure"
       "img category subcategory"
       "upimg description description"
-      "upimg btn btn";
+      "upimg price price"
+      "btn . .";
     grid-template-columns: 50% 25% 25%;
     grid-template-rows: 4rem 4rem 4rem 4rem auto 4rem;
     justify-items: center;
@@ -102,6 +103,9 @@
     }
     &-subcategory {
       grid-area: subcategory;
+    }
+    &-price {
+      grid-area: price;
     }
     &-btn{
       grid-area: btn;

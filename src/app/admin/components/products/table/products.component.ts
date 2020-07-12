@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { ProductsTable } from '@core/products/products.model'
 import { AuthService } from '@core/authentication/auth.service';
+import { Product } from '@core/products/products.model';
 
 @Component({
   selector: 'app-products',
@@ -31,7 +32,7 @@ export class ProductsComponent implements OnInit {
 
   fetchProducts() {
     this.products = this.productsService.getAllProducts()
-      .pipe(map((products) => {
+      .pipe(map((products:Product[]) => {
         let tableProducts = [];
         products.map((product) => {
           tableProducts.push({

@@ -31,10 +31,17 @@ export class ApiRequestsService {
     }
   }
 
-  getQuery(query: string) {
+  getQuery(query: string, method='get', body={}) {
     this.getToken()
     const headers = this.headers;
-    return this.http.get(`${this.url}/${query}`, { headers })
+    let request;
+    if (method==='get') {
+       request = this.http.get(`${this.url}/${query}`, { headers });
+    }
+    if (method === 'post') {
+      request = this.http.post(`${this.url}/${query}`, body, { headers });
+    }
+    return request
       .pipe(map((categories: any) => {
         const { error, body, status } = categories;
         if (error) {
@@ -58,4 +65,15 @@ export class ApiRequestsService {
         }
       }));
   }
+
+  postQuery(query:string, body) {
+    let headers = new HttpHeaders().set('Content-Type', 'application/json');
+    return this.http.post(`${this.url}/${query}`, body, {headers})
+      .pipe(map(response => {
+        console.log(response);
+        console.log('hello')
+        return response;
+      }));
+  }
+
 }

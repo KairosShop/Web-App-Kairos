@@ -98,4 +98,13 @@ export class AddCartService {
   getCart():Product[] {
     return this.cart;
   }
+
+  sendCart(cart) {
+    const sendCart = cart.map(products => {
+      return {'productId':products.id, 'quantity': products.count}
+    });
+    return sendCart;
+    // return this.apiResquests.getQuery('cart', 'post', cart);
+  }
+
 }

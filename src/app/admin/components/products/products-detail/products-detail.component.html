@@ -1,18 +1,18 @@
 <section class="ProductDetail">
   <h2 class="ProductDetail__title">Detail Product</h2>
   <form class="ProductDetail__form" [formGroup]="productsForm">
-    <div class="ProductDetail__form-status" [class.is-invalid]="_validations.invalidStatus(productsForm)">
+    <div class="ProductDetail__form-status" [class.is-invalid]="_validations.invalidForm(productsForm, 'active')">
       <label class="ProductDetail__form-status-title">
         <b>Status</b>
       </label>
       <div class="ProductDetail__form-status-a">
-        <input id="status-a" formControlName="status" type="radio" name="status" [value]="true">
+        <input id="status-a" formControlName="active" type="radio" name="active" [value]="true">
         <label for='status-a'>
           Active
         </label>
       </div>
       <div class="ProductDetail__form-status-i">
-        <input id="status-i" formControlName="status" type="radio" name="status" [value]="false">
+        <input id="status-i" formControlName="active" type="radio" name="active" [value]="false">
         <label for='status-i'>
           Inactive
         </label>
@@ -24,7 +24,7 @@
         <b>Title</b>
       </label>
       <input id="title" formControlName="title" type="text" placeholder="title" [disabled]='desactive'
-      [class.is-invalid]="_validations.invalidTitle(productsForm)">
+      [class.is-invalid]="_validations.invalidForm(productsForm, 'title')">
     </div>
 
     <div class="ProductDetail__form-description">
@@ -32,7 +32,7 @@
           Description
         </b></label>
       <textarea id="description" formControlName="description" type="text" placeholder="description"
-      [class.is-invalid]="_validations.invalidDescription(productsForm)"></textarea>
+      [class.is-invalid]="_validations.invalidForm(productsForm, 'description')"></textarea>
     </div>
 
     <div class="ProductDetail__form-quantity">
@@ -41,7 +41,8 @@
           Quantity
         </b>
       </label>
-      <input formControlName="quantity" type="number" placeholder="quantity">
+      <input formControlName="quantity" type="number" placeholder="quantity"
+      [class.is-invalid]="_validations.invalidForm(productsForm, 'quantity')">
     </div>
 
     <div class="ProductDetail__form-measure">
@@ -49,7 +50,7 @@
         <b>Measure</b>
       </label>
       <select name="measure" formControlName="measureId"
-        [class.is-invalid]="_validations.invalidMeasure(productsForm)">
+        [class.is-invalid]="_validations.invalidForm(productsForm, 'measureId')">
         <option *ngFor="let measure of mesuares" [ngValue]="measure.id">{{measure.measure}}</option>
       </select>
     </div>
@@ -59,7 +60,7 @@
       </label>
       <select formControlName="categoryId" name="category"
         (ngModelChange)="getSubcategories(productsForm.controls.categoryId.value)"
-        [class.is-invalid]="_validations.invalidCategory(productsForm)">
+        [class.is-invalid]="_validations.invalidForm(productsForm, 'categoryId')">
         <option *ngFor="let category of categories" [ngValue]="category.id">{{category.title}}</option>
       </select>
     </div>
@@ -70,7 +71,8 @@
           Subcategory
         </b>
       </label>
-      <select formControlName="subcategoryId" name="subcategoryId">
+      <select formControlName="subcategoryId" name="subcategoryId"
+      [class.is-invalid]="_validations.invalidForm(productsForm, 'subcategoryId')">
         <option *ngFor="let subcategory of subcategories" [ngValue]="subcategory.id">{{subcategory.title}}</option>
       </select>
     </div>
@@ -78,13 +80,25 @@
       <img *ngIf="!croppedImage" src="{{productsForm.controls.urlImage.value}}"
         alt="{{productsForm.controls.title.value}}">
       <img [src]="croppedImage" />
-      <input id="urlImage" (change)="fileChangeEvent($event)" formControlName="url" type="file" placeholder="Image"
+      <input id="urlImage" (change)="fileChangeEvent($event)" formControlName="urlImage" type="file" placeholder="Image"
         accept="image/*"
-        [class.is-invalid]="_validations.invalidUrl(productsForm)">
+        [class.is-invalid]="_validations.invalidForm(productsForm, 'urlImage')">
     </label>
     <image-cropper [imageChangedEvent]="imageChangedEvent" [maintainAspectRatio]="true" [aspectRatio]="4 / 3"
       format="png" (imageCropped)="imageCropped($event)" (imageLoaded)="imageLoaded()" (cropperReady)="cropperReady()"
       (loadImageFailed)="loadImageFailed()"></image-cropper>
+    
+    <div class="ProductDetail__form-price">
+      <label>
+        <b>
+          Price
+        </b>
+      </label>
+      <input formControlName="price" type="number" placeholder="price"
+      [class.is-invalid]="_validations.invalidForm(productsForm, 'price')">
+    </div>
+
     <app-button  (click)="saveSettings()" *ngIf='!desactive' icon='send' class="ProductDetail__form-btn" name='send' color='primary'></app-button>
+    <app-button  (click)="savePrice()" *ngIf='desactive' icon='send' class="ProductDetail__form-btn" name='Save price' color='primary'></app-button>
   </form>
 </section>
