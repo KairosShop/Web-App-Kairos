@@ -11,6 +11,7 @@ import { MeasureService } from '@core/measure/measure.service';
 import { ImageCroppedEvent } from 'ngx-image-cropper';
 import { AngularFireStorage } from 'angularfire2/storage';
 import { ValidationsService } from '@core/authentication/validations.service';
+import { ApiRequestsService } from '@core/apiRequest/api-requests.service';
 
 @Component({
   selector: 'app-products-detail',
@@ -37,7 +38,8 @@ export class ProductsDetailComponent implements OnInit {
     private formBuilder: FormBuilder,
     private measureService: MeasureService,
     private firebaseStorage: AngularFireStorage,
-    public _validations:ValidationsService
+    public _validations:ValidationsService,
+    public apiRequestsService: ApiRequestsService
   ) {
     this.activatedRoute.queryParams.subscribe((query) => {
       if (query.action == 'edit') {
@@ -101,7 +103,7 @@ export class ProductsDetailComponent implements OnInit {
         quantity: 0,
         categoryId: 0,
         subcategoryId: 0,
-        status: true
+        active: true
       };
     }
 
@@ -119,10 +121,10 @@ export class ProductsDetailComponent implements OnInit {
           value: product.urlImage,
           disabled: this.desactive,
         }],
-        url: [{
+       /* url: [{
           value: null,
           disabled: this.desactive,
-        }, Validators.required],
+        }, Validators.required],*/
         measureId: [{
           value: product.measureId,
           disabled: this.desactive,
@@ -130,7 +132,7 @@ export class ProductsDetailComponent implements OnInit {
         quantity: [{
           value: product.quantity,
           disabled: this.desactive,
-        }, Validators.required],
+        }, [Validators.required, Validators.min(0)]],
         categoryId: [{
           value: product.categoryId,
           disabled: this.desactive,
@@ -138,12 +140,12 @@ export class ProductsDetailComponent implements OnInit {
         subcategoryId: [{
           value: product.subcategoryId,
           disabled: this.desactive,
-        }],
-        status: [{
+        }, [Validators.required, Validators.minLength(2)]],
+        active: [{
           value: product.active,
           disabled: this.desactive,
         }, Validators.required],
-        price: [{disabled: !this.desactive},[Validators.required, Validators.pattern('([0-9]*)')]]
+        price: [{value: 0, disabled: !this.desactive},[Validators.required, Validators.pattern('([0-9]*)')]]
       })
   }
 
@@ -178,7 +180,12 @@ export class ProductsDetailComponent implements OnInit {
 
   saveSettings() {
 
-    console.log(this.productsForm);
+    const formValue = this.productsForm.value;
+   
+    // const body = this.apiRequestsService.getQuery('file', 'post', formValue.url);
+
+    // console.log(body);
+
     if (this.productsForm.invalid) {
         Object.values(this.productsForm.controls).map(control => {
           if (control.status === "INVALID") {
@@ -188,7 +195,7 @@ export class ProductsDetailComponent implements OnInit {
         return;
       }
 
-    if (this.croppedImage) {
+   /* if (this.croppedImage) {
       const currentproductsId = Date.now();
       const products = this.firebaseStorage.ref('products/' + currentproductsId + '.jpg').putString(this.croppedImage, 'data_url');
       products.then((result) => {
@@ -199,9 +206,15 @@ export class ProductsDetailComponent implements OnInit {
         alert('Hubo un error');
         console.log(error);
       });
-    }
+    }*/
+    formValue.urlImage = 'https://cdn.computerhoy.com/sites/navi.axelspringer.es/public/media/image/2019/06/python.jpg';
+    this.apiRequestsService.getQuery('products', 'post', formValue)
+      .subscribe(response => {
+        console.log(response);
+      });
 
-    console.log(this.productsForm.invalid);
+      this.productsForm.reset();
+      this.router.navigateByUrl('/admin/products');
 
   }
 

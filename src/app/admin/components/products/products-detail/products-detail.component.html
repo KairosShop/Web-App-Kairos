@@ -1,18 +1,18 @@
 <section class="ProductDetail">
   <h2 class="ProductDetail__title">Detail Product</h2>
   <form class="ProductDetail__form" [formGroup]="productsForm">
-    <div class="ProductDetail__form-status" [class.is-invalid]="_validations.invalidForm(productsForm, 'status')">
+    <div class="ProductDetail__form-status" [class.is-invalid]="_validations.invalidForm(productsForm, 'active')">
       <label class="ProductDetail__form-status-title">
         <b>Status</b>
       </label>
       <div class="ProductDetail__form-status-a">
-        <input id="status-a" formControlName="status" type="radio" name="status" [value]="true">
+        <input id="status-a" formControlName="active" type="radio" name="active" [value]="true">
         <label for='status-a'>
           Active
         </label>
       </div>
       <div class="ProductDetail__form-status-i">
-        <input id="status-i" formControlName="status" type="radio" name="status" [value]="false">
+        <input id="status-i" formControlName="active" type="radio" name="active" [value]="false">
         <label for='status-i'>
           Inactive
         </label>
@@ -41,7 +41,8 @@
           Quantity
         </b>
       </label>
-      <input formControlName="quantity" type="number" placeholder="quantity">
+      <input formControlName="quantity" type="number" placeholder="quantity"
+      [class.is-invalid]="_validations.invalidForm(productsForm, 'quantity')">
     </div>
 
     <div class="ProductDetail__form-measure">
@@ -70,7 +71,8 @@
           Subcategory
         </b>
       </label>
-      <select formControlName="subcategoryId" name="subcategoryId">
+      <select formControlName="subcategoryId" name="subcategoryId"
+      [class.is-invalid]="_validations.invalidForm(productsForm, 'subcategoryId')">
         <option *ngFor="let subcategory of subcategories" [ngValue]="subcategory.id">{{subcategory.title}}</option>
       </select>
     </div>
@@ -78,9 +80,9 @@
       <img *ngIf="!croppedImage" src="{{productsForm.controls.urlImage.value}}"
         alt="{{productsForm.controls.title.value}}">
       <img [src]="croppedImage" />
-      <input id="urlImage" (change)="fileChangeEvent($event)" formControlName="url" type="file" placeholder="Image"
+      <input id="urlImage" (change)="fileChangeEvent($event)" formControlName="urlImage" type="file" placeholder="Image"
         accept="image/*"
-        [class.is-invalid]="_validations.invalidForm(productsForm, 'url')">
+        [class.is-invalid]="_validations.invalidForm(productsForm, 'urlImage')">
     </label>
     <image-cropper [imageChangedEvent]="imageChangedEvent" [maintainAspectRatio]="true" [aspectRatio]="4 / 3"
       format="png" (imageCropped)="imageCropped($event)" (imageLoaded)="imageLoaded()" (cropperReady)="cropperReady()"

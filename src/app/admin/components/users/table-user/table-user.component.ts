@@ -3,6 +3,7 @@ import { UserTable } from '@core/user/user.modele';
 import { UserService } from '@core/user/user.service';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { User } from '@core/user/user.modele';
 
 @Component({
   selector: 'app-table-user',
@@ -22,7 +23,7 @@ export class TableUserComponent implements OnInit {
   }
   fetchUsers() {
     this.users = this.userService.getAllUsers()
-      .pipe(map((users) => {
+      .pipe(map((users:User[]) => {
         let tableUsers = [];
         users.map((user) => {
           tableUsers.push({
