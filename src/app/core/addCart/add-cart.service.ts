@@ -2,6 +2,10 @@ import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 import { Product } from '@core/products/products.model';
 
+import { ApiRequestsService } from '@core/apiRequest/api-requests.service';
+import { AuthService } from '@core/authentication/auth.service';
+
+
 @Injectable({
   providedIn: 'root'
 })
@@ -23,7 +27,10 @@ export class AddCartService {
 
 	public add_cart = new Subject<Product[]>();
   
-  constructor() {
+  constructor(
+    private apiResquests:ApiRequestsService,
+    private auth:AuthService
+  ) {
     this.loadCart();
   }
 
@@ -48,10 +55,11 @@ export class AddCartService {
       if (product.id == productCart.id) {
 
         if (plus) {
-          productCart.count++;
+          ++productCart.count;
           return true;
         }
-        return productCart.count > 1 ? productCart.count-- : false;
+
+        return productCart.count > 1 ? (--productCart.count) : false;
       }
     }
     return false;
@@ -62,6 +70,7 @@ export class AddCartService {
     } else {
       this.addProduct(product);
     }
+    this.sendProduct(product);
     this.saveCart();
     return this.add_cart.next(this.cart);
   }
@@ -71,6 +80,7 @@ export class AddCartService {
     } else {
       this.removeProduct(product);
     }
+    this.sendProduct(product);
     this.saveCart();
     return this.add_cart.next(this.cart);
   }
@@ -99,12 +109,13 @@ export class AddCartService {
     return this.cart;
   }
 
-  sendCart(cart) {
-    const sendCart = cart.map(products => {
-      return {'productId':products.id, 'quantity': products.count}
-    });
-    return sendCart;
-    // return this.apiResquests.getQuery('cart', 'post', cart);
+  sendProduct(product:Product) {
+    if (!this.auth.isCustomer()) {
+      return;
+    }
+    const sendProduct = {'productId':product.id, 'quantity': product.count};
+    console.log(sendProduct);
+    return this.apiResquests.getQuery('cart', 'post', sendProduct);
   }
 
 }

@@ -96,4 +96,21 @@ export class AuthService {
 
     this.router.navigateByUrl(link);
   }
+
+  isCustomer():boolean {
+    const cookie = this.getCookie('user');
+    if (!(cookie)) {
+      return false;
+    }
+
+    console.log(cookie.user.rol)
+
+    if (cookie.user.rol !='CUSTOMER') {
+      return false;
+    }
+
+    console.log(cookie.user.rol)
+    return true;
+  }
+
 }

@@ -94,8 +94,9 @@
           Price
         </b>
       </label>
-      <input formControlName="price" type="number" placeholder="price"
-      [class.is-invalid]="_validations.invalidForm(productsForm, 'price')">
+      <input formControlName="price" name="price" type="number" placeholder="price"
+      >
+      <p class="warning" *ngIf="_validations.invalidForm(productsForm, 'price')">Introduce a valid price</p>
     </div>
 
     <app-button  (click)="saveSettings()" *ngIf='!desactive' icon='send' class="ProductDetail__form-btn" name='send' color='primary'></app-button>

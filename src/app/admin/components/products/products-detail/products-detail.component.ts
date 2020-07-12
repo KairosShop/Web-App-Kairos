@@ -11,6 +11,7 @@ import { MeasureService } from '@core/measure/measure.service';
 import { ImageCroppedEvent } from 'ngx-image-cropper';
 import { ValidationsService } from '@core/authentication/validations.service';
 import { ApiRequestsService } from '@core/apiRequest/api-requests.service';
+import { AuthService } from '@core/authentication/auth.service';
 
 @Component({
   selector: 'app-products-detail',
@@ -29,6 +30,8 @@ export class ProductsDetailComponent implements OnInit {
   public productsForm: FormGroup;
   public desactive: boolean = true;
   public rol: string = 'SUPER'
+  public price;
+  public product;
   constructor(
     private activatedRoute: ActivatedRoute,
     private router: Router,
@@ -37,7 +40,8 @@ export class ProductsDetailComponent implements OnInit {
     private formBuilder: FormBuilder,
     private measureService: MeasureService,
     public _validations:ValidationsService,
-    public apiRequestsService: ApiRequestsService
+    private apiRequestsService: ApiRequestsService,
+    private auth :AuthService,
   ) {
     this.activatedRoute.queryParams.subscribe((query) => {
       if (query.action == 'edit') {
@@ -55,6 +59,11 @@ export class ProductsDetailComponent implements OnInit {
       this.id = params.id;
       this.getId(this.id)
     })
+
+    this.productsForm.get('price').valueChanges.subscribe(response => {
+        this.price = response;
+    });
+
   }
 
   getId(id: any) {
@@ -101,9 +110,16 @@ export class ProductsDetailComponent implements OnInit {
         quantity: 0,
         categoryId: 0,
         subcategoryId: 0,
-        active: true
+        active: true,
+        price: 0
       };
     }
+
+    if (this.productsForm) {
+      product.price = this.productsForm.get('price').value.value;
+    }
+
+    console.log(product.price)
 
     this.productsForm =
       this.formBuilder.group({
@@ -143,8 +159,10 @@ export class ProductsDetailComponent implements OnInit {
           value: product.active,
           disabled: this.desactive,
         }, Validators.required],
-        price: [{value: 0, disabled: !this.desactive},[Validators.required, Validators.pattern('([0-9]*)')]]
+        price: [{value: product.price},[Validators.required, Validators.pattern('([0-9]*)')]]
       })
+
+      this.product = product;
   }
 
   getSubcategories(idCategory: number) {
@@ -217,11 +235,26 @@ export class ProductsDetailComponent implements OnInit {
   }
 
   savePrice() {
-    if (this.productsForm.invalid) {
+    if (!this.price || this.price<0) {
       this.productsForm.controls.price.markAsTouched();
       return;
     }
-    console.log(this.productsForm.controls.price.value);
+    const price = this.price; 
+    const productId = this.product.id;
+    const active = this.product.active;
+    const { user } = this.auth.getCookie('user');
+    const sendPrice = {
+      'supermarketId': user.id,
+      'productId': productId,
+      'price': price,
+      'active': active
+    }
+
+    this.apiRequestsService.getQuery('prices', 'post', sendPrice);
+
+    // Reset form
+     this.productsForm.reset();
+     this.router.navigateByUrl('/admin/products');
   }
 
 }

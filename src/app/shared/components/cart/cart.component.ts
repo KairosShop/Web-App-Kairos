@@ -29,8 +29,6 @@ export class CartComponent implements OnInit {
          
         this.count = this.loadCart(response);
         this.animation = true;
-        const sendCart = this._addCartService.sendCart(this.cart);
-        console.log(sendCart);
         setTimeout(() => this.animation=false, 800);
       });
   }
