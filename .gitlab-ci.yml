@@ -13,7 +13,7 @@ cache:
   key: "$CI_BUILD_REPO"
 
 web-testing:
-  image: node:10
+  image: trion/ng-cli-karma
   stage: test
   cache:
     policy: pull
