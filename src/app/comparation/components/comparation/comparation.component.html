@@ -81,6 +81,15 @@
 	</section>
 
 </section>
-<!-- <app-all-in-one></app-all-in-one> -->
+<div class="modal" *ngIf='!modal'>
+	<section class="modal__content">
+		<span class="modal__content-icon material-icons" (click)="modalView()">
+			clear
+		</span>
+				<!-- <app-all-in-one></app-all-in-one> -->
+		<!-- <app-cheaper></app-cheaper> -->
+		<app-selection (idSuper)="selectSupermarkert($event)" ></app-selection>
+	</section>
+</div>
+<!--  -->
 
-<!-- <app-cheaper></app-cheaper> -->

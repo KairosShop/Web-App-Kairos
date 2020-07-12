@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 
 import { ComparationRoutingModule } from './comparation-routing.module';
 import { SharedModule } from '../shared/shared.module';
@@ -7,14 +9,17 @@ import { ComparationComponent } from './components/comparation/comparation.compo
 import { ProductsModule } from '../products/products.module';
 import { AllInOneComponent } from './components/all-in-one/all-in-one.component';
 import { CheaperComponent } from './components/cheaper/cheaper.component';
+import { SelectionComponent } from './components/selection/selection.component';
 
 @NgModule({
-  declarations: [ComparationComponent, AllInOneComponent, CheaperComponent],
+  declarations: [ComparationComponent, AllInOneComponent, CheaperComponent, SelectionComponent],
   imports: [
     CommonModule,
     ComparationRoutingModule,
     SharedModule,
-    ProductsModule
+    ProductsModule,
+    ReactiveFormsModule,
+    FormsModule
   ]
 })
 export class ComparationModule { }

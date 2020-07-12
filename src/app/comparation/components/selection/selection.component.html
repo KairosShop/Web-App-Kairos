@@ -1,0 +1,13 @@
+<section class="Selection">
+  <h3 class="Selection__title">Select a supermarket</h3>
+  <section class="Selection__content">
+    <div class="Selection__content-item" *ngFor="let super of supermarkers">
+      <input type="radio" (click)="veritication(super.id)" name='supermarker' value="{{super.id}}" ([ngModelChange])="selection" required>
+      <div>
+        <img src='{{super.urlImagen}}' alt='{{super.name}}' />
+      </div>
+      <h4>{{super.name}}</h4>
+    </div>
+  </section>
+  <app-button *ngIf='selection' name='accept' color='accept' (click)="send()"></app-button>
+</section>

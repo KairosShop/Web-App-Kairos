@@ -8,6 +8,7 @@ import { ApiRequestsService } from '@core/apiRequest/api-requests.service';
 })
 export class ComparationComponent implements OnInit {
 
+  modal: boolean = false;
   @Input() cart: string = '0001';
   headers = [
     {
@@ -425,6 +426,13 @@ export class ComparationComponent implements OnInit {
   fetchComparation() {
     /*     this.apiRequestService.postMicroservice(this.cart).subscribe((comparation) => {
         }) */
+  }
+
+  modalView() {
+    this.modal = !this.modal
+  }
+  selectSupermarkert(event) {
+    console.log(event)
   }
 
 }
