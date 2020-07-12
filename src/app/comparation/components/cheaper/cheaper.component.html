@@ -31,9 +31,9 @@
 				</tr>
 			</tbody>
 		</table>
-		<app-button class="cheaper__header-accept" name="Accept" color='accept' icon="check">
+		<app-button (click)="action(true)" class="cheaper__header-accept" name="Accept" color='accept' icon="check">
 		</app-button>
-		<app-button class="cheaper__header-cancel" name="Cancel" color='cancel' icon="close">
+		<app-button (click)="action(false)" class="cheaper__header-cancel" name="Cancel" color='cancel' icon="close">
 		</app-button>
 		<div class="cheaper__header-banner">
 			<h3 class="cheaper__header-banner--text">Do you want confirm?</h3>

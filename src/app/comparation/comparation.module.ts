@@ -10,9 +10,10 @@ import { ProductsModule } from '../products/products.module';
 import { AllInOneComponent } from './components/all-in-one/all-in-one.component';
 import { CheaperComponent } from './components/cheaper/cheaper.component';
 import { SelectionComponent } from './components/selection/selection.component';
+import { BillComponent } from './components/bill/bill.component';
 
 @NgModule({
-  declarations: [ComparationComponent, AllInOneComponent, CheaperComponent, SelectionComponent],
+  declarations: [ComparationComponent, AllInOneComponent, CheaperComponent, SelectionComponent, BillComponent],
   imports: [
     CommonModule,
     ComparationRoutingModule,

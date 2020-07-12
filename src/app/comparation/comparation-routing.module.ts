@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ComparationComponent } from './components/comparation/comparation.component';
-import { AllInOneComponent } from './components/all-in-one/all-in-one.component';
+import { BillComponent } from './components/bill/bill.component';
 
 
 const routes: Routes = [
@@ -10,8 +10,8 @@ const routes: Routes = [
 		component: ComparationComponent
 	},
 	{
-		path: '/all-in-one',
-		component: AllInOneComponent
+		path: 'bill',
+		component: BillComponent
 	}
 ];
 

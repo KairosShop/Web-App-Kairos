@@ -16,9 +16,9 @@
       <p>{{supermarkert.all.total_sum  | currency :'USD':'$':'1.2'}}</p>
     </div>
   </section>
-  <app-button class="allinone__accept" name="Accept" color='accept' icon="check">
+  <app-button (click)="action(true)" class="allinone__accept" name="Accept" color='accept' icon="check">
   </app-button>
-  <app-button class="allinone__cancel" name="Cancel" color='cancel' icon="close">
+  <app-button (click)="action(false)" class="allinone__cancel" name="Cancel" color='cancel' icon="close">
   </app-button>
   <app-garden-products class="allinone__detail" [products]="supermarkert.all.products" [isLink]="false" title="Detail Products">
   </app-garden-products>

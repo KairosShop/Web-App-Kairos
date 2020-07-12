@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ApiRequestsService } from '@core/apiRequest/api-requests.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-comparation',
@@ -8,8 +9,16 @@ import { ApiRequestsService } from '@core/apiRequest/api-requests.service';
 })
 export class ComparationComponent implements OnInit {
 
-  modal: boolean = false;
   @Input() cart: string = '0001';
+
+  modal: boolean = false;
+
+  AllInOneView: boolean = false;
+  selection: boolean = false;
+  CheaperView: boolean = false;
+  supermarkerts = [];
+  supermarkert = {};
+  
   headers = [
     {
       id: 2,
@@ -414,7 +423,8 @@ export class ComparationComponent implements OnInit {
   totalValue: number;
 
   constructor(
-    private apiRequestService: ApiRequestsService
+    private apiRequestService: ApiRequestsService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -432,7 +442,52 @@ export class ComparationComponent implements OnInit {
     this.modal = !this.modal
   }
   selectSupermarkert(event) {
-    console.log(event)
+    this.filterSupermarkers(event)
+    this.selection = false;
+    this.AllInOneView = true;
+  }
+
+  allinone() {
+    this.headers.map((item) => {
+      let id = item.id;
+      let name = item.supermarket;
+      let urlImagen = item.urlImage;
+
+      this.supermarkerts.push({
+        id,
+        name,
+        urlImagen
+      })
+    })
+    this.modalView();
+    this.selection = true;
+  }
+
+  filterSupermarkers(id: number) {
+    this.supermarkert = this.headers.filter(item => item.id == id)[0];
+    console.log(this.supermarkert)
+  }
+
+  action($event) {
+    if ($event) {
+      this.router.navigateByUrl('/cart/bill');
+    } else {
+      this.cancel()
+    }
+  }
+
+  cancel() {
+    this.modalView();
+    this.modal= false;
+    this.AllInOneView= false;
+    this.selection= false;
+    this.supermarkerts = [];
+    this.supermarkert = {};
+  }
+
+  Cheaper() {
+    this.modalView();
+    this.CheaperView = true;
   }
 
 }
