@@ -5,6 +5,7 @@ import { map } from 'rxjs/operators';
 import { ProductsTable } from '@core/products/products.model'
 import { AuthService } from '@core/authentication/auth.service';
 import { Product } from '@core/products/products.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-products',
@@ -19,7 +20,8 @@ export class ProductsComponent implements OnInit {
 
   constructor(
     private productsService: ProductsService,
-    private auth:AuthService
+    private auth: AuthService,
+    private router:Router,
   ) {}
 
   ngOnInit(): void {
@@ -47,4 +49,21 @@ export class ProductsComponent implements OnInit {
       }))
   }
 
+  redirectProduct() {
+    const cookie = this.auth.getCookie('user');
+    if (!cookie) {
+      console.log('Session close');
+      this.router.navigateByUrl('/home');
+    }
+
+    const { user } = cookie;
+    const { rol } = user;
+
+    if (rol === 'ADMIN') {
+      this.router.navigate(['admin/products/new'], {queryParams: {action:'edit'}});
+    } else {
+      this.router.navigate(['admin/products/new'], {queryParams: {action:'view'}});
+    }
+
+  }
 }

@@ -13,7 +13,7 @@
 			<h3 class="panel__sidebar__hero-name">{{name}}</h3>
 		</div>
 		<nav class="panel__sidebar__nav">
-			<ul>
+			<ul class="panel__sidebar__nav-action">
 				<li><a class="panel__sidebar__nav-item" routerLink="/admin/home" routerLinkActive="active">
 						<span class="material-icons">
 							home
@@ -33,20 +33,22 @@
 						<h3 *ngIf="toggle">Products</h3>
 					</a>
 				</li>
-				<li><a class="panel__sidebar__nav-item" routerLink="/admin/users" routerLinkActive="active">
+				<li><a class="panel__sidebar__nav-item" (click)="redirectPerfile()" routerLinkActive="active">
 						<span class="material-icons">
 							supervisor_account
 						</span>
 						<h3 *ngIf="toggle">Users</h3>
 					</a>
 				</li>
+			</ul>
+			<ul class="panel__sidebar__nav-signout">
 				<li><a class="panel__sidebar__nav-item" (click)="logout()" routerLinkActive="active">
-						<span class="material-icons">
-							connect_without_contact
-						</span>
-						<h3 *ngIf="toggle">Logout</h3>
-					</a>
-				</li>
+					<span class="material-icons">
+						power_off
+					</span>
+					<h3 *ngIf="toggle">Logout</h3>
+				</a>
+			</li>
 			</ul>
 		</nav>
 	</aside>

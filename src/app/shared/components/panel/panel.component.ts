@@ -25,4 +25,22 @@ export class PanelComponent implements OnInit {
   	this.router.navigateByUrl('/home');
   }
 
+  redirectPerfile() {
+    const cookie = this.auth.getCookie('user');
+    if (!cookie) {
+      console.log('Session close');
+      this.router.navigateByUrl('/home');
+    }
+
+    const { user } = cookie;
+    const { rol } = user;
+
+    if (rol === 'ADMIN') {
+      this.router.navigate(['admin/users']);
+    } else {
+      this.router.navigate(['/profile']);
+    }
+
+  }
+
 }

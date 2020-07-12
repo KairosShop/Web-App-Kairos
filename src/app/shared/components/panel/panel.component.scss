@@ -56,6 +56,8 @@
 					align-content: center;
 					clip-path: circle(50% at 50% 50%);
 					background-color: $contrast;
+					height: 16vh;
+					width: 16vh;
 					& > img {
 						height: 100%;
 					}
@@ -77,8 +79,12 @@
 		}
 		&__nav {
 			grid-area: nav;
+			display: grid;
 			height: 100%;
 			width: 100%;
+			grid-template-areas: "actions" "signout";
+			grid-template-columns: 100%;
+			grid-template-rows: 80% 20%;
 			& ul {
 				height: 100%;
 				width: 100%;
@@ -108,6 +114,12 @@
 						}
 					}
 				}
+			}
+			&-action {
+				grid-area: actions;
+			}
+			&-signout {
+				grid-area: signout;
 			}
 		}
 	}

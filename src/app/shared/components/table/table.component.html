@@ -1,7 +1,7 @@
 <section class="table">
   <h2 class="table__title">{{title}}</h2>
   <a *ngIf='btnNew' class="table__add">
-    <app-button (click)="redirectProduct()" icon="add" name="New"></app-button>
+    <app-button (click)="send()" icon="add" name="New"></app-button>
   </a>
   <table class="table__content">
     <thead class="table__content-head">
@@ -16,7 +16,7 @@
       <ng-container *ngFor="let d of info">
         <tr>
           <ng-container *ngFor="let title of titles">
-            <td *ngIf="d[title]== true">
+            <td *ngIf="d[title]=== true">
               <div class="svg">
                 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="30"
                   height="30" viewBox="0 0 50 50">
@@ -34,7 +34,7 @@
                 </svg>
               </div>
             </td>
-            <td *ngIf="d[title]== false">
+            <td *ngIf="d[title]=== false">
               <div class="svg">
                 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="30"
                   height="30" viewBox="0 0 50 50">
@@ -52,7 +52,7 @@
                 </svg>
               </div>
             </td>
-            <td *ngIf="d[title] != true && d[title] != false">{{d[title]}}</td>
+            <td *ngIf="d[title] !== true && d[title] != false">{{d[title]}}</td>
           </ng-container>
           <td>
             <a [routerLink]=[d.id] [queryParams]="{'action': 'view'}">
@@ -65,7 +65,7 @@
                 create
               </span>
             </a>
-            <a [routerLink]="[d.id]"  [queryParams]="{'action': 'delete'}">
+            <a [routerLink]="[d.id]" [queryParams]="{'action': 'delete'}">
               <span class="material-icons">
                 delete
               </span>
