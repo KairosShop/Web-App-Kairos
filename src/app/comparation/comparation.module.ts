@@ -6,9 +6,10 @@ import { SharedModule } from '../shared/shared.module';
 import { ComparationComponent } from './components/comparation/comparation.component';
 import { ProductsModule } from '../products/products.module';
 import { AllInOneComponent } from './components/all-in-one/all-in-one.component';
+import { CheaperComponent } from './components/cheaper/cheaper.component';
 
 @NgModule({
-  declarations: [ComparationComponent, AllInOneComponent],
+  declarations: [ComparationComponent, AllInOneComponent, CheaperComponent],
   imports: [
     CommonModule,
     ComparationRoutingModule,

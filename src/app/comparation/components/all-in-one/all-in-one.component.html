@@ -1,1 +1,25 @@
-<p>all-in-one works!</p>
+<section class="allinone">
+  <h2 class="allinone__title">All in one</h2>
+  <section class="allinone__supermarkers">
+    <h3 class="allinone__supermarkers-name">{{supermarkert.supermarket}}</h3>
+    <div class="allinone__supermarkers-logo">
+      <img src={{supermarkert.urlImage}} alt="{{supermarkert.supermarket}}" />
+    </div>
+  </section>
+  <section class="allinone__total">
+    <div class="allinone__total-count">
+      <h5>Count:</h5>
+      <p>{{supermarkert.all.total_products}}</p>
+    </div>
+    <div class="allinone__total-value">
+      <h5>Value:</h5>
+      <p>{{supermarkert.all.total_sum  | currency :'USD':'$':'1.2'}}</p>
+    </div>
+  </section>
+  <app-button class="allinone__accept" name="Accept" color='accept' icon="check">
+  </app-button>
+  <app-button class="allinone__cancel" name="Cancel" color='cancel' icon="close">
+  </app-button>
+  <app-garden-products class="allinone__detail" [products]="supermarkert.all.products" [isLink]="false" title="Detail Products">
+  </app-garden-products>
+</section>

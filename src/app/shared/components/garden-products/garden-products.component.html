@@ -1,13 +1,16 @@
 <section class="GardenProducts">
-  <a class="GardenProducts-title primary-dark" [routerLink]="['/products/',type,id, title]">
+  <a *ngIf='isLink' class="GardenProducts-title primary-dark" [routerLink]="['/products/',type,id, title]">
     <h2>
       {{title}}
     </h2>
   </a>
+  <h2  *ngIf='!isLink' class="GardenProducts-title primary-dark" >
+    {{title}}
+  </h2>
 
   <div class="GardenProducts-items">
     <ng-container *ngFor="let product of products">
-      <app-products-card [isLink]="true" type='info' [product]="product" [direction]="'vertical'"></app-products-card>
+      <app-products-card [isLink]="isLink" type='info' [product]="product" [direction]="'vertical'"></app-products-card>
     </ng-container>
     <a *ngIf="more" class="GardenProducts-more primary-dark" [routerLink]="['/products/',type,id, title]">
       <span>SHOW</span>

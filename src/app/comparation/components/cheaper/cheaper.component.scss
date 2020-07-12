@@ -1,0 +1,139 @@
+@import "var";
+@import "mixins";
+
+.cheaper {
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-areas: "header" "detail";
+  grid-template-rows: 50vh auto;
+  grid-template-columns: 100%;
+  justify-content: center;
+  align-items: center;
+  justify-items: center;
+  row-gap: 5%;
+  &__header {
+    grid-area: header;
+    height: 100%;
+    width: 100%;
+    display: grid;
+    grid-template-areas:
+      "title title banner"
+      "table table banner"
+      "accept cancel banner";
+    grid-template-rows: 15% 75% 10%;
+    grid-template-columns: 40% 40% 20%;
+    background-color: white;
+    &-title {
+      grid-area: title;
+      text-align: center;
+    }
+    &-table {
+      height: 100%;
+      width: 100%;
+      grid-area: table;
+      border-collapse: collapse;
+      & td {
+        padding: 0.2em 0.8em;
+        text-align: center;
+        font-weight: 800;
+        font-style: italic;
+        font-size: 125%;
+      }
+      &--space {
+        & td {
+          background: transparent;
+          & hr {
+            background: $contrast;
+            border: none;
+          }
+        }
+      }
+
+      &--allCheaper {
+        grid-area: allCheaper;
+      }
+      &--countValue {
+        grid-area: countValue;
+      }
+      &--supermarket {
+        &--info {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+        & td {
+          border-bottom: 2px solid $contrast;
+        }
+        & h5 {
+          margin: 0%;
+        }
+        & img {
+          border-radius: 30px;
+          height: 3rem;
+          margin-right: 5%;
+        }
+      }
+      &--total {
+        grid-area: total;
+      }
+    }
+    &-accept {
+      justify-self: center;
+      grid-area: accept;
+      width: 80%;
+    }
+    &-cancel {
+      justify-self: center;
+      grid-area: cancel;
+      width: 80%;
+    }
+    &-banner {
+      height: 100%;
+      width: 100%;
+      grid-area: banner;
+      background-color: $primary-dark;
+      clip-path: polygon(0 0, 100% 0%, 100% 100%, 13% 100%);
+      display: grid;
+      grid-template-areas: "text" "img";
+      grid-template-rows: 50% 50%;
+      grid-template-columns: 90%;
+      justify-content: end;
+      align-items: center;
+      &--text {
+        grid-area: text;
+        color: $light;
+      }
+      &--img {
+        align-self: end;
+        grid-area: img;
+        width: 100%;
+        height: 100%;
+        & > img {
+          width: 80%;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 760px) {
+  .cheaper {
+    grid-template-rows: auto auto;
+    &__header {
+      grid-template-areas:
+        "banner banner"
+        "title title"
+        "table table"
+        "accept cancel";
+      grid-template-rows: 30% 10% 40% 10%;
+      grid-template-columns: repeat(2, 1fr);
+      &-banner {
+        clip-path: polygon(0 0, 100% 0, 100% 83%, 0% 100%);
+        grid-template-areas: "text img";
+        grid-template-rows: 100%;
+        grid-template-columns: 50% 50%;
+      }
+    }
+  }
+}
