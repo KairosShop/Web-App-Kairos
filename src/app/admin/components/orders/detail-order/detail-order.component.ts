@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-detail-order',
-  templateUrl: './detail-order.component.html',
-  styleUrls: ['./detail-order.component.scss']
+  templateUrl: './detail-order.component.html'
 })
 export class DetailOrderComponent implements OnInit {
 
