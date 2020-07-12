@@ -22,6 +22,10 @@ web-testing:
   artifacts:
     paths:
       - coverage/
+  only:
+    - merge_requests
+    - master
+    - staging
   tags:
     - docker
 
