@@ -9,7 +9,8 @@ import { ReactiveFormsModule } from "@angular/forms";
 
 class AuthServiceStub {
   login() {
-    return of({user:{rol:'Customer'}});
+    const user = {user:{rol:'CUSTOMER'}}    
+    return of(user);
   }
   redirectUser() {
     return true;
