@@ -5,7 +5,7 @@ import { AuthGuard } from './core/guards/auth.guard';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { UserTypeGuard } from './core/guards/user-type.guard';
 
-const routes: Routes = [
+export const routes: Routes = [
   {
     path: '',
     component: LayoutComponent,
