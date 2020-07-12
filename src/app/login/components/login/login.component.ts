@@ -39,32 +39,6 @@ export class LoginComponent implements OnInit {
 
     const user = this.loginForm.value;
 
-<<<<<<< HEAD
- 		if (this.loginForm.invalid) {
-        Object.values(this.loginForm.controls).map(control => {
-          if (control.status === "INVALID") {
-            control.markAsTouched();
-          }
-        });
-        return;
-      }
-
-    
- 		// Post information
- 		this.auth.login({'username': user.email, 'password':user.password})
- 		  .subscribe(({body}:any) => {   
-         
-         this.auth.setCookie('user', body, 1);
-         console.log('Login Success!!!');
-
-         this.auth.redirectUser(body.user.rol);
-       }, (err) => {
-         this.loginFailed = true;
-       });
-
- 		// Reset form
- 		this.loginForm.reset();
-=======
     if (this.loginForm.invalid) {
       Object.values(this.loginForm.controls).map(control => {
         if (control.status === "INVALID") {
@@ -89,7 +63,6 @@ export class LoginComponent implements OnInit {
 
     // Reset form
     this.loginForm.reset();
->>>>>>> 51-comparation
 
   }
 
