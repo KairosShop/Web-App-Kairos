@@ -7,6 +7,8 @@ import { TableUserComponent } from './components/users/table-user/table-user.com
 import { DetailOrderComponent } from './components/orders/detail-order/detail-order.component';
 import { TableOrderComponent } from './components/orders/table-order/table-order.component';
 
+import { ProductsAdminGuard } from '@core/guards/products-admin.guard';
+
 const routes: Routes = [
 	{
 		path: '',
@@ -21,7 +23,7 @@ const routes: Routes = [
 		component: ProductsComponent
 	},
 	{
-		path: 'products/:id',
+		path: 'products/:id', canActivate: [ProductsAdminGuard],
 		component: ProductsDetailComponent
 	},
 	{
