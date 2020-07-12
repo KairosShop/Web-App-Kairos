@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-all-in-one',
@@ -6,7 +6,7 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./all-in-one.component.scss']
 })
 export class AllInOneComponent implements OnInit {
-  @Input() cart: string = '0001';
+  @Output() status = new EventEmitter();
   @Input() supermarkert = {
     id: 2,
     supermarket: "Cargando",
@@ -26,9 +26,14 @@ export class AllInOneComponent implements OnInit {
     }
   }
 
-  constructor() { }
+  constructor(
+  ) { }
 
   ngOnInit(): void {
+  }
+
+  action(event) {
+    this.status.emit(event);
   }
 
 }

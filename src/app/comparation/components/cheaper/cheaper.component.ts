@@ -1,4 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+
 
 @Component({
   selector: 'app-cheaper',
@@ -6,7 +7,7 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./cheaper.component.scss']
 })
 export class CheaperComponent implements OnInit {
-
+  @Output() status = new EventEmitter();
   @Input() supermarkerts = [
     {
       id: 2,
@@ -136,5 +137,9 @@ export class CheaperComponent implements OnInit {
   ngOnInit(): void {
 
   }
+  action(event) {
+    this.status.emit(event);
+  }
+
 
 }

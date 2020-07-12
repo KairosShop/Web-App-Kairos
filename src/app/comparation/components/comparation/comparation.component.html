@@ -42,9 +42,9 @@
 				</tr>
 			</tbody>
 		</table>
-		<app-button class="comparation__header-btnAll" name="All" color='contrast' icon="">
+		<app-button (click)="allinone()" class="comparation__header-btnAll" name="All" color='contrast' icon="">
 		</app-button>
-		<app-button class="comparation__header-btnCheaper" name="Cheaper" color='contrast' icon="">
+		<app-button (click)="Cheaper()" class="comparation__header-btnCheaper" name="Cheaper" color='contrast' icon="">
 		</app-button>
 	</section>
 
@@ -81,15 +81,16 @@
 	</section>
 
 </section>
-<div class="modal" *ngIf='!modal'>
+<div class="modal" *ngIf='modal'>
 	<section class="modal__content">
-		<span class="modal__content-icon material-icons" (click)="modalView()">
+		<span class="modal__content-icon material-icons" (click)="cancel()">
 			clear
 		</span>
-				<!-- <app-all-in-one></app-all-in-one> -->
-		<!-- <app-cheaper></app-cheaper> -->
-		<app-selection (idSuper)="selectSupermarkert($event)" ></app-selection>
+		<app-all-in-one (status)="action($event)" *ngIf='AllInOneView' [supermarkert]="supermarkert"></app-all-in-one>
+		<app-cheaper (status)="action($event)" *ngIf="CheaperView" [supermarkerts]="headers"></app-cheaper>
+		<app-selection *ngIf='selection' (idSuper)="selectSupermarkert($event)" [supermarkers]="supermarkerts" totalProducts="totalProducts" totalValue="totalValue">
+		</app-selection>
 	</section>
 </div>
-<!--  -->
 
+<!--  -->
