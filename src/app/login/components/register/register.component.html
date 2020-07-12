@@ -6,7 +6,7 @@
 		<h2 class="register__form-title">Register</h2>
 		<div class="register__form-name">
 			<input
-				type="text" placeholder="Name" 
+				type="text" placeholder="Name"
 				formControlName="firstName"
 				[class.is-invalid]="_validationsService.invalidName(registerForm)"
 				>
@@ -32,8 +32,8 @@
 		<div *ngIf="supermarket">
 			<input
 				type="text"
-				placeholder="Adress"
-				formControlName="adress"
+				placeholder="Address"
+				formControlName="address"
 				>
 		</div>
 

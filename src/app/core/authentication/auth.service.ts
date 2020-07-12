@@ -48,7 +48,7 @@ export class AuthService {
       }
     }
     console.log(user);
-    return this.http.post('https://staging.kairosshop.xyz/api/users', user);
+    return this.http.post('https://staging.kairosshop.xyz/api/sign-up', user);
   }
 
   setCookie(name, value, days) {
