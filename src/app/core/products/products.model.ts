@@ -28,3 +28,13 @@ export interface ProductsTable {
   subcategory?: string;
   deleted: boolean;
 }
+
+export interface ProductComparation {
+  id?: number;
+  title: string;
+  urlImage: string;
+  quantity?: string;
+  measure?: string;
+  price?: number;
+  supermarkers: [];
+};
