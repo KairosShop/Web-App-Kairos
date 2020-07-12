@@ -15,19 +15,15 @@ cache:
 web-testing:
   image: trion/ng-cli-karma
   stage: test
-  cache:
-    policy: pull
+  allow_failure: false
   script:
-    - rm ./package-lock.json
-    - npm install
-    - npm run test
-  only:
-    - merge_requests
-    - master
-    - staging
+    - ng test --code-coverage --progress false --watch false
+  coverage: '/Lines \W+: (\d+\.\d+)%.*/'
   artifacts:
     paths:
-        - coverage/
+      - coverage/
+  tags:
+    - docker
 
 deploy-prod:
   image: rambabusaravanan/firebase
