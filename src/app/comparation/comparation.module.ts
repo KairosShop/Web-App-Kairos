@@ -5,9 +5,10 @@ import { ComparationRoutingModule } from './comparation-routing.module';
 import { SharedModule } from '../shared/shared.module';
 import { ComparationComponent } from './components/comparation/comparation.component';
 import { ProductsModule } from '../products/products.module';
+import { AllInOneComponent } from './components/all-in-one/all-in-one.component';
 
 @NgModule({
-  declarations: [ComparationComponent],
+  declarations: [ComparationComponent, AllInOneComponent],
   imports: [
     CommonModule,
     ComparationRoutingModule,
