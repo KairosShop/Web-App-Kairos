@@ -101,31 +101,31 @@
 }
 
 .Cart {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  border: 1px solid $primary-dark;
-  border-radius: 30px;
-  box-shadow: 3px 2px 11px 0 $desactive;
-  background-color: $white;
-  display: grid;
-  grid-template-columns: 100%;
-  grid-template-rows: 100%;
-  justify-content: center;
-  justify-items: center;
-  align-items: center;
-  overflow: hidden;
-  &__head {
-    position: absolute;
-    top: -1%;
-    width: 100%;
-    height: 20%;
-    & > img {
-      width: 100%;
-      height: 100%;
-    }
-  }
-	&__content{
+	position: relative;
+	width: 100%;
+	height: 100%;
+	border: 1px solid $primary-dark;
+	border-radius: 30px;
+	box-shadow: 3px 2px 11px 0 $desactive;
+	background-color: $white;
+	display: grid;
+	grid-template-columns: 100%;
+	grid-template-rows: 100%;
+	justify-content: center;
+	justify-items: center;
+	align-items: center;
+	overflow: hidden;
+	&__head {
+		position: absolute;
+		top: -1%;
+		width: 100%;
+		height: 20%;
+		& > img {
+			width: 100%;
+			height: 100%;
+		}
+	}
+	&__content {
 		z-index: 1;
 		position: relative;
 		width: 90%;
@@ -147,7 +147,7 @@
 				margin-top: 10%;
 				height: 100%;
 				width: 100%;
-				& > img{
+				& > img {
 					width: 80%;
 				}
 			}
@@ -165,7 +165,7 @@
 					margin-top: 10%;
 					height: 100%;
 					width: 100%;
-					& > img{
+					& > img {
 						width: 80%;
 					}
 				}
@@ -174,39 +174,136 @@
 	}
 }
 .foo {
-  position: absolute;
-  bottom: 3%;
-  right: 3%;
-  display: grid;
-  grid-template-areas: "c1 c2" "c1 c3";
-  &__circle {
-    -moz-border-radius: 50%;
-    -webkit-border-radius: 50%;
-    border-radius: 50%;
-    &-lg {
-      grid-area: c1;
-      width: 12px;
-      height: 12px;
-      margin: 2px;
-    }
-    &-md {
-      grid-area: c2;
-      width: 8px;
-      height: 8px;
-    }
-    &-sm {
-      grid-area: c3;
-      width: 6px;
-      height: 6px;
-    }
-    &-contrast {
-      background: $contrast;
-    }
-    &-primary {
-      background: $primary;
-    }
-    &-primaryGradiente {
-      @include primary-bg-gradiente;
-    }
-  }
+	position: absolute;
+	bottom: 3%;
+	right: 3%;
+	display: grid;
+	grid-template-areas: "c1 c2" "c1 c3";
+	&__circle {
+		-moz-border-radius: 50%;
+		-webkit-border-radius: 50%;
+		border-radius: 50%;
+		&-lg {
+			grid-area: c1;
+			width: 12px;
+			height: 12px;
+			margin: 2px;
+		}
+		&-md {
+			grid-area: c2;
+			width: 8px;
+			height: 8px;
+		}
+		&-sm {
+			grid-area: c3;
+			width: 6px;
+			height: 6px;
+		}
+		&-contrast {
+			background: $contrast;
+		}
+		&-primary {
+			background: $primary;
+		}
+		&-primaryGradiente {
+			@include primary-bg-gradiente;
+		}
+	}
+}
+
+@media screen and (max-width: 760px) {
+	.Cart {
+		&__content {
+			z-index: 1;
+			position: relative;
+			width: 90%;
+			height: 100%;
+			display: grid;
+			grid-template-areas: "product" "supermarkerts";
+			grid-template-columns: 100%;
+			grid-template-rows: 40% 40%;
+			justify-content: center;
+			align-content: center;
+			text-align: center;
+			&__product {
+				grid-area: product;
+				display: grid;
+				grid-template-rows: 100%;
+				grid-template-columns: 50% 50%;
+				justify-content: center;
+				align-items: center;
+				&-img {
+					margin-top: 10%;
+					height: 80%;
+					width: 80%;
+					& > img {
+						width: 80%;
+					}
+				}
+			}
+			&__supermarkerts {
+				grid-area: supermarkerts;
+				display: flex;
+				justify-content: space-around;
+				&-item {
+					display: grid;
+					grid-template-rows: 80% 20%;
+					justify-content: center;
+					align-items: center;
+					&-img {
+						margin-top: 10%;
+						height: 80%;
+						width: 80%;
+						& > img {
+							width: 80%;
+						}
+					}
+				}
+			}
+		}
+	}
+	.comparation {
+		width: 90%;
+		grid-template-rows: auto auto;
+		grid-template-columns: 80%;
+		justify-content: center;
+		&__header {
+			grid-area: header;
+			height: 100%;
+			width: 80%;
+			display: grid;
+			grid-template-areas:
+				"title title"
+				"table table"
+				"btnAll btnCheaper";
+			grid-template-rows: 20% auto 10%;
+			justify-content: center;
+			&-table {
+				height: 100%;
+				width: 80%;
+				& tr {
+					height: 2rem;
+				}
+				& td {
+					font-size: 100%;
+				}
+				&--space {
+					& td {
+						background: transparent;
+						& hr {
+							background: $contrast;
+							border: none;
+							height: 2px;
+						}
+					}
+				}
+				&--supermarket {
+					& img {
+						border-radius: 30px;
+						height: 3rem;
+					}
+				}
+			}
+		}
+	}
 }
