@@ -77,4 +77,8 @@ export class ValidationsService {
   invalidUrl(form) {
     return this.invalidArguments('url', form);
   }
+
+  invalidPrice(form) {
+    return this.invalidArguments('price', form);
+  }
 }

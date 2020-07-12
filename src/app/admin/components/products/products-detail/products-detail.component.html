@@ -85,6 +85,18 @@
     <image-cropper [imageChangedEvent]="imageChangedEvent" [maintainAspectRatio]="true" [aspectRatio]="4 / 3"
       format="png" (imageCropped)="imageCropped($event)" (imageLoaded)="imageLoaded()" (cropperReady)="cropperReady()"
       (loadImageFailed)="loadImageFailed()"></image-cropper>
+    
+    <div class="ProductDetail__form-price">
+      <label>
+        <b>
+          Price
+        </b>
+      </label>
+      <input formControlName="price" type="number" placeholder="price"
+      [class.is-invalid]="_validations.invalidPrice(productsForm)">
+    </div>
+
     <app-button  (click)="saveSettings()" *ngIf='!desactive' icon='send' class="ProductDetail__form-btn" name='send' color='primary'></app-button>
+    <app-button  (click)="savePrice()" *ngIf='desactive' icon='send' class="ProductDetail__form-btn" name='Save price' color='primary'></app-button>
   </form>
 </section>

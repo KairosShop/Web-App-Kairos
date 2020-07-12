@@ -142,7 +142,8 @@ export class ProductsDetailComponent implements OnInit {
         status: [{
           value: product.active,
           disabled: this.desactive,
-        }, Validators.required]
+        }, Validators.required],
+        price: [{disabled: !this.desactive},[Validators.required, Validators.pattern('([0-9]*)')]]
       })
   }
 
@@ -203,4 +204,13 @@ export class ProductsDetailComponent implements OnInit {
     console.log(this.productsForm.invalid);
 
   }
+
+  savePrice() {
+    if (this.productsForm.invalid) {
+      this.productsForm.controls.price.markAsTouched();
+      return;
+    }
+    console.log(this.productsForm.controls.price.value);
+  }
+
 }
