@@ -60,7 +60,7 @@ export class AuthService {
       expires = "; expires=" + date.toUTCString();
     }
     document.cookie = name + "=" + (value || "") + expires + "; path=/; SameSite=Lax;";
-  };
+  }
 
   getCookie(name) {
     let nameEQ = name + "=";
@@ -71,7 +71,7 @@ export class AuthService {
       if (c.indexOf(nameEQ) === 0) return JSON.parse(c.substring(nameEQ.length, c.length));
     }
     return null;
-  };
+  }
 
   delteCokie(name) {
     this.setCookie(name, '', -1);

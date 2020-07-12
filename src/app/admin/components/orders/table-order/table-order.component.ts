@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-table-order',
-  templateUrl: './table-order.component.html',
-  styleUrls: ['./table-order.component.scss']
+  templateUrl: './table-order.component.html'
 })
 export class TableOrderComponent implements OnInit {
 
