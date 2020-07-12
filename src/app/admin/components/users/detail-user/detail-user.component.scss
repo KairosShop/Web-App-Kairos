@@ -14,12 +14,13 @@
     display: grid;
     grid-template-areas:
       "img status status"
-      "img verified verified"
       "img firstName lastName"
-      "img rol email"
-      "upimg btn btn";
+      "img rol rol"
+      "upimg email email"
+      "verified password password2"
+      ". btn btn";
     grid-template-columns: 50% 25% 25%;
-    grid-template-rows: 4rem 4rem 4rem 4rem auto 4rem;
+    grid-auto-rows: 4rem;
     justify-items: center;
     align-items: center;
     column-gap: 3%;
@@ -125,6 +126,12 @@
     }
     &-email {
       grid-area: email;
+    }
+    &-password{
+      grid-area: password;
+    }
+    &-password1{
+      grid-area: password1;
     }
     &-btn{
       grid-area: btn;

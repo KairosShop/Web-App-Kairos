@@ -23,7 +23,7 @@ export class DetailUserComponent implements OnInit {
   public userForm: FormGroup;
   public desactive: boolean = true;
   public rol: string = 'SUPER'
-  public roles =['ADMIN', 'SUPER MARKET', 'CUSTOMER' ]
+  public roles = ['ADMIN', 'SUPER MARKET', 'CUSTOMER']
 
 
 
@@ -35,7 +35,8 @@ export class DetailUserComponent implements OnInit {
     private formBuilder: FormBuilder,
     public _validations: ValidationsService,
     public apiRequestsService: ApiRequestsService,
-    private userService: UserService
+    private userService: UserService,
+    public _validationsService: ValidationsService
   ) {
     this.activatedRoute.queryParams.subscribe((query) => {
       if (query.action == 'edit') {
@@ -77,6 +78,8 @@ export class DetailUserComponent implements OnInit {
         firstName: '',
         lastName: '',
         email: '',
+        password: '',
+        password2: '',
         urlImage: '',
         url: '',
         rol: '',
@@ -97,7 +100,15 @@ export class DetailUserComponent implements OnInit {
         email: [{
           value: user.email,
           disabled: this.desactive,
-        }, [Validators.required, Validators.email]],
+        }, [Validators.required, Validators.email, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$')]],
+        password: [{
+          value: '',
+          disabled: this.desactive,
+        }, [Validators.required, Validators.minLength(8), Validators.maxLength(30)]],
+        password2: [{
+          value: '',
+          disabled: this.desactive,
+        }, [Validators.required, Validators.minLength(8), Validators.maxLength(30)]],
         rol: [{
           value: user.rol,
           disabled: this.desactive,
@@ -114,6 +125,8 @@ export class DetailUserComponent implements OnInit {
           value: user.verified,
           disabled: this.desactive,
         }, Validators.required],
+      }, {
+        validators: this._validationsService.samePassword('password', 'password2')
       })
   }
 
@@ -168,23 +181,19 @@ export class DetailUserComponent implements OnInit {
          console.log(error);
        });
      }*/
-    formValue.urlImage = 'https://cdn.computerhoy.com/sites/navi.axelspringer.es/public/media/image/2019/06/python.jpg';
-    this.apiRequestsService.getQuery('products', 'post', formValue)
-      .subscribe(response => {
+     delete formValue.urlImage;
+    delete formValue.password2;
+    delete formValue.active;
+    delete formValue.verified;
+    console.log(formValue)
+    this.apiRequestsService.getQuery('users', 'post', formValue)
+      .subscribe((response: any) => {
         console.log(response);
       });
 
     this.userForm.reset();
-    this.router.navigateByUrl('/admin/products');
+    this.router.navigateByUrl('/admin/users');
 
-  }
-
-  savePrice() {
-    if (this.userForm.invalid) {
-      this.userForm.controls.price.markAsTouched();
-      return;
-    }
-    console.log(this.userForm.controls.price.value);
   }
 
 }

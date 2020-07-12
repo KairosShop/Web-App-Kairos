@@ -56,8 +56,7 @@
       <label for="rol">
         <b>Rol</b>
       </label>
-      <select name="measure" formControlName="rol"
-        [class.is-invalid]="_validations.invalidForm(userForm, 'rol')">
+      <select name="measure" formControlName="rol" [class.is-invalid]="_validations.invalidForm(userForm, 'rol')">
         <option *ngFor="let rol of roles" [ngValue]="rol">{{rol}}</option>
       </select>
     </div>
@@ -71,20 +70,38 @@
         [class.is-invalid]="_validations.invalidForm(userForm, 'email')">
     </div>
 
+    <div class="UserDetail__form-password">
+      <label for="password">
+        <b>Password</b>
+      </label>
+      <input id="password" formControlName="password" type="password" placeholder="password" [disabled]='desactive'
+        [class.is-invalid]="_validations.invalidForm(userForm, 'password')">
+        <p *ngIf="userForm.controls.password.hasError('minlength')">{{'minimum 8 characters'}}</p>
+        <p *ngIf="userForm.controls.password.hasError('maxlength')">{{'maximum 30 characters'}}</p>
+    </div>
+
+    <div *ngIf='userForm.controls.password.value' class="UserDetail__form-password2">
+      <label for="password2">
+        <b>Confirmation Password</b>
+      </label>
+      <input id="password2" formControlName="password2" type="password" placeholder="Confirmation Password"
+        [disabled]='desactive' [class.is-invalid]="_validations.invalidForm(userForm, 'email')">
+    </div>
+
+
     <label for="urlImage" class="UserDetail__form-img">
       <img *ngIf="!croppedImage" src="{{userForm.controls.urlImage.value}}" alt="{{userForm.controls.firstName.value}}">
       <img [src]="croppedImage" />
       <input id="urlImage" (change)="fileChangeEvent($event)" formControlName="urlImage" type="file" placeholder="Image"
         accept="image/*" [class.is-invalid]="_validations.invalidForm(userForm, 'urlImage')">
     </label>
-    <image-cropper [imageChangedEvent]="imageChangedEvent" [maintainAspectRatio]="true" [aspectRatio]="4 / 3"
+    <image-cropper [imageChangedEvent]="imageChangedEvent" [maintainAspectRatio]="true" [aspectRatio]="4 / 4"
       format="png" (imageCropped)="imageCropped($event)" (imageLoaded)="imageLoaded()" (cropperReady)="cropperReady()"
       (loadImageFailed)="loadImageFailed()"></image-cropper>
 
-
-    <app-button (click)="saveSettings()" *ngIf='!desactive' icon='send' class="UserDetail__form-btn" name='send'
-      color='primary'></app-button>
-    <app-button (click)="savePrice()" *ngIf='desactive' icon='send' class="UserDetail__form-btn" name='Save price'
-      color='primary'></app-button>
+    <ng-container *ngIf="!desactive">
+      <app-button  *ngIf='!userForm.invalid' (click)="saveSettings()" icon='send' class="UserDetail__form-btn"
+        name='send' color='primary'></app-button>
+    </ng-container>
   </form>
 </section>

@@ -11,57 +11,57 @@ import { AuthService } from '../../../core/authentication/auth.service';
 })
 export class RegisterComponent implements OnInit {
 
-	public registerForm: FormGroup;
-  public supermarket:boolean = false;
+  public registerForm: FormGroup;
+  public supermarket: boolean = false;
 
   constructor(
-  	private fb: FormBuilder,
-  	private router: Router,
-  	private auth:AuthService,
-  	public _validationsService:ValidationsService
+    private fb: FormBuilder,
+    private router: Router,
+    private auth: AuthService,
+    public _validationsService: ValidationsService
   ) {
-  	this.createForm();
+    this.createForm();
   }
 
   ngOnInit(): void {
   }
 
   createForm() {
-  	this.registerForm = this.fb.group({
-  		firstName: ['', [Validators.required, Validators.minLength(3)]],
-  		lastname: [''],
+    this.registerForm = this.fb.group({
+      firstName: ['', [Validators.required, Validators.minLength(3)]],
+      lastname: [''],
       adress: [''],
-  		email: ['', [Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$'), Validators.required]],
-      password: ['', Validators.required],
-  		password2: ['', Validators.required],
-  	}, {
-  		validators: this._validationsService.samePassword('password', 'password2')
-  	});
+      email: ['', [Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$'), Validators.required]],
+      password: ['', Validators.required, Validators.pattern('^[\w$ _*+\-\+]{8,30}$')],
+      password2: ['', Validators.required],
+    }, {
+      validators: this._validationsService.samePassword('password', 'password2')
+    });
   }
 
   send() {
-  	if (this.registerForm.invalid) {
-        Object.values(this.registerForm.controls).map(control => {
-          if (control.status === "INVALID") {
-            control.markAsTouched();
-          }
-        });
-        return;
-      }
+    if (this.registerForm.invalid) {
+      Object.values(this.registerForm.controls).map(control => {
+        if (control.status === "INVALID") {
+          control.markAsTouched();
+        }
+      });
+      return;
+    }
 
- 		// Post information
-     console.log(this.registerForm.value)
- 		this.auth.register(this.registerForm.value, this.supermarket)
- 		.subscribe(response => {
-	 		// Redirect to home
-	 		console.log(response);
-	 		this.router.navigateByUrl('/home');
- 		}, (err)=> {
- 			console.log(err.message);
- 		});
+    // Post information
+    console.log(this.registerForm.value)
+    this.auth.register(this.registerForm.value, this.supermarket)
+      .subscribe(response => {
+        // Redirect to home
+        console.log(response);
+        this.router.navigateByUrl('/home');
+      }, (err) => {
+        console.log(err.message);
+      });
 
- 		// Reset form
- 		this.registerForm.reset();
+    // Reset form
+    this.registerForm.reset();
   }
 
   supermarketFunc() {
