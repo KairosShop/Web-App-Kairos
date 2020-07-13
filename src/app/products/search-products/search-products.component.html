@@ -1,0 +1,6 @@
+<section class="search">
+	<h2>Found Products: {{query}}</h2>
+	<div class="search__products">
+        <app-products-card *ngFor="let product of products" [isLink]="true" type='info' [product]="product" [direction]="'vertical'"></app-products-card>
+    </div>
+</section>

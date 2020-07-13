@@ -12,6 +12,25 @@ cache:
     - ~/.npm
   key: "$CI_BUILD_REPO"
 
+web-testing:
+  image: trion/ng-cli-karma
+  stage: test
+  allow_failure: false
+  script:
+    - rm ./package-lock.json
+    - npm install
+    - ng test --code-coverage --progress false --watch false
+  coverage: '/Lines \W+: (\d+\.\d+)%.*/'
+  artifacts:
+    paths:
+      - coverage/
+  only:
+    - merge_requests
+    - master
+    - staging
+  tags:
+    - docker
+
 deploy-prod:
   image: rambabusaravanan/firebase
   stage: production
@@ -52,3 +71,9 @@ sonarcloud-check:
       - .sonar/cache
   script:
     - sonar-scanner
+  only:
+    - merge_requests
+    - master
+    - staging
+  needs:
+    - web-testing

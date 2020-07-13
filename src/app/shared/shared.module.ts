@@ -1,7 +1,9 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { FormsModule } from '@angular/forms';
 
+import { ImageCropperModule } from 'ngx-image-cropper';
 
 import { ButtonComponent } from './components/button/button.component';
 import { SearchComponent } from './components/search/search.component';
@@ -11,6 +13,9 @@ import { SideBottomMenuComponent } from './components/side-bottom-menu/side-bott
 import { ProductsCardComponent } from './components/products-card/productsCard.component';
 import { CategoryComponent } from './components/category/category.component';
 import { GardenProductsComponent } from './components/garden-products/garden-products.component';
+import { PanelComponent } from './components/panel/panel.component';
+import { TableComponent } from './components/table/table.component';
+import { AdverstimentComponent } from './components/adverstiment/adverstiment.component';
 
 
 
@@ -23,11 +28,16 @@ import { GardenProductsComponent } from './components/garden-products/garden-pro
     SideBottomMenuComponent,
     ProductsCardComponent,
     CategoryComponent,
-    GardenProductsComponent
+    GardenProductsComponent,
+    PanelComponent,
+    TableComponent,
+    AdverstimentComponent,
   ],
   imports: [
     CommonModule,
-    RouterModule
+    RouterModule,
+    FormsModule,
+    ImageCropperModule
   ],
   exports: [
     RouterModule,
@@ -37,7 +47,10 @@ import { GardenProductsComponent } from './components/garden-products/garden-pro
     TopNavbarComponent,
     SideBottomMenuComponent,
     ProductsCardComponent,
-    GardenProductsComponent
+    GardenProductsComponent,
+    PanelComponent,
+    TableComponent,
+    ImageCropperModule
   ]
 })
 export class SharedModule { }

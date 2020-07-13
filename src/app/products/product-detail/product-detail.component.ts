@@ -13,35 +13,44 @@ export class ProductDetailComponent implements OnInit {
     id: 0,
     title: 'Cargando',
     quantity: 0,
-    id_measure: 0,
+    measureId: 0,
+    measure: {
+      measure: 'name'
+    },
     description: 'Cargando',
-    id_category: 0,
-    id_subcategory: 0,
-    url_image: null,
-    active: 0,
-    cound: 0
+    categoryId: 0,
+    subcategoryId: 0,
+    urlImage: null,
+    active: true,
+    count: 0
   };
-
+  public productsRetations: Product[];
+  id: number;
   constructor(
-    private productsSercice: ProductsService,
+    private productsService: ProductsService,
     private route: ActivatedRoute
-  ) { }
+  ) {
+  }
 
   ngOnInit(): void {
     this.route.params.subscribe((params: Params) => {
-      const id = params.id;
-      this.fetchProduct(id);
+      this.id = params.id;
+      this.fetchProduct(this.id);
     })
   }
   fetchProduct(id: number) {
-    this.productsSercice.getProduct(id).subscribe((product: Product) => {
+    this.productsService.getProduct(id).subscribe((product: Product) => {
       this.product = product;
+      this.fetchRelactionProducts(product.categoryId)
     })
   }
+  fetchRelactionProducts(categoryId: number) {
+     this.productsService
+      .getProductsOfCategories(categoryId)
+          .subscribe((products: Product[]) => {
+            this.productsRetations = products.filter(item => item.id != this.id)
+            console.log(this.productsRetations)
+          })
 
-  scrtollDisplace() {
-  
-  /*   window.scroll(options) */
   }
-
 }

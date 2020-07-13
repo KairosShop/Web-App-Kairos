@@ -3,6 +3,11 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 This project is the Kairos frontend, a web app that allows you to offer products and compare prices from different supermarkets.
 
+this web application is a pwa and connects to a backend on node
+
+API: https://gitlab.com/kairos6/api-kairos
+Microservice comparation: https://gitlab.com/kairos6/microservice-comparator
+
 More info: https://www.notion.so/alejozepol/Kairos-d91d3954a8b44d64bd1e70797c9a58b5
 
 ## Frontend Scope 🚀
@@ -11,20 +16,20 @@ Develop a views where:
 
 ### 🛒 the client user can:
 - [*] See the offered products.
-- [ ] View the products comparison.
-- [ ] According to the result of the comparison, choose where it is convenient to buy the products, whether in the most economical place or all in the same place.
+- [*] View the products comparison.
+- [*] According to the result of the comparison, choose where it is convenient to buy the products, whether in the most economical place or all in the same place.
 
 ### 🏪 the supermarkerts user can:
 
-- [ ] See the existing products on the platform.
-- [ ] Modify the price at which the product is sold.
-- [ ] See the purchase orders.
+- [*] See the existing products on the platform.
+- [*] Modify the price at which the product is sold.
 
 ### 🔑 the admin user:
 
-- [ ] Manage the users.
-- [ ] Add new products.
-- [ ] See the application orders.
+- [*] Manage the users.
+- [*] Add new products.
+- [*] See the application orders.
+- [*] Modifity products
 
 ## Code 🔧
 

@@ -1,9 +1,10 @@
-<section class="Layout">
-  <app-top-navbar [footer]="footer" [homepage]="!footer" class="Layout__header">
+<section class="Layout" [ngClass]="{'active':burguerToggle, 'panel':admin}">
+  <app-top-navbar [login]="login" [homepage]="!login" class="Layout__header">
   </app-top-navbar>
-  <app-side-bottom-menu class="Layout__sideBottom" [toggle]="burguerToggle">
+  <app-side-bottom-menu *ngIf="!admin" class="Layout__sideBottom" [toggle]="burguerToggle">
   </app-side-bottom-menu>
-  <main class="Layout__content" [ngClass]="{'main': !burguerToggle}">
+  <app-panel *ngIf="admin" class="Layout__panel" [toggle]="burguerToggle"></app-panel>
+  <main class="Layout__content" [ngClass]="{'main': !burguerToggle && !admin}">
     <router-outlet></router-outlet>
     <div (click)="viewCategories()" [ngClass]="{'opacity': burguerToggle}"></div>
   </main>

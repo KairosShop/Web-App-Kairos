@@ -1,0 +1,50 @@
+<section class="cheaper">
+	<section class="cheaper__header">
+		<h2 class="cheaper__header-title">Cheaper</h2>
+		<table class="cheaper__header-table">
+			<thead>
+				<tr class="cheaper__header-table--countValue">
+					<td colspan="2"></td>
+					<td>Count</td>
+					<td>Value</td>
+				</tr>
+			</thead>
+			<tbody>
+				<tr *ngFor="let supermarket of supermarkerts" class="cheaper__header-table--supermarket">
+					<td colspan="2">
+						<div class="cheaper__header-table--supermarket--info">
+							<img src="{{supermarket.urlImage}}" alt="{{supermarket.supermarket}}">
+							<h5>{{supermarket.supermarket}}</h5>
+						</div>
+					</td>
+					<td>
+						<p>{{supermarket.cheapest.total_products}}</p>
+					</td>
+					<td>
+						<p>{{supermarket.cheapest.total_sum}}</p>
+					</td>
+				</tr>
+				<tr class="cheaper__header-table--total">
+					<td colspan="2">Total</td>
+					<td>{{totalProducts}}</td>
+					<td>${{totalValue}}</td>
+				</tr>
+			</tbody>
+		</table>
+		<app-button (click)="action(true)" class="cheaper__header-accept" name="Accept" color='accept' icon="check">
+		</app-button>
+		<app-button (click)="action(false)" class="cheaper__header-cancel" name="Cancel" color='cancel' icon="close">
+		</app-button>
+		<div class="cheaper__header-banner">
+			<h3 class="cheaper__header-banner--text">Do you want confirm?</h3>
+			<div class="cheaper__header-banner--img">
+				<img src="assets/images/confim.png" alt="imagen of Do you want confirm?" />
+			</div>
+		</div>
+	</section>
+	<ng-container *ngFor="let supermarket of supermarkerts">
+		<app-garden-products class="cheaper__detail" [products]="supermarket.cheapest.products" [isLink]="false"
+			title="{{supermarket.supermarket}}">
+		</app-garden-products>
+	</ng-container>
+</section>

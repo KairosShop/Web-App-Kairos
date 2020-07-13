@@ -1,0 +1,73 @@
+<section class="table">
+  <h2 class="table__title">{{title}}</h2>
+  <a *ngIf='btnNew' class="table__add">
+    <app-button (click)="send()" icon="add" name="New"></app-button>
+  </a>
+  <table class="table__content">
+    <thead class="table__content-head">
+      <tr>
+        <ng-container *ngFor="let title of titles">
+          <th>{{title| titlecase}}</th>
+        </ng-container>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody class="table__content-body">
+      <ng-container *ngFor="let d of info">
+        <tr>
+          <ng-container *ngFor="let title of titles">
+            <td *ngIf="d[title]=== true">
+              <div class="svg">
+                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="30"
+                  height="30" viewBox="0 0 50 50">
+                  <defs>
+                    <radialGradient id="a" cx="0.5" cy="0.5" r="0.909"
+                      gradientTransform="translate(0 0.051) scale(1 0.898)" gradientUnits="objectBoundingBox">
+                      <stop offset="0" stop-color="#30eb23" />
+                      <stop offset="0.891" stop-color="#22a819" />
+                      <stop offset="1" stop-color="#187612" />
+                    </radialGradient>
+                  </defs>
+                  <path
+                    d="M25,50A25.007,25.007,0,0,1,15.269,1.965,25.007,25.007,0,0,1,34.731,48.036,24.843,24.843,0,0,1,25,50ZM14.153,20.588h0L8,26.742,20.264,39.006,42.915,16.355,36.761,10.2l-16.5,16.5-6.11-6.11Zm6.11,14.3h0l-8.146-8.146L14.153,24.7l6.11,6.11,16.5-16.5L38.8,16.355,20.264,34.888Z"
+                    fill="url(#a)" />
+                </svg>
+              </div>
+            </td>
+            <td *ngIf="d[title]=== false">
+              <div class="svg">
+                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="30"
+                  height="30" viewBox="0 0 50 50">
+                  <defs>
+                    <radialGradient id="b" cx="0.5" cy="0.5" r="0.826"
+                      gradientTransform="translate(0 0.073) scale(1 0.854)" gradientUnits="objectBoundingBox">
+                      <stop offset="0" stop-color="#bf0404" />
+                      <stop offset="0.971" stop-color="#790303" />
+                      <stop offset="1" stop-color="#600202" />
+                    </radialGradient>
+                  </defs>
+                  <path
+                    d="M25,50A24.993,24.993,0,0,1,7.322,7.322,25,25,0,1,1,34.731,48.036,24.831,24.831,0,0,1,25,50ZM15.62,10.58l-4.041,4L21.589,24.5l-10.01,9.917,4.041,4L25.63,28.5l9.749,9.659,4.041-4L29.672,24.5l9.748-9.657-4.041-4L25.63,20.5,15.62,10.58Z"
+                    fill="url(#b)" />
+                </svg>
+              </div>
+            </td>
+            <td *ngIf="d[title] !== true && d[title] != false">{{d[title]}}</td>
+          </ng-container>
+          <td>
+            <a [routerLink]=[d.id] [queryParams]="{'action': 'view'}">
+              <span class="material-icons">
+                visibility
+              </span>
+            </a>
+            <a [routerLink]="[d.id]" [queryParams]="{'action': 'edit'}">
+              <span class="material-icons">
+                create
+              </span>
+            </a>
+          </td>
+        </tr>
+      </ng-container>
+    </tbody>
+  </table>
+</section>

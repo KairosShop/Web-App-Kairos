@@ -8,7 +8,6 @@
 	grid-template-areas: "map banner";
 	grid-template-columns: 67% 40%;
 	grid-template-rows: 100%;
-	/* 	overflow: auto; */
 	&__banner {
 		grid-area: banner;
 		width: 100%;

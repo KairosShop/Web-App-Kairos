@@ -8,29 +8,9 @@ export class ValidationsService {
 
   constructor() { }
 
-  invalidArguments(argument, form) {
-  	return form.get(argument).invalid && form.get(argument).touched;
+  invalidForm(form, field:string) {
+    return form.get(field).invalid && form.get(field).touched;
   }
-
-  invalidName(form) {
-  	return this.invalidArguments('firstName', form);
-  }
-
-  invalidLastname(form) {
-    return this.invalidArguments('lastname', form);
-  }
-
-  invalidEmail(form) {
-  	return this.invalidArguments('email', form);
-  }
-
-  invalidAdress(form) {
-    return this.invalidArguments('adress', form);
-  }
-	
-	invalidPassword(form) {
-		return this.invalidArguments('password', form); 
-	}
 
 	invalidPassword2(form) {
   	const pass1 = form.get('password').value;
@@ -53,4 +33,5 @@ export class ValidationsService {
 
     }
   }
+
 }

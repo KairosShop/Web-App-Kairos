@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -7,17 +8,26 @@ import { HttpClient } from '@angular/common/http';
 export class AuthService {
 
   constructor(
-  	private http: HttpClient
+    private http: HttpClient,
+    private router: Router,
   ) { }
 
   login(user) {
-  	// This code will be repalce for method post to login user
-  	return this.http.get('https://staging.kairosshop.xyz/api/users');
+    const userCredentials = user.username + ':' + user.password;
+    const headers = new HttpHeaders({
+      'Authorization': 'Basic ' + btoa(userCredentials)
+    });
+
+    return this.http.post('https://staging.kairosshop.xyz/api/auth/sign-in', {
+      "email": user.username,
+      "password": user.password
+    }, { headers });
+
+
   }
 
-  register({firstName, lastname, email, password, adress=''}, type) {
-  	// This code will be repalce for method post to register user
-    let user;
+  register({ firstName, lastname, email, password }, type) {
+    let user: { email: any; firstName: any; rol: string; password: any; lastName?: any; };
     let rol = type ? 'super market' : 'customer';
     let _user = {
       email,
@@ -28,7 +38,6 @@ export class AuthService {
     if (type) {
       user = {
         ..._user,
-        adress: adress
       }
     } else {
       user = {
@@ -36,7 +45,69 @@ export class AuthService {
         lastName: lastname
       }
     }
-    console.log(user);
-  	return this.http.post('https://staging.kairosshop.xyz/api/users', user);
+    return this.http.post('https://staging.kairosshop.xyz/api/auth/sign-up', user);
   }
+
+  setCookie(name, value, days) {
+    value = JSON.stringify(value);
+    let expires = "";
+    if (days) {
+      let date = new Date();
+      date.setTime(date.getTime() + 90000);
+      expires = "; expires=" + date.toUTCString();
+    }
+    document.cookie = name + "=" + (value || "") + expires + "; path=/; SameSite=Lax;";
+  }
+
+  getCookie(name) {
+    let nameEQ = name + "=";
+    let ca = document.cookie.split(";");
+    for (let i = 0; i < ca.length; i++) {
+      let c = ca[i];
+      while (c.charAt(0) === " ") c = c.substring(1, c.length);
+      if (c.indexOf(nameEQ) === 0) return JSON.parse(c.substring(nameEQ.length, c.length));
+    }
+    return null;
+  }
+
+  delteCokie(name) {
+    this.setCookie(name, '', -1);
+  }
+
+  redirectUser(rol: string) {
+    let link;
+
+    switch (rol) {
+      case "CUSTOMER":
+        link = '/home';
+        break;
+
+      case "SUPER MARKET":
+        link = '/home';
+        break;
+
+      case "ADMIN":
+        link = '/admin';
+        break;
+    }
+
+    this.router.navigateByUrl(link);
+  }
+
+  isCustomer():boolean {
+    const cookie = this.getCookie('user');
+    if (!(cookie)) {
+      return false;
+    }
+
+    console.log(cookie.user.rol)
+
+    if (cookie.user.rol !='CUSTOMER') {
+      return false;
+    }
+
+    console.log(cookie.user.rol)
+    return true;
+  }
+
 }

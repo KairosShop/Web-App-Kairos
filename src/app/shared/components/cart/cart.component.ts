@@ -9,23 +9,39 @@ import { Product } from '@core/products/products.model';
 })
 export class CartComponent implements OnInit {
 
-	@Input() homepage;
+  @Input() homepage: boolean;
 
-	public cart:Product[]=[];
-  public animation:boolean = false;
+  public cart: Product[] = [];
+  public animation: boolean = false;
+  public count:number=0;
 
   constructor(
-  	private _addCartService:AddCartService
-  ) { }
+    private _addCartService: AddCartService
+  ) {
+    console.log('cart component');
+    this.count = this.loadCart(this._addCartService.getCart());
+  }
 
   ngOnInit(): void {
-  	this._addCartService
-		.getObservable()
-		.subscribe((response:Product[]) => {
-  		this.cart = response;
-      this.animation = true;
-      setTimeout(()=> this.animation=false, 800);
-  	});
+    this._addCartService
+      .getObservable()
+      .subscribe((response: Product[]) => {
+         
+        this.count = this.loadCart(response);
+        this.animation = true;
+        setTimeout(() => this.animation=false, 800);
+      });
+  }
+
+  loadCart(response):number {
+    this.cart = response;
+    return response
+      .map((product:Product) => {
+         return product.count;
+       })
+      .reduce((count, value)=> {
+          return count + value;
+      }, 0);
   }
 
 }

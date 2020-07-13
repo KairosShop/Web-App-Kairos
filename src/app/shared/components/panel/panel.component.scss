@@ -1,0 +1,147 @@
+@import "_var";
+@import "_mixins";
+
+.panel {
+	display: grid;
+	grid-template-areas: "content";
+	grid-template-columns: 100%;
+	grid-template-rows: 100%;
+	width: 100%;
+	height: 100%;
+	transition: $transition-nav;
+	&__back {
+		grid-area: content;
+		height: 100%;
+		width: 100%;
+		top: 0;
+	}
+	&__front {
+		grid-area: content;
+		width: 100%;
+		height: 100%;
+		clip-path: polygon(0 0, 100% 0%, 80% 100%, 0% 100%);
+		@include primary-bg-gradiente;
+	}
+	&__sidebar {
+		padding-top: 20%;
+		position: relative;
+		grid-area: content;
+		display: grid;
+		grid-template-areas: "nav";
+		grid-template-rows: 100%;
+		grid-template-columns: 100%;
+		color: $light;
+		justify-content: center;
+		align-items: center;
+		&__hero {
+			height: 100%;
+			grid-area: profile;
+			display: grid;
+			grid-template-areas: "img" "name";
+			grid-template-rows: 80% 20%;
+			grid-template-columns: 100%;
+			justify-content: center;
+			align-items: center;
+			text-align: center;
+			&-img {
+				grid-area: img;
+				position: relative;
+				justify-self: center;
+				align-self: center;
+				height: 100%;
+				&-imgContent {
+					height: 100%;
+					display: flex;
+					justify-content: center;
+					align-content: center;
+					clip-path: circle(50% at 50% 50%);
+					background-color: $contrast;
+					height: 16vh;
+					width: 16vh;
+					& > img {
+						height: 100%;
+					}
+				}
+				&-addPhoto {
+					background-color: $primary;
+					color: $light;
+					border-radius: 100%;
+					padding: 1%;
+					position: absolute;
+					right: 0%;
+					bottom: 0%;
+					cursor: pointer;
+				}
+			}
+			& h3 {
+				color: white;
+			}
+		}
+		&__nav {
+			grid-area: nav;
+			display: grid;
+			height: 100%;
+			width: 100%;
+			grid-template-areas: "actions" "signout";
+			grid-template-columns: 100%;
+			grid-template-rows: 80% 20%;
+			& ul {
+				height: 100%;
+				width: 100%;
+				display: grid;
+				grid-auto-rows: 3rem;
+				row-gap: 2%;
+				text-decoration: none;
+				padding: 0%;
+				justify-items: end;
+				& li {
+					width: 90%;
+					list-style: none;
+					border-radius: 30px 0% 0% 30px;
+					& a {
+						border-radius: 30px 0% 0% 30px;
+						display: flex;
+						justify-content: space-evenly;
+						align-items: center;
+						color: white;
+						font-weight: bold;
+						cursor: pointer;
+					}
+					&:hover {
+						& a {
+							background: $light;
+							color: $primary-dark;
+						}
+					}
+				}
+			}
+			&-action {
+				grid-area: actions;
+			}
+			&-signout {
+				grid-area: signout;
+			}
+		}
+	}
+}
+
+.open.panel {
+	& > .panel__sidebar {
+		grid-template-areas: "profile" "nav";
+		grid-template-rows: 30% 70%;
+		grid-template-columns: 100%;
+	}
+}
+
+.active {
+	background: $light;
+	color: $primary-dark !important;
+}
+
+@media screen and (max-width: 780px) {
+	.panel {
+		&__sidebar {
+			padding-top: 30%;
+		}
+	}
+}

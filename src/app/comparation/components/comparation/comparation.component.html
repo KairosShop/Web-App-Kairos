@@ -1,37 +1,96 @@
 <section class="comparation">
-	<h2>Comparation</h2>
-	<table class="comparation__table">
-		<tbody>
-			<tr class="comparation__table--allCheaper">
-				<td colspan="2"></td>
-				<td colspan="2">All</td>
-				<td colspan="2">Cheaper</td>
-			</tr>
-			<tr class="comparation__table--countValue">
-				<td colspan="2"></td>
-				<td>Count</td>
-				<td>Value</td>
-				<td>Count</td>
-				<td>Value</td>
-			</tr>	
-			<tr *ngFor="let i of [1, 2, 3]" class="comparation__table--supermarket">
-				<td colspan="2"><img src="assets/super1.png" alt="supermarket"></td>
-				<td><p>3</p></td>
-				<td><p>$32</p></td>
-				<td><p>1</p></td>
-				<td><p>.5</p></td>
-			</tr>
-			<tr class="comparation__table--total">
-				<td colspan="4">Total</td>
-				<td>3</td>
-				<td>$27.8</td>
-			</tr>
-		</tbody>
-	</table>
-	<div class="moda__buttons space_2_top_mg">
-		<app-button name="All" color='contrast' icon="">
+	<section class="comparation__header">
+		<h2 class="comparation__header-title">Comparation</h2>
+		<table class="comparation__header-table">
+			<thead>
+				<tr class="comparation__header-table--allCheaper">
+					<td colspan="2"></td>
+					<td colspan="2">All</td>
+					<td colspan="2">Cheaper</td>
+				</tr>
+				<tr class="comparation__header-table--countValue">
+					<td colspan="2"></td>
+					<td>Count</td>
+					<td>Value</td>
+					<td>Count</td>
+					<td>Value</td>
+				</tr>
+
+			</thead>
+			<tbody>
+				<tr *ngFor="let header of headers" class="comparation__header-table--supermarket">
+					<td colspan="2">
+						<img src="{{header.urlImage}}" alt="{{header.supermarket}}">
+					</td>
+					<td>
+						<p>{{header.all.total_products}}</p>
+					</td>
+					<td>
+						<p>{{header.all.total_sum}}</p>
+					</td>
+					<td>
+						<p>{{header.cheapest.total_products}}</p>
+					</td>
+					<td>
+						<p>{{header.cheapest.total_sum}}</p>
+					</td>
+				</tr>
+				<tr class="comparation__header-table--total">
+					<td colspan="4">Total</td>
+					<td>{{totalProducts}}</td>
+					<td>${{totalValue}}</td>
+				</tr>
+			</tbody>
+		</table>
+		<app-button (click)="allinone()" class="comparation__header-btnAll" name="All" color='contrast' icon="">
 		</app-button>
-		<app-button name="Cheaper" color='contrast' icon="">
+		<app-button (click)="Cheaper()" class="comparation__header-btnCheaper" name="Cheaper" color='contrast' icon="">
 		</app-button>
-	</div>
+	</section>
+
+	<section class="comparation__detail">
+		<h2 class="comparation__detail-title">Detail Products</h2>
+		<div class="comparation__detail-items">
+			<ng-container *ngFor="let product of products">
+				<section class="Cart">
+					<img class="Cart__head" src="assets/card-head.png" alt="backgound card">
+					<div class="Cart__content">
+						<div class="Cart__content__product">
+							<div class="Cart__content__product-img">
+								<img src="{{product.urlImage}}" alt="{{product.name}}" />
+							</div>
+							<h3>{{product.name |titlecase | slice:0:40}}</h3>
+						</div>
+						<div class="Cart__content__supermarkerts">
+							<div *ngFor="let super of product.supermarkers" class="Cart__content__supermarkerts-item">
+								<div class="Cart__content__supermarkerts-item-img">
+									<img src="{{super.urlImage}}" alt={{super.name}} />
+								</div>
+								<h5>{{super.price | currency :'USD':'$':'1.2'}}</h5>
+							</div>
+						</div>
+					</div>
+					<div class="foo">
+						<div class="foo__circle foo__circle-lg foo__circle-contrast"></div>
+						<div class="foo__circle foo__circle-md foo__circle-primary"></div>
+						<div class="foo__circle foo__circle-sm foo__circle-primaryGradiente"></div>
+					</div>
+				</section>
+			</ng-container>
+		</div>
+	</section>
+
 </section>
+<div class="modal" *ngIf='modal'>
+	<section class="modal__content">
+		<span class="modal__content-icon material-icons" (click)="cancel()">
+			clear
+		</span>
+		<app-all-in-one (status)="action($event)" *ngIf='AllInOneView' [supermarkert]="supermarkert"></app-all-in-one>
+		<app-cheaper (status)="action($event)" *ngIf="CheaperView" [supermarkerts]="headers"></app-cheaper>
+		<app-selection *ngIf='selection' (idSuper)="selectSupermarkert($event)" [supermarkers]="supermarkerts" totalProducts="totalProducts" totalValue="totalValue">
+		</app-selection>
+	</section>
+</div>
+
+<!--  -->

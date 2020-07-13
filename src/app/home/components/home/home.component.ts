@@ -12,7 +12,6 @@ import { ProductsService } from '@core/products/products.service';
 export class HomeComponent implements OnInit {
 
   public productsOfCategory: Category[] = [];
-  public products: Product[] = [];
 
   constructor(
     private categoriesService: CategoriesService,
@@ -33,6 +32,5 @@ export class HomeComponent implements OnInit {
           })
       })
     })
-
   }
 }

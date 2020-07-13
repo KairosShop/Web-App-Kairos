@@ -10,10 +10,28 @@ module.exports = function (config) {
       require('karma-chrome-launcher'),
       require('karma-jasmine-html-reporter'),
       require('karma-coverage-istanbul-reporter'),
-      require('@angular-devkit/build-angular/plugins/karma')
+      require('@angular-devkit/build-angular/plugins/karma'),
+      require('karma-scss-preprocessor')
     ],
     client: {
       clearContext: false // leave Jasmine Spec Runner output visible in browser
+    },
+    preprocessors: {
+      'src/styles/token/_color.scss': ['scss'],
+      'src/styles/token/_mixins.scss': ['scss'],
+      'src/styles/token/_spacing.scss': ['scss'],
+      'src/styles/token/_type.scss': ['scss'],
+      'src/styles/token/_var.scss': ['scss'],
+    },
+    files: [
+      { pattern: 'src/styles/token/_mixins.scss', watched: true,  included: true, served: true },
+      { pattern: 'src/styles/token/_var.scss', watched: true,  included: true, served: true }
+    ],
+    scssPreprocessor: {
+      options: {
+        sourceMap: true,
+        includePaths: ['bower_components']
+      }
     },
     coverageIstanbulReporter: {
       dir: require('path').join(__dirname, './coverage/Kairos'),

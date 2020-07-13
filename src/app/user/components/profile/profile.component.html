@@ -1,0 +1,52 @@
+<section class="profile__allInfo">
+	<div class="profile__image">
+		<img *ngIf="user.urlImage" src="{{user.urlImage}}" alt="{{user.firstName}}">
+		<img *ngIf="!user.urlImage" src="assets/images/avatar.png" alt="{{user.firstName}}">
+		<input type="file">
+		<button class="contrast saveChanges" (click)="changePassword()">Change paswod</button>
+		<div *ngIf="password" class="profile__changePassword">
+			<form [formGroup]="passwordForm" class="profile__password">
+				<div id="password" class="profile__floating">
+					<input formControlName="password" class="profile__floating--input" type="password">
+					<label class="profile__floating--label">Password</label>
+				</div>
+				<div id="confirmPassword" class="profile__floating">
+					<input formControlName="password2" class="profile__floating--input" type="password">
+					<label class="profile__floating--label">Confirm password</label>
+				</div>
+			</form>
+		</div>
+	</div>
+	<form #profileForm="ngForm" class="profile__info">
+		<h2 id="title">Profile User</h2>
+		<div id="name" class="profile__floating">
+			<input name="name" [(ngModel)]="user.firstName" class="profile__floating--input"	type="text">
+			<label class="profile__floating--label">Name</label>
+		</div>
+		<div id="lastname" class="profile__floating">
+			<input name="lastname" [(ngModel)]="user.lastName" class="profile__floating--input"	type="text">
+			<label class="profile__floating--label">Lastame</label>
+		</div>
+		<div id="phone" class="profile__floating">
+			<input name="phone" [(ngModel)]="user.phone" class="profile__floating--input"	type="text">
+			<label class="profile__floating--label">Phone</label>
+		</div>
+		<div id="location" class="profile__floating">
+			<input name="location" [(ngModel)]="user.location" class="profile__floating--input"	type="text">
+			<label class="profile__floating--label">Location</label>
+		</div>
+		<div id="email" class="profile__floating">
+			<input name="email" [ngModel]="user.email" disabled class="profile__floating--input"	type="text">
+			<label class="profile__floating--label">Email</label>
+		</div>
+		<button class="contrast saveChanges" (click)="saveChanges()">Save changes</button>
+		<button class="contrast saveChanges" (click)="logout()" routerLink="/home">Logout</button>
+	</form>
+	<div class="bg-contrast back profile__banner">
+		<div class="bg-primary-dark back__front">
+			<div class="back__front--message space_4_top_mg">
+				<h3>We <span>promise</span> that your data is <span>always</span>safe and <span>secure</span></h3>
+			</div>
+		</div>
+	</div>
+</section>

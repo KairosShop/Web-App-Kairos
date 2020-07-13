@@ -1,4 +1,5 @@
 @import '_var';
+@import '_mixins';
 
 .GardenProducts {
   margin: 5%;
@@ -18,25 +19,35 @@
     row-gap: 2%;
   }
   &-more{
+    font-family: 'Lobster', cursive !important;
+    justify-self: center;
+    align-self: center;
+    width: 180px;
+    height: 180px;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 100%;
-    width: 100%;
     border: 1px solid $primary-dark;
-    border-radius: 30px;
+    border-radius: 50%;
     box-shadow: 3px 2px 11px 0 $desactive;
-    background-color: fade-out($desactive, 0.5);
-    & h3{
-      font-size: 3rem !important;
+    color: $light !important;
+    @include primary-bg-gradiente;
+    &-text{
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
     & span{
       margin-top: 5%;
       font-size: 3rem !important;
     }
     &:hover{
-      background-color: $contrast;
+      transform: scale(1.2);
+      transform: scale(.9);
+      background: $contrast !important;
       transition: 1s;
+      color: $primary-dark !important;
     }
   }
 }

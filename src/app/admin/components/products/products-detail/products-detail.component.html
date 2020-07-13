@@ -1,0 +1,105 @@
+<section class="ProductDetail">
+  <h2 class="ProductDetail__title">Detail Product</h2>
+  <form class="ProductDetail__form" [formGroup]="productsForm">
+    <div class="ProductDetail__form-status" [class.is-invalid]="_validations.invalidForm(productsForm, 'active')">
+      <label class="ProductDetail__form-status-title">
+        <b>Status</b>
+      </label>
+      <div class="ProductDetail__form-status-a">
+        <input id="status-a" formControlName="active" type="radio" name="active" [value]="true">
+        <label for='status-a'>
+          Active
+        </label>
+      </div>
+      <div class="ProductDetail__form-status-i">
+        <input id="status-i" formControlName="active" type="radio" name="active" [value]="false">
+        <label for='status-i'>
+          Inactive
+        </label>
+      </div>
+    </div>
+
+    <div class="ProductDetail__form-title">
+      <label for="title">
+        <b>Title</b>
+      </label>
+      <input id="title" formControlName="title" type="text" placeholder="title" [disabled]='desactive'
+      [class.is-invalid]="_validations.invalidForm(productsForm, 'title')">
+    </div>
+
+    <div class="ProductDetail__form-description">
+      <label><b>
+          Description
+        </b></label>
+      <textarea id="description" formControlName="description" type="text" placeholder="description"
+      [class.is-invalid]="_validations.invalidForm(productsForm, 'description')"></textarea>
+    </div>
+
+    <div class="ProductDetail__form-quantity">
+      <label>
+        <b>
+          Quantity
+        </b>
+      </label>
+      <input formControlName="quantity" type="number" placeholder="quantity"
+      [class.is-invalid]="_validations.invalidForm(productsForm, 'quantity')">
+    </div>
+
+    <div class="ProductDetail__form-measure">
+      <label>
+        <b>Measure</b>
+      </label>
+      <select name="measure" formControlName="measureId"
+        [class.is-invalid]="_validations.invalidForm(productsForm, 'measureId')">
+        <option *ngFor="let measure of mesuares" [ngValue]="measure.id">{{measure.measure}}</option>
+      </select>
+    </div>
+    <div class="ProductDetail__form-category">
+      <label>
+        <b>Category</b>
+      </label>
+      <select formControlName="categoryId" name="category"
+        (ngModelChange)="getSubcategories(productsForm.controls.categoryId.value)"
+        [class.is-invalid]="_validations.invalidForm(productsForm, 'categoryId')">
+        <option *ngFor="let category of categories" [ngValue]="category.id">{{category.title}}</option>
+      </select>
+    </div>
+
+    <div class="ProductDetail__form-subcategory">
+      <label>
+        <b>
+          Subcategory
+        </b>
+      </label>
+      <select formControlName="subcategoryId" name="subcategoryId"
+      [class.is-invalid]="_validations.invalidForm(productsForm, 'subcategoryId')">
+        <option *ngFor="let subcategory of subcategories" [ngValue]="subcategory.id">{{subcategory.title}}</option>
+      </select>
+    </div>
+    <label for="urlImage" class="ProductDetail__form-img">
+      <img *ngIf="!croppedImage" src="{{productsForm.controls.urlImage.value}}"
+        alt="{{productsForm.controls.title.value}}">
+      <img [src]="croppedImage" />
+      <input id="urlImage" (change)="fileChangeEvent($event)" formControlName="urlImage" type="file" placeholder="Image"
+        accept="image/*"
+        [class.is-invalid]="_validations.invalidForm(productsForm, 'urlImage')">
+    </label>
+    <image-cropper [imageChangedEvent]="imageChangedEvent" [maintainAspectRatio]="true" [aspectRatio]="4 / 3"
+      format="png" (imageCropped)="imageCropped($event)" (imageLoaded)="imageLoaded()" (cropperReady)="cropperReady()"
+      (loadImageFailed)="loadImageFailed()"></image-cropper>
+    
+    <div class="ProductDetail__form-price">
+      <label>
+        <b>
+          Price
+        </b>
+      </label>
+      <input formControlName="price" name="price" type="number" placeholder="price"
+      >
+      <p class="warning" *ngIf="_validations.invalidForm(productsForm, 'price')">Introduce a valid price</p>
+    </div>
+
+    <app-button  (click)="saveSettings()" *ngIf='!desactive' icon='send' class="ProductDetail__form-btn" name='send' color='primary'></app-button>
+    <app-button  (click)="savePrice()" *ngIf='desactive' icon='send' class="ProductDetail__form-btn" name='Save price' color='primary'></app-button>
+  </form>
+</section>

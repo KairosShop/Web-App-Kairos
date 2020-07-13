@@ -1,0 +1,50 @@
+<section class="panel" [ngClass]="{'open': toggle}">
+	<div class="panel__back bg-contrast"></div>
+	<div class="panel__front">
+	</div>
+	<aside class="panel__sidebar">
+		<div *ngIf="toggle" class="panel__sidebar__hero">
+			<div class="panel__sidebar__hero-img">
+				<div class="panel__sidebar__hero-img-imgContent">
+					<img src="{{img}}" alt="{{name}}">
+				</div>
+				<i class="panel__sidebar__hero-img-addPhoto material-icons">add_a_photo</i>
+			</div>
+			<h3 class="panel__sidebar__hero-name">{{name}}</h3>
+		</div>
+		<nav class="panel__sidebar__nav">
+			<ul class="panel__sidebar__nav-action">
+				<li><a class="panel__sidebar__nav-item" routerLink="/admin" routerLinkActive="active">
+						<span class="material-icons">
+							home
+						</span>
+						<h3 *ngIf="toggle">Dashboard</h3>
+					</a></li>
+				<li><a class="panel__sidebar__nav-item" routerLink="/admin/products" routerLinkActive="active">
+						<span class="material-icons">
+							mediation
+						</span>
+						<h3 *ngIf="toggle">Products</h3>
+					</a>
+				</li>
+				<li><a class="panel__sidebar__nav-item" (click)="redirectPerfile()" routerLinkActive="active">
+						<span class="material-icons">
+							supervisor_account
+						</span>
+						<h3 *ngIf="toggle">Users</h3>
+					</a>
+				</li>
+			</ul>
+			<ul class="panel__sidebar__nav-signout">
+				<li><a class="panel__sidebar__nav-item" (click)="logout()" routerLinkActive="active">
+					<span class="material-icons">
+						power_off
+					</span>
+					<h3 *ngIf="toggle">Logout</h3>
+				</a>
+			</li>
+			</ul>
+		</nav>
+	</aside>
+
+</section>

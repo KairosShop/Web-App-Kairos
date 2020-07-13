@@ -1,0 +1,3 @@
+<section class="Users" >
+  <app-table (btnNewAction)="redirectUsers()" [btnNew]='btnNew' class="Users__table" *ngIf="users|async" [Data]="users |async" title="User" ></app-table>
+</section>

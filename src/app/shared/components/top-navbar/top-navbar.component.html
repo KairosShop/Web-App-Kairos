@@ -1,20 +1,32 @@
-<nav class="topNavbar primary-bg-gradiente" [ngClass]="{'bg-white dark': homepage}">
-	<button class="topNavbar__hamburguer" (click)="vierMenu()" [ngClass]="{'dark': homepage}">
-		<i class="material-icons">menu</i>
+<nav class="topNavbar primary-bg-gradiente" [ngClass]="{'bg-white dark': homepage}" (window:resize)="onResize($event)">
+	<button class="topNavbar__hamburguer" (click)="vierMenu()">
+		<i class="material-icons" [ngClass]="{'light': !homepage}">menu</i>
 	</button>
-	<a routerLink='/' class="topNavbar__logo">
+	<a routerLink='/' class="topNavbar__brand">
 		<img *ngIf="homepage" src="assets/images/brand/LogoBlue.svg" alt="Logo">
 		<img *ngIf="!homepage" src="assets/images/brand/LogoLight.svg" alt="Logo">
-		<h1 class="topNavbar__logo-brand">Kairos</h1>
+		<h1 class="topNavbar__brand-name">Kairos</h1>
 	</a>
-	<div class="topNavbar__search">
+	<div *ngIf='!login' class="topNavbar__search">
 		<app-search></app-search>
 	</div>
-	<div class="topNavbar__options">
-		<app-cart routerLink='/cart' [homepage]="homepage"></app-cart>
-		<a routerLink='/login' class="topNavbar__options-btn">
-			<app-button class="topNavbar__menu-btn" *ngIf="!homepage" name="login" color='light' type='Login' icon="person"></app-button>
-			<app-button  class="topNavbar__menu-btn" *ngIf="homepage" name="login" color='primary' type='Login' icon="person"></app-button>	
-		</a>
-		</div>
+	<app-cart *ngIf='!login' class="topNavbar__car" routerLink='/cart' [homepage]="!movile"></app-cart>
+	<a *ngIf='!user && !login' class="topNavbar__login" routerLink='/login'>
+		<app-button class="topNavbar__menu-btn" *ngIf="!homepage && !user" [name]="nameBtn" color='light' type='Login'
+			icon="person">
+		</app-button>
+		<app-button class="topNavbar__menu-btn" *ngIf="homepage && !user" [name]="nameBtn" color='primary' type='Login'
+			icon="person">
+		</app-button>
+	</a>
+	<a *ngIf="user && !login" class="topNavbar__login topNavbar__menu-btn avatar bg-light" (click)="redirect()">
+		<img *ngIf="user.urlImage" src="{{user.urlImage}}" alt="{{user.firstName}}">
+		<img *ngIf="!user.urlImage" src="assets/images/avatar.png" alt="{{user.firstName}}">
+	</a>
 </nav>
+<ng-container *ngIf="installEvent">
+	<button class="btnInstall" (click)="installByUser()"><span class="material-icons">
+			cloud_download
+		</span>
+	</button>
+</ng-container>

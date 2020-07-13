@@ -1,0 +1,107 @@
+<section class="UserDetail">
+  <h2 class="UserDetail__title">Detail User</h2>
+  <form class="UserDetail__form" [formGroup]="userForm">
+    <div class="UserDetail__form-verified" [class.is-invalid]="_validations.invalidForm(userForm, 'verified')">
+      <label class="UserDetail__form-verified-title">
+        <b>Verified</b>
+      </label>
+      <div class="UserDetail__form-verified-a">
+        <input id="verified-a" formControlName="verified" type="radio" name="verified" [value]="true">
+        <label for='verified-a'>
+          Active
+        </label>
+      </div>
+      <div class="UserDetail__form-verified-i">
+        <input id="verified-i" formControlName="verified" type="radio" name="verified" [value]="false">
+        <label for='verified-i'>
+          Inactive
+        </label>
+      </div>
+    </div>
+    <div class="UserDetail__form-status" [class.is-invalid]="_validations.invalidForm(userForm, 'active')">
+      <label class="UserDetail__form-status-title">
+        <b>Status</b>
+      </label>
+      <div class="UserDetail__form-status-a">
+        <input id="status-a" formControlName="active" type="radio" name="active" [value]="true">
+        <label for='status-a'>
+          Active
+        </label>
+      </div>
+      <div class="UserDetail__form-status-i">
+        <input id="status-i" formControlName="active" type="radio" name="active" [value]="false">
+        <label for='status-i'>
+          Inactive
+        </label>
+      </div>
+    </div>
+
+    <div class="UserDetail__form-firstName">
+      <label for="firstName">
+        <b>First Name</b>
+      </label>
+      <input id="firstName" formControlName="firstName" type="text" placeholder="firstName" [disabled]='desactive'
+        [class.is-invalid]="_validations.invalidForm(userForm, 'firstName')">
+    </div>
+
+    <div class="UserDetail__form-lastName">
+      <label for="lastName">
+        <b>Last Name</b>
+      </label>
+      <input id="lastName" formControlName="lastName" type="text" placeholder="lastName" [disabled]='desactive'
+        [class.is-invalid]="_validations.invalidForm(userForm, 'lastName')">
+    </div>
+
+    <div class="UserDetail__form-rol">
+      <label for="rol">
+        <b>Rol</b>
+      </label>
+      <select name="measure" formControlName="rol" [class.is-invalid]="_validations.invalidForm(userForm, 'rol')">
+        <option *ngFor="let rol of roles" [ngValue]="rol">{{rol}}</option>
+      </select>
+    </div>
+
+
+    <div class="UserDetail__form-email">
+      <label for="email">
+        <b>Email</b>
+      </label>
+      <input id="email" formControlName="email" type="email" placeholder="email" [disabled]='desactive'
+        [class.is-invalid]="_validations.invalidForm(userForm, 'email')">
+    </div>
+
+    <div class="UserDetail__form-password">
+      <label for="password">
+        <b>Password</b>
+      </label>
+      <input id="password" formControlName="password" type="password" placeholder="password" [disabled]='desactive'
+        [class.is-invalid]="_validations.invalidForm(userForm, 'password')">
+        <p *ngIf="userForm.controls.password.hasError('minlength')">{{'minimum 8 characters'}}</p>
+        <p *ngIf="userForm.controls.password.hasError('maxlength')">{{'maximum 30 characters'}}</p>
+    </div>
+
+    <div *ngIf='userForm.controls.password.value' class="UserDetail__form-password2">
+      <label for="password2">
+        <b>Confirmation Password</b>
+      </label>
+      <input id="password2" formControlName="password2" type="password" placeholder="Confirmation Password"
+        [disabled]='desactive' [class.is-invalid]="_validations.invalidForm(userForm, 'email')">
+    </div>
+
+
+    <label for="urlImage" class="UserDetail__form-img">
+      <img *ngIf="!croppedImage" src="{{userForm.controls.urlImage.value}}" alt="{{userForm.controls.firstName.value}}">
+      <img [src]="croppedImage" />
+      <input id="urlImage" (change)="fileChangeEvent($event)" formControlName="urlImage" type="file" placeholder="Image"
+        accept="image/*" [class.is-invalid]="_validations.invalidForm(userForm, 'urlImage')">
+    </label>
+    <image-cropper [imageChangedEvent]="imageChangedEvent" [maintainAspectRatio]="true" [aspectRatio]="4 / 4"
+      format="png" (imageCropped)="imageCropped($event)" (imageLoaded)="imageLoaded()" (cropperReady)="cropperReady()"
+      (loadImageFailed)="loadImageFailed()"></image-cropper>
+
+    <ng-container *ngIf="!desactive">
+      <app-button  *ngIf='!userForm.invalid' (click)="saveSettings()" icon='send' class="UserDetail__form-btn"
+        name='send' color='primary'></app-button>
+    </ng-container>
+  </form>
+</section>

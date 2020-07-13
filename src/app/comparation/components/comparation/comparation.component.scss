@@ -1,61 +1,338 @@
-@import 'var';
+@import "var";
+@import "mixins";
 
 .comparation {
-	padding: 5%;
+	width: 100%;
+	height: 100%;
 	display: grid;
-	& h2 {
-		text-align: center;
-	}
-	&__table {
-		border-collapse: collapse;
-		& td {
-			padding: .2em .8em;
+	grid-template-areas: "header" "detail";
+	grid-template-rows: 60vh auto;
+	grid-template-columns: 90%;
+	justify-content: center;
+	align-items: center;
+	justify-items: center;
+	row-gap: 5%;
+	&__header {
+		grid-area: header;
+		height: 100%;
+		width: 100%;
+		display: grid;
+		grid-template-areas:
+			"title title title"
+			"table table table"
+			". btnAll btnCheaper";
+		grid-template-rows: 20% auto 10%;
+		&-title {
+			grid-area: title;
 			text-align: center;
-			font-weight: 800;
-			font-style: italic;
-			font-size: 125%;
 		}
-		&--space {
-			& td {
-				background: transparent;
-				& hr {
-					background: $contrast;
-					border: none;
-					height: 2px;
-				}			
+		&-table {
+			height: 100%;
+			width: 100%;
+			grid-area: table;
+			border-collapse: collapse;
+			& tr {
+				height: 3rem;
+				& td {
+					height: 100%;
+				}
 			}
-		}
+			& td {
+				padding: 0.2em 0.8em;
+				text-align: center;
+				font-weight: 800;
+				font-style: italic;
+				font-size: 125%;
+			}
+			&--space {
+				& td {
+					background: transparent;
+					& hr {
+						background: $contrast;
+						border: none;
+						height: 2px;
+					}
+				}
+			}
 
-		&--allCheaper {
-			grid-area: allCheaper;
-		}
-		&--countValue {
-			grid-area: countValue;
-		}
-		&--supermarket {
-			& td {
-				border-bottom: 2px solid $contrast;
+			&--allCheaper {
+				grid-area: allCheaper;
 			}
-			& img {
-				border-radius: 30px;
+			&--countValue {
+				grid-area: countValue;
+			}
+			&--supermarket {
+				& td {
+					border-bottom: 2px solid $contrast;
+				}
+				& img {
+					border-radius: 30px;
+					height: 4rem;
+				}
+			}
+			&--total {
+				grid-area: total;
 			}
 		}
-		&--total {
-			grid-area: total;
+		&-btnAll {
+			justify-self: center;
+			grid-area: btnAll;
+			width: 80%;
+		}
+		&-btnCheaper {
+			justify-self: center;
+			grid-area: btnCheaper;
+			width: 80%;
+		}
+	}
+	&__detail {
+		width: 100%;
+		height: 100%;
+		grid-area: detail;
+		text-align: center;
+		&-items {
+			display: grid;
+			width: 100%;
+			height: 100%;
+			grid-auto-rows: 20vh;
+			row-gap: 2%;
 		}
 	}
 }
 
-.moda__buttons {
+.Cart {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	border: 1px solid $primary-dark;
+	border-radius: 30px;
+	box-shadow: 3px 2px 11px 0 $desactive;
+	background-color: $white;
+	display: grid;
+	grid-template-columns: 100%;
+	grid-template-rows: 100%;
+	justify-content: center;
+	justify-items: center;
+	align-items: center;
+	overflow: hidden;
+	&__head {
+		position: absolute;
+		top: -1%;
+		width: 100%;
+		height: 20%;
+		& > img {
+			width: 100%;
+			height: 100%;
+		}
+	}
+	&__content {
+		z-index: 1;
+		position: relative;
+		width: 90%;
+		height: 100%;
+		display: grid;
+		grid-template-areas: "product supermarkerts";
+		grid-template-columns: 30% 70%;
+		grid-template-rows: 100%;
+		justify-content: center;
+		align-content: center;
+		text-align: center;
+		&__product {
+			grid-area: product;
+			display: grid;
+			grid-template-rows: 80% 20%;
+			justify-content: center;
+			align-items: center;
+			&-img {
+				margin-top: 10%;
+				height: 100%;
+				width: 100%;
+				& > img {
+					width: 80%;
+				}
+			}
+		}
+		&__supermarkerts {
+			grid-area: supermarkerts;
+			display: flex;
+			justify-content: space-around;
+			&-item {
+				display: grid;
+				grid-template-rows: 80% 20%;
+				justify-content: center;
+				align-items: center;
+				&-img {
+					margin-top: 10%;
+					height: 100%;
+					width: 100%;
+					& > img {
+						width: 80%;
+					}
+				}
+			}
+		}
+	}
+}
+.foo {
+	position: absolute;
+	bottom: 3%;
+	right: 3%;
+	display: grid;
+	grid-template-areas: "c1 c2" "c1 c3";
+	&__circle {
+		-moz-border-radius: 50%;
+		-webkit-border-radius: 50%;
+		border-radius: 50%;
+		&-lg {
+			grid-area: c1;
+			width: 12px;
+			height: 12px;
+			margin: 2px;
+		}
+		&-md {
+			grid-area: c2;
+			width: 8px;
+			height: 8px;
+		}
+		&-sm {
+			grid-area: c3;
+			width: 6px;
+			height: 6px;
+		}
+		&-contrast {
+			background: $contrast;
+		}
+		&-primary {
+			background: $primary;
+		}
+		&-primaryGradiente {
+			@include primary-bg-gradiente;
+		}
+	}
+}
+
+.modal{
+	position: fixed;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	background-color: fade-out($primary-dark, 0.5);
+	z-index: 1025;
 	display: flex;
-	justify-content: space-around;
-	& app-button {
-		width: 20%;
-		margin-bottom: 10px;
-		height: 150%;
-		& button {
-			border: none;
-			box-shadow: 1px 1px 5px;
+	justify-content: center;
+	align-items: center;
+	&__content{
+		position: relative;
+		background-color: $light;
+		width: 90%;
+		height: 90%;
+		z-index: 2;
+		@include styleScrollY;
+		&-icon{
+			position: fixed;
+			top: 10%;
+			right: 10%;
+			cursor: pointer;
+			&:active{
+				transform: scale(1.2);
+				transform: scale(.9);
+			}
+		}
+	}
+}
+
+@media screen and (max-width: 760px) {
+	.Cart {
+		&__content {
+			z-index: 1;
+			position: relative;
+			width: 90%;
+			height: 100%;
+			display: grid;
+			grid-template-areas: "product" "supermarkerts";
+			grid-template-columns: 100%;
+			grid-template-rows: 40% 40%;
+			justify-content: center;
+			align-content: center;
+			text-align: center;
+			&__product {
+				grid-area: product;
+				display: grid;
+				grid-template-rows: 100%;
+				grid-template-columns: 50% 50%;
+				justify-content: center;
+				align-items: center;
+				&-img {
+					margin-top: 10%;
+					height: 80%;
+					width: 80%;
+					& > img {
+						width: 80%;
+					}
+				}
+			}
+			&__supermarkerts {
+				grid-area: supermarkerts;
+				display: flex;
+				justify-content: space-around;
+				&-item {
+					display: grid;
+					grid-template-rows: 80% 20%;
+					justify-content: center;
+					align-items: center;
+					&-img {
+						margin-top: 10%;
+						height: 80%;
+						width: 80%;
+						& > img {
+							width: 80%;
+						}
+					}
+				}
+			}
+		}
+	}
+	.comparation {
+		grid-template-rows: auto auto;
+		grid-template-columns: 80%;
+		justify-content: center;
+		&__header {
+			grid-area: header;
+			height: 100%;
+			width: 80%;
+			display: grid;
+			grid-template-areas:
+				"title title"
+				"table table"
+				"btnAll btnCheaper";
+			grid-template-rows: 20% auto 10%;
+			justify-content: center;
+			&-table {
+				height: 100%;
+				width: 80%;
+				& tr {
+					height: 2rem;
+				}
+				& td {
+					font-size: 100%;
+				}
+				&--space {
+					& td {
+						background: transparent;
+						& hr {
+							background: $contrast;
+							border: none;
+							height: 2px;
+						}
+					}
+				}
+				&--supermarket {
+					& img {
+						border-radius: 30px;
+						height: 3rem;
+					}
+				}
+			}
 		}
 	}
 }

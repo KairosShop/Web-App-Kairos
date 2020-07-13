@@ -9,7 +9,7 @@ import { AddCartService } from '@core/addCart/add-cart.service';
   styleUrls: ['./productsCard.component.scss']
 })
 
-export class ProductsCardComponent implements OnInit  {
+export class ProductsCardComponent implements OnInit {
   @Input() type: string;
   @Input() isLink: boolean = false;
   @Input() direction: string;
@@ -17,20 +17,30 @@ export class ProductsCardComponent implements OnInit  {
   @Input() superMarkerts: [];
 
   constructor(
-    private _addCartService:AddCartService
+    private _addCartService: AddCartService
   ) {
 
   }
 
   ngOnInit(): void {
+      this._addCartService
+    .getObservable()
+    .subscribe((response: Product[]) => {
+      response.map((product: Product) => {
+        if (this.product.id == product.id) {
+          this.product.count = product.count;
+        }
+      });
+    });
   }
 
+
   addCart() {
-    this._addCartService.addProduct(this.product);
+    this._addCartService.addCount(this.product);
   }
 
   removeCart() {
-    this._addCartService.removeProduct(this.product);
+    this._addCartService.minusCount(this.product);
   }
 
 }
