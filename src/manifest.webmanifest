@@ -5,7 +5,7 @@
   "background_color": "#01132D",
   "display": "standalone",
   "scope": "./",
-  "start_url": "./",
+  "start_url": "https://kairosshop.xyz",
   "icons": [
     {
       "src": "assets/icons/icon-72x72.png",
