@@ -42,8 +42,8 @@
 			<input
 				type="password" placeholder="Confirm password"
 				formControlName="password2"
-				[class.is-invalid]="_validationsService.invalidPassword2(registerForm)">
-			<p *ngIf="_validationsService.invalidPassword2(registerForm)" class="warning space_bottom_mg invalid">Passwords don't match</p>
+				[class.is-invalid]="_validationsService.invalidForm(registerForm, 'password2')">
+			<p *ngIf="_validationsService.invalidForm(registerForm, 'password2')" class="warning space_bottom_mg invalid">Passwords don't match</p>
 		</div>
 		<div class="register__form-button">
 			<app-button name="register" color='primary' type='submit' icon="person"></app-button>

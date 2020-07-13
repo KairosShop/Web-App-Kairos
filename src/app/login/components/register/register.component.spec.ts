@@ -22,30 +22,14 @@ class AuthServiceStub {
 }
 
 class ValidationsServiceStub {
-  invalidPassword() {
-    return true;
-  }
-
-  invalidEmail() {
-    return true;
-  }
-
-  invalidName(){
-    return true;
-  }
-
-  invalidPassword2(){
-    return true;
-  }
-
-  invalidLastname(){
-    return true;
-  }
 
   samePassword(){
     return (formGroup: FormGroup)=>{
       return true;
     };
+  }
+  invalidForm() {
+    return true;
   }
 }
 

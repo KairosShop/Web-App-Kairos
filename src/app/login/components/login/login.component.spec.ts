@@ -22,11 +22,7 @@ class AuthServiceStub {
 }
 
 class ValidationsServiceStub {
-  invalidPassword() {
-    return true;
-  }
-
-  invalidEmail() {
+  invalidForm() {
     return true;
   }
 }
