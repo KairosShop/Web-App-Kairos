@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, HostListener } from '@angular/core';
 import { LayoutComponent } from '../../../layout/layout.component';
 import { AuthService } from '../../../core/authentication/auth.service';
 import { Router } from '@angular/router';
@@ -32,6 +32,25 @@ export class TopNavbarComponent implements OnInit {
       this.movile = true
     } else {
       this.movile = false
+    }
+  }
+
+  installEvent = null;
+
+  @HostListener('window:beforeinstallprompt', ['$event'])
+  onBeforeInstallPrompt(event:Event) {
+    console.log(event)
+    event.preventDefault();
+    this.installEvent = event;
+  }
+
+  installByUser() {
+    if (this.installEvent) {
+      this.installEvent.prompt();
+      this.installEvent.userChiice
+        .then(rta => {
+          console.log(rta)
+        });
     }
   }
 

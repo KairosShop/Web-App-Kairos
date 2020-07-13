@@ -8,9 +8,13 @@ import { SwUpdate } from '@angular/service-worker';
 })
 export class AppComponent implements OnInit {
   title = 'Kairos';
+
+
+
   constructor(private sw: SwUpdate) {
 
   }
+
 
   ngOnInit(): void  {
     this.updatePWA();

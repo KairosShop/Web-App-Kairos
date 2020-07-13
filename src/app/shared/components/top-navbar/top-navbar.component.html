@@ -24,3 +24,9 @@
 		<img *ngIf="!user.urlImage" src="assets/images/avatar.png" alt="{{user.firstName}}">
 	</a>
 </nav>
+<ng-container *ngIf="installEvent">
+	<button class="btnInstall" (click)="installByUser()"><span class="material-icons">
+			cloud_download
+		</span>
+	</button>
+</ng-container>

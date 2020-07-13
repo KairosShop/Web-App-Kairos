@@ -71,6 +71,18 @@
 	display: none;
 }
 
+.btnInstall{
+	border-radius: 50%;
+	background-color: $contrast;
+	position: fixed;
+	height: 40px;
+	width: 40px;
+	right: 0%;
+	top:0%;
+	color: $primary;
+	border: 1px solid $primary;
+}
+
 @media screen and (max-width: 580px) {
 	.topNavbar {
 		display: grid;
