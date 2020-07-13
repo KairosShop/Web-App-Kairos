@@ -35,11 +35,11 @@
 
     <!-- start imgen product -->
     <div *ngIf='!isLink' class='content__img'>
-      <img src="{{product.urlImage}}" />
+      <img src="{{product.urlImage}}" alt="Imagen Products" />
     </div>
     <a *ngIf='isLink' class="content__img" [routerLink]="['/products', product.id]">
       <div class='content__img'>
-        <img src="{{product.urlImage}}" />
+        <img src="{{product.urlImage}}" alt="Imagen Products" />
       </div>
     </a>
     <!-- end imgen product -->
