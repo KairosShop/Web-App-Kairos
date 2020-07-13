@@ -39,7 +39,6 @@ export class TopNavbarComponent implements OnInit {
 
   @HostListener('window:beforeinstallprompt', ['$event'])
   onBeforeInstallPrompt(event:Event) {
-    console.log(event)
     event.preventDefault();
     this.installEvent = event;
   }
@@ -47,7 +46,7 @@ export class TopNavbarComponent implements OnInit {
   installByUser() {
     if (this.installEvent) {
       this.installEvent.prompt();
-      this.installEvent.userChiice
+      this.installEvent.userChoice
         .then(rta => {
           console.log(rta)
         });
