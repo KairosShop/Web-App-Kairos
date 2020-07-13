@@ -82,7 +82,6 @@ fdescribe('RegisterComponent', () => {
       expect(Object.keys(component.registerForm.controls)).toEqual([
         "firstName",
         "lastname",
-        "adress",
         "email",
         "password",
         "password2"
@@ -130,10 +129,9 @@ fdescribe('RegisterComponent', () => {
       expect(component.registerForm.valid).toBeFalsy();
       component.registerForm.controls["firstName"].setValue("Predo");
       component.registerForm.controls["lastname"].setValue("Perez");
-      component.registerForm.controls["adress"].setValue("Calle 1 Oriente");
       component.registerForm.controls["email"].setValue("test@test.com");
-      component.registerForm.controls["password"].setValue("123456");
-      component.registerForm.controls["password2"].setValue("123456");
+      component.registerForm.controls["password"].setValue("12345678");
+      component.registerForm.controls["password2"].setValue("12345678");
       expect(component.registerForm.valid).toBeTruthy();
 
       // Trigger the login function

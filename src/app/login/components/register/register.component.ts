@@ -30,17 +30,15 @@ export class RegisterComponent implements OnInit {
     this.registerForm = this.fb.group({
       firstName: ['', [Validators.required, Validators.minLength(3)]],
       lastname: [''],
-      address: [''],
-      email: ['', [Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$'), Validators.required]],
-      password: ['', Validators.required, Validators.minLength(8), Validators.maxLength(30)],
-      password2: ['', Validators.required, Validators.minLength(8), Validators.maxLength(30)],
+      email: ['', [ Validators.minLength(3), Validators.email, Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$'), Validators.required]],
+      password: ['',[Validators.required, Validators.minLength(8), Validators.maxLength(30)]],
+      password2: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(30)]],
     }, {
       validators: this._validationsService.samePassword('password', 'password2')
     });
   }
 
   send() {
-    delete this.registerForm.controls.address;
     if (this.registerForm.invalid) {
       Object.values(this.registerForm.controls).map(control => {
         if (control.status === "INVALID") {
