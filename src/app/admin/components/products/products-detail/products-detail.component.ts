@@ -136,10 +136,6 @@ export class ProductsDetailComponent implements OnInit {
           value: product.urlImage,
           disabled: this.desactive,
         }],
-       /* url: [{
-          value: null,
-          disabled: this.desactive,
-        }, Validators.required],*/
         measureId: [{
           value: product.measureId,
           disabled: this.desactive,
@@ -178,7 +174,7 @@ export class ProductsDetailComponent implements OnInit {
     this.imageChangedEvent = event;
   }
 
-  imageCropped(event: ImageCroppedEvent) {
+ imageCropped(event: ImageCroppedEvent) {
     this.croppedImage = event.base64;
   }
 
@@ -193,6 +189,7 @@ export class ProductsDetailComponent implements OnInit {
   loadImageFailed() {
     // show message
   }
+
 
 
   saveSettings() {
@@ -210,18 +207,6 @@ export class ProductsDetailComponent implements OnInit {
         return;
       }
 
-   /* if (this.croppedImage) {
-      const currentproductsId = Date.now();
-      const products = this.firebaseStorage.ref('products/' + currentproductsId + '.jpg').putString(this.croppedImage, 'data_url');
-      products.then((result) => {
-        this.picture = this.firebaseStorage.ref('products/' + currentproductsId + '.jpg').getDownloadURL();
-        console.log(result)
-        console.log(this.picture)
-      }).catch((error) => {
-        alert('Hubo un error');
-        console.log(error);
-      });
-    }*/
     formValue.urlImage = 'https://images.ctfassets.net/ppt0nrovh5yl/4o2KvTtyCEhZi5WeDBjW7w/baff4852fa6fd71c7d26122ff850610d/Activia_Bebible_Natural.jpg?w=768&q=80';
     this.apiRequestsService.getQuery(`products/${idProduct}`, method, formValue)
       .subscribe(response => {
