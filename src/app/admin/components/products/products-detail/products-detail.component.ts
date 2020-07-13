@@ -32,6 +32,7 @@ export class ProductsDetailComponent implements OnInit {
   public rol: string = 'SUPER'
   public price;
   public product;
+  public edit:boolean;
   constructor(
     private activatedRoute: ActivatedRoute,
     private router: Router,
@@ -48,7 +49,6 @@ export class ProductsDetailComponent implements OnInit {
         this.desactive = false;
       }
     })
-
     this.createForm();
   }
 
@@ -60,6 +60,7 @@ export class ProductsDetailComponent implements OnInit {
       this.getId(this.id)
     })
 
+    this.edit = !this.desactive;
     this.productsForm.get('price').valueChanges.subscribe(response => {
         this.price = response;
     });
@@ -159,7 +160,7 @@ export class ProductsDetailComponent implements OnInit {
           value: product.active,
           disabled: this.desactive,
         }, Validators.required],
-        price: [{value: product.price},[Validators.required, Validators.pattern('([0-9]*)')]]
+        price: [{value: product.price, disabled: !this.desactive},[Validators.required, Validators.pattern('([0-9]*)')]]
       })
 
       this.product = product;
@@ -197,11 +198,9 @@ export class ProductsDetailComponent implements OnInit {
   saveSettings() {
 
     const formValue = this.productsForm.value;
-   
-    // const body = this.apiRequestsService.getQuery('file', 'post', formValue.url);
-
-    // console.log(body);
-
+    const method:string = this.edit ? 'put' : 'post'; 
+    const idProduct = this.product.id;
+    
     if (this.productsForm.invalid) {
         Object.values(this.productsForm.controls).map(control => {
           if (control.status === "INVALID") {
@@ -223,14 +222,16 @@ export class ProductsDetailComponent implements OnInit {
         console.log(error);
       });
     }*/
-    formValue.urlImage = 'https://cdn.computerhoy.com/sites/navi.axelspringer.es/public/media/image/2019/06/python.jpg';
-    this.apiRequestsService.getQuery('products', 'post', formValue)
+    formValue.urlImage = 'https://images.ctfassets.net/ppt0nrovh5yl/4o2KvTtyCEhZi5WeDBjW7w/baff4852fa6fd71c7d26122ff850610d/Activia_Bebible_Natural.jpg?w=768&q=80';
+    this.apiRequestsService.getQuery(`products/${idProduct}`, method, formValue)
       .subscribe(response => {
         console.log(response);
+        this.productsForm.reset();
+        this.router.navigateByUrl('/admin/products');
+      }, error => {
+        console.log(error);
       });
 
-      this.productsForm.reset();
-      this.router.navigateByUrl('/admin/products');
 
   }
 
