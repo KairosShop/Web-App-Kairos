@@ -90,9 +90,6 @@ export class TopNavbarComponent implements OnInit {
         this.router.navigateByUrl('/admin');
         break;
     }
-
-    console.log(user.rol)
-
   }
 }
 
