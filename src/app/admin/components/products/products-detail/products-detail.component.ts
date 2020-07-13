@@ -190,8 +190,6 @@ export class ProductsDetailComponent implements OnInit {
     // show message
   }
 
-
-
   saveSettings() {
 
     const formValue = this.productsForm.value;

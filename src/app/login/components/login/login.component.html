@@ -9,15 +9,15 @@
 		           type="email"
 		           placeholder="example@domain.com"
 		           formControlName="email"
-		           [class.is-invalid]="_validationsService.invalidEmail(loginForm)"
+		           [class.is-invalid]="_validationsService.invalidForm(loginForm, 'email')"
 		           >
-		    <p *ngIf="_validationsService.invalidEmail(loginForm)" class="warning space_bottom_mg invalid">Invalid email</p>
+		    <p *ngIf="_validationsService.invalidForm(loginForm, 'email')" class="warning space_bottom_mg invalid">Invalid email</p>
 			<input class="space_bottom_mg"
 		           type="password"
 		           placeholder="Password"
 		           formControlName="password"
-		           [class.is-invalid]="_validationsService.invalidPassword(loginForm)">
-		    <p *ngIf="_validationsService.invalidPassword(loginForm)" class="warning space_bottom_mg invalid">Invalid password</p>
+		           [class.is-invalid]="_validationsService.invalidForm(loginForm, 'password')">
+		    <p *ngIf="_validationsService.invalidForm(loginForm, 'password')" class="warning space_bottom_mg invalid">Invalid password</p>
 		    <p *ngIf="loginFailed" class="warning space_bottom_mg invalid">Password o email invalid</p>
 			<app-button class="login__form-btn" name="login" color='primary' type='submit' icon="person"></app-button>
 			<p>You are not registered? <a  routerLink='/register' class="contrast">Register here</a></p>
