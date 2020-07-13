@@ -52,7 +52,6 @@ export class RegisterComponent implements OnInit {
     this.auth.register(this.registerForm.value, this.supermarket)
       .subscribe(response => {
         // Redirect to home
-        console.log(response);
         this.router.navigateByUrl('/home');
       }, (err) => {
         console.log(err.message);
@@ -60,9 +59,5 @@ export class RegisterComponent implements OnInit {
 
     // Reset form
     this.registerForm.reset();
-  }
-
-  supermarketFunc() {
-    this.supermarket = !this.supermarket;
   }
 }

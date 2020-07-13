@@ -35,7 +35,6 @@ export class ProfileComponent implements OnInit {
   }
 
   saveChanges() {
-  	console.log(this.user);
   	this.auth.setCookie('user', this.user, 1);
   	window.location.reload();
   }

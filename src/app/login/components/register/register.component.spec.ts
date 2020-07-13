@@ -89,13 +89,6 @@ fdescribe('RegisterComponent', () => {
     });
   });
 
-  describe("When fogotPassword is executed", () => {
-    it("Should forgot password", () => {
-      const valueExpect = component.supermarket;
-      component.supermarketFunc();
-      expect(!valueExpect).toEqual(component.supermarket);
-    });
-  });
 
   describe("When send is executed", () => {
     it("form invalid when empty", () => {

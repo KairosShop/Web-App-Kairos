@@ -26,7 +26,6 @@ export class SearchProductsComponent implements OnInit {
   		this._apiService.getQuery('products?q='+query).subscribe(
   			response => {
   				this.products = response;
-  				console.log(response);
   		})
   	})
   }

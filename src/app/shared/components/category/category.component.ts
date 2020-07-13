@@ -24,8 +24,6 @@ export class CategoryComponent implements OnInit {
   }
   showSubCategories() {
     this.iconArrow = !this.iconArrow;
- /*    this.sideBottomMenuComponent.expandCategory(); */
-
   }
   showMenu() {
     this.layoutComponent.viewCategories();

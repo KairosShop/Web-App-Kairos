@@ -120,8 +120,6 @@ export class ProductsDetailComponent implements OnInit {
       product.price = this.productsForm.get('price').value.value;
     }
 
-    console.log(product.price)
-
     this.productsForm =
       this.formBuilder.group({
         title: [{
@@ -208,11 +206,10 @@ export class ProductsDetailComponent implements OnInit {
     formValue.urlImage = 'https://images.ctfassets.net/ppt0nrovh5yl/4o2KvTtyCEhZi5WeDBjW7w/baff4852fa6fd71c7d26122ff850610d/Activia_Bebible_Natural.jpg?w=768&q=80';
     this.apiRequestsService.getQuery(`products/${idProduct}`, method, formValue)
       .subscribe(response => {
-        console.log(response);
         this.productsForm.reset();
         this.router.navigateByUrl('/admin/products');
       }, error => {
-        console.log(error);
+        console.error(error);
       });
 
 
