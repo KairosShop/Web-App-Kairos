@@ -22,30 +22,14 @@ class AuthServiceStub {
 }
 
 class ValidationsServiceStub {
-  invalidPassword() {
-    return true;
-  }
-
-  invalidEmail() {
-    return true;
-  }
-
-  invalidName(){
-    return true;
-  }
-
-  invalidPassword2(){
-    return true;
-  }
-
-  invalidLastname(){
-    return true;
-  }
 
   samePassword(){
     return (formGroup: FormGroup)=>{
       return true;
     };
+  }
+  invalidForm() {
+    return true;
   }
 }
 
@@ -89,13 +73,6 @@ fdescribe('RegisterComponent', () => {
     });
   });
 
-  describe("When fogotPassword is executed", () => {
-    it("Should forgot password", () => {
-      const valueExpect = component.supermarket;
-      component.supermarketFunc();
-      expect(!valueExpect).toEqual(component.supermarket);
-    });
-  });
 
   describe("When send is executed", () => {
     it("form invalid when empty", () => {

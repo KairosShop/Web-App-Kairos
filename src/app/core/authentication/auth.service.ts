@@ -9,7 +9,7 @@ export class AuthService {
 
   constructor(
     private http: HttpClient,
-    private router: Router
+    private router: Router,
   ) { }
 
   login(user) {
@@ -27,7 +27,6 @@ export class AuthService {
   }
 
   register({ firstName, lastname, email, password }, type) {
-    // This code will be repalce for method post to register user
     let user: { email: any; firstName: any; rol: string; password: any; lastName?: any; };
     let rol = type ? 'super market' : 'customer';
     let _user = {
@@ -46,7 +45,7 @@ export class AuthService {
         lastName: lastname
       }
     }
-    return this.http.post('https://staging.kairosshop.xyz/api/sign-up', user);
+    return this.http.post('https://staging.kairosshop.xyz/api/auth/sign-up', user);
   }
 
   setCookie(name, value, days) {

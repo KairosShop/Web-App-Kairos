@@ -31,7 +31,7 @@ export class LoginComponent implements OnInit {
     this.loginForm = this.fb.group({
       // Define properties
       email: ['', [Validators.pattern('[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$'), Validators.required]],
-      password: ['', Validators.required]
+      password: ['', [Validators.required, Validators.maxLength(30), Validators.minLength(8)]]
     });
   }
 
@@ -55,7 +55,7 @@ export class LoginComponent implements OnInit {
     // Post information
     this.auth.login({ 'username': user.email, 'password': user.password })
       .subscribe(({ body }: any) => {
-        this.auth.setCookie('user', body, 1);
+        this.auth.setCookie('user', body, 0.01);
         this.auth.redirectUser(body.user.rol);
       }, (err) => {
         this.loginFailed = true;

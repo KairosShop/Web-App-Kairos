@@ -41,6 +41,9 @@ export class ApiRequestsService {
     if (method === 'post') {
       request = this.http.post(`${this.url}/${query}`, body, { headers });
     }
+    if (method === 'put') {
+      request = this.http.put(`${this.url}/${query}`, body, { headers });
+    }
     return request
       .pipe(map((categories: any) => {
         const { error, body, status } = categories;

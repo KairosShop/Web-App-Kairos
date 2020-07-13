@@ -155,11 +155,6 @@ export class DetailUserComponent implements OnInit {
   saveSettings() {
 
     const formValue = this.userForm.value;
-
-    // const body = this.apiRequestsService.getQuery('file', 'post', formValue.url);
-
-    // console.log(body);
-
     if (this.userForm.invalid) {
       Object.values(this.userForm.controls).map(control => {
         if (control.status === "INVALID") {
@@ -169,18 +164,6 @@ export class DetailUserComponent implements OnInit {
       return;
     }
 
-    /* if (this.croppedImage) {
-       const currentproductsId = Date.now();
-       const products = this.firebaseStorage.ref('products/' + currentproductsId + '.jpg').putString(this.croppedImage, 'data_url');
-       products.then((result) => {
-         this.picture = this.firebaseStorage.ref('products/' + currentproductsId + '.jpg').getDownloadURL();
-         console.log(result)
-         console.log(this.picture)
-       }).catch((error) => {
-         alert('Hubo un error');
-         console.log(error);
-       });
-     }*/
      delete formValue.urlImage;
     delete formValue.password2;
     delete formValue.active;

@@ -9,8 +9,7 @@ import { ProductsComponent } from './components/products/table/products.componen
 import { ProductsDetailComponent } from './components/products/products-detail/products-detail.component';
 import { DetailUserComponent } from './components/users/detail-user/detail-user.component';
 import { TableUserComponent } from './components/users/table-user/table-user.component';
-import { DetailOrderComponent } from './components/orders/detail-order/detail-order.component';
-import { TableOrderComponent } from './components/orders/table-order/table-order.component';
+import { AdminHomeComponent } from './components/admin-home/admin-home.component';
 
 @NgModule({
   declarations: [
@@ -18,8 +17,7 @@ import { TableOrderComponent } from './components/orders/table-order/table-order
     ProductsDetailComponent,
     DetailUserComponent,
     TableUserComponent,
-    DetailOrderComponent,
-    TableOrderComponent
+    AdminHomeComponent
   ],
   imports: [
     CommonModule,
