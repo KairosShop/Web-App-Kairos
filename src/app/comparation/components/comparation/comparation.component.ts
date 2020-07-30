@@ -18,7 +18,7 @@ export class ComparationComponent implements OnInit {
   CheaperView: boolean = false;
   supermarkerts = [];
   supermarkert = {};
-  
+
   headers = [
     {
       id: 2,
@@ -449,6 +449,8 @@ export class ComparationComponent implements OnInit {
 
   allinone() {
     this.headers.map((item) => {
+      // TODO:
+      // The vars id, name and urlImagen is never reassigned; use 'const' instead of 'let'.
       let id = item.id;
       let name = item.supermarket;
       let urlImagen = item.urlImage;

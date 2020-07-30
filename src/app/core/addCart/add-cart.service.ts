@@ -10,7 +10,9 @@ import { AuthService } from '@core/authentication/auth.service';
   providedIn: 'root'
 })
 export class AddCartService {
-	
+
+  // TODO:
+  // Unnecessarily quoted for properties
 	private defaulProduct = {
 		"id": 0,
 	  "title": '',
@@ -26,7 +28,7 @@ export class AddCartService {
 	public cart:Product[]=[];
 
 	public add_cart = new Subject<Product[]>();
-  
+
   constructor(
     private apiResquests:ApiRequestsService,
     private auth:AuthService
@@ -51,6 +53,8 @@ export class AddCartService {
   }
 
   iterator(product: Product, plus:boolean) {
+    // TODO:
+    // For iterate, an array you should use methods like forEach, filter or find, in this case, this 'for' is not appropriate.
     for (let productCart of this.cart) {
       if (product.id == productCart.id) {
 
@@ -93,6 +97,8 @@ export class AddCartService {
     const getCart = JSON.parse(sessionStorage.getItem('cart'));
     if (getCart) {
       this.cart = getCart;
+      // TODO:
+      // Why use setTimeout in this case?
       setTimeout(() => {
         console.log('hello');
         this.add_cart.next(this.cart)

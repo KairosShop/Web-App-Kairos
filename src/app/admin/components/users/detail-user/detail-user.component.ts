@@ -15,6 +15,8 @@ import { UserService } from '@core/user/user.service';
 })
 export class DetailUserComponent implements OnInit {
 
+  // TODO:
+  // Choose if use explicit 'public' or not, but not both or all with public keyword or all without 'public' keyword
   id: any;
   imageChangedEvent: any = '';
   croppedImage: any = '';
@@ -139,14 +141,20 @@ export class DetailUserComponent implements OnInit {
     this.croppedImage = event.base64;
   }
 
+  // TODO:
+  // empty method
   imageLoaded() {
     // show cropper
   }
 
+  // TODO:
+  // empty method
   cropperReady() {
     // cropper ready
   }
 
+  // TODO:
+  // empty method
   loadImageFailed() {
     // show message
   }
@@ -164,6 +172,13 @@ export class DetailUserComponent implements OnInit {
       return;
     }
 
+    // TODO:
+    // Is bad practice use delete for remove attributes from obj you could use :
+    // const { urlImage, password2, active, verified, ...newObj} = formValue;
+    // this.apiRequestsService.getQuery('users', 'post', newObj)
+    //   .subscribe((response: any) => {
+    //     console.log(response);
+    //   });
      delete formValue.urlImage;
     delete formValue.password2;
     delete formValue.active;

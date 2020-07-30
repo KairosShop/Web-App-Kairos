@@ -20,6 +20,9 @@ import { AuthService } from '@core/authentication/auth.service';
 })
 
 export class ProductsDetailComponent implements OnInit {
+
+  // TODO:
+  // Choose if use explicit 'public' or not, but not both or all with public keyword or all without 'public' keyword
   id: any;
   imageChangedEvent: any = '';
   croppedImage: any = '';
@@ -45,6 +48,8 @@ export class ProductsDetailComponent implements OnInit {
     private auth :AuthService,
   ) {
     this.activatedRoute.queryParams.subscribe((query) => {
+      // TODO:
+      // You always should use === for if
       if (query.action == 'edit') {
         this.desactive = false;
       }
@@ -61,15 +66,28 @@ export class ProductsDetailComponent implements OnInit {
     })
 
     this.edit = !this.desactive;
+    // TODO:
+    // Is not necessary this subscribe because only with
+    // `this.productsForm.get('price').value` you could get the value for this field without declaring a new public variable.
+    // if you want something more clear you could create a method like this:
+    // get priceField() {
+    //   return this.productsForm.get('price');
+    // }
     this.productsForm.get('price').valueChanges.subscribe(response => {
         this.price = response;
     });
 
   }
 
+  get priceField() {
+    return this.productsForm.get('price');
+  }
+
   getId(id: any) {
     if (id !== 'new') {
       this.fetchProduct(this.id);
+      // TODO:
+      // You always should use === for if
     } else if (id == undefined) {
       this.createForm();
     } else {
@@ -176,14 +194,20 @@ export class ProductsDetailComponent implements OnInit {
     this.croppedImage = event.base64;
   }
 
+  // TODO:
+  // empty method
   imageLoaded() {
     // show cropper
   }
 
+  // TODO:
+  // empty method
   cropperReady() {
     // cropper ready
   }
 
+  // TODO:
+  // empty method
   loadImageFailed() {
     // show message
   }
@@ -191,9 +215,9 @@ export class ProductsDetailComponent implements OnInit {
   saveSettings() {
 
     const formValue = this.productsForm.value;
-    const method:string = this.edit ? 'put' : 'post'; 
+    const method:string = this.edit ? 'put' : 'post';
     const idProduct = this.product.id;
-    
+
     if (this.productsForm.invalid) {
         Object.values(this.productsForm.controls).map(control => {
           if (control.status === "INVALID") {
@@ -220,10 +244,13 @@ export class ProductsDetailComponent implements OnInit {
       this.productsForm.controls.price.markAsTouched();
       return;
     }
-    const price = this.price; 
+    const price = this.price;
     const productId = this.product.id;
     const active = this.product.active;
     const { user } = this.auth.getCookie('user');
+
+    // TODO:
+    // Unnecessarily quoted property
     const sendPrice = {
       'supermarketId': user.id,
       'productId': productId,

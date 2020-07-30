@@ -33,6 +33,8 @@ export class TableUserComponent implements OnInit {
   fetchUsers() {
     this.users = this.userService.getAllUsers()
       .pipe(map((users: User[]) => {
+        // TODO:
+        // Identifier 'tableUsers' is never reassigned; use 'const' instead of 'let'
         let tableUsers = [];
         users.map((user) => {
           tableUsers.push({
