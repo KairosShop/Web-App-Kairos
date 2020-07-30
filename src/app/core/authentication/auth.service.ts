@@ -18,6 +18,8 @@ export class AuthService {
       'Authorization': 'Basic ' + btoa(userCredentials)
     });
 
+    // TODO:
+    // The URL should be an environment variable.
     return this.http.post('https://staging.kairosshop.xyz/api/auth/sign-in', {
       "email": user.username,
       "password": user.password
@@ -28,6 +30,8 @@ export class AuthService {
 
   register({ firstName, lastname, email, password }, type) {
     let user: { email: any; firstName: any; rol: string; password: any; lastName?: any; };
+    // TODO:
+    // Variable 'rol', '_user' is never reassigned; use 'const' instead of 'let'.
     let rol = type ? 'super market' : 'customer';
     let _user = {
       email,

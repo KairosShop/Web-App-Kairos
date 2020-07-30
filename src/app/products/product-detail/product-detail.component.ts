@@ -32,12 +32,17 @@ export class ProductDetailComponent implements OnInit {
   ) {
   }
 
+
+  // TODO:
+  // There are three methods in a waterfall (ngOnInit, fetchProduct, fetchRelactionProducts)
+  // you could merge this process in once process with switchMap from RXJS
   ngOnInit(): void {
     this.route.params.subscribe((params: Params) => {
       this.id = params.id;
       this.fetchProduct(this.id);
     })
   }
+
   fetchProduct(id: number) {
     this.productsService.getProduct(id).subscribe((product: Product) => {
       this.product = product;

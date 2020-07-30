@@ -26,6 +26,9 @@ export class HomeComponent implements OnInit {
     this.categoriesService.getAllCategories().subscribe((categories: Category[]) => {
       this.productsOfCategory = categories;
       this.productsOfCategory.map((item) => {
+        // TODO:
+        // This way to get the products for each category is a bad practice
+        // you should use methods like forkJoin of RXJS for merge all data in once process.
         this.productsService.getProductsOfCategories(item.id)
           .subscribe((products: Product[]) => {
             item.products = products;

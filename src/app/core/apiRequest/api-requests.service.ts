@@ -5,6 +5,10 @@ import { AuthService } from '@core/authentication/auth.service';
 
 import { map } from 'rxjs/operators';
 
+
+// TODO:
+// This service probably is unnecessary because HttpClient already is an abstraction for Http requests,
+// but if you want to add headers for all requests you could use Http Interceptors
 @Injectable({
   providedIn: 'root'
 })

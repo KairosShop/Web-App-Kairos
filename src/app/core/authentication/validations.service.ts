@@ -28,6 +28,8 @@ export class ValidationsService {
       if (pass1Control.value === pass2Control.value) {
         pass2Control.setErrors(null);
       } else {
+        // TODO:
+        // Not should there are variables in Spanish
         pass2Control.setErrors({noEsIgual: true})
       }
 

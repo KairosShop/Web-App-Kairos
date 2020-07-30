@@ -26,6 +26,8 @@ export class ProductsCardComponent implements OnInit {
       this._addCartService
     .getObservable()
     .subscribe((response: Product[]) => {
+      // TODO:
+      // If you only need once element from the array you could use the find method.
       response.map((product: Product) => {
         if (this.product.id == product.id) {
           this.product.count = product.count;

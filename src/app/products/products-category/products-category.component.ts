@@ -35,6 +35,9 @@ export class ProductsCategoryComponent implements OnInit {
     this.subCategoryService.getAllSubCategoriesToCategory(idCategory)
       .subscribe((subCategories: SubCategory[]) => {
         this.subcategories = subCategories;
+        // TODO:
+        // This way to get the products for each category is a bad practice
+        // you should use methods like forkJoin of RXJS for merge all data in once process.
         this.subcategories.map((item) => {
           this.productsService.getProductsOfSubcategories(item.id)
           .subscribe((products: Product[]) => {
