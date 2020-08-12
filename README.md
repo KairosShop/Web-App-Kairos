@@ -1,4 +1,4 @@
-# [![Logo](./src/assets/images/brand/LogoBlue.png)](https://kairosshop.xyz/)
+# [![Logo](./src/assets/images/brand/LogoBlue.png)](https://kairosreact.herokuapp.com/)
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 9.0.6 and is part of the final proyect of the Master students of Platzi, from Cohort 2.
 
 This project is the Kairos frontend, a web app that allows you to offer products and compare prices from different supermarkets.
@@ -11,6 +11,8 @@ Microservice comparation: https://gitlab.com/kairos6/microservice-comparator
 More info: https://www.notion.so/alejozepol/Kairos-d91d3954a8b44d64bd1e70797c9a58b5
 
 ## Frontend Scope 🚀
+
+URL : https://kairosreact.herokuapp.com/
 
 Develop a views where:
 
